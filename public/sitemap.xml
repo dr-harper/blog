@@ -2,14 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	
 	<sitemap>
-	   	<loc>/en/sitemap.xml</loc>
+	   	<loc>https://mikey.netlify.com/en/sitemap.xml</loc>
 		
 	   	<lastmod>2018-03-02T00:00:00+00:00</lastmod>
 		
 	</sitemap>
 	
 	<sitemap>
-	   	<loc>/sv/sitemap.xml</loc>
+	   	<loc>https://mikey.netlify.com/sv/sitemap.xml</loc>
 		
 	</sitemap>
 	

@@ -3,27 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/sv/</loc>
+    <loc>https://mikey.netlify.com/sv/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/"
+                href="https://mikey.netlify.com/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="/sv/"
+                href="https://mikey.netlify.com/sv/"
                 />
   </url>
   
   <url>
-    <loc>/sv/taggar/</loc>
+    <loc>https://mikey.netlify.com/sv/taggar/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/sv/%C3%A4mne/</loc>
+    <loc>https://mikey.netlify.com/sv/%C3%A4mne/</loc>
     <priority>0</priority>
   </url>
   
