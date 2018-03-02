@@ -3,102 +3,124 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mikey.netlify.com/2018-03-02-writing-reports-in-rstudio-an-introduction-to-rmarkdown/</loc>
+    <loc>/calculating-neighbouring-polygons-in-r/</loc>
     <lastmod>2018-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/2017-11-07-mapping-uk-local-political-data/</loc>
+    <loc>/moving-website-to-hugo/</loc>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</loc>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/mapping-uk-local-political-data/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/gis-in-r/</loc>
+    <loc>/gis-in-r/</loc>
     <lastmod>2017-09-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/2016-12-12-cycling-lands-end-to-john-o-groats/</loc>
+    <loc>/cycling-lands-end-to-john-o-groats/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2016-12-05T14:41:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/showcase/</loc>
+    <loc>/showcase/</loc>
     <lastmod>2016-12-05T14:41:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/tags/data/</loc>
+    <loc>/tags/cycling/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/data/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/tags/gis/</loc>
-    <lastmod>2017-09-01T00:00:00+00:00</lastmod>
+    <loc>/tags/gis/</loc>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/</loc>
+    <loc>/</loc>
     <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://mikey.netlify.com/sv/"
+                href="/sv/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://mikey.netlify.com/"
+                href="/"
                 />
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/tags/presentation/</loc>
+    <loc>/tags/presentation/</loc>
     <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/tags/r/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/tags/</loc>
+    <loc>/tags/</loc>
+    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/topics/technical/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/topics/technical/</loc>
-    <lastmod>2017-11-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mikey.netlify.com/topics/topic-1/</loc>
+    <loc>/topics/topic-1/</loc>
     <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mikey.netlify.com/topics/</loc>
+    <loc>/topics/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/web/</loc>
+    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

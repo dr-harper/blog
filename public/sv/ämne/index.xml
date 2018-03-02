@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ämne on Min blog</title>
-    <link>https://mikey.netlify.com/sv/%C3%A4mne/</link>
+    <link>/sv/%C3%A4mne/</link>
     <description>Recent content in Ämne on Min blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sv</language>
@@ -10,7 +10,7 @@
     <webMaster>yourname@example.com (yourname)</webMaster>
     <copyright>(c) 2016 Alla rättigheter</copyright>
     
-	<atom:link href="https://mikey.netlify.com/sv/%C3%A4mne/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/sv/%C3%A4mne/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

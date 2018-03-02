@@ -32,7 +32,7 @@ disqusShortname = "shortname"
 
 
 [permalinks]
-post = "/:filename/"
+post = "/:slug/"
 code = "/:filename/"
 
 [taxonomies]

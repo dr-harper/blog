@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mikey Harper</title>
-    <link>https://mikey.netlify.com/</link>
+    <link>/</link>
     <description>Recent content on Mikey Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,25 +11,50 @@
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
     <lastBuildDate>Fri, 02 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://mikey.netlify.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Writing reports in RStudio: an introduction to RMarkdown</title>
-      <link>https://mikey.netlify.com/2018-03-02-writing-reports-in-rstudio-an-introduction-to-rmarkdown/</link>
+      <title>Calculating Neighbouring Polygons in R</title>
+      <link>/calculating-neighbouring-polygons-in-r/</link>
       <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/2018-03-02-writing-reports-in-rstudio-an-introduction-to-rmarkdown/</guid>
+      <guid>/calculating-neighbouring-polygons-in-r/</guid>
+      <description>A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
+Code# Load packageslibrary(raster) # loads shapefilelibrary(igraph) # build networklibrary(spdep) # builds networklibrary(RColorBrewer) # for plot colour palettelibrary(ggplot2) # plots results# Load Datapowiaty &amp;lt;- shapefile(&amp;quot;C:/Users/Mikey/Downloads/powiaty/powiaty&amp;quot;)Firstly the poly2nb function is used to calculate neighbouring regions:
+# Find neighbouring areasnb_q &amp;lt;- poly2nb(powiaty)This creates our spatial mesh, which we can see here:</description>
+    </item>
+    
+    <item>
+      <title>Moving website to Hugo</title>
+      <link>/moving-website-to-hugo/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/moving-website-to-hugo/</guid>
+      <description>I have been toying with the idea for a while about setting up a website through Hugo.1
+Why ConsiderOne of the best things about Hugo is that the
+The guidance for blogdown is really useful.
+Below are some of my favourite features:
+Citationsknitr::write_bib(c(&amp;quot;rmarkdown&amp;quot;, &amp;quot;knitr&amp;quot;, &amp;quot;leaflet&amp;quot;), file = &amp;quot;test.bib&amp;quot;)(Xie 2018)
+Embedding Live ChartsFor example, the leaflet (Cheng, Karambelkar, and Xie 2017) package is great for producing interactive maps.</description>
+    </item>
+    
+    <item>
+      <title>Writing reports in RStudio: an introduction to RMarkdown</title>
+      <link>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</guid>
       <description>RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
 The presentation was designed to provide a whistle-stop tour of the benefits of RMarkdown, explaining the basic syntax to get started and highlighting some of the more advance things which you could use RMarkdown for.</description>
     </item>
     
     <item>
       <title>Mapping UK Local Political Data</title>
-      <link>https://mikey.netlify.com/2017-11-07-mapping-uk-local-political-data/</link>
+      <link>/mapping-uk-local-political-data/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/2017-11-07-mapping-uk-local-political-data/</guid>
+      <guid>/mapping-uk-local-political-data/</guid>
       <description>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis.
 This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here. {: .notice&amp;ndash;warning}
 Setup R was used to run the analysis. The code uses a number of packages to process the data:</description>
@@ -37,10 +62,10 @@ Setup R was used to run the analysis. The code uses a number of packages to proc
     
     <item>
       <title>GIS in R</title>
-      <link>https://mikey.netlify.com/gis-in-r/</link>
+      <link>/gis-in-r/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/gis-in-r/</guid>
+      <guid>/gis-in-r/</guid>
       <description>IntroAlthough R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to show people the benefits of using R in their analyses.
 Why use R for GISThere are many benefits of using R for GIS, but to me the top three reasons would be:
 Integrate GIS and Statistial analysis: Load raw data, run analysis, and present the results all within a single script.</description>
@@ -48,29 +73,29 @@ Setup R was used to run the analysis. The code uses a number of packages to proc
     
     <item>
       <title>Cycling Lands End to John O&#39;Groats</title>
-      <link>https://mikey.netlify.com/2016-12-12-cycling-lands-end-to-john-o-groats/</link>
+      <link>/cycling-lands-end-to-john-o-groats/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/2016-12-12-cycling-lands-end-to-john-o-groats/</guid>
+      <guid>/cycling-lands-end-to-john-o-groats/</guid>
       <description>Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://mikey.netlify.com/about/</link>
+      <link>/about/</link>
       <pubDate>Mon, 05 Dec 2016 14:41:00 +0100</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/about/</guid>
+      <guid>/about/</guid>
       <description>Headline I am a
 In my spare time, I enjoy cycling and</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://mikey.netlify.com/showcase/</link>
+      <link>/showcase/</link>
       <pubDate>Mon, 05 Dec 2016 14:41:00 +0100</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/showcase/</guid>
+      <guid>/showcase/</guid>
       <description>Showcase Showcase text in english.</description>
     </item>
     

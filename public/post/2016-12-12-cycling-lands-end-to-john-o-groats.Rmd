@@ -7,10 +7,12 @@ TableOfContents: TRUE
 type: post
 categories:
   - cycling
-tags: []
+tags: [cycling]
 ---
 
 ![](/images/LEJOGStart.jpg)
+<br>
+
 
 Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.
 
@@ -50,41 +52,19 @@ Another key factor in planning the route was finding suitable accommodation. Bei
 
 Our overall route came in at 1500km (~940 miles).  If you want to see our planned route, we put together a [StoryMap]() of the planned route before going, or you can view the route below (note, the embedded map may not be supported on all browsers).
 
-
+<style>.embed-container-2 {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container-2 object, .embed-container-2 iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;}</style> <div class="embed-container-2"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Land's End to John o' Groats Cycle Route" src="//soton-uni.maps.arcgis.com/apps/Embed/index.html?webmap=147b4322371442daa67e41b94d1caff1&amp;extent=-20.5856,43.1083,22.4808,63.0794&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
 
 
 ## Kit List
 
-Doing it unsupported, we needed to carry everything with us on our bike. It is amazing how quickly space runs out and how heavy your bike can quickly become.  The following list weighed around 6kg, and once you add in a bit food and drink for the days ride it could come to around 10kg extra weight on the bike.
+Doing it unsupported, we needed to carry everything with us on our bike. It is amazing how quickly space runs out and how heavy your bike can quickly become.  Table \@ref(tab:KitList) lists the kit I took, which weighed around 6kg. Once you add in a bit food and drink for the days ride it could come to around 10kg extra weight on the bike.
 
-- **Cycling Clothes**
-  - 2 Jerseys
-  - 2 Pairs of Cycling Shorts
-  - Waterproof Jacket 
-  - Thermal Top
-  - Cycling Glasses
-  - Helmet
-  - Cycling Shoes
+```{r KitList, echo=FALSE, message=FALSE, warning=FALSE}
+data <- readr::read_csv("lejog/kitlist.csv")
+options(knitr.kable.NA = '')
+knitr::kable(data, caption = "Kit List Used")
+```
 
-- **Evening Clothes**
-  - Flip flops
-  - 1 pair of socks
-  - Lightweight travel towel
-  - Lightweight shorts
-
-- **Bike Gear**
-  - 3 Spare inner tubes
-  - Puncture repair kit
-  - WD40
-  - Chain tool
-  - Bike pump
-  - Bike lights
-  - 2 750ml Bottles
-  
-- **Other Gear**
-  - Garmin Bike GPS
-  - Phone Charger
-  - 2 Vaude Waterproof Panniers
 
 Things I probably should have packed but didn't:
 
@@ -94,7 +74,7 @@ Things I probably should have packed but didn't:
 
 While no means an essential part of the planning, I decided that I wanted to design a custom Jersey. I used [Owayo](https://www.owayo.co.uk), who provide a relatively good online designer which you can use to customise your design. Ordering two came to around £65 each. With a bit of playing around I came up with the following design.
 
-![LEJOG Jerseys, designed using Owayo](https://github.com/mikey-harper/TestWebsite/blob/master/_images/LEJOG%20Jersey%20HiRes.jpg?raw=true)
+![LEJOG Jerseys, designed using Owayo](/images/LEJOG Jersey HiRes.jpg)
 
 I was really happy with the end result. I would definitely recommend getting a Jersey if you have the time to organise it. The map on the back was a great conversation starter with a lot of people who otherwise wouldn’t have known what we were doing.
 
@@ -102,7 +82,24 @@ I was really happy with the end result. I would definitely recommend getting a J
 
 # Section 2: During the Trip
 
-We completed our trip from Friday 27th May to Sunday 5th June 2016. This section provides a short explanation for each day of the trip, and by no means is meant to be a comprehensive account. The following graphs summarise the distance and elevation for each day of the trip, and you can view the full data for each day here (opens external link to Strava): Day 1, Day 2, Day 3, Day 4, Day 5, Day 6, Day 7, Day 8
+We completed our trip from Friday 27th May to Sunday 5th June 2016. This section provides a short explanation for each day of the trip, and by no means is meant to be a comprehensive account. The following graphs summarise the distance and elevation for each day of the trip.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", fig.align='center'}
+
+df <- data.frame(Day = c("1", "2", "3", "4", "5", "6", "7", "8"), 
+              Distance=c(181.3, 214.7, 276.2, 195.7, 207.1, 192.1, 162.9, 72.9), 
+              Elevation=c(2854, 2219, 1550, 1316, 1167,  1604, 1248, 592))
+
+library(ggplot2)
+
+a <- ggplot(df, aes(x = Day, y = Distance)) +
+  geom_col()
+library(plotly)
+
+ggplotly(a)
+
+```
+
 
 
 ## Day 0: Travelling to Penzance

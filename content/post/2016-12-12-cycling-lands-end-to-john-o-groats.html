@@ -7,15 +7,20 @@ TableOfContents: TRUE
 type: post
 categories:
   - cycling
-tags: []
+tags: [cycling]
 ---
 
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/plotly-binding/plotly.js"></script>
+<script src="/rmarkdown-libs/typedarray/typedarray.min.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="/rmarkdown-libs/plotlyjs/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/plotlyjs/plotly-latest.min.js"></script>
 
 
-<div class="figure">
-<img src="/images/LEJOGStart.jpg" />
-
-</div>
+<p><img src="/images/LEJOGStart.jpg" /> <br></p>
 <p>Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.</p>
 <div id="key-trip-planning-aims" class="section level1">
 <h1>Key Trip Planning Aims</h1>
@@ -49,37 +54,70 @@ tags: []
 <p>For anyone who knows me, they will know how much I love the app <a href="strava.com">Strava</a>. One thing in particular which is amazingly useful is that it can be used to plan routes which based on the popularity of roads (this is calculated by the number of people which cycle a route). I regularly use this to plan routes through regions where I am not familiar with, as it can help you avoid the busy roads which are technically possible to cycle but no one in their right mind would ride. Instead you can find the quiet back roads used by the local cyclists.</p>
 <p>Another key factor in planning the route was finding suitable accommodation. Being on a tight budget, we tried to spend as many nights as possible at hostels, family or friends, and is the reason we did 175 miles on the third day!</p>
 <p>Our overall route came in at 1500km (~940 miles). If you want to see our planned route, we put together a <a href="">StoryMap</a> of the planned route before going, or you can view the route below (note, the embedded map may not be supported on all browsers).</p>
+<style>.embed-container-2 {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container-2 object, .embed-container-2 iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;}</style>
+<div class="embed-container-2">
+<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Land's End to John o' Groats Cycle Route" src="//soton-uni.maps.arcgis.com/apps/Embed/index.html?webmap=147b4322371442daa67e41b94d1caff1&amp;extent=-20.5856,43.1083,22.4808,63.0794&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light">
+</iframe>
+</div>
 </div>
 <div id="kit-list" class="section level2">
 <h2>Kit List</h2>
-<p>Doing it unsupported, we needed to carry everything with us on our bike. It is amazing how quickly space runs out and how heavy your bike can quickly become. The following list weighed around 6kg, and once you add in a bit food and drink for the days ride it could come to around 10kg extra weight on the bike.</p>
-<ul>
-<li><strong>Cycling Clothes</strong></li>
-<li>2 Jerseys</li>
-<li>2 Pairs of Cycling Shorts</li>
-<li>Waterproof Jacket</li>
-<li>Thermal Top</li>
-<li>Cycling Glasses</li>
-<li>Helmet</li>
-<li><p>Cycling Shoes</p></li>
-<li><strong>Evening Clothes</strong></li>
-<li>Flip flops</li>
-<li>1 pair of socks</li>
-<li>Lightweight travel towel</li>
-<li><p>Lightweight shorts</p></li>
-<li><strong>Bike Gear</strong></li>
-<li>3 Spare inner tubes</li>
-<li>Puncture repair kit</li>
-<li>WD40</li>
-<li>Chain tool</li>
-<li>Bike pump</li>
-<li>Bike lights</li>
-<li><p>2 750ml Bottles</p></li>
-<li><strong>Other Gear</strong></li>
-<li>Garmin Bike GPS</li>
-<li>Phone Charger</li>
-<li><p>2 Vaude Waterproof Panniers</p></li>
-</ul>
+<p>Doing it unsupported, we needed to carry everything with us on our bike. It is amazing how quickly space runs out and how heavy your bike can quickly become. Table <a href="#tab:KitList">1</a> lists the kit I took, which weighed around 6kg. Once you add in a bit food and drink for the days ride it could come to around 10kg extra weight on the bike.</p>
+<table>
+<caption><span id="tab:KitList">Table 1: </span>Kit List Used</caption>
+<thead>
+<tr class="header">
+<th align="left">Cycling Clothes</th>
+<th align="left">Evening Clothes</th>
+<th align="left">Bike Gear</th>
+<th align="left">Other Gear</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2 Jerseys</td>
+<td align="left">Flip flops</td>
+<td align="left">3 Spare inner tubes</td>
+<td align="left">Garmin Bike GPS</td>
+</tr>
+<tr class="even">
+<td align="left">2 Pairs of Cycling Shorts</td>
+<td align="left">1 pair of socks</td>
+<td align="left">Puncture repair kit</td>
+<td align="left">Phone Charger</td>
+</tr>
+<tr class="odd">
+<td align="left">Waterproof Jacket</td>
+<td align="left">Lightweight travel towel</td>
+<td align="left">WD40</td>
+<td align="left">2 Vaude Waterproof Panniers</td>
+</tr>
+<tr class="even">
+<td align="left">Thermal Top</td>
+<td align="left">Lightweight shorts</td>
+<td align="left">Chain tool</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Cycling Glasses</td>
+<td align="left"></td>
+<td align="left">Bike pump</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Helmet</td>
+<td align="left"></td>
+<td align="left">Bike lights</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Cycling Shoes</td>
+<td align="left"></td>
+<td align="left">2 750ml Bottles</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 <p>Things I probably should have packed but didn’t:</p>
 <ul>
 <li>Proper wet weather cycling gear. My jacket was only designed for a light shower. On the one day it properly rained, I got absolutely soaked and got very cold when we had to stop to repair a puncture</li>
@@ -88,7 +126,7 @@ tags: []
 <h3>Added Extra: Jersey</h3>
 <p>While no means an essential part of the planning, I decided that I wanted to design a custom Jersey. I used <a href="https://www.owayo.co.uk">Owayo</a>, who provide a relatively good online designer which you can use to customise your design. Ordering two came to around £65 each. With a bit of playing around I came up with the following design.</p>
 <div class="figure">
-<img src="https://github.com/mikey-harper/TestWebsite/blob/master/_images/LEJOG%20Jersey%20HiRes.jpg?raw=true" alt="LEJOG Jerseys, designed using Owayo" />
+<img src="/images/LEJOG%20Jersey%20HiRes.jpg" alt="LEJOG Jerseys, designed using Owayo" />
 <p class="caption">LEJOG Jerseys, designed using Owayo</p>
 </div>
 <p>I was really happy with the end result. I would definitely recommend getting a Jersey if you have the time to organise it. The map on the back was a great conversation starter with a lot of people who otherwise wouldn’t have known what we were doing.</p>
@@ -98,7 +136,9 @@ tags: []
 </div>
 <div id="section-2-during-the-trip" class="section level1">
 <h1>Section 2: During the Trip</h1>
-<p>We completed our trip from Friday 27th May to Sunday 5th June 2016. This section provides a short explanation for each day of the trip, and by no means is meant to be a comprehensive account. The following graphs summarise the distance and elevation for each day of the trip, and you can view the full data for each day here (opens external link to Strava): Day 1, Day 2, Day 3, Day 4, Day 5, Day 6, Day 7, Day 8</p>
+<p>We completed our trip from Friday 27th May to Sunday 5th June 2016. This section provides a short explanation for each day of the trip, and by no means is meant to be a comprehensive account. The following graphs summarise the distance and elevation for each day of the trip.</p>
+<div id="3460552118b" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="3460552118b">{"x":{"data":[{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.899999999999999],"base":[0,0,0,0,0,0,0,0],"x":[1,2,3,4,5,6,7,8],"y":[181.3,214.7,276.2,195.7,207.1,192.1,162.9,72.9],"text":["Day: 1<br />Distance: 181.3","Day: 2<br />Distance: 214.7","Day: 3<br />Distance: 276.2","Day: 4<br />Distance: 195.7","Day: 5<br />Distance: 207.1","Day: 6<br />Distance: 192.1","Day: 7<br />Distance: 162.9","Day: 8<br />Distance:  72.9"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[0.4,8.6],"tickmode":"array","ticktext":["1","2","3","4","5","6","7","8"],"tickvals":[1,2,3,4,5,6,7,8],"categoryorder":"array","categoryarray":["1","2","3","4","5","6","7","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":"Day","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"range":[-13.81,290.01],"tickmode":"array","ticktext":["0","100","200"],"tickvals":[0,100,200],"categoryorder":"array","categoryarray":["0","100","200"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"Distance","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"34607345c79":{"x":{},"y":{},"type":"bar"}},"cur_data":"34607345c79","visdat":{"34607345c79":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <div id="day-0-travelling-to-penzance" class="section level2">
 <h2>Day 0: Travelling to Penzance</h2>
 <p>We got the train to Penzance in the afternoon and cycled to 13km to the Land’s End Youth Hostel, which is only 8km from Land’s End.</p>

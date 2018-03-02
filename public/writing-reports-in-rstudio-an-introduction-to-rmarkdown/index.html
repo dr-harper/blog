@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Writing reports in RStudio: an introduction to RMarkdown  &middot; Mikey Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Presentation on using RMarkdown for writing technical reports, and the benefits of reproducible research." />
+
+<meta name="keywords" content="key, words, ">
+
+
+<meta property="og:title" content="Writing reports in RStudio: an introduction to RMarkdown  &middot; Mikey Harper ">
+<meta property="og:site_name" content="Mikey Harper"/>
+<meta property="og:url" content="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Presentation on using RMarkdown for writing technical reports, and the benefits of reproducible research."/>
+<meta property="og:article:published_time" content="2018-03-02T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-03-02T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="key">
+    
+<meta property="og:article:tag" content="words">
+    
+  
+
+  
+
+  
+
+
+
+<link rel="canonical" href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.36.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+<link rel="stylesheet" href="/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="/">
+          Mikey Harper
+          
+          
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="/about/" >
+                
+                About
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/post/" >
+                
+                Blog
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/showcase/" >
+                
+                Showcase
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+
+
+<style>.bigbox{margin-top: 60px}</style>
+
+<div class="bigbox"></div>
+<img src="/kenya.jpg" alt="Mountain View">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Writing reports in RStudio: an introduction to RMarkdown
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-03-02">2 Mar, 2018</time>
+</small>
+
+
+  <small>
+    &middot; by Mikey Harper
+  
+  &middot; Read in about 2 min
+  &middot; (370 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Writing%20reports%20in%20RStudio%3a%20an%20introduction%20to%20RMarkdown&amp;url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f&amp;title=Writing%20reports%20in%20RStudio%3a%20an%20introduction%20to%20RMarkdown" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Writing%20reports%20in%20RStudio%3a%20an%20introduction%20to%20RMarkdown&amp;body=Check out this site %2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/presentation" class="label label-primary">Presentation</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  <p>RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!</p>
+<p>The presentation was designed to provide a whistle-stop tour of the benefits of RMarkdown, explaining the basic syntax to get started and highlighting some of the more advance things which you could use RMarkdown for.</p>
+<script async class="speakerdeck-embed" data-id="4762f43cec7a4a75be0c23f06526dac2" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+<p><a href="https://speakerd.s3.amazonaws.com/presentations/4762f43cec7a4a75be0c23f06526dac2/Writing_reports_in_RStudio.pdf">Download Presentation (PDF)</a>{: .btn .btn–primary}</p>
+<div id="useful-links" class="section level2">
+<h2>Useful Links</h2>
+<p>Reading is essential to gain a full understanding of RMarkdown. The following links are recommended within the presentation.</p>
+<p><strong>RMarkdown Detailed Guidance</strong></p>
+<ul>
+<li><strong><a href="http://rmarkdown.rstudio.com/index.html">RMarkdown Website</a>:</strong> Essential reading: used for much of the content of this presentation</li>
+<li><strong><a href="https://yihui.name/knitr/options/">Knitr Code Chunk Options</a></strong>: the full list of commands which can be used to control code output for the chunks</li>
+<li><strong><a href="http://rmarkdown.rstudio.com/pdf_document_format.html">YAML PDF Settings</a></strong>: a full list of commands which can be used to control the output of PDF documents (LaTeX) within RMarkdown.</li>
+</ul>
+<p><strong>Cheat Sheets</strong></p>
+<ul>
+<li><strong><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RMarkdown Cheatsheet</a></strong>: A very reference sheet. Print this out and have above your desk when you start learning RMarkdown.</li>
+<li><strong><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">RMarkdown Reference</a></strong>: similar to the cheatsheet, but provides more detail surrounding the customisation and documents settings.</li>
+</ul>
+<p><strong>Books:</strong></p>
+<ul>
+<li><strong><a href="https://bookdown.org/yihui/bookdown/">bookdown: authoring Books and Technical Documents with R Markdown</a></strong>. Essential reading for those who are considering to use the <em>sotonthesis</em> package.</li>
+<li><strong>Dynamic Documents with R and Knitr</strong>: a useful read for both new and advanced RMarkdown users. The first three chapters <a href="https://github.com/yihui/knitr-book">here</a>.</li>
+<li><strong><a href="https://englianhu.files.wordpress.com/2016/01/reproducible-research-with-r-and-studio-2nd-edition.pdf">Reproducible Research with R and Rstudio</a></strong>: a more general book about the techniques behind reproducible research. Although published in 2015, the book does feel a bit out of date in some areas, although largely it is an excellent resource.</li>
+</ul>
+<p><strong>Other Presentations:</strong></p>
+<ul>
+<li><strong><a href="http://benmarwick.github.io/CSSS-Primer-Reproducible-Research">Reproducible Research</a></strong>: a great presentation which provides more details on the reproducible research aspects of this presentation.</li>
+</ul>
+</div>
+<div id="sotonthesis-package" class="section level2">
+<h2>sotonthesis package</h2>
+<p><a href="https://github.com/mikey-harper/sotonthesis">Link to sotonthesis</a>{: .btn .btn–primary}</p>
+<p>The presentation introduced the package <em>sotonthesis</em>, which is a template designed to create documents within RMarkdown in line with the University of Southampton Thesis template.</p>
+<ul>
+<li><strong><a href="https://github.com/mikey-harper/sotonthesis">sotonthesis R package</a></strong>:</li>
+<li><strong><a href="https://github.com/mikey-harper/sotonthesis/blob/master/thesis.pdf">sotonthesis empty template</a></strong>: View an example of the template of the sotonthesis template.</li>
+</ul>
+<p>While the template is designed to minimise edits made by the user, it is recommended that you read the <strong><a href="https://bookdown.org/yihui/bookdown/">bookdown</a></strong> and have a strong understanding of RMarkdown.</p>
+</div>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Writing%20reports%20in%20RStudio%3a%20an%20introduction%20to%20RMarkdown&amp;url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f&amp;title=Writing%20reports%20in%20RStudio%3a%20an%20introduction%20to%20RMarkdown" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Writing%20reports%20in%20RStudio%3a%20an%20introduction%20to%20RMarkdown&amp;body=Check out this site %2fwriting-reports-in-rstudio-an-introduction-to-rmarkdown%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="/mapping-uk-local-political-data/" title="Mapping UK Local Political Data">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="/moving-website-to-hugo/" title="Moving website to Hugo">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//shortname.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+    
+    <hr>
+    
+    <div class="section">
+      <header><div class="title"><b>About Me</b></div></header>
+      </br>
+      
+      <p padding-left: 50px> Interested in data in all its forms, energy and international development.</p>
+      
+      <header><div class="title"><b>Follow Me</b></div></header>
+      </br>
+       <a href="https://www.google.co.uk/maps/place/Southampton/@50.9138696,-1.4355981,13z/data=!3m1!4b1!4m5!3m4!1s0x48738957be152909:0xa78c5a6a4cda71f0!8m2!3d50.9097004!4d-1.4043509"><i class="fa fa-map-marker" style="color:black;"></i> Southampton</a> <br /> 
+       <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i> Stackoverflow</a> <br /> 
+       <a href="https://github.com/mikey-harper"><i class='fa fa-github' style="color:black;"></i> GitHub</a> <br /> 
+       <a href="https://www.facebook.com/mikey.harper"><i class="fa fa-facebook-official" style="color:#3b5998;"></i> Facebook</a> <br />
+       <a href="https://www.linkedin.com/in/mikeyharper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i> LinkedIn</a> <br /> 
+       <a href="https://twitter.com/@MikeyLHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i> Twitter</a> <br /> 
+      </br> 
+      </div>
+    </div>
+    
+    <hr>
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="/calculating-neighbouring-polygons-in-r/">Calculating Neighbouring Polygons in R</a>
+          </li>
+        
+          <li>
+          <a href="/moving-website-to-hugo/">Moving website to Hugo</a>
+          </li>
+        
+          <li>
+          <a href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
+          </li>
+        
+          <li>
+          <a href="/mapping-uk-local-political-data/">Mapping UK Local Political Data</a>
+          </li>
+        
+          <li>
+          <a href="/gis-in-r/">GIS in R</a>
+          </li>
+        
+          <li>
+          <a href="/cycling-lands-end-to-john-o-groats/">Cycling Lands End to John O&#39;Groats</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/r">r</a></li><li><a href="/tags/gis">gis</a></li><li><a href="/tags/presentation">presentation</a></li><li><a href="/tags/cycling">cycling</a></li><li><a href="/tags/data">data</a></li><li><a href="/tags/web">web</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>topic</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/topics/technical">technical</a></li><li><a href="/topics/topic-1">topic-1</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+    
+    <hr>
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="/disclaimer/">Disclaimer</a> <i>&middot;</i>
+
+<a href="/terms/">Terms</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  code with <i class='fa fa-heart'></i>
+
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  &copy; 2018 Copyright Mikey Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

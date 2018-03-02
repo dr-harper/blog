@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Mikey Harper</title>
+    <link>/tags/web/</link>
+    <description>Recent content in Web on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>yourname@example.com (yourname)</managingEditor>
+    <webMaster>yourname@example.com (yourname)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Fri, 02 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Moving website to Hugo</title>
+      <link>/moving-website-to-hugo/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/moving-website-to-hugo/</guid>
+      <description>I have been toying with the idea for a while about setting up a website through Hugo.1
+Why ConsiderOne of the best things about Hugo is that the
+The guidance for blogdown is really useful.
+Below are some of my favourite features:
+Citationsknitr::write_bib(c(&amp;quot;rmarkdown&amp;quot;, &amp;quot;knitr&amp;quot;, &amp;quot;leaflet&amp;quot;), file = &amp;quot;test.bib&amp;quot;)(Xie 2018)
+Embedding Live ChartsFor example, the leaflet (Cheng, Karambelkar, and Xie 2017) package is great for producing interactive maps.</description>
+    </item>
+    
+  </channel>
+</rss>

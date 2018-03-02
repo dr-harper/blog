@@ -1,0 +1,61 @@
+---
+title: Moving website to Hugo
+author: Mikey Harper
+date: '2018-03-02'
+slug: moving-website-to-hugo
+categories: []
+tags:
+  - Web
+bibliography: test.bib
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet/leaflet.js"></script>
+<link href="/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<link href="/rmarkdown-libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet-label/leaflet.label.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<script src="/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
+
+
+<p>I have been toying with the idea for a while about setting up a website through Hugo.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<div id="why-consider" class="section level1">
+<h1>Why Consider</h1>
+<p>One of the best things about Hugo is that the</p>
+<p>The guidance for <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> is really useful.</p>
+<p>Below are some of my favourite features:</p>
+<div id="citations" class="section level2">
+<h2>Citations</h2>
+<pre class="r"><code>knitr::write_bib(c(&quot;rmarkdown&quot;, &quot;knitr&quot;, &quot;leaflet&quot;), file = &quot;test.bib&quot;)</code></pre>
+<p><span class="citation">(Xie 2018)</span></p>
+</div>
+<div id="embedding-live-charts" class="section level2">
+<h2>Embedding Live Charts</h2>
+<p>For example, the leaflet <span class="citation">(Cheng, Karambelkar, and Xie 2017)</span> package is great for producing interactive maps. Using the following example taken from <a href="https://rstudio.github.io/leaflet/">here</a>, we can create maps in only a few lines of code:</p>
+<pre class="r"><code>library(leaflet)
+
+m &lt;- leaflet() %&gt;%
+  addTiles() %&gt;%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-1.396, lat=50.93, popup=&quot;The birthplace of R&quot;)
+m</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[50.93,-1.396,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"The birthplace of R",null,null,null,null,null,null]}],"limits":{"lat":[50.93,50.93],"lng":[-1.396,-1.396]}},"evals":[],"jsHooks":[]}</script>
+<div id="refs" class="references">
+<div id="ref-R-leaflet">
+<p>Cheng, Joe, Bhaskar Karambelkar, and Yihui Xie. 2017. <em>Leaflet: Create Interactive Web Maps with the Javascript ’Leaflet’ Library</em>. <a href="https://CRAN.R-project.org/package=leaflet" class="uri">https://CRAN.R-project.org/package=leaflet</a>.</p>
+</div>
+<div id="ref-R-knitr">
+<p>Xie, Yihui. 2018. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This is a footnoted<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
