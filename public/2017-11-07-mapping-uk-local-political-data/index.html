@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Mapping UK Local Political Data  &middot; Mikey Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Technical description of the process used to aggregate political data statistics for the UK" />
+
+<meta name="keywords" content="key, words, ">
+
+
+<meta property="og:title" content="Mapping UK Local Political Data  &middot; Mikey Harper ">
+<meta property="og:site_name" content="Mikey Harper"/>
+<meta property="og:url" content="/2017-11-07-mapping-uk-local-political-data/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Technical description of the process used to aggregate political data statistics for the UK"/>
+<meta property="og:article:published_time" content="2017-11-07T00:00:00Z" />
+<meta property="og:article:modified_time" content="2017-11-07T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="key">
+    
+<meta property="og:article:tag" content="words">
+    
+  
+
+  
+
+  
+
+
+
+<link rel="canonical" href="/2017-11-07-mapping-uk-local-political-data/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.36.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+<link rel="stylesheet" href="/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="/">
+          Mikey Harper
+          
+          
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="/about/" >
+                
+                About
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/post/" >
+                
+                Blog
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/showcase/" >
+                
+                Showcase
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+
+
+<style>.bigbox{margin-top: 60px}</style>
+
+<div class="bigbox"></div>
+<img src="/kenya.jpg" alt="Mountain View">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Mapping UK Local Political Data
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2017-11-07">7 Nov, 2017</time>
+</small>
+
+
+  <small>
+    &middot; by Mikey Haprper
+  
+  &middot; Read in about 6 min
+  &middot; (1213 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Mapping%20UK%20Local%20Political%20Data&amp;url=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2017-11-07-mapping-uk-local-political-data%2f&amp;title=Mapping%20UK%20Local%20Political%20Data" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Mapping%20UK%20Local%20Political%20Data&amp;body=Check out this site %2f2017-11-07-mapping-uk-local-political-data%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/data" class="label label-primary">Data</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+<p>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis.</p>
+
+<p>This provides a technical overview of the data. The R code used to create the analysis is available through GitHub <a href="https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_code/Political%20Data/PoliticalDataAggregation.R">here</a>.
+{: .notice&ndash;warning}</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>R was used to run the analysis. The code uses a number of packages to process the data:</p>
+
+<pre><code class="language-r">library(tidyverse) # For reformatting data
+library(readxl) # To load the council data in
+library(raster) # To read the council shapefile
+library(ggplot2) # ploting results
+library(magrittr) # make code more readble
+library(reshape2)
+library(rgeos)
+</code></pre>
+
+<h2 id="data-sources">Data Sources</h2>
+
+<p>Two primary data sources were used for this analysis:</p>
+
+<ul>
+<li><strong>Council compositions <a href="http://www.electionscentre.co.uk/?page_id=3802.">link here</a></strong>. Produced by the Elections Centre, this datasource provides local council composition records for each year from 1964-2015. The years before 1973 cover only the London boroughs established in 1964. It is recommended you read the cover page in the spreadsheet to gain an understanding of the variables.</li>
+<li><strong>Boundary Data <a href="https://borders.ukdataservice.ac.uk/easy_download_data.html?data=infuse_dist_lyr_2011">link here</a>:</strong> Local Unitary Authority boundaries were used.</li>
+</ul>
+
+<p>To run the following code, you should download the datasets and unzip them to your home directory. The shapefiles should be kept in their folder <code>infuse_dist_lyr_2011</code>. Or alternatively, the following script will download the shapefiles:</p>
+
+<pre><code class="language-r"># Download and unzip data
+download.file(url = &quot;https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/infuse_dist_lyr_2011_clipped.zip&quot;, 
+              destfile = &quot;infuse_dist_lyr_2011_clipped.zip&quot;)
+unzip(zipfile = &quot;infuse_dist_lyr_2011_clipped.zip&quot;, exdir = &quot;infuse_dist_lyr_2011_clipped&quot;)
+file.remove(&quot;infuse_dist_lyr_2011_clipped.zip&quot;)
+boundaries &lt;- shapefile(&quot;infuse_dist_lyr_2011/infuse_dist_lyr_2011&quot;)
+</code></pre>
+
+<p>If you are not interested in low resolution results, you may want to simplify the input boundary to reduce it from the file size. The following code uses the <code>gSimplify</code> function from <code>rgeos</code> to reduce the file size to around 5Mb.</p>
+
+<pre><code class="language-r"># Optional simplify of rasters. This is useful if you want to reduce the size of the shapefile to make it easier to plot
+boundaries_sim &lt;- gSimplify(boundaries, tol=150, topologyPreserve=TRUE)
+shapefile(boundaries_sim, &quot;Boundaries_simplified&quot;, overwrite = TRUE) 
+</code></pre>
+
+<p>Note: this function does not respect boundaries. You will get slight gaps between regions. The package <code>rmapshaper</code> could be used instead which respects border geometries, as described <a href="https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html">here</a>
+{: .notice&ndash;info}</p>
+
+<h2 id="code">Code</h2>
+
+<p>As excel data stores each year as a different tabs, the first thing to do is merge it into a single data table. As mentioned previously, the political dataset contains data going back to 1964, so you can customise the years which are extracted by the function:</p>
+
+<pre><code class="language-r">start &lt;- 2010
+end &lt;- 2015
+
+YearSubset &lt;- start:end # Extracting Data from datasets
+
+# Extract the data from the csv file
+data_council_long &lt;- lapply(YearSubset, 
+                            function(x) readxl::read_excel(file.path(&quot;Council compositions by year.xlsx&quot;), sheet= as.character(as.name(x)))) %&gt;%
+  do.call(rbind,.)
+</code></pre>
+
+<p>The boundaries data contains a total of 404 features. While the boundary data largely matches the tabular naming, tere are a few missing values. Firstly, the two sets of names are stripped of all special characters and converted to upper case to simplify the comparison. A number of keywords were also identified which were preventing the pairing. For example, local authority names often contained &laquo;The City of&raquo;, while the shapefiles only listed the cities name.</p>
+
+<pre><code class="language-r"># Form a list of the authority names
+# Remove &quot;&amp;&quot; symbol and convert to uppercase
+names_LA &lt;- data.frame(LAName = unique(data_council_long$Authority))
+names_LA$Altered &lt;- names_LA$LAName %&gt;%  gsub(&quot;\\&amp;&quot;, &quot;and&quot;, .) %&gt;%  toupper() 
+
+# Copy the name before comparing
+names_shp_council &lt;- data.frame(Original = boundaries$geo_label)
+names_shp_council$Altered &lt;- names_shp_council$Original %&gt;% as.character() %&gt;% toupper()
+
+# A number of rules specified to match the LA names to the shapefile values
+find &lt;- c(&quot; \\(B)&quot;,&quot; District&quot;, &quot;The City of &quot;, &quot;, City of&quot;, &quot; London Borough&quot;, &quot;\\.&quot;, &quot; City&quot;,&quot;Bucks&quot;)
+replace &lt;- c(&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;Buckinghamshire&quot;)
+
+# Replace Inconsistencies between datasets
+for (i in 1:length(find)){
+  names_shp_council$Altered &lt;- gsub(toupper(find[i]), toupper(replace[i]), names_shp_council$Altered)
+}
+
+## --- Match Datasets
+pairs_shp_data &lt;- merge(names_LA, names_shp_council, by = &quot;Altered&quot;) %&gt;%
+  .[, c(2, 3)] %&gt;% 
+  set_colnames(c(&quot;LAName&quot;, &quot;Boundary&quot;)) %&gt;%
+  set_rownames(NULL) 
+</code></pre>
+
+<p>After the initial matching, there were still unjoined pairs. These had a number of inconsistencies, and therefore manual pairs were assigned to join the remaining names. In additional, counties within Northern Ireland are not included within the political dataset, and therefore no pairings were made:</p>
+
+<pre><code class="language-r">pairs_manual &lt;- read.csv(&quot;https://raw.githubusercontent.com/mikey-harper/mikey-harper.github.io/master/_code/Political%20Data/ManualPairs.csv&quot;)
+pairs_shp_data &lt;- rbind(pairs_shp_data, pairs_manual)
+
+data_council_long_matched &lt;- merge(data_council_long, pairs_shp_data, by.x = &quot;Authority&quot;, by.y = &quot;LAName&quot;, all.x = FALSE)
+boundaries &lt;- merge(boundaries, pairs_shp_data, by.x = &quot;geo_label&quot;, by.y = &quot;Boundary&quot;, all.x = FALSE)
+</code></pre>
+
+<p>Now the two datasets are able to be cross-reference, it is easy to display figures of your choice.</p>
+
+<h2 id="using-the-data">Using the data</h2>
+
+<p>The main political variables include:</p>
+
+<ul>
+<li><strong>Local authority</strong>: cross referenced with the boundary data</li>
+<li><strong>Year</strong>: between the dates 1964 and 2015</li>
+<li><strong>Council Size</strong>: Total number of council seats</li>
+<li><strong>Council Seats per Party</strong>: broken down by Conservative, Labour, Liberal Democrat, Other (Greens, UKIP, BNP)</li>
+<li><strong>Council Seats per Party, percentage</strong></li>
+<li><strong>Control</strong>: Party with the control of the council. &laquo;NOC&raquo; refers to No Overall Control</li>
+<li><strong>Majority</strong>: the size of the majority for the controling</li>
+</ul>
+
+<p>Having all these parameters in can make the dataset a bit difficult to use. So you likely want to filter the data to particular subset of the above data. As an example, you may want to extract data for a single year. This can easily be done using the <code>filter()</code> function:</p>
+
+<pre><code class="language-r"># Subset data for a single year
+year_sub &lt;- filter(data_council_long_matched, Year == 2015)
+</code></pre>
+
+<p>The csv data can easily be joined with the boundary data and saved as a shapefile. As another example, here is how you would extract the Liberal Demoncrat share of council seats between 2010 and 2015:</p>
+
+<pre><code class="language-r"># Join the political data with the shapefile and save 
+variable_sub &lt;- data_council_long_matched[,c(18, 4, 15)] # Extracts the lib dem share
+
+data_wide &lt;- acast(variable_sub, Boundary ~ Year, value.var = &quot;LD_share&quot;) %&gt;% as.data.frame() %&gt;% mutate(region = rownames(.))
+
+# Merge data with shapefile
+boundaries &lt;- merge(boundaries, data_wide, by.x = &quot;geo_label&quot;, by.y=&quot;region&quot;)
+# To save the output as a shapefile, you can use the shapefile() function
+</code></pre>
+
+<h2 id="example-plot">Example Plot</h2>
+
+<p>Here is an example graph made using the resulting data:</p>
+
+<pre><code class="language-r">data_melt &lt;- melt(data_council_long, id = c(&quot;Authority&quot;, &quot;Code&quot;, &quot;Type&quot;,&quot;Year&quot;)) %&gt;%
+              filter(Authority == &quot;Southampton&quot;) %&gt;%
+              filter(variable %in% c(&quot;LD_share&quot;, &quot;Lab_share&quot;, &quot;Con_share&quot;, &quot;Oth_share&quot;))
+
+data_melt$value &lt;- as.numeric(data_melt$value) 
+
+ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) + 
+  geom_bar(stat = &quot;identity&quot;, position = &quot;stack&quot;) +
+              labs(title = &quot;Percentage of Council Seats&quot;,
+              y = &quot;Percentage, %&quot;,
+              x = &quot;Year&quot;,
+              subtitle = &quot;Southampton City Council&quot;) +
+  scale_fill_manual(values = c(&quot;Lab_share&quot; = &quot;orangered2&quot;, &quot;Con_share&quot; = &quot;steelblue3&quot;, &quot;LD_share&quot; = &quot;yellow3&quot;, &quot;Oth_share&quot; = &quot;grey&quot;)) +
+  theme_minimal() +
+  theme(legend.position = &quot;none&quot;)
+</code></pre>
+
+<p><img src="https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_images/Southampton%20Council.png?raw=true" alt="https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_images/Southampton%20Council.png?raw=true" /></p>
+
+<h2 id="further-considerations">Further Considerations</h2>
+
+<p>The boundary data was collected for 2011. There have been occasional reforms of the boundaries (<a href="https://en.wikipedia.org/wiki/Unitary_authorities_of_England">see here</a>), which make viewing historic data in some regions more difficult:</p>
+
+<ul>
+<li>1990s reforms: The review caused 46 unitar y authorities to be created.</li>
+<li>2009 changes: The review caused nine unitary authorities to be created.</li>
+</ul>
+
+<p>With these changes, there have been minor alterations in the naming convention of some counties. You should be aware that there may be missing data in historic records.</p>
+
+<h2 id="potential-improvements">Potential Improvements</h2>
+
+<ul>
+<li>Write the code into a function to simplify the filtering of the dataset: the political dataset has a range of variables which make it slight difficult to handle all at once. The above code could easily be automated into a script</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<p>Office for National Statistics, 2011 Census: Digitised Boundary Data (England and Wales) [computer file]. UK Data Service Census Support. Downloaded from: <a href="https://borders.ukdataservice.ac.uk/">https://borders.ukdataservice.ac.uk/</a></p>
+
+<p>National Records of Scotland, 2011 Census: Digitised Boundary Data (Scotland) [computer file]. UK Data Service Census Support. Downloaded from: <a href="https://borders.ukdataservice.ac.uk/">https://borders.ukdataservice.ac.uk/</a></p>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Mapping%20UK%20Local%20Political%20Data&amp;url=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2f2017-11-07-mapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2017-11-07-mapping-uk-local-political-data%2f&amp;title=Mapping%20UK%20Local%20Political%20Data" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Mapping%20UK%20Local%20Political%20Data&amp;body=Check out this site %2f2017-11-07-mapping-uk-local-political-data%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="/gis-in-r/" title="GIS in R">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="/2018-03-02-writing-reports-in-rstudio-an-introduction-to-rmarkdown/" title="Writing reports in RStudio: an introduction to RMarkdown">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//shortname.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+    
+    <hr>
+    
+    <div class="section">
+      <header><div class="title"><b>About Me</b></div></header>
+      </br>
+      
+      <p padding-left: 50px> Interested in data in all its forms, energy and international development.</p>
+      
+      <header><div class="title"><b>Follow Me</b></div></header>
+      </br>
+       <a href="https://www.google.co.uk/maps/place/Southampton/@50.9138696,-1.4355981,13z/data=!3m1!4b1!4m5!3m4!1s0x48738957be152909:0xa78c5a6a4cda71f0!8m2!3d50.9097004!4d-1.4043509"><i class="fa fa-map-marker" style="color:black;"></i> Southampton</a> <br /> 
+       <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i> Stackoverflow</a> <br /> 
+       <a href="https://github.com/mikey-harper"><i class='fa fa-github' style="color:black;"></i> GitHub</a> <br /> 
+       <a href="https://www.facebook.com/mikey.harper"><i class="fa fa-facebook-official" style="color:#3b5998;"></i> Facebook</a> <br />
+       <a href="https://www.linkedin.com/in/mikeyharper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i> LinkedIn</a> <br /> 
+       <a href="https://twitter.com/@MikeyLHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i> Twitter</a> <br /> 
+      </br> 
+      </div>
+    </div>
+    
+    <hr>
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="/2018-03-02-writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
+          </li>
+        
+          <li>
+          <a href="/2017-11-07-mapping-uk-local-political-data/">Mapping UK Local Political Data</a>
+          </li>
+        
+          <li>
+          <a href="/gis-in-r/">GIS in R</a>
+          </li>
+        
+          <li>
+          <a href="/2016-12-12-cycling-lands-end-to-john-o-groats/">Cycling Lands End to John O&#39;Groats</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/r">r</a></li><li><a href="/tags/presentation">presentation</a></li><li><a href="/tags/data">data</a></li><li><a href="/tags/gis">gis</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>topic</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/topics/technical">technical</a></li><li><a href="/topics/topic-1">topic-1</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+    
+    <hr>
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="/disclaimer/">Disclaimer</a> <i>&middot;</i>
+
+<a href="/terms/">Terms</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  code with <i class='fa fa-heart'></i>
+
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  &copy; 2018 Copyright Mikey Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

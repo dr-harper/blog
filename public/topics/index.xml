@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Topics on Mikey Harper</title>
+    <link>/topics/</link>
+    <description>Recent content in Topics on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>yourname@example.com (yourname)</managingEditor>
+    <webMaster>yourname@example.com (yourname)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/topics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Technical</title>
+      <link>/topics/technical/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/topics/technical/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Topic 1</title>
+      <link>/topics/topic-1/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/topics/topic-1/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
