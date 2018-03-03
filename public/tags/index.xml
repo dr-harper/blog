@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Mikey Harper</title>
-    <link>/tags/</link>
+    <link>https://mikey.netlify.com/tags/</link>
     <description>Recent content in Tags on Mikey Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,87 +11,87 @@
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
     <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mikey.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cycling</title>
-      <link>/tags/cycling/</link>
+      <link>https://mikey.netlify.com/tags/cycling/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/cycling/</guid>
+      <guid>https://mikey.netlify.com/tags/cycling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data</title>
-      <link>/tags/data/</link>
+      <link>https://mikey.netlify.com/tags/data/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/data/</guid>
+      <guid>https://mikey.netlify.com/tags/data/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gis</title>
-      <link>/tags/gis/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <link>https://mikey.netlify.com/tags/gis/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/gis/</guid>
+      <guid>https://mikey.netlify.com/tags/gis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mapping</title>
-      <link>/tags/mapping/</link>
+      <link>https://mikey.netlify.com/tags/mapping/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/mapping/</guid>
+      <guid>https://mikey.netlify.com/tags/mapping/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maps</title>
-      <link>/tags/maps/</link>
+      <link>https://mikey.netlify.com/tags/maps/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/maps/</guid>
+      <guid>https://mikey.netlify.com/tags/maps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Presentation</title>
-      <link>/tags/presentation/</link>
+      <link>https://mikey.netlify.com/tags/presentation/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/presentation/</guid>
+      <guid>https://mikey.netlify.com/tags/presentation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <link>https://mikey.netlify.com/tags/r/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/r/</guid>
+      <guid>https://mikey.netlify.com/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reproducible Resaerch</title>
-      <link>/tags/reproducible-resaerch/</link>
+      <link>https://mikey.netlify.com/tags/reproducible-resaerch/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/reproducible-resaerch/</guid>
+      <guid>https://mikey.netlify.com/tags/reproducible-resaerch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web</title>
-      <link>/tags/web/</link>
+      <link>https://mikey.netlify.com/tags/web/</link>
       <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/tags/web/</guid>
+      <guid>https://mikey.netlify.com/tags/web/</guid>
       <description></description>
     </item>
     

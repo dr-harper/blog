@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Topics on Mikey Harper</title>
-    <link>/topics/</link>
+    <link>https://mikey.netlify.com/topics/</link>
     <description>Recent content in Topics on Mikey Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,24 +11,24 @@
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
     <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/topics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mikey.netlify.com/topics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Personal</title>
-      <link>/topics/personal/</link>
+      <link>https://mikey.netlify.com/topics/personal/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/topics/personal/</guid>
+      <guid>https://mikey.netlify.com/topics/personal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Technical</title>
-      <link>/topics/technical/</link>
+      <link>https://mikey.netlify.com/topics/technical/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>/topics/technical/</guid>
+      <guid>https://mikey.netlify.com/topics/technical/</guid>
       <description></description>
     </item>
     
