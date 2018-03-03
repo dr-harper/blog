@@ -98,6 +98,16 @@
     <loc>/tags/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="/sv/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/tags/"
+                />
   </url>
   
   <url>
@@ -116,6 +126,16 @@
     <loc>/topics/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="/sv/topics/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/topics/"
+                />
   </url>
   
   <url>

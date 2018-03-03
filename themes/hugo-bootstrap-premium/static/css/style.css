@@ -110,3 +110,25 @@ code.has-jax {
 .fa-reddit { color: #ff5700; }
 
 .fa-twitter { color: #4099FF; }
+
+.user {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.one {
+  background-image: url('https://en.gravatar.com/userimage/94769636/153374119fe6ce138396a0782d8bc099.jpg?size=200');
+  margin: auto;
+  display: block;
+}
+
+.boxed {
+  padding: 10px;
+}
+

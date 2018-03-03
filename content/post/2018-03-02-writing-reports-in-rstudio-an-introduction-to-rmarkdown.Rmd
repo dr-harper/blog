@@ -1,19 +1,18 @@
 ---
 title: 'Writing reports in RStudio: an introduction to RMarkdown'
+description: Learn why you should consider the benefits of RMarkdown for doing data-driven research. This post shares a presentation which I gave to the Spatial Modelling group, and provides some useful resources for futher reading. 
 author: Mikey Harper
-date: '2018-03-02'
+date: '2017-10-02'
 slug: writing-reports-in-rstudio-an-introduction-to-rmarkdown
 categories: []
 tags:
   - R
   - Presentation
+  - Reproducible Resaerch
 type: post
-description: Presentation on using RMarkdown for writing technical reports, and the benefits of reproducible research.
-keywords:
-  - key
-  - words
+
 topics:
-  - topic 1
+  - Technical
 ---
 
 RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
@@ -51,11 +50,11 @@ Reading is essential to gain a full understanding of RMarkdown. The following li
 
 ## sotonthesis package
 
-[Link to sotonthesis](https://github.com/mikey-harper/sotonthesis){: .btn .btn--primary}
+[Link to sotonthesis](https://github.com/mikey-harper/sotonthesis)
 
 The presentation introduced the package *sotonthesis*, which is a template designed to create documents within RMarkdown in line with the University of Southampton Thesis template.
 
 - **[sotonthesis R package](https://github.com/mikey-harper/sotonthesis)**: 
 - **[sotonthesis empty template](https://github.com/mikey-harper/sotonthesis/blob/master/thesis.pdf)**: View an example of the template of the sotonthesis template.
 
-While the template is designed to minimise edits made by the user, it is recommended that you read the **[bookdown](https://bookdown.org/yihui/bookdown/)** and have a strong understanding of RMarkdown. 
+While the template is designed to minimise edits made by the user, it is recommended that you read the **[bookdown](https://bookdown.org/yihui/bookdown/)** and have a strong understanding of RMarkdown.

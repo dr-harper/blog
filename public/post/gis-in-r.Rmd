@@ -1,13 +1,15 @@
 ---
-title: GIS in R
+title: Using R for Geospatial Data Analysis
+description: Although R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to show people the benefits of using R in their analyses, and provides practical guidance on how to get started on your first project.
 author: Mikey Harper
 date: '2017-09-01'
 slug: gis-in-r
-categories:
+tags:
   - GIS
   - R
   - Presentation
-tags: [GIS, R, Presentation]
+topics:
+  - Technical
 ---
 
 

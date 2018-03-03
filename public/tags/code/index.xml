@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on Mikey Harper</title>
+    <link>/tags/code/</link>
+    <description>Recent content in Code on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>yourname@example.com (yourname)</managingEditor>
+    <webMaster>yourname@example.com (yourname)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mapping UK Local Political Data</title>
+      <link>/mapping-uk-local-political-data/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/mapping-uk-local-political-data/</guid>
+      <description>As part of my PhD research, I needed to collect local political data for the UK and map these geospatially. This article explains how political results data was combined with geospatial boundaries to allow for use within my analysis. The code is fully reproducible, so if you want to repeat the analysis yourself, you can download the code used to build this page from my GitHub: https://github.com/mikey-harper/blog/tree/master/content/post
+SetupR was used to run the analysis.</description>
+    </item>
+    
+  </channel>
+</rss>

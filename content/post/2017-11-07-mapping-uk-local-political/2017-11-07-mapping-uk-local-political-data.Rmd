@@ -1,19 +1,16 @@
 ---
 title: Mapping UK Local Political Data
-author: Mikey Haprper
+author: Mikey Harper
+description: For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis, and allows for the analysis to be easily reproduced for use within your own workflow/
 date: '2017-11-07'
 slug: mapping-uk-local-political-data
-categories: []
+type: post
+topics:
+  - Technical
 tags:
   - R
   - Data
-type: post
-description: Technical description of the process used to aggregate political data statistics for the UK
-keywords:
-  - key
-  - words
-topics:
-  - Technical
+  - Mapping
 ---
 
 For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. 
@@ -194,3 +191,10 @@ With these changes, there have been minor alterations in the naming convention o
 Office for National Statistics, 2011 Census: Digitised Boundary Data (England and Wales) [computer file]. UK Data Service Census Support. Downloaded from: https://borders.ukdataservice.ac.uk/
 
 National Records of Scotland, 2011 Census: Digitised Boundary Data (Scotland) [computer file]. UK Data Service Census Support. Downloaded from: https://borders.ukdataservice.ac.uk/
+
+```{r include=FALSE}
+unlink("infuse_dist_lyr_2011_clipped", recursive = TRUE)
+unlink("Boundaries_simplified.*")
+unlink("Council compositions by year.xlsx")
+```
+

@@ -42,9 +42,27 @@
     </item>
     
     <item>
+      <title>Mapping</title>
+      <link>/tags/mapping/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/tags/mapping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Maps</title>
+      <link>/tags/maps/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/tags/maps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Presentation</title>
       <link>/tags/presentation/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
       <guid>/tags/presentation/</guid>
       <description></description>
@@ -56,6 +74,15 @@
       <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
       <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reproducible Resaerch</title>
+      <link>/tags/reproducible-resaerch/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/tags/reproducible-resaerch/</guid>
       <description></description>
     </item>
     

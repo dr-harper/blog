@@ -18,13 +18,33 @@
   </url>
   
   <url>
-    <loc>/sv/taggar/</loc>
+    <loc>/sv/tags/</loc>
     <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="/sv/tags/"
+                />
   </url>
   
   <url>
-    <loc>/sv/%C3%A4mne/</loc>
+    <loc>/sv/topics/</loc>
     <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/topics/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="/sv/topics/"
+                />
   </url>
   
 </urlset>

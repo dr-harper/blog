@@ -26,9 +26,20 @@ Code# Load packageslibrary(raster) # loads shapefilelibrary(igraph) # build n
     </item>
     
     <item>
+      <title>Mapping UK Local Political Data</title>
+      <link>/mapping-uk-local-political-data/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/mapping-uk-local-political-data/</guid>
+      <description>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis.
+This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here. {: .notice–warning}
+SetupR was used to run the analysis. The code uses a number of packages to process the data:</description>
+    </item>
+    
+    <item>
       <title>Writing reports in RStudio: an introduction to RMarkdown</title>
       <link>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
       <guid>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</guid>
       <description>RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
@@ -36,25 +47,24 @@ The presentation was designed to provide a whistle-stop tour of the benefits of 
     </item>
     
     <item>
-      <title>Mapping UK Local Political Data</title>
-      <link>/mapping-uk-local-political-data/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
-      <author>yourname@example.com (yourname)</author>
-      <guid>/mapping-uk-local-political-data/</guid>
-      <description>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis.
-This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here. {: .notice&amp;ndash;warning}
-Setup R was used to run the analysis. The code uses a number of packages to process the data:</description>
-    </item>
-    
-    <item>
-      <title>GIS in R</title>
+      <title>Using R for Geospatial Data Analysis</title>
       <link>/gis-in-r/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
       <guid>/gis-in-r/</guid>
-      <description>IntroAlthough R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to show people the benefits of using R in their analyses.
-Why use R for GISThere are many benefits of using R for GIS, but to me the top three reasons would be:
-Integrate GIS and Statistial analysis: Load raw data, run analysis, and present the results all within a single script.</description>
+      <description>IntroAlthough R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to highlgiht why people may want to consider using R for their GIS, and highlight some of the benefits of using R in their analyses.
+Why use R for GISThere are many benefits of using R for GIS, but to me the top three reasons would be:</description>
+    </item>
+    
+    <item>
+      <title>Identifying key influences for planning acceptance of onshore wind turbines</title>
+      <link>/wind-turbinesuccess/</link>
+      <pubDate>Fri, 07 Jul 2017 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/wind-turbinesuccess/</guid>
+      <description>I had the pleasure of presenting my work at the ECOS 2017 conference in San Diego, California. This page summarises the work and findings, with the research paper providing a more detailed decription.
+Read the full paper
+What is the problem?Wind energy provides a key opportunity for the UK government to meet decarbonisation targets. There is wide avaialbility of resource across the country, and onshore wind provides one of the most mature and cost-effective methods to supply renewable electricity.</description>
     </item>
     
   </channel>

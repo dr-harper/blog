@@ -9,10 +9,19 @@
     <managingEditor>yourname@example.com (yourname)</managingEditor>
     <webMaster>yourname@example.com (yourname)</webMaster>
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
-    <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/topics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Personal</title>
+      <link>/topics/personal/</link>
+      <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
+      <author>yourname@example.com (yourname)</author>
+      <guid>/topics/personal/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Technical</title>
@@ -20,15 +29,6 @@
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
       <guid>/topics/technical/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Topic 1</title>
-      <link>/topics/topic-1/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
-      <author>yourname@example.com (yourname)</author>
-      <guid>/topics/topic-1/</guid>
       <description></description>
     </item>
     

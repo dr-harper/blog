@@ -136,6 +136,41 @@ extensionmask = []
 #  url = "en"
 
 
+[[Languages.en.menu.main]]
+name = " Home"
+pre = "<i class='fa fa-home'></i>&nbsp"
+weight = 1
+identifier = "home"
+url = ""
+
+[[Languages.en.menu.main]]
+name = "Blog"
+pre = "<i class='fa fa-pencil'></i>&nbsp"
+weight = 2
+identifier = "post"
+url = "/post/"
+
+[[Languages.en.menu.main]]
+name = "About"
+pre = "<i class='fa fa-user'></i>&nbsp"
+weight = 3
+identifier = ""
+url = "/about/"
+
+[[Languages.en.menu.main]]
+name = "Showcase"
+pre = "<i class='fa fa-trophy'></i>&nbsp"
+weight = 4
+identifier = "showcase"
+url = "showcase"
+
+
+[[Languages.en.menu.footer]] # add  links to the bottom right corner.
+name = "Hosted on Github"
+identifier = "github"
+weight = 1
+url = "https://github.com/mikey-harper/blog"
+
 [Languages]
 [Languages.en]
 languageCode = "en"
@@ -143,59 +178,6 @@ weight = 1
 copyright = "(c) 2018 Copyright Mikey Harper"
 title = "Mikey Harper" # Site title
 
-[[Languages.en.menu.main]]
-name = "Blog"
-pre = ""
-weight = 2
-identifier = "post"
-url = "/post/"
-
-[[Languages.en.menu.main]]
-name = "About"
-weight = 1
-identifier = ""
-url = "/about/"
 
 
-[[Languages.en.menu.footer]] # add  links to the bottom right corner.
-name = "Disclaimer"
-pre = "<i>&middot;</i>"
-identifier = "disclaimer"
-weight = 1
-url = "/disclaimer/"
 
-[[Languages.en.menu.footer]]
-name = "Terms"
-identifier = "terms"
-weight = 2
-url = "/terms/"
-
-[Languages.sv]
-languageCode = "sv"
-weight = 2
-title = "Min blog" # Site title
-copyright = "(c) 2016 Alla rättigheter"
-
-[[Languages.sv.menu.main]]
-name = "Bloggen"
-pre = ""
-weight = 2
-identifier = "post"
-url = "/sv/post/"
-
-[[Languages.sv.menu.footer]] # add  links to the bottom right corner.
-name = "Ansvarsfriskrivning"
-pre = "<i>&middot;</i>"
-identifier = "friskrivning"
-weight = 1
-url = "/sv/friskrivning/"
-
-[[Languages.sv.menu.footer]]
-name = "Vilkor"
-identifier = "vilkor"
-weight = 2
-url = "/sv/vilkor/"
-
-[Languages.sv.taxonomies]
-tag = "Taggar"
-topic = "Ämne"

@@ -1,0 +1,193 @@
+---
+title: Mapping UK Local Political Data
+author: Mikey Harper
+description: For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis, and allows for the analysis to be easily reproduced for use within your own workflow/
+date: '2017-11-07'
+slug: mapping-uk-local-political-data
+type: post
+topics:
+  - Technical
+tags:
+  - R
+  - Data
+  - Mapping
+---
+
+For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. 
+
+This provides a technical overview of the data. The R code used to create the analysis is available through GitHub [here](https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_code/Political%20Data/PoliticalDataAggregation.R). 
+{: .notice--warning}
+
+
+## Setup 
+
+R was used to run the analysis. The code uses a number of packages to process the data:
+
+```r
+library(tidyverse) # For reformatting data
+library(readxl) # To load the council data in
+library(raster) # To read the council shapefile
+library(ggplot2) # ploting results
+library(magrittr) # make code more readble
+library(reshape2)
+library(rgeos)
+```
+
+## Data Sources
+
+Two primary data sources were used for this analysis:
+
+- **Council compositions [link here](http://www.electionscentre.co.uk/?page_id=3802.)**. Produced by the Elections Centre, this datasource provides local council composition records for each year from 1964-2015. The years before 1973 cover only the London boroughs established in 1964. It is recommended you read the cover page in the spreadsheet to gain an understanding of the variables.
+- **Boundary Data [link here](https://borders.ukdataservice.ac.uk/easy_download_data.html?data=infuse_dist_lyr_2011):** Local Unitary Authority boundaries were used.
+
+To run the following code, you should download the datasets and unzip them to your home directory. The shapefiles should be kept in their folder `infuse_dist_lyr_2011`. Or alternatively, the following script will download the shapefiles:
+
+```r
+# Download and unzip data
+download.file(url = "https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/infuse_dist_lyr_2011_clipped.zip", 
+              destfile = "infuse_dist_lyr_2011_clipped.zip")
+unzip(zipfile = "infuse_dist_lyr_2011_clipped.zip", exdir = "infuse_dist_lyr_2011_clipped")
+file.remove("infuse_dist_lyr_2011_clipped.zip")
+boundaries <- shapefile("infuse_dist_lyr_2011/infuse_dist_lyr_2011")
+```
+
+If you are not interested in low resolution results, you may want to simplify the input boundary to reduce it from the file size. The following code uses the `gSimplify` function from `rgeos` to reduce the file size to around 5Mb.
+
+```r
+# Optional simplify of rasters. This is useful if you want to reduce the size of the shapefile to make it easier to plot
+boundaries_sim <- gSimplify(boundaries, tol=150, topologyPreserve=TRUE)
+shapefile(boundaries_sim, "Boundaries_simplified", overwrite = TRUE) 
+```
+
+Note: this function does not respect boundaries. You will get slight gaps between regions. The package `rmapshaper` could be used instead which respects border geometries, as described [here](https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html)
+{: .notice--info}
+
+## Code
+
+As excel data stores each year as a different tabs, the first thing to do is merge it into a single data table. As mentioned previously, the political dataset contains data going back to 1964, so you can customise the years which are extracted by the function:
+
+```r
+start <- 2010
+end <- 2015
+
+YearSubset <- start:end # Extracting Data from datasets
+
+# Extract the data from the csv file
+data_council_long <- lapply(YearSubset, 
+                            function(x) readxl::read_excel(file.path("Council compositions by year.xlsx"), sheet= as.character(as.name(x)))) %>%
+  do.call(rbind,.)
+```
+
+The boundaries data contains a total of 404 features. While the boundary data largely matches the tabular naming, tere are a few missing values. Firstly, the two sets of names are stripped of all special characters and converted to upper case to simplify the comparison. A number of keywords were also identified which were preventing the pairing. For example, local authority names often contained "The City of", while the shapefiles only listed the cities name.
+
+```r
+# Form a list of the authority names
+# Remove "&" symbol and convert to uppercase
+names_LA <- data.frame(LAName = unique(data_council_long$Authority))
+names_LA$Altered <- names_LA$LAName %>%  gsub("\\&", "and", .) %>%  toupper() 
+
+# Copy the name before comparing
+names_shp_council <- data.frame(Original = boundaries$geo_label)
+names_shp_council$Altered <- names_shp_council$Original %>% as.character() %>% toupper()
+
+# A number of rules specified to match the LA names to the shapefile values
+find <- c(" \\(B)"," District", "The City of ", ", City of", " London Borough", "\\.", " City","Bucks")
+replace <- c("", "", "", "", "", "", "", "Buckinghamshire")
+
+# Replace Inconsistencies between datasets
+for (i in 1:length(find)){
+  names_shp_council$Altered <- gsub(toupper(find[i]), toupper(replace[i]), names_shp_council$Altered)
+}
+
+## --- Match Datasets
+pairs_shp_data <- merge(names_LA, names_shp_council, by = "Altered") %>%
+  .[, c(2, 3)] %>% 
+  set_colnames(c("LAName", "Boundary")) %>%
+  set_rownames(NULL) 
+```
+
+After the initial matching, there were still unjoined pairs. These had a number of inconsistencies, and therefore manual pairs were assigned to join the remaining names. In additional, counties within Northern Ireland are not included within the political dataset, and therefore no pairings were made:
+
+```r
+pairs_manual <- read.csv("https://raw.githubusercontent.com/mikey-harper/mikey-harper.github.io/master/_code/Political%20Data/ManualPairs.csv")
+pairs_shp_data <- rbind(pairs_shp_data, pairs_manual)
+
+data_council_long_matched <- merge(data_council_long, pairs_shp_data, by.x = "Authority", by.y = "LAName", all.x = FALSE)
+boundaries <- merge(boundaries, pairs_shp_data, by.x = "geo_label", by.y = "Boundary", all.x = FALSE)
+```
+Now the two datasets are able to be cross-reference, it is easy to display figures of your choice. 
+
+## Using the data
+
+The main political variables include:
+
+- **Local authority**: cross referenced with the boundary data
+- **Year**: between the dates 1964 and 2015
+- **Council Size**: Total number of council seats
+- **Council Seats per Party**: broken down by Conservative, Labour, Liberal Democrat, Other (Greens, UKIP, BNP)
+- **Council Seats per Party, percentage**
+- **Control**: Party with the control of the council. "NOC" refers to No Overall Control
+- **Majority**: the size of the majority for the controling
+
+Having all these parameters in can make the dataset a bit difficult to use. So you likely want to filter the data to particular subset of the above data. As an example, you may want to extract data for a single year. This can easily be done using the `filter()` function:
+
+```r
+# Subset data for a single year
+year_sub <- filter(data_council_long_matched, Year == 2015)
+```
+
+The csv data can easily be joined with the boundary data and saved as a shapefile. As another example, here is how you would extract the Liberal Demoncrat share of council seats between 2010 and 2015:
+
+```r
+# Join the political data with the shapefile and save 
+variable_sub <- data_council_long_matched[,c(18, 4, 15)] # Extracts the lib dem share
+
+data_wide <- acast(variable_sub, Boundary ~ Year, value.var = "LD_share") %>% as.data.frame() %>% mutate(region = rownames(.))
+
+# Merge data with shapefile
+boundaries <- merge(boundaries, data_wide, by.x = "geo_label", by.y="region")
+# To save the output as a shapefile, you can use the shapefile() function
+```
+
+## Example Plot
+
+Here is an example graph made using the resulting data:
+
+```r
+data_melt <- melt(data_council_long, id = c("Authority", "Code", "Type","Year")) %>%
+              filter(Authority == "Southampton") %>%
+			  filter(variable %in% c("LD_share", "Lab_share", "Con_share", "Oth_share"))
+
+data_melt$value <- as.numeric(data_melt$value) 
+
+ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) + 
+  geom_bar(stat = "identity", position = "stack") +
+			  labs(title = "Percentage of Council Seats",
+			  y = "Percentage, %",
+			  x = "Year",
+			  subtitle = "Southampton City Council") +
+  scale_fill_manual(values = c("Lab_share" = "orangered2", "Con_share" = "steelblue3", "LD_share" = "yellow3", "Oth_share" = "grey")) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+![https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_images/Southampton%20Council.png?raw=true](https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_images/Southampton%20Council.png?raw=true)
+
+## Further Considerations
+
+The boundary data was collected for 2011. There have been occasional reforms of the boundaries ([see here](https://en.wikipedia.org/wiki/Unitary_authorities_of_England)), which make viewing historic data in some regions more difficult: 
+
+- 1990s reforms: The review caused 46 unitar y authorities to be created.
+- 2009 changes: The review caused nine unitary authorities to be created.
+
+With these changes, there have been minor alterations in the naming convention of some counties. You should be aware that there may be missing data in historic records.
+
+## Potential Improvements
+
+- Write the code into a function to simplify the filtering of the dataset: the political dataset has a range of variables which make it slight difficult to handle all at once. The above code could easily be automated into a script
+
+## References
+
+Office for National Statistics, 2011 Census: Digitised Boundary Data (England and Wales) [computer file]. UK Data Service Census Support. Downloaded from: https://borders.ukdataservice.ac.uk/
+
+National Records of Scotland, 2011 Census: Digitised Boundary Data (Scotland) [computer file]. UK Data Service Census Support. Downloaded from: https://borders.ukdataservice.ac.uk/

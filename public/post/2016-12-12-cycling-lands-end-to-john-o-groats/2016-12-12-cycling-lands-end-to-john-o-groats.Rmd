@@ -1,0 +1,195 @@
+---
+title: Cycling Lands End to John O'Groats
+author: Mikey Harper
+description: Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.
+date: '2016-12-12'
+slug: cycling-lands-end-to-john-o-groats
+type: post
+tags:
+    - Cycling
+    - maps
+    - GIS
+topics:
+  - Personal
+---
+
+![](/images/LEJOGStart.jpg)
+<br>
+
+
+Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.
+
+# Key Trip Planning Aims
+
+There are hundreds of ways to complete LEJOG, and many are dependent on your choice of budget, time and level of comfort. However, we had four key drivers for our planning:
+
+1. **Complete the trip in 10 days (including travel)**. Leaving on a Saturday and returning on the following Monday. We scheduled the trip to include a bank holiday to reduce the number of days off work required.
+2. **Keep it to a tight budget**. We set out to keep the overall costs for the trip to £500
+3. **Do it unsupported**. This partially ties in with the budget aspect, but we both wanted to complete the trip independently.
+4. **Avoid busy roads where possible**. In particular, this meant avoiding the A30 out of Cornwall. We both were happy to take longer routes if it meant getting quiter roads.
+
+----------
+
+# Section 1: Before The Trip
+
+## Planning Resources
+
+Thousands of people cycle LEJOG each year, and as a result there is loads of fantastic advice online. Some of my favourite used within my trip planning were:
+
+- [Deloitte Ride Across Britain](www.rideacrossbritain.com): They provide a pretty detailed plan of a good 9 day route. This avoids busy roads and was a good starting point for our planning.
+- [Lands End to John O’  Groats](http://www.landsend-to-johnogroats.co.uk/): Very comprehensive cycling planning guide. Answers a lot of the questions.
+
+## Travel
+
+One of the first things I’d recommend organising is transportation to and from each end: it gives you a good incentive to get everything else organised when you have a train or plane ticket on your pin board! Living in the South of England, it made sense for us to get the train to Penzance and then to fly back from John o’ Groats at the end. Train tickets go on sale 12 weeks in advance, and there are normally a limited number of discount tickets available. I’d recommend picking your dates and then add a reminder to your calendar to buy the tickets so you can get the cheapest tickets possible.
+
+Getting back from John o’ Groats was slightly less simple. We both couldn’t wait for the delay to have our bikes posted back, as we use them daily to commute. We equally didn’t want to risk having our bike left in the airport, and a number of airlines such as Ryanair wouldn't guarantee bike space. After some searching, we found that EasyJet allow a bike space to be booked, but they only fly from Inverness.  As a result, we decided to take the 4 hour long train journey from Wick to Inverness, before flying with Easyjet to Gatwick the following morning.
+
+## Planning the Route
+
+As mentioned,  we made the early decision that we wanted to avoid busy roads as much as possible: neither of us were wanting to set a world record and were happy to detour a bit if it led to more enjoyable cycling. We quickly got about trying to work out a route which met this.
+
+For anyone who knows me, they will know how much I love the app [Strava](strava.com).  One thing in particular which is amazingly useful is that it can be used to plan routes which based on the popularity of roads (this is calculated by the number of people which cycle a route).  I regularly use this to plan routes through regions where I am not familiar with, as it can help you avoid the busy roads which are technically possible to cycle but no one in their right mind would ride. Instead you can find the quiet back roads used by the local cyclists.
+
+Another key factor in planning the route was finding suitable accommodation. Being on a tight budget, we tried to spend as many nights as possible at hostels, family or friends, and is the reason we did 175 miles on the third day!
+
+Our overall route came in at 1500km (~940 miles).  If you want to see our planned route, we put together a [StoryMap]() of the planned route before going, or you can view the route below (note, the embedded map may not be supported on all browsers).
+
+<style>.embed-container-2 {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container-2 object, .embed-container-2 iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;}</style> <div class="embed-container-2"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Land's End to John o' Groats Cycle Route" src="//soton-uni.maps.arcgis.com/apps/Embed/index.html?webmap=147b4322371442daa67e41b94d1caff1&amp;extent=-20.5856,43.1083,22.4808,63.0794&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
+
+
+## Kit List
+
+Doing it unsupported, we needed to carry everything with us on our bike. It is amazing how quickly space runs out and how heavy your bike can quickly become.  Table \@ref(tab:KitList) lists the kit I took, which weighed around 6kg. Once you add in a bit food and drink for the days ride it could come to around 10kg extra weight on the bike.
+
+```{r KitList, echo=FALSE, message=FALSE, warning=FALSE}
+data <- readr::read_csv("kitlist.csv")
+options(knitr.kable.NA = '')
+knitr::kable(data, caption = "Kit List Used")
+```
+
+
+Things I probably should have packed but didn't:
+
+- **Proper wet weather cycling gear**. My jacket was only designed for a light shower. On the one day it properly rained, I got absolutely soaked and got very cold when we had to stop to repair a puncture
+
+### Added Extra: Jersey
+
+While no means an essential part of the planning, I decided that I wanted to design a custom Jersey. I used [Owayo](https://www.owayo.co.uk), who provide a relatively good online designer which you can use to customise your design. Ordering two came to around £65 each. With a bit of playing around I came up with the following design.
+
+![LEJOG Jerseys, designed using Owayo](/images/LEJOG Jersey HiRes.jpg)
+
+I was really happy with the end result. I would definitely recommend getting a Jersey if you have the time to organise it. The map on the back was a great conversation starter with a lot of people who otherwise wouldn’t have known what we were doing.
+
+----------
+
+# Section 2: During the Trip
+
+We completed our trip from Friday 27th May to Sunday 5th June 2016. This section provides a short explanation for each day of the trip, and by no means is meant to be a comprehensive account. The following graphs summarise the distance and elevation for each day of the trip.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", fig.align='center', fig.asp=0.5}
+
+df <- data.frame(Day = c("1", "2", "3", "4", "5", "6", "7", "8"), 
+              Distance=c(181.3, 214.7, 276.2, 195.7, 207.1, 192.1, 162.9, 72.9), 
+              Elevation=c(2854, 2219, 1550, 1316, 1167,  1604, 1248, 592))
+
+library(ggplot2)
+
+a <- ggplot(df, aes(x = Day, y = Distance)) +
+  geom_col()
+library(plotly)
+
+ggplotly(a)
+
+```
+
+## Day 0: Travelling to Penzance
+
+We got the train to Penzance in the afternoon and cycled to 13km to the Land’s End Youth Hostel, which is only 8km from Land’s End.
+
+## Day 1: Land’s End to Okehampton
+
+We left the hostel early to get to Land’s End. After the obligatory photos, we set off at 8am.
+
+As mentioned previously, we had decided to avoid the A30 out of Cornwall and opted to use the back roads. While this added an extra 20km to the route and about 900m more elevation gain, we spent most the day on quiet back roads with very few cars, and was a decision neither of us regretted.
+
+We arrived in Okehampton at around 7pm, and stayed in Okehampton Youth Hostel. This was the start of our habit of cycling late into the evening!
+
+## Day 2: Okehampton to Gloucester
+
+The day started hilly as we left Devon and headed for Somerset. The roads start to level off as you reach Taunton and the Somerset levels,  but returned in style as we reached Cheddar Gorge. Passing through the Mendips,we reached Bristol and crossing the Clifton Suspension bridge.
+
+We went along the A38 between Bristol and Gloucester. We had been concerned that this road might be quite busy, however the road had some of the best cycling lanes I have used. We finally arrived in Gloucester around 7 30pm.
+
+## Day 3: Gloucester to Southport
+
+I’m still not entirely sure how this got through the planning stage of our trip, but we decided to ride 175 miles in one day. The reason for this is that I family in Southport who had kindly offered to let us stay, and as we were on a tight budget we were happy to cycle a bit further on one day.
+
+The one good thing about this day was that it was comparatively flat, and again the route took us through some beautiful scenery. We had quite a few breaks in the day including having lunch and dinner, and by the time we arrived in Southport it around 10pm. Thank god we packed lights!
+
+## Day 4: Southport to Carlisle
+
+As a result of our late finish, we set off slightly later than originally planned. I was feeling particularly lethargic after the previous day.  While on paper this day looked easy, we got particularly unlucky with the wind. A constant headwind sapped energy all day long, and combined with the fatigue it really hit morale.
+
+Our route took us over Shap, which was the biggest individual climb of the trip. I probably found this one of the hardest moments of the trip, and we crawled up and over the hill.
+
+This was the first day of the trip where we hadn’t booked accommodation in advance, and in some ways it was fortunate that we hadn’t as the wind meant we didn’t get as far as hoped. We were fortunate to have my partner at the at the end of a phone searching for hotels for us, and was able to find a cheap room just north of Carlisle.
+
+## Day 5: Carlisle to Loch Lomond
+
+This was one of my favourite days of the trip. The first half of the day, we cycled along the B7076, which runs alongside the motorway for most of its route. The road was the former main road, but since the construction of the motorway is largely disused.
+
+Glasgow was good fun to cycle through: lots of nice cycle paths, interesting buildings and there was a lively atmosphere to the city. We again didn’t have accommodation booked, but had naively assumed it would be easy to find somewhere in Glasgow. Unfortunately most places were booked and we had to cycle 20km north of the city to find a hotel!
+
+## Day 6: Loch Lomond to Drumadochit
+
+We got up early and cycled along the second half of Loch Lomond, before travelling through the dramatic Scottish mountain scenery. The route took us past Glen Coe and there is an amazing descent as you approach Fort William.
+
+The afternoon was spent travelling along the Lochs, and we stayed in a friendly hostel in Drumodochit. There are few options for accommodation in this region so it is worth planning this carefully.
+
+## Day 7: Drumadochit to Lybster
+
+We had been really lucky with the weather for most of the trip, however this was the day that luck ran out. It tipped it down for most of the day and we got drenched. Much of the day was spent on the busy A9, which combined with the weather made it quite one of the less enjoyable parts of the day.  We encountered our only major mechanical issue of the trip. James’s gear lever somehow snapped off within the mechanism, leaving him unable to change his rear cassette gears. We struggled our way to the next town and found a cafe where we got the number of a local mechanic. Within 5 minutes of calling him, he arrived in the van, took the bike and repaired it within the hour.
+
+We had been lucky with mechanical issues through the trip, with only a couple of punctures. However, we encountered our only major mechanical issue of the trip on this day. James’s gear lever somehow snapped off within the mechanism, leaving him unable to change his rear cassette gears. We struggled our way to the next town and found a cafe where we got the number of a local mechanic. Within 5 minutes of calling him, he arrived in the van, took the bike and repaired it within the hour.
+
+The last couple of hours of cycling in the day became really enjoyable as the weather dried up and the traffic decreased. The coastal route gave fantastic views and we felt truely remote.  We got to our hotel (again kindly booked by my girlfriend) at 8pm.
+
+## Day 8: Lybster to John o’ Groats
+
+While having dinner the night before, we had realised that if we got to John o’ Groats before 8am, we would be able to complete the route within 7 days.  We started cycling at 6am and set off on what felt like a 2 hour time trial to complete the 50km to John o’ Groats. The headwind tried its best to slow us down, but we managed to get to John o’ Groats at 7:57am.
+
+We enjoyed completing the trip, although it is a strange feeling on completing the trip. Neither of us were overly ecstatic to be complete, in fact we were actually slightly sad that the trip had finished. We had a coffee, and got our certificates for completing, making sure to note the completion time as 6 days, 23 hours, 57 minutes!
+
+We rode back to Wick and had a couple of hours to spare before the train. We had met a couple the evening before who had flown their bike to Wick the day before and informed us that they had dumped loads of bubble wrap in the bins. We raided the bins for bubblewrap and loaded up the panniers!
+
+Our train was due to arrive in Inverness around 4pm. Our flight from Inverness was the following morning and we had yet to organise any accommodation or a bike box to fly the day before, but both were relatively relaxed in finding these. We found a hostel relatively quickly but the bike box proved a more challenging problem: most bike shops were shut by the time we got there so visited a number of supermarkets. In the end the best we could get were banana boxes, which we had the laborious and difficult task of unfolding, taping together and attempting to build a structurally sound box. It somehow felt fitting using banana boxes to pack our bikes given the amount of them we had eaten over the week!
+
+## Gallery
+
+Below are a selection of photos from the trip. You can view them on [Flickr](https://flic.kr/s/aHskLp3iAp "Flickr")
+
+<a data-flickr-embed="true" data-footer="true"  href="https://www.flickr.com/photos/147450611@N04/albums/72157675041184303" title="Land&#x27;s End to John o&#x27; Groats"><img src="https://c1.staticflickr.com/1/554/31308529123_9c501385a3.jpg" width="500" height="500" alt="Land&#x27;s End to John o&#x27; Groats"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+---------
+
+# Section 3: After the Trip
+
+## Budget
+
+We set out with a target to spend less than £500 for the trip (excluding any gear). Our overall budget came to £521, which we were happy with.
+
+The main ways we saved money were:
+
+- Booking travel well in advance
+- Buying food from supermarkets and cooking our own breakfasts and dinners. We also made our sandwiches for the day.
+- Staying with family or hostels. This becomes more difficult in Scotland as there are fewer cheap options
+- We spent slightly more in accommodation in Scotland than we intended to, but this was partly due to the limited availability.
+
+## Lessons Learnt
+
+One of the issues with planning our routes using Strava is that they were not always necessarily that easy to follow. They would often wind down side lanes with lots of turns. It was therefore essential that we loaded the routes onto our bike GPS so that we could follow the directions as we went.
+
+Another big challenge is timekeeping. It is easy to set off slightly late each day, have an extra few breaks or stop slightly too long for lunch. We often found ourselves overrunning our planned time and meant cycling into the evening.
+
+We didn’t plan our intermediate stops each day, and just relied on finding a big enough town or village to stock up on food and drink. While this worked out for most of the trip, there were a few occasions where we were caught out and had very little food or water for a couple of hours.

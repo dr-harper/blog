@@ -21,8 +21,8 @@
       <author>yourname@example.com (yourname)</author>
       <guid>/mapping-uk-local-political-data/</guid>
       <description>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis.
-This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here. {: .notice&amp;ndash;warning}
-Setup R was used to run the analysis. The code uses a number of packages to process the data:</description>
+This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here. {: .notice–warning}
+SetupR was used to run the analysis. The code uses a number of packages to process the data:</description>
     </item>
     
   </channel>

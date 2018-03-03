@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Identifying key influences for planning acceptance of onshore wind turbines  &middot; Mikey Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Conference paper presented at ECOS 2017 on my research into understanding why some wind farms are more successful than others." />
+
+<meta name="keywords" content="GIS, R, Presentation, ">
+
+
+<meta property="og:title" content="Identifying key influences for planning acceptance of onshore wind turbines  &middot; Mikey Harper ">
+<meta property="og:site_name" content="Mikey Harper"/>
+<meta property="og:url" content="/wind-turbinesuccess/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Conference paper presented at ECOS 2017 on my research into understanding why some wind farms are more successful than others."/>
+<meta property="og:article:published_time" content="2017-07-07T00:00:00Z" />
+<meta property="og:article:modified_time" content="2017-07-07T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="GIS">
+    
+<meta property="og:article:tag" content="R">
+    
+<meta property="og:article:tag" content="Presentation">
+    
+  
+
+  
+
+  
+
+
+
+<link rel="canonical" href="/wind-turbinesuccess/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.36.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+<link rel="stylesheet" href="/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="/">
+          Mikey Harper
+          
+          
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="/" >
+                <i class='fa fa-home'></i>&nbsp
+                 Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/post/" >
+                <i class='fa fa-pencil'></i>&nbsp
+                Blog
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/about/" >
+                <i class='fa fa-user'></i>&nbsp
+                About
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/showcase" >
+                <i class='fa fa-trophy'></i>&nbsp
+                Showcase
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+
+
+<style>.bigbox{margin-top: 60px}</style>
+
+<div class="bigbox"></div>
+<img src="/kenya.jpg" alt="Mountain View">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Identifying key influences for planning acceptance of onshore wind turbines
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2017-07-07">7 Jul, 2017</time>
+</small>
+
+
+  <small>
+    &middot; by Mikey Harper
+  
+  &middot; Read in about 3 min
+  &middot; (438 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Identifying%20key%20influences%20for%20planning%20acceptance%20of%20onshore%20wind%20turbines&amp;url=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fwind-turbinesuccess%2f&amp;title=Identifying%20key%20influences%20for%20planning%20acceptance%20of%20onshore%20wind%20turbines" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Identifying%20key%20influences%20for%20planning%20acceptance%20of%20onshore%20wind%20turbines&amp;body=Check out this site %2fwind-turbinesuccess%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/gis" class="label label-primary">GIS</a>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/presentation" class="label label-primary">Presentation</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  <div class="figure">
+<img src="https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_images/ECOS2017.JPG?raw=true" />
+
+</div>
+<p>I had the pleasure of presenting my work at the <a href="http://www.ecosconference.org/">ECOS 2017</a> conference in San Diego, California. This page summarises the work and findings, with the research paper providing a more detailed decription.</p>
+<p><strong><a href="https://eprints.soton.ac.uk/408181/">Read the full paper</a></strong></p>
+<div id="what-is-the-problem" class="section level2">
+<h2>What is the problem?</h2>
+<p>Wind energy provides a key opportunity for the UK government to meet decarbonisation targets. There is wide avaialbility of resource across the country, and onshore wind provides one of the most mature and <a href="https://www.theguardian.com/environment/2015/oct/07/onshore-wind-farms-cheapest-form-of-uk-electricity-report-shows">cost-effective</a> methods to supply renewable electricity.</p>
+<p>Despite the potential opportunity for wind, sites face difficulty in getting planning acceptance. In the UK, it is common for sites to receive strong local opposition and protests. This in part has led to acceptance rates of proposed wind farms reducing over recent years.</p>
+</div>
+<div id="my-research" class="section level2">
+<h2>My research</h2>
+<p>While there is a large amount of research conducted to understand what makes a wind farm successful, it is not clear what parameters makes a wind farm successful at receiving planning permission. By using the locations of all the proposed wind farms in the UK and knowing whether, statistical analysis was conducted to understand whether the planning acceptance was influenced by site characteristics. This considered aspects such as:</p>
+<ol style="list-style-type: decimal">
+<li>Proximity to sensitive sites (urban areas, national parks)</li>
+<li>Site elevation and slope</li>
+<li>Local political data</li>
+<li>Demographics</li>
+</ol>
+<div class="figure">
+<img src="https://github.com/mikey-harper/WindStatisticalAnalysis/blob/master/01-StatisticalAnalysis/Presentation/figures/StudyExtent.jpg?raw=true" alt="Site data used within the study" />
+<p class="caption">Site data used within the study</p>
+</div>
+</div>
+<div id="my-findings" class="section level2">
+<h2>My findings</h2>
+<p>The research has demonstrated a number of significant relationships between variables and success rate:</p>
+<ul>
+<li>The closer a site to urban areas, the lower the chance of acceptance</li>
+<li>Local demographic composition appear to influence acceptance rates. Areas with higher Mean Age and higher level of qualification have lower acceptance rates.</li>
+<li>Local political composition appears to influence the acceptance rates of wind turbines, with areas with Labour and Liberal Democrat councils appearing marginally more supportive.</li>
+<li>The overall model fit is relatively low. This suggests that the model variables can only explain a small percentage of why a site may be selected or not.</li>
+</ul>
+</div>
+<div id="research-impact" class="section level2">
+<h2>Research Impact</h2>
+<p>The findings from this work should enable planners to have a greater understanding of what makes a wind farm successful at receiving planning permission. Such an understanding should hopefully result in a greater number of wind farms receiving planning by projects being proposed in locations which are socially acceptable</p>
+<p>A key part of this research is making sure that the findings of the work are easily accessible for the relevant parties. To this effect, I am in the process of building an online portal to explore the results. You can see the start of this on the website here, but I plan on releasing an updated version in the future: <a href="https://mikeyharper.shinyapps.io/windturbinemap/" class="uri">https://mikeyharper.shinyapps.io/windturbinemap/</a></p>
+<div class="figure">
+<img src="https://github.com/mikey-harper/WindStatisticalAnalysis/blob/master/Presentation/figures/Dashboard.png?raw=true" />
+
+</div>
+</div>
+<div id="additional-resources" class="section level2">
+<h2>Additional Resources</h2>
+<p><strong><a href="http://rpubs.com/mikey1408/ECOS2017">View the presentation here</a></strong></p>
+</div>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Identifying%20key%20influences%20for%20planning%20acceptance%20of%20onshore%20wind%20turbines&amp;url=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fwind-turbinesuccess%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fwind-turbinesuccess%2f&amp;title=Identifying%20key%20influences%20for%20planning%20acceptance%20of%20onshore%20wind%20turbines" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Identifying%20key%20influences%20for%20planning%20acceptance%20of%20onshore%20wind%20turbines&amp;body=Check out this site %2fwind-turbinesuccess%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="/cycling-lands-end-to-john-o-groats/" title="Cycling Lands End to John O&#39;Groats">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="/gis-in-r/" title="Using R for Geospatial Data Analysis">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//shortname.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+   
+   <hr>
+   
+   <div class="section">
+      <header>
+         <div class="title"><b>About Me</b></div>
+      </header>
+      </br>
+      <div class="user one"></div>
+      </br>
+      <p padding-left: 50px> Data scientist with interests in data visualisation, machine learning, geospatial modelling, energy and international development.<br><a href="/about/">Read More...</a></p>
+      <div style="margin-left: 1.2em; line-height: 2; font-size: 120%">
+         <a href="https://goo.gl/jpE8an"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp Southampton</a> <br /> 
+         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i>&nbsp Stackoverflow</a> <br /> 
+         <a href="https://github.com/mikey-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br /> 
+         <a href="https://www.facebook.com/mikey.harper"><i class="fa fa-facebook-official" style="color:#3b5998;"></i>&nbsp Facebook</a> <br />
+         <a href="https://www.linkedin.com/in/mikeyharper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp LinkedIn</a> <br /> 
+         <a href="https://twitter.com/@MikeyLHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp Twitter</a> <br /> 
+      </div>
+   </div>
+</div>
+<hr>
+
+<div class="section">
+   <header>
+      <div class="title"><b>Latest Posts</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li>
+            <a href="/calculating-neighbouring-polygons-in-r/">Calculating Neighbouring Polygons in R</a>
+         </li>
+         
+         <li>
+            <a href="/moving-website-to-hugo/">Moving website to Hugo</a>
+         </li>
+         
+         <li>
+            <a href="/mapping-uk-local-political-data/">Mapping UK Local Political Data</a>
+         </li>
+         
+         <li>
+            <a href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
+         </li>
+         
+         <li>
+            <a href="/gis-in-r/">Using R for Geospatial Data Analysis</a>
+         </li>
+         
+         <li>
+            <a href="/wind-turbinesuccess/">Identifying key influences for planning acceptance of onshore wind turbines</a>
+         </li>
+         
+         <li>
+            <a href="/cycling-lands-end-to-john-o-groats/">Cycling Lands End to John O&#39;Groats</a>
+         </li>
+         
+      </ul>
+   </div>
+</div>
+<hr>
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>tag</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="/tags/r">r</a></li>
+         
+         <li><a href="/tags/gis">gis</a></li>
+         
+         <li><a href="/tags/presentation">presentation</a></li>
+         
+         <li><a href="/tags/cycling">cycling</a></li>
+         
+         <li><a href="/tags/data">data</a></li>
+         
+         <li><a href="/tags/mapping">mapping</a></li>
+         
+         <li><a href="/tags/maps">maps</a></li>
+         
+         <li><a href="/tags/reproducible-resaerch">reproducible-resaerch</a></li>
+         
+         <li><a href="/tags/web">web</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>topic</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="/topics/technical">technical</a></li>
+         
+         <li><a href="/topics/personal">personal</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+<hr>
+</div>
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="https://github.com/mikey-harper/blog">Hosted on Github</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  code with <i class='fa fa-heart'></i>
+
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  &copy; 2018 Copyright Mikey Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

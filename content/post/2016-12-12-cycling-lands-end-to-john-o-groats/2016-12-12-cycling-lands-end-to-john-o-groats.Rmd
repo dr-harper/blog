@@ -1,13 +1,16 @@
 ---
 title: Cycling Lands End to John O'Groats
 author: Mikey Harper
+description: Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.
 date: '2016-12-12'
 slug: cycling-lands-end-to-john-o-groats
-TableOfContents: TRUE
 type: post
-categories:
-  - cycling
-tags: [cycling]
+tags:
+    - Cycling
+    - maps
+    - GIS
+topics:
+  - Personal
 ---
 
 ![](/images/LEJOGStart.jpg)
@@ -60,7 +63,7 @@ Our overall route came in at 1500km (~940 miles).  If you want to see our planne
 Doing it unsupported, we needed to carry everything with us on our bike. It is amazing how quickly space runs out and how heavy your bike can quickly become.  Table \@ref(tab:KitList) lists the kit I took, which weighed around 6kg. Once you add in a bit food and drink for the days ride it could come to around 10kg extra weight on the bike.
 
 ```{r KitList, echo=FALSE, message=FALSE, warning=FALSE}
-data <- readr::read_csv("lejog/kitlist.csv")
+data <- readr::read_csv("kitlist.csv")
 options(knitr.kable.NA = '')
 knitr::kable(data, caption = "Kit List Used")
 ```
@@ -68,7 +71,7 @@ knitr::kable(data, caption = "Kit List Used")
 
 Things I probably should have packed but didn't:
 
-- Proper wet weather cycling gear. My jacket was only designed for a light shower. On the one day it properly rained, I got absolutely soaked and got very cold when we had to stop to repair a puncture
+- **Proper wet weather cycling gear**. My jacket was only designed for a light shower. On the one day it properly rained, I got absolutely soaked and got very cold when we had to stop to repair a puncture
 
 ### Added Extra: Jersey
 
@@ -84,13 +87,11 @@ I was really happy with the end result. I would definitely recommend getting a J
 
 We completed our trip from Friday 27th May to Sunday 5th June 2016. This section provides a short explanation for each day of the trip, and by no means is meant to be a comprehensive account. The following graphs summarise the distance and elevation for each day of the trip.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", fig.align='center'}
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", fig.align='center', fig.asp=0.5}
 
 df <- data.frame(Day = c("1", "2", "3", "4", "5", "6", "7", "8"), 
               Distance=c(181.3, 214.7, 276.2, 195.7, 207.1, 192.1, 162.9, 72.9), 
               Elevation=c(2854, 2219, 1550, 1316, 1167,  1604, 1248, 592))
-
-reshape(df, idvar = "Day", varying = c("Distance", "Elevation"), direction = "long")
 
 library(ggplot2)
 
@@ -101,8 +102,6 @@ library(plotly)
 ggplotly(a)
 
 ```
-
-
 
 ## Day 0: Travelling to Penzance
 
