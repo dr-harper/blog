@@ -115,7 +115,7 @@ variable_sub &lt;- data_council_long_matched[,c(18, 4, 15)] # Extracts the lib d
 data_wide &lt;- acast(variable_sub, Boundary ~ Year, value.var = &quot;LD_share&quot;) %&gt;% as.data.frame() %&gt;% mutate(region = rownames(.))</code></pre>
 <pre><code>## Aggregation function missing: defaulting to length</code></pre>
 <pre class="r"><code># Merge data with shapefile
-boundaries &lt;- merge(boundaries, data_wide, by.x = &quot;geo_label&quot;, by.y=&quot;region&quot;)
+boundaries &lt;- merge(boundaries, year_sub, by.x = &quot;geo_label&quot;, by.y=&quot;Boundary&quot;)
 # To save the output as a shapefile, you can use the shapefile() function</code></pre>
 </div>
 <div id="example-plot" class="section level2">
@@ -137,6 +137,10 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
   theme_minimal() +
   theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="/post/2017-11-07-mapping-uk-local-political/2017-11-07-mapping-uk-local-political-data_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="geospatial-plot" class="section level2">
+<h2>Geospatial Plot</h2>
+<pre class="r"><code>boundaries_sf &lt;- st_as_sf(boundaries)</code></pre>
 </div>
 <div id="further-considerations" class="section level2">
 <h2>Further Considerations</h2>

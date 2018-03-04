@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mikey.netlify.com/moving-website-to-hugo/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mikey.netlify.com/mapping-uk-local-political-data/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
   </url>
@@ -74,7 +69,7 @@
   
   <url>
     <loc>https://mikey.netlify.com/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -86,7 +81,7 @@
   
   <url>
     <loc>https://mikey.netlify.com/post/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -123,12 +118,6 @@
   <url>
     <loc>https://mikey.netlify.com/topics/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mikey.netlify.com/tags/web/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

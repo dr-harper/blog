@@ -86,14 +86,5 @@
       <description></description>
     </item>
     
-    <item>
-      <title>Web</title>
-      <link>https://mikey.netlify.com/tags/web/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
-      <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/web/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

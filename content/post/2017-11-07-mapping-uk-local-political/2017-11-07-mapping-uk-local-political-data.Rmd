@@ -142,7 +142,7 @@ variable_sub <- data_council_long_matched[,c(18, 4, 15)] # Extracts the lib dem 
 data_wide <- acast(variable_sub, Boundary ~ Year, value.var = "LD_share") %>% as.data.frame() %>% mutate(region = rownames(.))
 
 # Merge data with shapefile
-boundaries <- merge(boundaries, data_wide, by.x = "geo_label", by.y="region")
+boundaries <- merge(boundaries, year_sub, by.x = "geo_label", by.y="Boundary")
 # To save the output as a shapefile, you can use the shapefile() function
 ```
 
@@ -167,6 +167,14 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
   theme_minimal() +
   theme(legend.position = "none")
 ```
+
+## Geospatial Plot
+
+```{r}
+boundaries_sf <- st_as_sf(boundaries)
+```
+
+
 
 ## Further Considerations
 
