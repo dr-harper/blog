@@ -6,8 +6,8 @@
     <description>Recent content in Reproducible Resaerch on Mikey Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>yourname@example.com (yourname)</managingEditor>
-    <webMaster>yourname@example.com (yourname)</webMaster>
+    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
     <lastBuildDate>Mon, 02 Oct 2017 00:00:00 +0000</lastBuildDate>
     
@@ -18,7 +18,7 @@
       <title>Writing reports in RStudio: an introduction to RMarkdown</title>
       <link>http://mikeyharper.uk/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
-      <author>yourname@example.com (yourname)</author>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
       <guid>http://mikeyharper.uk/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</guid>
       <description>RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
 The presentation was designed to provide a whistle-stop tour of the benefits of RMarkdown, explaining the basic syntax to get started and highlighting some of the more advance things which you could use RMarkdown for.</description>

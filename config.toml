@@ -28,7 +28,7 @@ paginate = 10
 paginatePath = "page"
 
 # Enable Disqus integration
-disqusShortname = "shortname"
+disqusShortname = "mikeyharper"
 
 
 [permalinks]
@@ -40,8 +40,8 @@ tag = "tags"
 topic = "topics"
 
 [author]
-name = "yourname"
-email = "yourname@example.com"
+name = "Mikey Harper"
+email = "m.harper@outlook.com"
 
 #
 # All parameters below here are optional and can be mixed and matched.
