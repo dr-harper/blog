@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Mikey Harper</title>
-    <link>https://mikey.netlify.com/tags/</link>
+    <link>http://mikeyharper.uk/tags/</link>
     <description>Recent content in Tags on Mikey Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,78 +11,78 @@
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
     <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://mikey.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://mikeyharper.uk/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cycling</title>
-      <link>https://mikey.netlify.com/tags/cycling/</link>
+      <link>http://mikeyharper.uk/tags/cycling/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/cycling/</guid>
+      <guid>http://mikeyharper.uk/tags/cycling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data</title>
-      <link>https://mikey.netlify.com/tags/data/</link>
+      <link>http://mikeyharper.uk/tags/data/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/data/</guid>
+      <guid>http://mikeyharper.uk/tags/data/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gis</title>
-      <link>https://mikey.netlify.com/tags/gis/</link>
+      <link>http://mikeyharper.uk/tags/gis/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/gis/</guid>
+      <guid>http://mikeyharper.uk/tags/gis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mapping</title>
-      <link>https://mikey.netlify.com/tags/mapping/</link>
+      <link>http://mikeyharper.uk/tags/mapping/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/mapping/</guid>
+      <guid>http://mikeyharper.uk/tags/mapping/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maps</title>
-      <link>https://mikey.netlify.com/tags/maps/</link>
+      <link>http://mikeyharper.uk/tags/maps/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/maps/</guid>
+      <guid>http://mikeyharper.uk/tags/maps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Presentation</title>
-      <link>https://mikey.netlify.com/tags/presentation/</link>
+      <link>http://mikeyharper.uk/tags/presentation/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/presentation/</guid>
+      <guid>http://mikeyharper.uk/tags/presentation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://mikey.netlify.com/tags/r/</link>
+      <link>http://mikeyharper.uk/tags/r/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/r/</guid>
+      <guid>http://mikeyharper.uk/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reproducible Resaerch</title>
-      <link>https://mikey.netlify.com/tags/reproducible-resaerch/</link>
+      <link>http://mikeyharper.uk/tags/reproducible-resaerch/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>yourname@example.com (yourname)</author>
-      <guid>https://mikey.netlify.com/tags/reproducible-resaerch/</guid>
+      <guid>http://mikeyharper.uk/tags/reproducible-resaerch/</guid>
       <description></description>
     </item>
     
