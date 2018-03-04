@@ -36,8 +36,8 @@ post = "/:slug/"
 code = "/:filename/"
 
 [taxonomies]
-tag = "tags"
-topic = "topics"
+tag = "Tags"
+topic = "Topics"
 
 [author]
 name = "Mikey Harper"
