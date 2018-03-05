@@ -14,7 +14,8 @@ topics:
 thumbnail: "/images/LEJOGStart.jpg"
 ---
 
-<meta property="og:image" content="/images/LEJOGStart.jpg"/>
+![](/images/LEJOGStart.jpg)
+<meta property="og:image" content="http://mikeyharper.uk/images/LEJOGStart.jpg"/>
 <br>
 
 
