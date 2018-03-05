@@ -1,16 +1,68 @@
 ---
-title: Moving website to Hugo
+title: "10 Reasons to build your data blog with blogdown"
 author: Mikey Harper
 date: '2018-03-02'
 slug: moving-website-to-hugo
 categories: []
 tags:
   - Web
-bibliography: test.bib
+bibliography: 
+  - test.bib
+  - references.bib
+link-citations: true
 draft: true
+output:
+  blogdown::html_page:
+    number_sections: false
+    toc: true
 ---
 
-I have been toying with the idea for a while about setting up a website through Hugo.^[This is a  footnoted]
+![Cover Image](/images/hugoCover.jpg)
+<br>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, out.width = "100%")
+library(widgetframe)
+```
+
+I have been toying with the idea for a while about setting up a website through Hugo. ^[This is a  footnoted]
+
+The aim of this article is not to provide a technical guide of the setup process, but instead explain the benefits and why a user may want to consider using it. 
+
+> Note: this post contains all the example code so that maps can easily be replicated in R. If you would like to access the full sourcecode, you can download it through GitHub [here](https://github.com/mikey-harper/blog/tree/master/content/post/2018-03-02-moving-website-to-hugo).
+
+
+
+
+
+## Blogdown
+
+https://www.youtube.com/watch?v=CjTLN-FXiFA
+
+
+
+******
+
+# Reasons To Consider
+
+
+## 1. Easily (and cheaply) host your website
+
+Blogdown is a static site generator. This means that any processing to build the webpage is done on your computer, and then the website host
+
+The major benefit to this is that websites are lightening fast, and that you do not have to fork out for server hire. This 
+
+As there is no server-side processing, websites are much more scalable. 
+
+### Wordclouds
+
+```{r, out.width="100%"}
+library(DT)
+frameWidget(DT::datatable(iris, options = list(pageLength = 5)))
+```
+
+
+
 
 # Why Consider
 
@@ -19,28 +71,143 @@ One of the best things about Hugo is that the
 
 The guidance for [blogdown](https://bookdown.org/yihui/blogdown/) is really useful.
 
-Below are some of my favourite features:
-
-## Citations
 
 
+## Features
 
-```{r}
-knitr::write_bib(c("rmarkdown", "knitr", "leaflet"), file = "test.bib")
+One of the things I often want to do with my blog is share code and analysis. With blogdown, it is really easy for R data analysis to be directly integrated into a web page. This directly integrates [RMarkdown](https://rmarkdown.rstudio.com/) into posts.
+
+**Citations**
+
+With academic writing, it is a requirement to ensure that analysis is well reference
+
+With [@fenner2012a]
+
+```{r include=FALSE}
+knitr::write_bib(c("rmarkdown", "knitr", "leaflet", "ggplot2", "plotly", "DiagrammeR"), file = "test.bib")
 ```
 
 [@R-knitr]
 
-## Embedding Live Charts
+## Interactive Charts
 
-For example, the leaflet [@R-leaflet] package is great for producing interactive maps. Using the following example taken from [here](https://rstudio.github.io/leaflet/), we can create maps in only a few lines of code:
+Visualizations are often static, with the purpose of presentation rather than the exploration of data [@Malik2011]. To many people, a graph will be made in Excel, saved as an image and then inserted into a report. By not allowing the user to interact with the data, it limits interaction and exploration with the results.
 
-```{r, results = "asis"}
+Most users of R will be familiar of the package `ggplot2` [@R-ggplot2], which is frequently used as the main plotting system in R. The `plotly` [@R-plotly] package builds upon the ggplot2 and provides a tool to easily convert graphs into an interactive, web-based version.
+
+Figure \@ref(fig:Shiny) shows a basic interactive Shiny plot. The user can hover over bars to find out more details about the group, and also use the legend to turn on and off layers. 
+
+```{r Shiny, fig.cap="Interactive Shiny Plot"}
+# Code to build basic ploty graph
+library(ggplot2)
+library(plotly)
+p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
+            geom_bar(position = "dodge")
+ggplotly(p)
+```
+
+Plotly is recommended as many R users will be familiar with ggplot. However, there are lots of other options available for plotting graphs and graphics, and many build off existing Javascript libraries. These include:
+
+- [dygraphs for R](http://rstudio.github.io/dygraphs/): an R interface to the dygraphs JavaScript charting library.
+- [scatterD3](https://github.com/juba/scatterD3): R scatter plot htmlwidget based on D3.js
+- [rbokeh](https://hafen.github.io/rbokeh/): provides an R Interface for Bokeh
+
+There are many more examples provided in the [htmlwidgets gallery](http://gallery.htmlwidgets.org/).
+
+## Interactive Maps
+
+Static maps can be quite challenging to make effectively. It is difficult to know which scale at which they should be drawn. If you produce a national map, most users will want to zoom into their area and find out more results about their local area.
+
+Maps can easily be made using the **leaflet** [@R-leaflet] package. Using the following example taken from [here](https://rstudio.github.io/leaflet/), we can create maps in only a few lines of code:
+
+```{r leaflet, fig.cap= "A leaflet map, with an example point", out.width='100%', fig.asp=0.5}
 library(leaflet)
-
 m <- leaflet() %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
-  addMarkers(lng=-1.396, lat=50.93, popup="The birthplace of R")
+  addMarkers(lng=-1.39595, lat=50.93463, popup="Southampton University")
 m
 ```
+
+## Flowcharts and Visualisations
+
+It can often be useful to visualise flowcharts or networks in R. I particularly like to use them when explaining my data analysis process. Figure \@ref(fig:DiagrammeR) highlights a basic structure for a flowchart, using the package `DiagrammeR` [@R-DiagrammeR] t build a GraphViz plot:
+
+```{r DiagrammeR, fig.cap="An example Flowchart from DiagrammeR", fig.asp=0.25}
+
+library(DiagrammeR)
+grViz("digraph a_nice_graph {
+
+        graph [layout = dot, rankdir = LR]
+        
+        # node definitions with substituted label text
+        node [fontname = Helvetica, shape = rectangle, style = filled, fillcolor = WhiteSmoke]        
+        rec1 [label = '@@1']
+        rec2 [label = '@@2']
+        rec3 [label = '@@5']
+        rec4 [label = '@@6']
+
+        node [fontname = Helvetica, shape = oval]
+        ova1 [label = '@@3']
+        ova2 [label = '@@4']
+
+        # edge definitions with the node IDs
+        rec1 -> ova1 -> rec2 -> ova2 -> rec3
+        ova2 -> rec4
+        }
+      
+        [1]: 'raw data'
+        [2]: 'cleaned data'
+        [3]: 'clean and tidy'
+        [4]: 'describe'
+        [5]: 'report'
+        [5]: 'website'
+      ")
+```
+
+For full documentation and additional examples, you should check out the website [here](http://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html#examples).
+
+## World Visualisations
+
+
+
+
+
+
+## Embed Tables
+
+
+
+## Wordclouds
+
+```{r}
+library(wordcloud2)
+wordcloud2(data = demoFreq)
+```
+
+## Features and Cross Referencing
+
+- Automatically number figures and provide cross referencing
+- Add references to article
+
+
+$$10x$$
+
+Below are some of my favourite features:
+
+## Easily Cite References
+
+Depending on your background and purpose of your work, the need to cite other authors may vary. However, anyone within an academic background will need to 
+
+- See \@ref(sec:interactive-maps)
+
+
+# Conclusion
+
+The aim of this article was to highlight some of the 
+
+If you have any other favourite features, I would love to hear from you. 
+
+# References
+
+
 

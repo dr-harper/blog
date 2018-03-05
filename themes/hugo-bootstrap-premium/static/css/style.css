@@ -5,6 +5,14 @@ html {
   min-height: 100%;
 }
 
+
+
+.caption { text-align: center;
+           margin-top: 10px;
+           margin-bottom: 30px;
+           font-weight:bold
+}
+
 body {
   /* Margin bottom by footer height */
   font-family: 'Open Sans', 'sans-serif';

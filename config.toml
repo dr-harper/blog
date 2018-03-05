@@ -71,6 +71,12 @@ optin = true #opt-in: true/false
 # default, flatly, journal,  lumen, paper, readable, sandstone, simplex,
 # slate, spacelab, superhero, united, yeti.
 
+highlightjsVersion = "9.11.0"
+highlightjsCDN = "//cdn.bootcss.com"
+highlightjsLang = ["r"]
+highlightjsTheme = "github"
+
+
 bootswatchtheme = "flatly"
 
 # menu for changing language. This changes languages with js and stores the choice with the help of JavaScript in a Cookie. Then the path is rewritten with pathnamereplace.js. The name of the md files needs to have the same name for each language abbreviation to work correctly. Example: showcase.en.md and showcase.sv.md. It only works if DefaultContentLanguageInSubdir = true
@@ -96,7 +102,7 @@ mathjax = "2.7.1" # cdnjs hosted version; empty string to disable mathjax
 showRightSidebar = true
 # Select a syntax highlight.
 # Check the static/css/highlight directory for options.
-highlight = "default"
+highlight = "custom"
 
 # Google Analytics.
 googleAnalytics = "Your Google Analytics tracking code"

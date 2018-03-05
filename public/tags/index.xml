@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Mikey Harper</title>
-    <link>http://mikeyharper.uk/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Mikey Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
@@ -11,78 +11,87 @@
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
     <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mikeyharper.uk/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cycling</title>
-      <link>http://mikeyharper.uk/tags/cycling/</link>
+      <link>/tags/cycling/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/cycling/</guid>
+      <guid>/tags/cycling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data</title>
-      <link>http://mikeyharper.uk/tags/data/</link>
+      <link>/tags/data/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/data/</guid>
+      <guid>/tags/data/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gis</title>
-      <link>http://mikeyharper.uk/tags/gis/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      <link>/tags/gis/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/gis/</guid>
+      <guid>/tags/gis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mapping</title>
-      <link>http://mikeyharper.uk/tags/mapping/</link>
+      <link>/tags/mapping/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/mapping/</guid>
+      <guid>/tags/mapping/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maps</title>
-      <link>http://mikeyharper.uk/tags/maps/</link>
+      <link>/tags/maps/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/maps/</guid>
+      <guid>/tags/maps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Presentation</title>
-      <link>http://mikeyharper.uk/tags/presentation/</link>
+      <link>/tags/presentation/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/presentation/</guid>
+      <guid>/tags/presentation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>http://mikeyharper.uk/tags/r/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <link>/tags/r/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/r/</guid>
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reproducible Resaerch</title>
-      <link>http://mikeyharper.uk/tags/reproducible-resaerch/</link>
+      <link>/tags/reproducible-resaerch/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>http://mikeyharper.uk/tags/reproducible-resaerch/</guid>
+      <guid>/tags/reproducible-resaerch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>/tags/web/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/tags/web/</guid>
       <description></description>
     </item>
     
