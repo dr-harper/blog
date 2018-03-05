@@ -11,13 +11,8 @@ tags:
     - GIS
 topics:
   - Personal
-thumbnail: "/images/LEJOGStart.jpg"
+header_image: "/images/LEJOGStart.jpg"
 ---
-
-![](/images/LEJOGStart.jpg)
-<meta property="og:image" content="http://mikeyharper.uk/images/LEJOGStart.jpg"/>
-<br>
-
 
 Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.
 

@@ -1,3 +1,9 @@
-<div class="content">
+{{ if $.Param "header_image" }}
+<img src= {{ $.Param "header_image" }} alt="Mountain View">
+{{ end }}
+
+<br>
+
+<div class="content", style = "margin-top:10px">
   {{ .Content }}
 </div>
