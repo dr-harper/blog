@@ -11,6 +11,7 @@ tags:
     - GIS
 topics:
   - Personal
+thumbnail: /images/LEJOGStart.jpg
 ---
 
 ![](/images/LEJOGStart.jpg)
