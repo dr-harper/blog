@@ -27,7 +27,7 @@
 <meta property="og:article:modified_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}" />
 
 {{ if $.Param "header_image" }}
-<meta property="og:image" content="{{ $.Param "header_image" }}"/>
+<meta property="og:image" content="{{ $.Param "header_image" | absURL }}"/>
 {{ end }}
 
   {{ if .Keywords }}
