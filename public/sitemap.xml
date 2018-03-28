@@ -3,137 +3,138 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/moving-website-to-hugo/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <loc>http://mikeyharper.uk/migrating-to-blogdown/</loc>
+    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/calculating-neighbouring-polygons-in-r/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/mapping-uk-local-political-data/</loc>
+    <loc>http://mikeyharper.uk/mapping-uk-local-political-data/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</loc>
+    <loc>http://mikeyharper.uk/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/gis-in-r/</loc>
+    <loc>http://mikeyharper.uk/gis-in-r/</loc>
     <lastmod>2017-09-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/wind-turbinesuccess/</loc>
+    <loc>http://mikeyharper.uk/wind-turbinesuccess/</loc>
     <lastmod>2017-07-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/cycling-lands-end-to-john-o-groats/</loc>
+    <loc>http://mikeyharper.uk/cycling-lands-end-to-john-o-groats/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/about/</loc>
+    <loc>http://mikeyharper.uk/about/</loc>
     <lastmod>2016-12-05T14:41:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/showcase/</loc>
+    <loc>http://mikeyharper.uk/showcase/</loc>
     <lastmod>2016-12-05T14:41:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/cycling/</loc>
+    <loc>http://mikeyharper.uk/tags/blogdown/</loc>
+    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mikeyharper.uk/tags/cycling/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/data/</loc>
+    <loc>http://mikeyharper.uk/tags/data/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/gis/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <loc>http://mikeyharper.uk/tags/gis/</loc>
+    <lastmod>2017-09-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/mapping/</loc>
+    <loc>http://mikeyharper.uk/tags/mapping/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/maps/</loc>
+    <loc>http://mikeyharper.uk/tags/maps/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <loc>http://mikeyharper.uk/</loc>
+    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/topics/personal/</loc>
+    <loc>http://mikeyharper.uk/topics/personal/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <loc>http://mikeyharper.uk/post/</loc>
+    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/presentation/</loc>
+    <loc>http://mikeyharper.uk/tags/presentation/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <loc>http://mikeyharper.uk/tags/r/</loc>
+    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/reproducible-resaerch/</loc>
+    <loc>http://mikeyharper.uk/tags/reproducible-resaerch/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2016-12-12T00:00:00+00:00</lastmod>
+    <loc>http://mikeyharper.uk/tags/</loc>
+    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/topics/technical/</loc>
+    <loc>http://mikeyharper.uk/topics/technical/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/topics/</loc>
+    <loc>http://mikeyharper.uk/topics/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/web/</loc>
-    <lastmod>2018-03-02T00:00:00+00:00</lastmod>
+    <loc>http://mikeyharper.uk/tags/websites/</loc>
+    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

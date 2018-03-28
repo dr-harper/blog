@@ -8,4 +8,4 @@ type = "page"
 
 # Showcase
 
-Showcase text in english.
+Coming soon...

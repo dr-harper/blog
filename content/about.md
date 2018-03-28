@@ -7,9 +7,6 @@ type = "page"
 toc = true
 +++
 
-# Headline
+## About Me
 
-I am a 
-
-In my spare time, I enjoy cycling and 
-
+Coming soon...
