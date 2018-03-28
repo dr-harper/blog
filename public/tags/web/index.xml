@@ -2,25 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on Mikey Harper</title>
-    <link>/tags/web/</link>
+    <link>http://mikeyharper.uk/tags/web/</link>
     <description>Recent content in Web on Mikey Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
-    <lastBuildDate>Fri, 02 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/web/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://mikeyharper.uk/tags/web/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>10 Reasons to build your data blog with blogdown</title>
-      <link>/moving-website-to-hugo/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <title>Migrating blog to Blogdown</title>
+      <link>http://mikeyharper.uk/migrating-to-blogdown/</link>
+      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
-      <guid>/moving-website-to-hugo/</guid>
-      <description>BlogdownReasons To Consider1. Easily (and cheaply) host your websiteWordcloudsWhy ConsiderFeaturesInteractive ChartsInteractive MapsFlowcharts and VisualisationsWorld VisualisationsEmbed TablesWordcloudsFeatures and Cross ReferencingEasily Cite ReferencesConclusionReferencesI have been toying with the idea for a while about setting up a website through Hugo.</description>
+      <guid>http://mikeyharper.uk/migrating-to-blogdown/</guid>
+      <description>I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
+Note: this post does not intend to be a full tutorial on how to set up your blog.</description>
     </item>
     
   </channel>

@@ -3,8 +3,8 @@ title: Migrating blog to Blogdown
 author: Mikey Harper
 date: '2018-03-26'
 slug: migrating-to-blogdown
-categories: [R, Websites]
-tags: [R, Websites, Blogdown]
+categories: [R, web]
+tags: [R, web, Blogdown]
 header_image: "/images/hugoCover.jpg"
 ---
 
