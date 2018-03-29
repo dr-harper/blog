@@ -41,11 +41,11 @@ Blogdown is an R package which is designed to simplify the building of websites 
 
 > "In a nutshell, blogdown is an effort to integrate R Markdown with static website generators, so that you can generate web pages dynamically. For example, you can use R code chunks (or other languages that knitr supports) to generate tables and graphics automatically on any web page."
 
-Blogdown brings together several different different services. Firstly, the content is written in R Markdown. The blogdown package then uses Hugo (an alternative static site generator) to build the website as a local preview, making it very easy to quickly review any changes you have made. Once you are happy with the changes, you can push the full website to GitHub, and the website is updated by Netlify.
+Blogdown brings together several different different services. Firstlyc, the content is written in R Markdown. The blogdown package then uses Hugo (an alternative static site generator) to build the website as a local preview, making it very easy to quickly review any changes you have made. Once you are happy with the changes, you can push the full website to GitHub, and the website is updated by Netlify.
 
 At first, the amount of different components required to get this working can appear intimidating. However, the book provided by Yihui provides an excellent explanation of all the different parts: https://bookdown.org/yihui/blogdown/
 
-```{r DiagrammeR, fig.cap="The blogdown workflow", fig.asp=0.25, echo = FALSE}
+```{r DiagrammeR, echo=FALSE, fig.asp=0.25, fig.cap="The blogdown workflow", message=FALSE, warning=FALSE}
 
 library(DiagrammeR)
 grViz("digraph a_nice_graph {
