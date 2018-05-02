@@ -1,0 +1,95 @@
+---
+title: Animated Plots with R
+author: Mikey Harper
+date: '2018-04-23'
+slug: animated-plots-with-r
+draft: true
+categories:
+  - GIS
+  - R
+  - Technical
+tags:
+  - R
+---
+
+
+
+<pre class="r"><code># A summary table was made to convert the summary status
+planning_summary &lt;- read.table(text = &quot;
+&#39;Status&#39;                        &#39;Status Summary&#39;
+&#39;Application Approved&#39;        &#39;Approved&#39;
+&#39;Application Refused&#39;           &#39;Refused/Abandoned&#39;
+&#39;Application Submitted&#39;       &#39;Submitted&#39;
+&#39;Application Withdrawn&#39;       &#39;Refused/Abandoned&#39;
+&#39;Connection Applied For&#39;        &#39;Submitted&#39;
+&#39;No Application Made&#39;           &#39;Refused/Abandoned&#39;
+&#39;No Application&#39;              &#39;Required Approved&#39;
+&#39;Abandoned&#39;                   &#39;Refused/Abandoned&#39;
+&#39;Awaiting Construction&#39;       &#39;Approved&#39;
+&#39;Decommissioned&#39;                &#39;Approved&#39;
+&#39;Operational&#39;                   &#39;Approved&#39;
+&#39;Planning Permission Expired&#39;   &#39;Approved&#39;
+&#39;Under Construction&#39;            &#39;Approved&#39;
+&quot;, header = TRUE, stringsAsFactors = FALSE)</code></pre>
+<pre class="r"><code>REPD_wind &lt;-
+  REPD %&gt;%
+  filter(Country != &quot;Northern Ireland&quot;) %&gt;%
+  merge(planning_summary, by.x = &quot;Development Status (short)&quot;, by.y = &quot;Status&quot;) %&gt;%
+  mutate(date = lubridate::dmy(`Planning Application Submitted`),
+         year = lubridate::year(date)) %&gt;%
+  filter(`Technology Type` == &quot;Wind Onshore&quot;)</code></pre>
+<pre class="r"><code>year_filt &lt;- 2018
+
+df &lt;- REPD_wind %&gt;% 
+  filter(year &lt; year_filt)
+
+df_highlight &lt;- REPD_wind %&gt;%
+  filter(year == year_filt)
+
+  ggplot(data, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+  geom_point(data = df) +
+  geom_point(data = df_highlight, colour = &quot;gold&quot;) +
+  coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
+    labs(title = year_filt)
+  
+  
+  
+  
+ggplot(df, aes(x = year, y = `Installed Capacity (MWelec)`)) +
+  geom_col()</code></pre>
+<pre class="r"><code>library(animation)
+ani.options(convert = &#39;C:\\ImageMagick-7.0.7-Q16\\magick.exe&#39;)
+
+
+library(ggmap)
+
+base &lt;- get_map(&quot;United Kingdom&quot;, zoom = 5)
+
+ggmap(base)
+
+saveGIF({
+  for (i in 1995:2018){
+    
+    year_filt &lt;- i
+    
+    df &lt;- REPD_wind %&gt;% 
+      filter(year &lt; year_filt)
+    
+    df_highlight &lt;- REPD_wind %&gt;%
+      filter(year == year_filt)
+    
+    p &lt;- 
+      ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+      geom_point(data = df) +
+      geom_point(data = df_highlight, colour = &quot;gold&quot;) +
+      coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
+      labs(title = year_filt)
+    
+    print(p)
+    
+  }
+
+  
+
+  
+}, interval = 0.5)</code></pre>

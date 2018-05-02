@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Data-driven flowcharts in R using DiagrammeR  &middot; Mikey Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="R Markdown, DiagrammeR, ">
+
+
+<meta property="og:title" content="Data-driven flowcharts in R using DiagrammeR  &middot; Mikey Harper ">
+<meta property="og:site_name" content="Mikey Harper"/>
+<meta property="og:url" content="https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-05-01T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-05-01T00:00:00Z" />
+
+
+<meta property="og:image" content="https://mikeyharper.uk/images/diagrammeR.png"/>
+
+
+  
+    
+<meta property="og:article:tag" content="R Markdown">
+    
+<meta property="og:article:tag" content="DiagrammeR">
+    
+  
+
+  
+
+  
+
+
+
+<link rel="canonical" href="https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikeyharper.uk/touch-icon-144-precomposed.png">
+<link rel="icon" href="https://mikeyharper.uk/favicon.png">
+<meta name="generator" content="Hugo 0.36.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikeyharper.uk/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikeyharper.uk/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikeyharper.uk/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikeyharper.uk/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="https://mikeyharper.uk/css/highlight/custom.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="https://mikeyharper.uk/">
+          Mikey Harper
+          
+          
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikeyharper.uk/" >
+                <i class='fa fa-home'></i>&nbsp
+                 Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikeyharper.uk/post/" >
+                <i class='fa fa-pencil'></i>&nbsp
+                Blog
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikeyharper.uk/about/" >
+                <i class='fa fa-user'></i>&nbsp
+                About
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikeyharper.uk/showcase" >
+                <i class='fa fa-trophy'></i>&nbsp
+                Showcase
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+
+
+<style>.bigbox{margin-top: 60px}</style>
+
+<div class="bigbox"></div>
+<img src="https://mikeyharper.uk/kenya.jpg" alt="Mountain View">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Data-driven flowcharts in R using DiagrammeR
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-05-01">1 May, 2018</time>
+</small>
+
+
+  <small>
+    &middot; by Mikey Harper
+  
+  &middot; Read in about 7 min
+  &middot; (1320 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Data-driven%20flowcharts%20in%20R%20using%20DiagrammeR&amp;url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f&amp;title=Data-driven%20flowcharts%20in%20R%20using%20DiagrammeR" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Data-driven%20flowcharts%20in%20R%20using%20DiagrammeR&amp;body=Check out this site https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikeyharper.uk/tags/r-markdown" class="label label-primary">R Markdown</a>
+  
+  <a href="https://mikeyharper.uk/tags/diagrammer" class="label label-primary">DiagrammeR</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      
+<img src= /images/diagrammeR.png alt="Mountain View">
+
+
+<br>
+
+<div class="content", style = "margin-top:10px">
+  <script src="https://mikeyharper.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="https://mikeyharper.uk/rmarkdown-libs/viz/viz.js"></script>
+<link href="https://mikeyharper.uk/rmarkdown-libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+<script src="https://mikeyharper.uk/rmarkdown-libs/grViz-binding/grViz.js"></script>
+
+
+<blockquote>
+<p>The old cliché goes that “<em>A picture is worth a thousand words</em>”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail.</p>
+</blockquote>
+<blockquote>
+<p>In this post, I highlight some of the great features of making diagrams in R, and highlight how they can be easily connected to data from your analysis to produce dynamic data flowchart. This can make it much easier for readers to engage with your data analysis and understand how your complex models work.</p>
+</blockquote>
+<div id="making-diagrams-in-r" class="section level2">
+<h2>Making diagrams in R</h2>
+<p>The <strong>DiagrammeR</strong> package <span class="citation">(Iannone 2018)</span> is a package which allows graphs to be generated for a simple coding syntax. Graphs are primarily drawn in the DOT language using the <a href="https://www.graphviz.org/">GraphViz</a> and `<a href="https://mermaidjs.github.io/">mermaid</a> styles. The package also provides a useful interface for creating graphs <a href="http://rich-iannone.github.io/DiagrammeR/graph_creation.html">directly from R code</a>. To get started we first need to install the package:</p>
+<pre class="r"><code>install.packages(&quot;DiagrammeR&quot;)</code></pre>
+<p>The creation of figures in R is further simplified by the integration with RStudio, which provides native support for <code>.dot</code>, <code>.mmd</code> or <code>.gv</code> files which can be used for containing charts. RStudio provides syntax highlighting for any of these files, and allows you to quickly preview the results of the diagram within the view window, as shown in Figure <a href="#fig:diagrammeR-dot">1</a></p>
+<div class="figure"><span id="fig:diagrammeR-dot"></span>
+<img src="diagrammeR-rstudio.png" alt="Using Graphviz within R Studio" width="80%" />
+<p class="caption">
+Figure 1: Using Graphviz within R Studio
+</p>
+</div>
+<p>While this guide by no means attempt to replace the detailed guidance provided <a href="http://rich-iannone.github.io/DiagrammeR/index.html">on the package website</a>, it is important to highlight a few of the basic features of the plots. <strong>DiagrammeR</strong> uses the processing function called <code>grViz()</code>. What you pass into <code>grViz()</code> is a valid graph specification in the DOT language, with the figure being supplied as either an external file or inline code within R.</p>
+<p>There are many different types of graphs which can be drawn, but in this post we will focus on directed graphs (<code>diagraph</code>), which are most typically used within flowcharts. This must be specified at the start of the plot. Graphs can be controlled by three functions:</p>
+<ul>
+<li><code>graph</code>: this sets the overall layout, themes of the plot</li>
+<li><code>node</code>: the boxes in the flowchart</li>
+<li><code>edges</code>: the lines used to connect each of the boxes</li>
+</ul>
+<p>A minimal example is shown in Figure <a href="#fig:minimalexample">2</a>:</p>
+<pre class="r"><code># A minimal plot
+DiagrammeR::grViz(&quot;digraph {
+  
+graph[layout = dot, rankdir = LR]
+
+a
+b
+c
+
+a -&gt; b -&gt; c
+}&quot;)</code></pre>
+<div class="figure"><span id="fig:minimalexample"></span>
+<div id="htmlwidget-1" style="width:672px;height:168px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"diagram":"digraph {\n  \ngraph[layout = dot, rankdir = LR]\n\na\nb\nc\n\na -> b -> c\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2: A minimal example
+</p>
+</div>
+<p>You can see above that the plot is very simple, and it is likely that you will want to change the style of the boxes by adding colours etc. To do this, you can define as many styles as we wish within square brackets following the object using name-value pairs. You may wish to see the full list of node shapes available <a href="https://www.graphviz.org/doc/info/shapes.html">here</a></p>
+<p>For example, if we wanted to set the fill colour of node <code>box1</code>, or change the style of the arrowhead of a connector we can use the following code:</p>
+<pre class="gv"><code>box1 [fillcolor = red]
+abc -&gt; def [arrowhead = diamond]
+</code></pre>
+<p>A crucial option to specify is the <code>label</code> option, which lets us change the text within the shape. . We will piece together some of the examples below to highlight a more complex graph:</p>
+<pre class="r"><code>DiagrammeR::grViz(&quot;digraph {
+
+graph [layout = dot, rankdir = LR]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+data1 [label = &#39;Dataset 1&#39;, shape = folder, fillcolor = Beige]
+data2 [label = &#39;Dataset 2&#39;, shape = folder, fillcolor = Beige]
+process [label =  &#39;Process \n Data&#39;]
+statistical [label = &#39;Statistical \n Analysis&#39;]
+results [label= &#39;Results&#39;]
+
+# edge definitions with the node IDs
+{data1 data2}  -&gt; process -&gt; statistical -&gt; results
+}&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<div id="htmlwidget-2" style="width:672px;height:201.6px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\ndata1 [label = \"Dataset 1\", shape = folder, fillcolor = Beige]\ndata2 [label = \"Dataset 2\", shape = folder, fillcolor = Beige]\nprocess [label =  \"Process \n Data\"]\nstatistical [label = \"Statistical \n Analysis\"]\nresults [label= \"Results\"]\n\n# edge definitions with the node IDs\n{data1 data2}  -> process -> statistical -> results\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 3: A basic flowchart
+</p>
+</div>
+</div>
+<div id="parameterized-figures" class="section level2">
+<h2>Parameterized figures</h2>
+<p>A great benefit of designing figures within R is that we are able to connect the figures directly with our analysis by reading R values directly into our flowcharts. For example, suppose you have created a filtering process which removes values after each stage of a process, you can have a figure show the number of values left in the dataset after each stage of your process. To do this we, you can use the <code>@@</code> symbol directly within the figure, and then assign the values in the footnote of the plot using typical R expressions to replace these symobols. Here is a basic example:</p>
+<pre class="r"><code># Define some sample data
+data &lt;- list(a=1000, b=800, c=600, d=400)
+
+
+DiagrammeR::grViz(&quot;
+digraph graph2 {
+
+graph [layout = dot]
+
+# node definitions with substituted label text
+node [shape = rectangle, width = 4, fillcolor = Biege]
+a [label = &#39;@@1&#39;]
+b [label = &#39;@@2&#39;]
+c [label = &#39;@@3&#39;]
+d [label = &#39;@@4&#39;]
+
+a -&gt; b -&gt; c -&gt; d
+
+}
+
+[1]:  paste0(&#39;Raw Data (n = &#39;, data$a, &#39;)&#39;)
+[2]: paste0(&#39;Remove Errors (n = &#39;, data$b, &#39;)&#39;)
+[3]: paste0(&#39;Identify Potential Customers (n = &#39;, data$c, &#39;)&#39;)
+[4]: paste0(&#39;Select Top Priorities (n = &#39;, data$d, &#39;)&#39;)
+&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<div id="htmlwidget-3" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot]\n\n# node definitions with substituted label text\nnode [shape = rectangle, width = 4, fillcolor = Biege]\na [label = \"Raw Data (n = 1000)\"]\nb [label = \"Remove Errors (n = 800)\"]\nc [label = \"Identify Potential Customers (n = 600)\"]\nd [label = \"Select Top Priorities (n = 400)\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4: A flowchart containing R code replacement
+</p>
+</div>
+<p>The code for the chart in the header image is also <a href="https://github.com/mikey-harper/blog/tree/master/content/post/2018-05-01-flowcharts-in-r-using-diagrammer/analysisFlow.gv">available here</a></p>
+</div>
+<div id="subgraphs-and-clusters" class="section level2">
+<h2>Subgraphs and clusters</h2>
+<p>This post is not designed to be a comprehensive guide of <strong>DiagrammeR</strong>, but it is worth highlight that we can use subgraphs and clusters to demonstrates groups within the data. Figure @ref)fig:subgraphs) highlights an example of a graph I have produced within my analysis to show the classification of data across different categories within my model. The code used to make this graph is available through the GitHub repository <a href="https://github.com/mikey-harper/blog/tree/master/content/post/2018-05-01-flowcharts-in-r-using-diagrammer/planningGrouping.gv">here</a>.</p>
+<div class="figure"><span id="fig:subgraphs"></span>
+<div id="htmlwidget-4" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4">{"x":{"diagram":"digraph G {\nrankdir=LR\ngraph[bgcolor = \"#FDFDFD\"]\nedge[style=invis]\nnode[fontname = \"helvetica\", width = 1.5, height = 0.5, fontsize=12]\n\t\n    subgraph cluster_accepted {\n    node [shape=box,style=filled, fillcolor = red];\n    label = \"Accepted \n (n=1403)\";\n    style=dashed;\n\t\tcolor= \"#625a5a\";\n        fontname = \"helvetica-bold\";\n        \n\t\tnode [shape=box, style=filled, color=black, fillcolor = \"#91cf60\"];\n\t\t    a0[label = \"Approved\"]\n        a1[label = \"Awaiting \\n Construction\"]\n        a2[label = \"Decommissioned\"]\n        a3[label = \"Operational\"]\n        a4[label = \"Under \\n Construction\"]\n        a5[label = \"No Application \\n Required\"]\n        \n        a0 -> a2\n        a1 -> a5\n\n\t}\n  \n    subgraph cluster_submitted {\n    node [shape=box, style = filled, color=black, fillcolor = \"#fee08b\"];\n\t\tlabel = \"Submitted \n (n=489)\";\n        style=dashed;\n\t\tcolor= \"#625a5a\";\n\n        fontname = \"helvetica-bold\";\n        \n\t\ts0[label = \"In Planning\"]\n        s1[label = \"Connection \\n Applied For\"]\n        s3[style=invis]\n        s4[style=invis]\n        \n}\n    \n\tsubgraph cluster_rejected {\n    node [shape=box, style = filled, color=black, fillcolor = \"#fc8d59\n\"];\n\t\tlabel = \"Rejected \n (n=1700)\";\n        style=dashed;\n        fontname = \"helvetica-bold\";\n        color=\"#625a5a\"\n                \n\t\tb0[label = \"Refused\"]\n        b1[label = \"Withdrawn\"]\n        b2[label = \"No Application \\n Made\"]\n        b3[label = \"Abandoned\"];\n\n\n        }\n        \na2 -> s0 -> b0\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 5: An example of subgraphs used to highlight grouping within a dataset
+</p>
+</div>
+</div>
+<div id="further-resources" class="section level2">
+<h2>Further Resources</h2>
+<p>If you want to read the full documentation of the package you should check out the website here: <a href="http://rich-iannone.github.io/DiagrammeR/" class="uri">http://rich-iannone.github.io/DiagrammeR/</a> . The features extend well beyond what is explained within this brief post.</p>
+<p>Feel free to share any examples of using it in the comments below!</p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-R-DiagrammeR">
+<p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
+</div>
+</div>
+</div>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Data-driven%20flowcharts%20in%20R%20using%20DiagrammeR&amp;url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f&amp;title=Data-driven%20flowcharts%20in%20R%20using%20DiagrammeR" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Data-driven%20flowcharts%20in%20R%20using%20DiagrammeR&amp;body=Check out this site https%3a%2f%2fmikeyharper.uk%2fflowcharts-in-r-using-diagrammer%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikeyharper.uk/migrating-to-blogdown/" title="Migrating blog to Blogdown">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//mikeyharper.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+   
+   <hr>
+   
+   <div class="section">
+      </br>
+      <div class="user one"></div>
+      </br>
+      <header>
+         <div class="title" style="text-align:center; font-size=80%"><b>About Me</b></div>
+      </header>
+        </br>
+      <p padding-left: 50px> Data scientist with interests in data visualisation, machine learning, geospatial modelling, energy and international development.<br><a href="https://mikeyharper.uk/about/">Read More...</a></p>
+      <div style="margin-left: 1.2em; line-height: 2; font-size: 120%">
+         <a href="https://goo.gl/jpE8an"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp Southampton</a> <br /> 
+         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i>&nbsp Stackoverflow</a> <br /> 
+         <a href="https://github.com/mikey-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br /> 
+         <a href="https://www.facebook.com/mikey.harper"><i class="fa fa-facebook-official" style="color:#3b5998;"></i>&nbsp Facebook</a> <br />
+         <a href="https://www.linkedin.com/in/mikeyharper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp LinkedIn</a> <br /> 
+         <a href="https://twitter.com/@MikeyLHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp Twitter</a> <br /> 
+      </div>
+   </div>
+</div>
+<hr>
+
+<div class="section">
+   <header>
+      <div class="title"><b>Latest Posts</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li>
+            <a href="https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/">Data-driven flowcharts in R using DiagrammeR</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/migrating-to-blogdown/">Migrating blog to Blogdown</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/mapping-uk-local-political-data/">Mapping UK Local Political Data</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/gis-in-r/">Using R for Geospatial Data Analysis</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/wind-turbinesuccess/">Identifying key influences for planning acceptance of onshore wind turbines</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/cycling-lands-end-to-john-o-groats/">Cycling Lands End to John O&#39;Groats</a>
+         </li>
+         
+      </ul>
+   </div>
+</div>
+<hr>
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Tag</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="https://mikeyharper.uk/Tags/r">r</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/gis">gis</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/presentation">presentation</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/blogdown">blogdown</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/cycling">cycling</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/data">data</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/diagrammer">diagrammer</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/mapping">mapping</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/maps">maps</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Tags/r-markdown">r-markdown</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Topic</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="https://mikeyharper.uk/Topics/technical">technical</a></li>
+         
+         <li><a href="https://mikeyharper.uk/Topics/personal">personal</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+<hr>
+</div>
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="https://github.com/mikey-harper/blog">Hosted on Github</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  code with <i class='fa fa-heart'></i>
+
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  &copy; 2018 Copyright Mikey Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="https://mikeyharper.uk/js/jquery.min.js"></script>
+<script src="https://mikeyharper.uk/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikeyharper.uk/js/highlight.pack.js"></script>
+<script src="https://mikeyharper.uk/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

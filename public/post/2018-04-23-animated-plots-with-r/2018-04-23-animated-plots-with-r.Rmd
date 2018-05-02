@@ -1,0 +1,138 @@
+---
+title: Animated Plots with R
+author: Mikey Harper
+date: '2018-04-23'
+slug: animated-plots-with-r
+draft: true
+categories:
+  - GIS
+  - R
+  - Technical
+tags:
+  - R
+---
+
+
+
+```{r setup, include=FALSE}
+library(RCurl)
+library(animation)
+library(tidyverse)
+
+knitr::opts_chunk$set(eval = FALSE)
+
+# Load Data from Gist
+REPD <- readr::read_csv(getURL("https://gist.githubusercontent.com/mikey-harper/abc79ce4ec63644324aa2e6134ddf1ac/raw/86cd7513b7dfb56005e1fe0a7e98dc6ecffb74f4/REPD.csv"))
+
+```
+
+
+
+```{r}
+# A summary table was made to convert the summary status
+planning_summary <- read.table(text = "
+'Status'	                    'Status Summary'
+'Application Approved'	      'Approved'
+'Application Refused'	        'Refused/Abandoned'
+'Application Submitted'	      'Submitted'
+'Application Withdrawn'	      'Refused/Abandoned'
+'Connection Applied For'	    'Submitted'
+'No Application Made'	        'Refused/Abandoned'
+'No Application'              'Required	Approved'
+'Abandoned'	                  'Refused/Abandoned'
+'Awaiting Construction'	      'Approved'
+'Decommissioned'	            'Approved'
+'Operational'	                'Approved'
+'Planning Permission Expired'	'Approved'
+'Under Construction'	        'Approved'
+", header = TRUE, stringsAsFactors = FALSE)
+
+```
+
+
+
+
+```{r}
+REPD_wind <-
+  REPD %>%
+  filter(Country != "Northern Ireland") %>%
+  merge(planning_summary, by.x = "Development Status (short)", by.y = "Status") %>%
+  mutate(date = lubridate::dmy(`Planning Application Submitted`),
+         year = lubridate::year(date)) %>%
+  filter(`Technology Type` == "Wind Onshore")
+
+```
+
+
+
+```{r}
+
+year_filt <- 2018
+
+df <- REPD_wind %>% 
+  filter(year < year_filt)
+
+df_highlight <- REPD_wind %>%
+  filter(year == year_filt)
+
+  ggplot(data, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+  geom_point(data = df) +
+  geom_point(data = df_highlight, colour = "gold") +
+  coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
+    labs(title = year_filt)
+  
+  
+  
+  
+ggplot(df, aes(x = year, y = `Installed Capacity (MWelec)`)) +
+  geom_col()
+
+```
+
+
+
+```{r}
+
+library(animation)
+ani.options(convert = 'C:\\ImageMagick-7.0.7-Q16\\magick.exe')
+
+
+library(ggmap)
+
+base <- get_map("United Kingdom", zoom = 5)
+
+ggmap(base)
+
+saveGIF({
+  for (i in 1995:2018){
+    
+    year_filt <- i
+    
+    df <- REPD_wind %>% 
+      filter(year < year_filt)
+    
+    df_highlight <- REPD_wind %>%
+      filter(year == year_filt)
+    
+    p <- 
+      ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+      geom_point(data = df) +
+      geom_point(data = df_highlight, colour = "gold") +
+      coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
+      labs(title = year_filt)
+    
+    print(p)
+    
+  }
+
+  
+
+  
+}, interval = 0.5)
+
+
+
+
+
+```
+

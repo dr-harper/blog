@@ -1,0 +1,85 @@
+---
+title: Caching with knitr and Rmarkdown
+author: Mikey Harper
+draft: true
+date: '2018-04-19'
+slug: caching-with-knitr-and-rmarkdown
+categories:
+  - R
+  - Technical
+tags:
+  - Reproducible Resaerch
+  - R
+---
+
+R Markdown is fantastic tool to 
+
+
+## Caching
+
+It can slow things does if these have to run large computations within your analysis. For example, you may have a 
+
+## Invalidating Cache
+
+One limitation which can create problems with caching is that it is 
+
+
+https://stackoverflow.com/q/18376008/7347699
+
+As an example, if we have the basic R Markdown file
+
+````markdown
+---
+output: pdf_document
+---
+
+`r ''```{r}
+z <- "Title 5"
+y <- "Some Text"
+x <- "x2"
+```
+
+
+`r ''```{r cars2, cache = TRUE, cache.whatever= list(x, y, z)}
+plot(cars, main = z, xlab = x, ylab = y)
+```
+````
+
+
+
+````markdown
+---
+output: pdf_document
+---
+
+`r ''```{r}
+z <- "Title 5"
+y <- "Some Text"
+x <- "x2"
+```
+
+
+`r ''```{r cars2, cache = TRUE, cache.whatever= list(x, y, z)}
+plot(cars, main = z, xlab = x, ylab = y)
+```
+````
+
+
+
+---
+output: pdf_document
+---
+
+```{r}
+z <- "Title 5"
+y <- "Some Text"
+x <- "x2"
+```
+
+``
+
+```{r cars2, cache = TRUE, cache.whatever= list(x, y, z)}
+plot(cars, main = z, xlab = x, ylab = y)
+```
+
+

@@ -9,4 +9,18 @@ toc = true
 
 ## About Me
 
-Coming soon...
+I am a currently
+
+
+## Background
+
+I have a MEng Civil Engineering at the University of Southampton, graduating in 2014. I studied a PhD in renewable energy modelling, and completed in January 208.
+
+
+## Research Interests
+
+- Renewable Energy
+- Geospatial Modelling
+- International Development
+- Data Analysis
+- Reproducible Research

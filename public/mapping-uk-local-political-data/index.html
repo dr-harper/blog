@@ -49,7 +49,7 @@
 <link rel="canonical" href="https://mikeyharper.uk/mapping-uk-local-political-data/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikeyharper.uk/touch-icon-144-precomposed.png">
 <link rel="icon" href="https://mikeyharper.uk/favicon.png">
-<meta name="generator" content="Hugo 0.37" />
+<meta name="generator" content="Hugo 0.36.1" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -163,7 +163,7 @@
     &middot; by Mikey Harper
   
   &middot; Read in about 6 min
-  &middot; (1233 words)
+  &middot; (1224 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikeyharper.uk%2fmapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
@@ -210,7 +210,8 @@
 <br>
 
 <div class="content", style = "margin-top:10px">
-  <p>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. This provides a technical overview of the data. The R code used to create the analysis is available through GitHub <a href="https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_code/Political%20Data/PoliticalDataAggregation.R">here</a>.</p>
+  <pre class="r"><code>knitr::opts_chunk$set(eval=FALSE)</code></pre>
+<p>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. This provides a technical overview of the data. The R code used to create the analysis is available through GitHub <a href="https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_code/Political%20Data/PoliticalDataAggregation.R">here</a>.</p>
 <div id="setup" class="section level2">
 <h2>Setup</h2>
 <p>R was used to run the analysis. The code uses a number of packages to process the data:</p>
@@ -235,9 +236,8 @@ library(sf)</code></pre>
 download.file(url = &quot;https://borders.ukdataservice.ac.uk/ukborders/easy_download/prebuilt/shape/infuse_dist_lyr_2011_clipped.zip&quot;, 
               destfile = &quot;infuse_dist_lyr_2011_clipped.zip&quot;)
 unzip(zipfile = &quot;infuse_dist_lyr_2011_clipped.zip&quot;, exdir = &quot;infuse_dist_lyr_2011_clipped&quot;)
-file.remove(&quot;infuse_dist_lyr_2011_clipped.zip&quot;)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>boundaries &lt;- shapefile(&quot;infuse_dist_lyr_2011_clipped/infuse_dist_lyr_2011_clipped&quot;)</code></pre>
+file.remove(&quot;infuse_dist_lyr_2011_clipped.zip&quot;)
+boundaries &lt;- shapefile(&quot;infuse_dist_lyr_2011_clipped/infuse_dist_lyr_2011_clipped&quot;)</code></pre>
 <p>If you are not interested in low resolution results, you may want to simplify the input boundary to reduce it from the file size. The following code uses the <code>gSimplify</code> function from <code>rgeos</code> to reduce the file size to around 5Mb.</p>
 <pre class="r"><code># Optional simplify of rasters. This is useful if you want to reduce the size of the shapefile to make it easier to plot
 boundaries_sim &lt;- gSimplify(boundaries, tol=150, topologyPreserve=TRUE)
@@ -307,9 +307,9 @@ year_sub &lt;- filter(data_council_long_matched, Year == 2015)</code></pre>
 <pre class="r"><code># Join the political data with the shapefile and save 
 variable_sub &lt;- data_council_long_matched[,c(18, 4, 15)] # Extracts the lib dem share
 
-data_wide &lt;- acast(variable_sub, Boundary ~ Year, value.var = &quot;LD_share&quot;) %&gt;% as.data.frame() %&gt;% mutate(region = rownames(.))</code></pre>
-<pre><code>## Aggregation function missing: defaulting to length</code></pre>
-<pre class="r"><code># Merge data with shapefile
+data_wide &lt;- acast(variable_sub, Boundary ~ Year, value.var = &quot;LD_share&quot;) %&gt;% as.data.frame() %&gt;% mutate(region = rownames(.))
+
+# Merge data with shapefile
 boundaries &lt;- merge(boundaries, year_sub, by.x = &quot;geo_label&quot;, by.y=&quot;Boundary&quot;)
 # To save the output as a shapefile, you can use the shapefile() function</code></pre>
 </div>
@@ -331,7 +331,6 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
   scale_fill_manual(values = c(&quot;Lab_share&quot; = &quot;orangered2&quot;, &quot;Con_share&quot; = &quot;steelblue3&quot;, &quot;LD_share&quot; = &quot;yellow3&quot;, &quot;Oth_share&quot; = &quot;grey&quot;)) +
   theme_minimal() +
   theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="https://mikeyharper.uk/post/2017-11-07-mapping-uk-local-political/2017-11-07-mapping-uk-local-political-data_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="geospatial-plot" class="section level2">
 <h2>Geospatial Plot</h2>
@@ -471,6 +470,10 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
       <ul>
          
          <li>
+            <a href="https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/">Data-driven flowcharts in R using DiagrammeR</a>
+         </li>
+         
+         <li>
             <a href="https://mikeyharper.uk/migrating-to-blogdown/">Migrating blog to Blogdown</a>
          </li>
          
@@ -520,13 +523,13 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
          
          <li><a href="https://mikeyharper.uk/Tags/data">data</a></li>
          
+         <li><a href="https://mikeyharper.uk/Tags/diagrammer">diagrammer</a></li>
+         
          <li><a href="https://mikeyharper.uk/Tags/mapping">mapping</a></li>
          
          <li><a href="https://mikeyharper.uk/Tags/maps">maps</a></li>
          
-         <li><a href="https://mikeyharper.uk/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
-         
-         <li><a href="https://mikeyharper.uk/Tags/web">web</a></li>
+         <li><a href="https://mikeyharper.uk/Tags/r-markdown">r-markdown</a></li>
          
       </ul>
    </div>
