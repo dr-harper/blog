@@ -9,13 +9,11 @@ toc = true
 
 ## About Me
 
-I am a currently
-
+I am a currently working as a research assist at the University of Southampton as part of the Sustainable Energy Research Group. My work primarily focusses on the analysis of large datasets and the geospatial modelling of renewable energy technologies.
 
 ## Background
 
-I have a MEng Civil Engineering at the University of Southampton, graduating in 2014. I studied a PhD in renewable energy modelling, and completed in January 208.
-
+I have a MEng Civil Engineering at the University of Southampton, graduating in 2014. I studied a PhD in renewable energy modelling, and completed in January 2018.
 
 ## Research Interests
 
@@ -24,3 +22,4 @@ I have a MEng Civil Engineering at the University of Southampton, graduating in 
 - International Development
 - Data Analysis
 - Reproducible Research
+- Machine Learning
