@@ -23,6 +23,7 @@ knitr::write_bib("DiagrammeR", file = "bib.bib")
 ```
 
 <meta property="og:image" content="https://i.imgur.com/hPZn2K6.jpg"/>
+<meta name="twitter:card" content="summary_large_image">
 
 
 The old cliché goes that "*A picture is worth a thousand words*". This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail. 
