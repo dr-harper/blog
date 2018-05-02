@@ -110,7 +110,7 @@ showRightSidebar = true
 highlight = "custom"
 
 # Google Analytics.
-googleAnalytics = "Your Google Analytics tracking code"
+googleAnalytics = "UA-109605445-1"
 
 # Sidebar social links.
 github = "mikey-harper" # Your Github profile ID
