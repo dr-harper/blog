@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Animated Plots with R  &middot; Mikey Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="R, ">
+
+
+<meta property="og:title" content="Animated Plots with R  &middot; Mikey Harper ">
+<meta property="og:site_name" content="Mikey Harper"/>
+<meta property="og:url" content="/animated-plots-with-r/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-04-23T00:00:00Z" />
+<meta property="og:article:modified_time" content="2018-04-23T00:00:00Z" />
+
+
+
+  
+    
+<meta property="og:article:tag" content="R">
+    
+  
+
+  
+
+  
+
+
+
+<link rel="canonical" href="/animated-plots-with-r/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.36.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+<link rel="stylesheet" href="/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="/css/highlight/custom.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="/">
+          Mikey Harper
+          
+          
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="/" >
+                <i class='fa fa-home'></i>&nbsp
+                 Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/post/" >
+                <i class='fa fa-pencil'></i>&nbsp
+                Blog
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/about/" >
+                <i class='fa fa-user'></i>&nbsp
+                About
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/showcase" >
+                <i class='fa fa-trophy'></i>&nbsp
+                Showcase
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+
+
+<style>.bigbox{margin-top: 60px}</style>
+
+<div class="bigbox"></div>
+<img src="/kenya.jpg" alt="Mountain View">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>DRAFT :: Animated Plots with R
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-04-23">23 Apr, 2018</time>
+</small>
+
+
+  <small>
+    &middot; by Mikey Harper
+  
+  &middot; Read in about 2 min
+  &middot; (230 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Animated%20Plots%20with%20R&amp;url=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fanimated-plots-with-r%2f&amp;title=Animated%20Plots%20with%20R" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Animated%20Plots%20with%20R&amp;body=Check out this site %2fanimated-plots-with-r%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      
+
+<br>
+
+<div class="content", style = "margin-top:10px">
+  <pre class="r"><code># A summary table was made to convert the summary status
+planning_summary &lt;- read.table(text = &quot;
+&#39;Status&#39;                        &#39;Status Summary&#39;
+&#39;Application Approved&#39;        &#39;Approved&#39;
+&#39;Application Refused&#39;           &#39;Refused/Abandoned&#39;
+&#39;Application Submitted&#39;       &#39;Submitted&#39;
+&#39;Application Withdrawn&#39;       &#39;Refused/Abandoned&#39;
+&#39;Connection Applied For&#39;        &#39;Submitted&#39;
+&#39;No Application Made&#39;           &#39;Refused/Abandoned&#39;
+&#39;No Application&#39;              &#39;Required Approved&#39;
+&#39;Abandoned&#39;                   &#39;Refused/Abandoned&#39;
+&#39;Awaiting Construction&#39;       &#39;Approved&#39;
+&#39;Decommissioned&#39;                &#39;Approved&#39;
+&#39;Operational&#39;                   &#39;Approved&#39;
+&#39;Planning Permission Expired&#39;   &#39;Approved&#39;
+&#39;Under Construction&#39;            &#39;Approved&#39;
+&quot;, header = TRUE, stringsAsFactors = FALSE)</code></pre>
+<pre class="r"><code>REPD_wind &lt;-
+  REPD %&gt;%
+  filter(Country != &quot;Northern Ireland&quot;) %&gt;%
+  merge(planning_summary, by.x = &quot;Development Status (short)&quot;, by.y = &quot;Status&quot;) %&gt;%
+  mutate(date = lubridate::dmy(`Planning Application Submitted`),
+         year = lubridate::year(date)) %&gt;%
+  filter(`Technology Type` == &quot;Wind Onshore&quot;)</code></pre>
+<pre class="r"><code>year_filt &lt;- 2018
+
+df &lt;- REPD_wind %&gt;% 
+  filter(year &lt; year_filt)
+
+df_highlight &lt;- REPD_wind %&gt;%
+  filter(year == year_filt)
+
+  ggplot(data, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+  geom_point(data = df) +
+  geom_point(data = df_highlight, colour = &quot;gold&quot;) +
+  coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
+    labs(title = year_filt)
+  
+  
+  
+  
+ggplot(df, aes(x = year, y = `Installed Capacity (MWelec)`)) +
+  geom_col()</code></pre>
+<pre class="r"><code>library(animation)
+ani.options(convert = &#39;C:\\ImageMagick-7.0.7-Q16\\magick.exe&#39;)
+
+
+library(ggmap)
+
+base &lt;- get_map(&quot;United Kingdom&quot;, zoom = 5)
+
+ggmap(base)
+
+saveGIF({
+  for (i in 1995:2018){
+    
+    year_filt &lt;- i
+    
+    df &lt;- REPD_wind %&gt;% 
+      filter(year &lt; year_filt)
+    
+    df_highlight &lt;- REPD_wind %&gt;%
+      filter(year == year_filt)
+    
+    p &lt;- 
+      ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+      geom_point(data = df) +
+      geom_point(data = df_highlight, colour = &quot;gold&quot;) +
+      coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
+      labs(title = year_filt)
+    
+    print(p)
+    
+  }
+
+  
+
+  
+}, interval = 0.5)</code></pre>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Animated%20Plots%20with%20R&amp;url=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fanimated-plots-with-r%2f&amp;title=Animated%20Plots%20with%20R" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Animated%20Plots%20with%20R&amp;body=Check out this site %2fanimated-plots-with-r%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="/caching-with-knitr-and-rmarkdown/" title="Caching with knitr and Rmarkdown">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="/flowcharts-in-r-using-diagrammer/" title="Data-driven flowcharts in R using DiagrammeR">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//mikeyharper.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+   
+   <hr>
+   
+   <div class="section">
+      </br>
+      <div class="user one"></div>
+      </br>
+      <header>
+         <div class="title" style="text-align:center; font-size=80%"><b>About Me</b></div>
+      </header>
+        </br>
+      <p padding-left: 50px> Data scientist with interests in data visualisation, machine learning, geospatial modelling, energy and international development.<br><a href="/about/">Read More...</a></p>
+      <div style="margin-left: 1.2em; line-height: 2; font-size: 120%">
+         <a href="https://goo.gl/jpE8an"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp Southampton</a> <br /> 
+         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i>&nbsp Stackoverflow</a> <br /> 
+         <a href="https://github.com/mikey-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br /> 
+         <a href="https://www.facebook.com/mikey.harper"><i class="fa fa-facebook-official" style="color:#3b5998;"></i>&nbsp Facebook</a> <br />
+         <a href="https://www.linkedin.com/in/mikeyharper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp LinkedIn</a> <br /> 
+         <a href="https://twitter.com/@MikeyLHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp Twitter</a> <br /> 
+      </div>
+   </div>
+</div>
+<hr>
+
+<div class="section">
+   <header>
+      <div class="title"><b>Latest Posts</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li>
+            <a href="/flowcharts-in-r-using-diagrammer/">Data-driven flowcharts in R using DiagrammeR</a>
+         </li>
+         
+         <li>
+            <a href="/animated-plots-with-r/">Animated Plots with R</a>
+         </li>
+         
+         <li>
+            <a href="/caching-with-knitr-and-rmarkdown/">Caching with knitr and Rmarkdown</a>
+         </li>
+         
+         <li>
+            <a href="/migrating-to-blogdown/">Migrating blog to Blogdown</a>
+         </li>
+         
+         <li>
+            <a href="/calculating-neighbouring-polygons-in-r/">Calculating Neighbouring Polygons in R</a>
+         </li>
+         
+         <li>
+            <a href="/mapping-uk-local-political-data/">Mapping UK Local Political Data</a>
+         </li>
+         
+         <li>
+            <a href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
+         </li>
+         
+         <li>
+            <a href="/gis-in-r/">Using R for Geospatial Data Analysis</a>
+         </li>
+         
+         <li>
+            <a href="/wind-turbinesuccess/">Identifying key influences for planning acceptance of onshore wind turbines</a>
+         </li>
+         
+         <li>
+            <a href="/cycling-lands-end-to-john-o-groats/">Cycling Lands End to John O&#39;Groats</a>
+         </li>
+         
+      </ul>
+   </div>
+</div>
+<hr>
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Tag</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="/Tags/r">r</a></li>
+         
+         <li><a href="/Tags/gis">gis</a></li>
+         
+         <li><a href="/Tags/presentation">presentation</a></li>
+         
+         <li><a href="/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
+         
+         <li><a href="/Tags/blogdown">blogdown</a></li>
+         
+         <li><a href="/Tags/cycling">cycling</a></li>
+         
+         <li><a href="/Tags/data">data</a></li>
+         
+         <li><a href="/Tags/diagrammer">diagrammer</a></li>
+         
+         <li><a href="/Tags/mapping">mapping</a></li>
+         
+         <li><a href="/Tags/maps">maps</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Topic</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="/Topics/technical">technical</a></li>
+         
+         <li><a href="/Topics/personal">personal</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+<hr>
+</div>
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="https://github.com/mikey-harper/blog">Hosted on Github</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  code with <i class='fa fa-heart'></i>
+
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  &copy; 2018 Copyright Mikey Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
