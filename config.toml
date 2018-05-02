@@ -43,6 +43,11 @@ topic = "Topics"
 name = "Mikey Harper"
 email = "m.harper@outlook.com"
 
+[twitter]
+  card = "summary_large_image"
+  site = "@MikeyLHarper"
+  creator = "@MikeyLHarper"
+
 #
 # All parameters below here are optional and can be mixed and matched.
 #
