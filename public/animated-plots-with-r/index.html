@@ -184,7 +184,7 @@
     &middot; by Mikey Harper
   
   &middot; Read in about 4 min
-  &middot; (653 words)
+  &middot; (814 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
@@ -230,7 +230,7 @@
 
 <div class="content", style = "margin-top:10px">
   <p><meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopmentSummary.gif"/> <meta name="twitter:card" content="summary_large_image"></p>
-<p>Data scientists are blessed with a range of software tools which they can use to visualise results, and allow users to interact with results. Although many people will commonly use static graphs like <strong>ggplot2</strong> <span class="citation">(Wickham and Chang 2018)</span>, animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
+<p>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R <strong>ggplot2</strong> <span class="citation">(Wickham and Chang 2018)</span> has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
 <p>In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</p>
 <div id="example-data" class="section level2">
 <h2>Example Data</h2>
@@ -239,14 +239,38 @@
 </div>
 <div id="example-1-renewable-energy-locations" class="section level2">
 <h2>Example 1: Renewable Energy Locations</h2>
-<p>The <a href="http://ggplot2.tidyverse.org/reference/facet_grid.html">ggplot facet</a> is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results as a single plot, but rotate through each of the layers avaialble. For example, using the example renewable energy dataset, we can display the locations of each renewable energy technology in the UK. The results are shown in Figure <a href="#fig:animatedMap">1</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:animatedMap"></span>
-<img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif" alt="An Animated Map" width="60%" />
+<p>The <a href="http://ggplot2.tidyverse.org/reference/facet_grid.html">ggplot facet</a> is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results as a single plot, but rotate through each of the layers avaialble. For example, using the example renewable energy dataset, we can display the locations of each renewable energy technology in the UK.</p>
+<p>If you are using <strong>ggplot</strong>, and only want to create an animated plot containing a single figure, I would recommend the <strong>gganimate</strong> <span class="citation">(c)) 2016)</span> package. It provides a convenient wrapper to the <strong>animation</strong> package, and animated plots can be created by adding a <code>frame</code> variable to a ggplot layer, and then using the <code>gganimate</code> function to call the plot.</p>
+<pre class="r"><code>library(gganimate)
+
+# Create gif
+REPD_tech &lt;- 
+  REPD %&gt;%
+  filter(`Status.Summary` == &quot;Approved&quot;)
+
+p &lt;- 
+    ggplot() +
+    geom_polygon(data=UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
+    geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, frame = `Technology Type`, fill = `Technology Type`),
+               size = 5, shape = 21, alpha = 0.8) +
+    coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text = element_blank(),
+          axis.title = element_blank(),
+          axis.ticks = element_blank(),
+          panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;),
+          plot.title = element_text(hjust = 0, size = 20))
+
+# Save to file
+gganimate(p, &quot;renewableTech.gif&quot;)</code></pre>
+<p>The results are shown in Figure <a href="#fig:animatedMap">1</a>.</p>
+<div class="figure"><span id="fig:animatedMap"></span>
+<img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif" alt="An Animated Map of Renewable Energy Technologies in the UK" width="60%" />
 <p class="caption">
-Figure 1: An Animated Map
+Figure 1: An Animated Map of Renewable Energy Technologies in the UK
 </p>
 </div>
-<p>If want to use <strong>ggplot</strong>, and only want to animate a single graph, then <strong>gganminate</strong> <span class="citation">(c)) 2016)</span> may be worth exploring, as it provides a simplified way of constructing the GIF.</p>
 </div>
 <div id="example-2-development-of-onshore-wind" class="section level2">
 <h2>Example 2: Development of Onshore Wind</h2>
@@ -256,6 +280,7 @@ Figure 1: An Animated Map
 <li>A bar plot shows the total installed capacity of wind turbines within the specified year</li>
 <li>A timeline is plot along the bottom to show the progress through the years.</li>
 </ol>
+<p>As we have used three separate graphs, it is not possible to use <strong>gganimate</strong>.</p>
 <p>The final result is shown in Figure <a href="#fig:animatedPlot">2</a>. To organise the layout, I have used the fantastic <strong>patchwork</strong> <span class="citation">(Pedersen 2017)</span>, which makes it really easy to align multiple ggplot objects. I would recommend checking out the package <a href="https://github.com/thomasp85/patchwork">here</a>.</p>
 <div class="figure"><span id="fig:animatedPlot"></span>
 <img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif" alt="Complete Animated Plot" width="100%" />

@@ -21,7 +21,6 @@ bibliography: bib.bib
 # May need to install patchwork
 # devtools::install_github("thomasp85/patchwork")
 
-library(RCurl)
 library(animation)
 library(tidyverse)
 library(patchwork)
@@ -40,7 +39,7 @@ knitr::opts_chunk$set(eval = TRUE, echo = FALSE, message = FALSE, warning = FALS
 knitr::write_bib(x = c("animation", "ggplot2", "patchwork", "gganimate"), file = "bib.bib")
 ```
 
-Data scientists are blessed with a range of software tools which they can use to visualise results, and allow users to interact with results. Although many people will commonly use static graphs like **ggplot2** [@R-ggplot2], animated plots can be an effective way to communicate results, and there are few better examples than the use of them in [the now famous TED talk by Hans Rosling](https://www.youtube.com/watch?v=hVimVzgtD6w).
+Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R **ggplot2** [@R-ggplot2] has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in [the now famous TED talk by Hans Rosling](https://www.youtube.com/watch?v=hVimVzgtD6w).
 
 In this post, I wanted to show an example of how animated plots can be used to convey geospatial data. 
 
@@ -50,7 +49,7 @@ A lot of my research is around renewable energy, in particularly modelling onsho
 
 ```{r message=FALSE, warning=FALSE}
 # Load Data from Gist
-REPD <- readr::read_csv(getURL("https://gist.githubusercontent.com/mikey-harper/abc79ce4ec63644324aa2e6134ddf1ac/raw/86cd7513b7dfb56005e1fe0a7e98dc6ecffb74f4/REPD.csv"))
+REPD <- readr::read_csv(RCurl::getURL("https://gist.githubusercontent.com/mikey-harper/abc79ce4ec63644324aa2e6134ddf1ac/raw/86cd7513b7dfb56005e1fe0a7e98dc6ecffb74f4/REPD.csv"))
 
 # A summary table was made to convert the summary status
 planning_summary <- read.table(text = "
@@ -91,55 +90,41 @@ UK <-  raster::getData('GADM', country='GBR', level = 1) %>%
 
 ## Example 1: Renewable Energy Locations
 
-The [ggplot facet](http://ggplot2.tidyverse.org/reference/facet_grid.html) is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results as a single plot, but rotate through each of the layers avaialble. For example, using the example renewable energy dataset, we can display the locations of each renewable energy technology in the UK. The results are shown in Figure \@ref(fig:animatedMap).
+The [ggplot facet](http://ggplot2.tidyverse.org/reference/facet_grid.html) is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results as a single plot, but rotate through each of the layers avaialble. For example, using the example renewable energy dataset, we can display the locations of each renewable energy technology in the UK. 
 
-```{r, include = FALSE}
+If you are using **ggplot**, and only want to create an animated plot containing a single figure, I would recommend the **gganimate** [@R-gganimate] package. It provides a convenient wrapper to the **animation** package, and animated plots can be created by adding a `frame` variable to a ggplot layer, and then using the `gganimate` function to call the plot. 
+
+```{r, echo = TRUE}
+library(gganimate)
+
 # Create gif
-
 REPD_tech <- 
   REPD %>%
   filter(`Status.Summary` == "Approved")
 
-saveGIF({
-  for (i in unique(REPD$`Technology Type`)){
-  
-  df <- REPD_tech %>%
-    filter(`Technology Type` == i)
-    
-  p <- 
-    ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-    
-    # Plot Basemap
+p <- 
+    ggplot() +
     geom_polygon(data=UK, aes(long, lat, group = group), fill = "#528076") +
-    
-    # Highlight Reference Year
-    geom_point(data = df, 
-               fill = "#176a90", size = 5, shape = 21, alpha = 0.8) +
-    
-    # Fine Tune the Plot
+    geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, frame = `Technology Type`, fill = `Technology Type`),
+               size = 5, shape = 21, alpha = 0.8) +
     coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
-    labs(title = i) +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
           axis.text = element_blank(),
           axis.title = element_blank(),
           axis.ticks = element_blank(),
           panel.background = element_rect(fill = "grey99", colour = "grey80"),
-          plot.title = element_text(hjust = 0.5, size = 20))
-  
-  print(p)
-  }
+          plot.title = element_text(hjust = 0, size = 20))
 
-}, movie.name = "renewableTech.gif",
-  interval = 2,  ani.width = 750,  ani.height = 1000
-)
+# Save to file
+gganimate(p, "renewableTech.gif")
 ```
 
-```{r animatedMap, fig.cap="An Animated Map", out.width="60%", fig.align='center'}
-knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif", dpi = NA)
-```
+The results are shown in Figure \@ref(fig:animatedMap).
 
-If want to use **ggplot**, and only want to animate a single graph, then **gganminate** [@R-gganimate] may be worth exploring, as it provides a simplified way of constructing the GIF.
+```{r animatedMap, fig.cap="An Animated Map of Renewable Energy Technologies in the UK", out.width = "60%"}
+knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif")
+```
 
 ## Example 2: Development of Onshore Wind
 
@@ -149,10 +134,12 @@ Time-series data can be interesting to plot using an animation. For example, we 
 2. A bar plot shows the total installed capacity of wind turbines within the specified year
 3. A timeline is plot along the bottom to show the progress through the years.
 
+As we have used three separate graphs, it is not possible to use **gganimate**.
+
 The final result is shown in Figure \@ref(fig:animatedPlot). To organise the layout, I have used the fantastic **patchwork** [@R-patchwork], which makes it really easy to align multiple ggplot objects. I would recommend checking out the package [here](https://github.com/thomasp85/patchwork).
 
 
-```{r, include = FALSE}
+```{r, include = FALSE, echo = TRUE}
 
 # Only show constructed wind turbines
 REPD_wind <-

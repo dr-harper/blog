@@ -20,8 +20,7 @@
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
       <guid>/animated-plots-with-r/</guid>
-      <description>Data scientists are blessed with a range of software tools which they can use to visualise results, and allow users to interact with results. Although many people will commonly use static graphs like ggplot2 (Wickham and Chang 2018), animated plots can be an effective way to communicate results, and there are few better examples than the use of them in the now famous TED talk by Hans Rosling.
-In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</description>
+      <description>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R ggplot2 (Wickham and Chang 2018) has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in the now famous TED talk by Hans Rosling.</description>
     </item>
     
   </channel>
