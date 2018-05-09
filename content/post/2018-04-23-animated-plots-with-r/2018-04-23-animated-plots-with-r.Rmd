@@ -77,7 +77,7 @@ REPD <-
          `Installed Capacity (MWelec)` = as.numeric(`Installed Capacity (MWelec)`))
 ```
 
-What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the *animation* [@R-animation] package can be used to create such an animated GIF. You will need to install [ImageMagick](https://www.imagemagick.org/script/index.php)^[On Windows, be sure to select the "install legacy utilities" option during install: *animation** requires the "convert" utility to operate.)] for this to work.
+What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the **animation** [@R-animation] package can be used to create such an animated GIF. You will need to install [ImageMagick](https://www.imagemagick.org/script/index.php)^[On Windows, be sure to select the "install legacy utilities" option during install: **animation** requires the "convert" utility to operate.)] for this to work.
 
 ```{r loadBoundaries}
 # Download the Outline of the UK
@@ -150,7 +150,7 @@ REPD_wind <-
   filter(Status.Summary == "Approved")
 
 # Create gif
-saveGIF({
+invisible(saveGIF({
   for (i in 1990:2018){
     
   p <- 
@@ -200,7 +200,7 @@ saveGIF({
   }
 
 
-}, movie.name = "windDevelopment.gif", interval = 1, ani.width = 1000, ani.height = 700)
+}, movie.name = "windDevelopment.gif", interval = 1, ani.width = 1000, ani.height = 700))
 ```
 
 ```{r animatedPlot, out.width = "100%", fig.cap="Complete Animated Plot"}

@@ -22,7 +22,7 @@ bibliography: bib.bib
 <div id="example-data" class="section level2">
 <h2>Example Data</h2>
 <p>A lot of my research is around renewable energy, in particularly modelling onshore wind energy within the UK. Fortunately, the UK is great for open data, and the UK government record <a href="https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract">all renewable energy planning applications</a>. Over 5000 projects are recorded, providing planning status, technology type, and most crucially for this example, the location of the project.</p>
-<p>What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the <em>animation</em> <span class="citation">(Xie 2017)</span> package can be used to create such an animated GIF. You will need to install <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> for this to work.</p>
+<p>What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the <strong>animation</strong> <span class="citation">(Xie 2017)</span> package can be used to create such an animated GIF. You will need to install <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> for this to work.</p>
 </div>
 <div id="example-1-renewable-energy-locations" class="section level2">
 <h2>Example 1: Renewable Energy Locations</h2>
@@ -78,7 +78,7 @@ REPD_wind &lt;-
   filter(Status.Summary == &quot;Approved&quot;)
 
 # Create gif
-saveGIF({
+invisible(saveGIF({
   for (i in 1990:2018){
     
   p &lt;- 
@@ -128,8 +128,7 @@ saveGIF({
   }
 
 
-}, movie.name = &quot;windDevelopment.gif&quot;, interval = 1, ani.width = 1000, ani.height = 700)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
+}, movie.name = &quot;windDevelopment.gif&quot;, interval = 1, ani.width = 1000, ani.height = 700))</code></pre>
 <div class="figure"><span id="fig:animatedPlot"></span>
 <img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif" alt="Complete Animated Plot" width="100%" />
 <p class="caption">
@@ -169,6 +168,6 @@ Figure 2: Complete Animated Plot
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>On Windows, be sure to select the “install legacy utilities” option during install: *animation** requires the “convert” utility to operate.)<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>On Windows, be sure to select the “install legacy utilities” option during install: <strong>animation</strong> requires the “convert” utility to operate.)<a href="#fnref1">↩</a></p></li>
 </ol>
 </div>
