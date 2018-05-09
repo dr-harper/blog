@@ -1,8 +1,9 @@
 ---
 title: Animated Plots with R
 author: Mikey Harper
-date: '2018-04-23'
+date: '2018-05-09'
 slug: animated-plots-with-r
+description: 
 draft: true
 categories:
   - GIS
@@ -10,25 +11,35 @@ categories:
   - Technical
 tags:
   - R
+bibliography: bib.bib
 ---
 
+<meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopmentSummary.gif"/>
+<meta name="twitter:card" content="summary_large_image">
 
-
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 library(RCurl)
 library(animation)
 library(tidyverse)
+library(patchwork)
 
-knitr::opts_chunk$set(eval = FALSE)
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE, fig.align='center')
 
+knitr::write_bib(x = c("animation", "ggplot2", "patchwork", "gganimate"), file = "bib.bib")
+```
+
+Data scientists are blessed with a range of software tools which they can use to visualise results, and allow users to interact with results. Although many people will commonly use static graphs like **ggplot2** [@R-ggplot2], animated plots can be an effective way to communicate results, and there are few better examples than the use of them in [the now famous TED talk by Hans Rosling](https://www.youtube.com/watch?v=hVimVzgtD6w).
+
+In this post, I wanted to show an example of how animated plots can be used to convey geospatial data. 
+
+# Mapping Data
+
+A lot of my research is around renewable energy, in particularly modelling onshore wind energy within the UK. Fortunately, the UK is great for open data, and the UK government record [all renewable energy planning applications](https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract). Over 5000 projects are recorded, providing planning status, technology type, and most crucially for this example, the location of the project.
+
+```{r message=FALSE, warning=FALSE}
 # Load Data from Gist
 REPD <- readr::read_csv(getURL("https://gist.githubusercontent.com/mikey-harper/abc79ce4ec63644324aa2e6134ddf1ac/raw/86cd7513b7dfb56005e1fe0a7e98dc6ecffb74f4/REPD.csv"))
 
-```
-
-
-
-```{r}
 # A summary table was made to convert the summary status
 planning_summary <- read.table(text = "
 'Status'	                    'Status Summary'
@@ -47,92 +58,178 @@ planning_summary <- read.table(text = "
 'Under Construction'	        'Approved'
 ", header = TRUE, stringsAsFactors = FALSE)
 
-```
-
-
-
-
-```{r}
-REPD_wind <-
+REPD <-
   REPD %>%
-  filter(Country != "Northern Ireland") %>%
   merge(planning_summary, by.x = "Development Status (short)", by.y = "Status") %>%
   mutate(date = lubridate::dmy(`Planning Application Submitted`),
-         year = lubridate::year(date)) %>%
-  filter(`Technology Type` == "Wind Onshore")
+         year = lubridate::year(date),
+         `Installed Capacity (MWelec)` = as.numeric(`Installed Capacity (MWelec)`))
 
 ```
 
+What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the *animation* [@R-animation] package can be used to create such an animated gif. You will need to install [ImageMagick](https://www.imagemagick.org/script/index.php)^[On Windows, be sure to select the "install legacy utilities" option during install: gganimate requires the "convert" utility to operate.)] for this to work.
 
-
-```{r}
-
-year_filt <- 2018
-
-df <- REPD_wind %>% 
-  filter(year < year_filt)
-
-df_highlight <- REPD_wind %>%
-  filter(year == year_filt)
-
-  ggplot(data, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-  geom_point(data = df) +
-  geom_point(data = df_highlight, colour = "gold") +
-  coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
-    labs(title = year_filt)
-  
-  
-  
-  
-ggplot(df, aes(x = year, y = `Installed Capacity (MWelec)`)) +
-  geom_col()
-
-```
-
-
-
-```{r}
-
+```{r loadBoundaries}
+# Load packages
 library(animation)
 ani.options(convert = 'C:\\ImageMagick-7.0.7-Q16\\magick.exe')
 
-
-library(ggmap)
-
-base <- get_map("United Kingdom", zoom = 5)
-
-ggmap(base)
-
-saveGIF({
-  for (i in 1995:2018){
-    
-    year_filt <- i
-    
-    df <- REPD_wind %>% 
-      filter(year < year_filt)
-    
-    df_highlight <- REPD_wind %>%
-      filter(year == year_filt)
-    
-    p <- 
-      ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-      geom_point(data = df) +
-      geom_point(data = df_highlight, colour = "gold") +
-      coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
-      labs(title = year_filt)
-    
-    print(p)
-    
-  }
-
-  
-
-  
-}, interval = 0.5)
+library(sp)
+library(raster)
+library(rgeos)
 
 
-
-
-
+# Download the Outline of the UK
+# The polygon is transformed to BNG and simplified to speed plotting
+UK <-  raster::getData('GADM', country='GBR', level = 1) %>%
+  sp::spTransform(CRSobj = CRS("+init=epsg:27700")) %>%
+  gSimplify(tol=1000, topologyPreserve=TRUE) %>%
+  fortify()
 ```
 
+## Example 1: Renewable Energy Locations
+
+The [ggplot facet](http://ggplot2.tidyverse.org/reference/facet_grid.html) is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results, as shown in Figure \@ref(fig:animatedMap)
+
+```{r, include = FALSE}
+# Create gif
+
+REPD_tech <- 
+  REPD %>%
+  filter(`Status.Summary` == "Approved")
+
+saveGIF({
+  for (i in unique(REPD$`Technology Type`)){
+  
+  df <- REPD_tech %>%
+    filter(`Technology Type` == i)
+    
+  p <- 
+    ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+    
+    # Plot Basemap
+    geom_polygon(data=UK, aes(long, lat, group = group), fill = "#528076") +
+    
+    # Highlight Reference Year
+    geom_point(data = df, 
+               fill = "#176a90", size = 5, shape = 21, alpha = 0.8) +
+    
+    # Fine Tune the Plot
+    coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
+    labs(title = i) +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text = element_blank(),
+          axis.title = element_blank(),
+          axis.ticks = element_blank(),
+          panel.background = element_rect(fill = "grey99", colour = "grey80"),
+          plot.title = element_text(hjust = 0.5, size = 20))
+  
+  print(p)
+  }
+
+}, movie.name = "renewableTech.gif",
+  interval = 2,  ani.width = 750,  ani.height = 1000
+)
+```
+
+```{r animatedMap, fig.cap="An Animated Map", out.width="60%", fig.align = "center"}
+knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif")
+```
+
+If want to use **ggplot**, and only want to animate a single graph, then **gganminate** [@R-gganimate] may be worth exploring, as it provides a simplifed way of constructing the Gif.
+
+## Example 2: Development of Onshore Wind
+
+Time-series data can be interesting to plot using an animation. For example, we can view the development of onshore wind within the UK. A three element plot was formed to show the number of wind turbines installed within the United Kingdom each year:
+
+1. A map shows the location of the wind turbine planning application, highlighting the year in focus in gold
+2. A barplot shows the total installed capacity of wind turbines within the specified year
+3. A timeline is plot along the bottom to show the progress through the years.
+
+The final result is shown in Figure \@ref(fig:animatedPlot). To organise the layout, I have used the fantastic **patchwork** [@R-patchwork], which makes it really easy to align multiple ggplot objects. I would recommend checking out the package [here](https://github.com/thomasp85/patchwork).
+
+
+```{r, include = FALSE}
+
+# Only show constructed wind turbines
+REPD_wind <-
+  REPD %>%
+  filter(`Technology Type` == "Wind Onshore") %>%
+  filter(Status.Summary == "Approved")
+
+# Create gif
+saveGIF({
+  for (i in 1990:2018){
+    
+  p <- 
+    ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+    
+    # Plot Basemap
+    geom_polygon(data =UK, aes(long, lat, group = group), fill = "#528076") +
+    
+    # Plot all points before reference year
+    geom_point(data = filter(REPD_wind, year < i), 
+               fill = "#b2d1e0", size = 2, alpha = 0.8, shape = 21) +
+    
+    # Highlight Reference Year
+    geom_point(data = filter(REPD_wind, year == i), 
+               fill = "gold", size = 3, shape = 21) +
+    
+    # Fine Tune the Plot
+    coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
+    labs(title = "Location of Installed Projects") +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text = element_blank(),
+          axis.title = element_blank(),
+          axis.ticks = element_blank(),
+          panel.background = element_rect(fill = "grey99", colour = "grey80"),
+          plot.title = element_text(hjust = 0.5))
+  
+  p2 <- 
+    ggplot(filter(REPD_wind, year <= i), aes(x = year, y = `Installed Capacity (MWelec)`)) +
+    geom_col(aes(fill= year >= i)) +
+    scale_fill_manual(values = c("#b2d1e0","gold")) +
+    scale_x_continuous(limits = c(1990, 2018), expand = c(0,0)) +
+    scale_y_continuous(limits = c(0, 2000), expand = c(0,0)) +
+    labs(title = "Annual Installed Capacity", x = "Year", y = "Installed Capacity (MW)") +
+    theme(legend.position = "none",
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_rect(fill = "grey99", colour = "grey80"),
+          plot.title = element_text(hjust = 0.5))
+  
+  
+  p3 <- ggplot(data = NULL, aes(x = 1990:2018, y = 1)) +
+    geom_line() +
+    geom_point(aes(fill = (x = 1990:2018 > i)), shape = 21, size = 5) +
+    theme_void() +
+    theme(legend.position = "none") +
+    scale_fill_manual(values = c("#b2d1e0","gold")) +
+    geom_label(aes(x = i, y = 1, label = i), vjust = -0.5) +
+    theme(panel.background = element_rect(fill = "grey99", colour = "grey80"))
+    
+  
+  
+  # Print plots using patchwork
+  print(p + p2 - p3 + plot_layout(ncol = 1, heights = c(5, 1)))
+  }
+
+
+}, movie.name = "windDevelopment.gif", interval = 1, ani.width = 1000, ani.height = 700)
+```
+
+```{r animatedPlot, out.width = "100%", fig.cap="Complete Animated Plot"}
+knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif")
+```
+
+> If you are interested in reproducing the examples yourself, check out my [GitHub](https://github.com/mikey-harper/blog/tree/master/content/post/2018-04-23-animated-plots-with-r) for the full code used to make this post.
+
+## Smoother Animation
+
+A problem with the animation package is that the transitions are not very smooth between the points. If you are looking for a more delicate transition, the **tweenr** package ([available here](https://github.com/thomasp85/tweenr)) may be a good option. Essentially, the package interpolates your dataset, adding extra values between each of your specified frames, which enables a smoother transition.
+
+An example of this package is beyound the scope of this article, but you may want to check out the examples on the [GitHub page](https://github.com/thomasp85/tweenr), or alternatively [this blog](http://blog.revolutionanalytics.com/2017/05/tweenr.html) provides some cool examples.
+
+## References

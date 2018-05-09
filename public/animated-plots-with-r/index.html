@@ -4,6 +4,19 @@
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109605445-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-109605445-1');
+  </script>
+
+  
+  
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>Animated Plots with R  &middot; Mikey Harper</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +50,14 @@
   
 
   
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@@MikeyLHarper" />
+<meta name="twitter:creator" content="@@MikeyLHarper" />
+<meta name="twitter:title" content="Animated Plots with R" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="/animated-plots-with-r/" />
+<meta name="twitter:domain" content="/">
+  
 
   
 
@@ -66,6 +87,8 @@
 
 
   <link rel="stylesheet" href="/css/highlight/custom.css">
+
+
 
 
 </head>
@@ -158,8 +181,8 @@
   <small>
     &middot; by Mikey Harper
   
-  &middot; Read in about 2 min
-  &middot; (230 words)
+  &middot; Read in about 3 min
+  &middot; (602 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
@@ -202,85 +225,72 @@
 <br>
 
 <div class="content", style = "margin-top:10px">
-  <pre class="r"><code># A summary table was made to convert the summary status
-planning_summary &lt;- read.table(text = &quot;
-&#39;Status&#39;                        &#39;Status Summary&#39;
-&#39;Application Approved&#39;        &#39;Approved&#39;
-&#39;Application Refused&#39;           &#39;Refused/Abandoned&#39;
-&#39;Application Submitted&#39;       &#39;Submitted&#39;
-&#39;Application Withdrawn&#39;       &#39;Refused/Abandoned&#39;
-&#39;Connection Applied For&#39;        &#39;Submitted&#39;
-&#39;No Application Made&#39;           &#39;Refused/Abandoned&#39;
-&#39;No Application&#39;              &#39;Required Approved&#39;
-&#39;Abandoned&#39;                   &#39;Refused/Abandoned&#39;
-&#39;Awaiting Construction&#39;       &#39;Approved&#39;
-&#39;Decommissioned&#39;                &#39;Approved&#39;
-&#39;Operational&#39;                   &#39;Approved&#39;
-&#39;Planning Permission Expired&#39;   &#39;Approved&#39;
-&#39;Under Construction&#39;            &#39;Approved&#39;
-&quot;, header = TRUE, stringsAsFactors = FALSE)</code></pre>
-<pre class="r"><code>REPD_wind &lt;-
-  REPD %&gt;%
-  filter(Country != &quot;Northern Ireland&quot;) %&gt;%
-  merge(planning_summary, by.x = &quot;Development Status (short)&quot;, by.y = &quot;Status&quot;) %&gt;%
-  mutate(date = lubridate::dmy(`Planning Application Submitted`),
-         year = lubridate::year(date)) %&gt;%
-  filter(`Technology Type` == &quot;Wind Onshore&quot;)</code></pre>
-<pre class="r"><code>year_filt &lt;- 2018
-
-df &lt;- REPD_wind %&gt;% 
-  filter(year &lt; year_filt)
-
-df_highlight &lt;- REPD_wind %&gt;%
-  filter(year == year_filt)
-
-  ggplot(data, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-  geom_point(data = df) +
-  geom_point(data = df_highlight, colour = &quot;gold&quot;) +
-  coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
-    labs(title = year_filt)
-  
-  
-  
-  
-ggplot(df, aes(x = year, y = `Installed Capacity (MWelec)`)) +
-  geom_col()</code></pre>
-<pre class="r"><code>library(animation)
-ani.options(convert = &#39;C:\\ImageMagick-7.0.7-Q16\\magick.exe&#39;)
-
-
-library(ggmap)
-
-base &lt;- get_map(&quot;United Kingdom&quot;, zoom = 5)
-
-ggmap(base)
-
-saveGIF({
-  for (i in 1995:2018){
-    
-    year_filt &lt;- i
-    
-    df &lt;- REPD_wind %&gt;% 
-      filter(year &lt; year_filt)
-    
-    df_highlight &lt;- REPD_wind %&gt;%
-      filter(year == year_filt)
-    
-    p &lt;- 
-      ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-      geom_point(data = df) +
-      geom_point(data = df_highlight, colour = &quot;gold&quot;) +
-      coord_equal(xlim = c(70000,650000), ylim = c(0, 1250000)) +
-      labs(title = year_filt)
-    
-    print(p)
-    
-  }
-
-  
-
-  
-}, interval = 0.5)</code></pre>
+  <p><meta property="og:image" content="https://i.imgur.com/sMGZSL4.gif"/> <meta name="twitter:card" content="summary_large_image"></p>
+<p>Data scientists are blessed with a range of software tools which they can use to visualise results, and allow users to interact with results. Although many people will commonly use static graphs like <strong>ggplot2</strong> <span class="citation">(Wickham and Chang 2018)</span>, animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
+<p>In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</p>
+<div id="an-example-wind-turbines-in-the-uk" class="section level1">
+<h1>An Example: Wind Turbines In the UK</h1>
+<p>A lot of my research is around renewable energy, in particularly modelling onshore wind energy within the UK. Fortunately, the UK is great for open data, and the UK government record <a href="https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract">all renewable energy planning applications</a>. Over 5000 projects are recorded, providing planning status, technology type, and most crucially for this example, the location of the project.</p>
+<p>What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the <em>animation</em> <span class="citation">(Xie 2017)</span> package can be used to create such an animated gif. You will need to install <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> for this to work.</p>
+<div id="example-1-renewable-energy-locations" class="section level2">
+<h2>Example 1: Renewable Energy Locations</h2>
+<p>The <a href="http://ggplot2.tidyverse.org/reference/facet_grid.html">ggplot facet</a> is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results, as shown in Figure <a href="#fig:animatedMap">1</a></p>
+<div class="figure" style="text-align: center"><span id="fig:animatedMap"></span>
+<img src="https://i.imgur.com/NfUDZmr.gif" alt="An Animated Map" width="60%" />
+<p class="caption">
+Figure 1: An Animated Map
+</p>
+</div>
+<p>If want to use <strong>ggplot</strong>, and only want to animate a single graph, then <strong>gganminate</strong> <span class="citation">(c)) 2016)</span> may be worth exploring, as it provides a simplifed way of constructing the Gif.</p>
+</div>
+<div id="example-2-development-of-onshore-wind" class="section level2">
+<h2>Example 2: Development of Onshore Wind</h2>
+<p>Time-series data can be interesting to plot using an animation. For example, we can view the development of onshore wind within the UK. A three element plot was formed to show the number of wind turbines installed within the United Kingdom each year:</p>
+<ol style="list-style-type: decimal">
+<li>A map shows the location of the wind turbine planning application, highlighting the year in focus in gold</li>
+<li>A barplot shows the total installed capacity of wind turbines within the specified year</li>
+<li>A timeline is plot along the bottom to show the progress through the years.</li>
+</ol>
+<p>The final result is shown in Figure <a href="#fig:animatedPlot">2</a>. To organise the layout, I have used the fantastic <strong>patchwork</strong> <span class="citation">(Pedersen 2017)</span>, which makes it really easy to align multiple ggplot objects. I would recommend checking out the package <a href="https://github.com/thomasp85/patchwork">here</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:animatedPlot"></span>
+<img src="https://i.imgur.com/OYFbtAI.gif" alt="Complete Animated Plot" width="100%" />
+<p class="caption">
+Figure 2: Complete Animated Plot
+</p>
+</div>
+<blockquote>
+<p>If you are interested in reproducing the examples yourself, check out my <a href="https://github.com/mikey-harper/blog/tree/master/content/post/2018-04-23-animated-plots-with-r">GitHub</a> for the full code used to make this post.</p>
+</blockquote>
+</div>
+<div id="smoother-animation" class="section level2">
+<h2>Smoother Animation</h2>
+<p>A problem with the animation package is that the transitions are not very smooth between the points. If you are looking for a more delicate transition, the <strong>tweenr</strong> package (<a href="https://github.com/thomasp85/tweenr">available here</a>) may be a good option. Essentially, the package interpolates your dataset, adding extra values between each of your specified frames, which enables a smoother transition.</p>
+<p>An example of this package is beyound the scope of this article, but you may want to check out the examples on the <a href="https://github.com/thomasp85/tweenr">GitHub page</a>, or alternatively <a href="http://blog.revolutionanalytics.com/2017/05/tweenr.html">this blog</a> provides some cool examples.</p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-R-gganimate">
+<p>c)). 2016. <em>Gganimate: Create Easy Animations with Ggplot2</em>. <a href="http://github.com/dgrtwo/gganimate" class="uri">http://github.com/dgrtwo/gganimate</a>.</p>
+</div>
+<div id="ref-R-patchwork">
+<p>Pedersen, Thomas Lin. 2017. <em>Patchwork: The Composer of Ggplots</em>. <a href="https://github.com/thomasp85/patchwork" class="uri">https://github.com/thomasp85/patchwork</a>.</p>
+</div>
+<div id="ref-R-ggplot2">
+<p>Wickham, Hadley, and Winston Chang. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
+</div>
+<div id="ref-R-animation">
+<p>Xie, Yihui. 2017. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href="https://yihui.name/animation" class="uri">https://yihui.name/animation</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>On Windows, be sure to select the “install legacy utilities” option during install: gganimate requires the “convert” utility to operate.)<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
 
 </div>
 
@@ -542,13 +552,6 @@ saveGIF({
 <script src="/js/site.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-
-<script>
-  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
 
 <script>
 var ENABLE_POPOVER =  false , 
