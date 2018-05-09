@@ -18,10 +18,11 @@ bibliography: bib.bib
 <p><meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopmentSummary.gif"/> <meta name="twitter:card" content="summary_large_image"></p>
 <p>Data scientists are blessed with a range of software tools which they can use to visualise results, and allow users to interact with results. Although many people will commonly use static graphs like <strong>ggplot2</strong> <span class="citation">(Wickham and Chang 2018)</span>, animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
 <p>In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</p>
-<div id="mapping-data" class="section level1">
-<h1>Mapping Data</h1>
+<div id="example-data" class="section level2">
+<h2>Example Data</h2>
 <p>A lot of my research is around renewable energy, in particularly modelling onshore wind energy within the UK. Fortunately, the UK is great for open data, and the UK government record <a href="https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract">all renewable energy planning applications</a>. Over 5000 projects are recorded, providing planning status, technology type, and most crucially for this example, the location of the project.</p>
-<p>What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the <em>animation</em> <span class="citation">(Xie 2017)</span> package can be used to create such an animated gif. You will need to install <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> for this to work.</p>
+<p>What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the <em>animation</em> <span class="citation">(Xie 2017)</span> package can be used to create such an animated GIF. You will need to install <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> for this to work.</p>
+</div>
 <div id="example-1-renewable-energy-locations" class="section level2">
 <h2>Example 1: Renewable Energy Locations</h2>
 <p>The <a href="http://ggplot2.tidyverse.org/reference/facet_grid.html">ggplot facet</a> is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results, as shown in Figure <a href="#fig:animatedMap">1</a></p>
@@ -31,14 +32,14 @@ bibliography: bib.bib
 Figure 1: An Animated Map
 </p>
 </div>
-<p>If want to use <strong>ggplot</strong>, and only want to animate a single graph, then <strong>gganminate</strong> <span class="citation">(c)) 2016)</span> may be worth exploring, as it provides a simplifed way of constructing the Gif.</p>
+<p>If want to use <strong>ggplot</strong>, and only want to animate a single graph, then <strong>gganminate</strong> <span class="citation">(c)) 2016)</span> may be worth exploring, as it provides a simplified way of constructing the GIF.</p>
 </div>
 <div id="example-2-development-of-onshore-wind" class="section level2">
 <h2>Example 2: Development of Onshore Wind</h2>
 <p>Time-series data can be interesting to plot using an animation. For example, we can view the development of onshore wind within the UK. A three element plot was formed to show the number of wind turbines installed within the United Kingdom each year:</p>
 <ol style="list-style-type: decimal">
 <li>A map shows the location of the wind turbine planning application, highlighting the year in focus in gold</li>
-<li>A barplot shows the total installed capacity of wind turbines within the specified year</li>
+<li>A bar plot shows the total installed capacity of wind turbines within the specified year</li>
 <li>A timeline is plot along the bottom to show the progress through the years.</li>
 </ol>
 <p>The final result is shown in Figure <a href="#fig:animatedPlot">2</a>. To organise the layout, I have used the fantastic <strong>patchwork</strong> <span class="citation">(Pedersen 2017)</span>, which makes it really easy to align multiple ggplot objects. I would recommend checking out the package <a href="https://github.com/thomasp85/patchwork">here</a>.</p>
@@ -55,7 +56,7 @@ Figure 2: Complete Animated Plot
 <div id="smoother-animation" class="section level2">
 <h2>Smoother Animation</h2>
 <p>A problem with the animation package is that the transitions are not very smooth between the points. If you are looking for a more delicate transition, the <strong>tweenr</strong> package (<a href="https://github.com/thomasp85/tweenr">available here</a>) may be a good option. Essentially, the package interpolates your dataset, adding extra values between each of your specified frames, which enables a smoother transition.</p>
-<p>An example of this package is beyound the scope of this article, but you may want to check out the examples on the <a href="https://github.com/thomasp85/tweenr">GitHub page</a>, or alternatively <a href="http://blog.revolutionanalytics.com/2017/05/tweenr.html">this blog</a> provides some cool examples.</p>
+<p>An example of this package is beyond the scope of this article, but you may want to check out the examples on the <a href="https://github.com/thomasp85/tweenr">GitHub page</a>, or alternatively <a href="http://blog.revolutionanalytics.com/2017/05/tweenr.html">this blog</a> provides some cool examples.</p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2>References</h2>
@@ -74,10 +75,9 @@ Figure 2: Complete Animated Plot
 </div>
 </div>
 </div>
-</div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>On Windows, be sure to select the “install legacy utilities” option during install: gganimate requires the “convert” utility to operate.)<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>On Windows, be sure to select the “install legacy utilities” option during install: *animation** requires the “convert” utility to operate.)<a href="#fnref1">↩</a></p></li>
 </ol>
 </div>

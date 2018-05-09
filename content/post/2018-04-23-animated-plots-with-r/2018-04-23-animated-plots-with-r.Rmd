@@ -17,13 +17,25 @@ bibliography: bib.bib
 <meta name="twitter:card" content="summary_large_image">
 
 ```{r setup, include = FALSE}
+# May need to install patchwork
+# devtools::install_github("thomasp85/patchwork")
+
 library(RCurl)
 library(animation)
 library(tidyverse)
 library(patchwork)
+library(animation)
+library(sp)
+library(raster)
+library(rgeos)
 
+# Set animate options. This may be needed for running on windows
+ani.options(convert = 'C:\\ImageMagick-7.0.7-Q16\\magick.exe')
+
+# Set knitr settings
 knitr::opts_chunk$set(eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE, fig.align='center')
 
+# Create bibliography
 knitr::write_bib(x = c("animation", "ggplot2", "patchwork", "gganimate"), file = "bib.bib")
 ```
 
@@ -31,7 +43,7 @@ Data scientists are blessed with a range of software tools which they can use to
 
 In this post, I wanted to show an example of how animated plots can be used to convey geospatial data. 
 
-# Mapping Data
+## Example Data
 
 A lot of my research is around renewable energy, in particularly modelling onshore wind energy within the UK. Fortunately, the UK is great for open data, and the UK government record [all renewable energy planning applications](https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract). Over 5000 projects are recorded, providing planning status, technology type, and most crucially for this example, the location of the project.
 
@@ -63,21 +75,11 @@ REPD <-
   mutate(date = lubridate::dmy(`Planning Application Submitted`),
          year = lubridate::year(date),
          `Installed Capacity (MWelec)` = as.numeric(`Installed Capacity (MWelec)`))
-
 ```
 
-What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the *animation* [@R-animation] package can be used to create such an animated gif. You will need to install [ImageMagick](https://www.imagemagick.org/script/index.php)^[On Windows, be sure to select the "install legacy utilities" option during install: gganimate requires the "convert" utility to operate.)] for this to work.
+What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the *animation* [@R-animation] package can be used to create such an animated GIF. You will need to install [ImageMagick](https://www.imagemagick.org/script/index.php)^[On Windows, be sure to select the "install legacy utilities" option during install: *animation** requires the "convert" utility to operate.)] for this to work.
 
 ```{r loadBoundaries}
-# Load packages
-library(animation)
-ani.options(convert = 'C:\\ImageMagick-7.0.7-Q16\\magick.exe')
-
-library(sp)
-library(raster)
-library(rgeos)
-
-
 # Download the Outline of the UK
 # The polygon is transformed to BNG and simplified to speed plotting
 UK <-  raster::getData('GADM', country='GBR', level = 1) %>%
@@ -136,14 +138,14 @@ saveGIF({
 knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif")
 ```
 
-If want to use **ggplot**, and only want to animate a single graph, then **gganminate** [@R-gganimate] may be worth exploring, as it provides a simplifed way of constructing the Gif.
+If want to use **ggplot**, and only want to animate a single graph, then **gganminate** [@R-gganimate] may be worth exploring, as it provides a simplified way of constructing the GIF.
 
 ## Example 2: Development of Onshore Wind
 
 Time-series data can be interesting to plot using an animation. For example, we can view the development of onshore wind within the UK. A three element plot was formed to show the number of wind turbines installed within the United Kingdom each year:
 
 1. A map shows the location of the wind turbine planning application, highlighting the year in focus in gold
-2. A barplot shows the total installed capacity of wind turbines within the specified year
+2. A bar plot shows the total installed capacity of wind turbines within the specified year
 3. A timeline is plot along the bottom to show the progress through the years.
 
 The final result is shown in Figure \@ref(fig:animatedPlot). To organise the layout, I have used the fantastic **patchwork** [@R-patchwork], which makes it really easy to align multiple ggplot objects. I would recommend checking out the package [here](https://github.com/thomasp85/patchwork).
@@ -229,6 +231,6 @@ knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-w
 
 A problem with the animation package is that the transitions are not very smooth between the points. If you are looking for a more delicate transition, the **tweenr** package ([available here](https://github.com/thomasp85/tweenr)) may be a good option. Essentially, the package interpolates your dataset, adding extra values between each of your specified frames, which enables a smoother transition.
 
-An example of this package is beyound the scope of this article, but you may want to check out the examples on the [GitHub page](https://github.com/thomasp85/tweenr), or alternatively [this blog](http://blog.revolutionanalytics.com/2017/05/tweenr.html) provides some cool examples.
+An example of this package is beyond the scope of this article, but you may want to check out the examples on the [GitHub page](https://github.com/thomasp85/tweenr), or alternatively [this blog](http://blog.revolutionanalytics.com/2017/05/tweenr.html) provides some cool examples.
 
 ## References
