@@ -3,7 +3,7 @@ title: Animated Plots with R
 author: Mikey Harper
 date: '2018-05-09'
 slug: animated-plots-with-r
-description: 
+description: Some examples of using animated plots with geospatial data.
 categories:
   - GIS
   - R
@@ -134,8 +134,8 @@ saveGIF({
 )
 ```
 
-```{r animatedMap, fig.cap="An Animated Map", out.width="60%", fig.align = "center"}
-knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif")
+```{r animatedMap, fig.cap="An Animated Map", out.width="100%", fig.align = "center"}
+knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif", dpi = NA)
 ```
 
 If want to use **ggplot**, and only want to animate a single graph, then **gganminate** [@R-gganimate] may be worth exploring, as it provides a simplified way of constructing the GIF.
