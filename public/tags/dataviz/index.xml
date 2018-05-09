@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dataviz on Mikey Harper</title>
+    <link>/tags/dataviz/</link>
+    <description>Recent content in Dataviz on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Wed, 09 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Animated Plots with R</title>
+      <link>/animated-plots-with-r/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/animated-plots-with-r/</guid>
+      <description>Data scientists are blessed with a range of software tools which they can use to visualise results, and allow users to interact with results. Although many people will commonly use static graphs like ggplot2 (Wickham and Chang 2018), animated plots can be an effective way to communicate results, and there are few better examples than the use of them in the now famous TED talk by Hans Rosling.
+In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</description>
+    </item>
+    
+  </channel>
+</rss>

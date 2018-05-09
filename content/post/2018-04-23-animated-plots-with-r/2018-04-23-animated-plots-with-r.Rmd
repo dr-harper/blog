@@ -10,6 +10,7 @@ categories:
   - Technical
 tags:
   - R
+  - DataViz
 bibliography: bib.bib
 ---
 
@@ -33,7 +34,7 @@ library(rgeos)
 ani.options(convert = 'C:\\ImageMagick-7.0.7-Q16\\magick.exe')
 
 # Set knitr settings
-knitr::opts_chunk$set(eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE, fig.align='center')
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE)
 
 # Create bibliography
 knitr::write_bib(x = c("animation", "ggplot2", "patchwork", "gganimate"), file = "bib.bib")
@@ -90,7 +91,7 @@ UK <-  raster::getData('GADM', country='GBR', level = 1) %>%
 
 ## Example 1: Renewable Energy Locations
 
-The [ggplot facet](http://ggplot2.tidyverse.org/reference/facet_grid.html) is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results, as shown in Figure \@ref(fig:animatedMap)
+The [ggplot facet](http://ggplot2.tidyverse.org/reference/facet_grid.html) is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results as a single plot, but rotate through each of the layers avaialble. For example, using the example renewable energy dataset, we can display the locations of each renewable energy technology in the UK. The results are shown in Figure \@ref(fig:animatedMap).
 
 ```{r, include = FALSE}
 # Create gif
@@ -134,7 +135,7 @@ saveGIF({
 )
 ```
 
-```{r animatedMap, fig.cap="An Animated Map", out.width="100%", fig.align = "center"}
+```{r animatedMap, fig.cap="An Animated Map", out.width="60%", fig.align='center'}
 knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif", dpi = NA)
 ```
 
@@ -225,12 +226,17 @@ saveGIF({
 knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif")
 ```
 
-> If you are interested in reproducing the examples yourself, check out my [GitHub](https://github.com/mikey-harper/blog/tree/master/content/post/2018-04-23-animated-plots-with-r) for the full code used to make this post.
 
 ## Smoother Animation
 
 A problem with the animation package is that the transitions are not very smooth between the points. If you are looking for a more delicate transition, the **tweenr** package ([available here](https://github.com/thomasp85/tweenr)) may be a good option. Essentially, the package interpolates your dataset, adding extra values between each of your specified frames, which enables a smoother transition.
 
 An example of this package is beyond the scope of this article, but you may want to check out the examples on the [GitHub page](https://github.com/thomasp85/tweenr), or alternatively [this blog](http://blog.revolutionanalytics.com/2017/05/tweenr.html) provides some cool examples.
+
+## Conclusion
+
+I hope you found the post useful, and that it provides some inspiration for data visulations of your own!
+
+> If you are interested in reproducing the examples yourself, check out my [GitHub](https://github.com/mikey-harper/blog/tree/master/content/post/2018-04-23-animated-plots-with-r) for the full code used to make this post.
 
 ## References
