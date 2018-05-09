@@ -114,15 +114,17 @@ p <-
           axis.title = element_blank(),
           axis.ticks = element_blank(),
           panel.background = element_rect(fill = "grey99", colour = "grey80"),
-          plot.title = element_text(hjust = 0, size = 20))
+          plot.title = element_text(hjust = 0, size = 16, vjust=0)) +
+  ggtitle("Technology: ")
 
 # Save to file
+ani.options(ani.width=800, ani.height=600)
 gganimate(p, "renewableTech.gif")
 ```
 
 The results are shown in Figure \@ref(fig:animatedMap).
 
-```{r animatedMap, fig.cap="An Animated Map of Renewable Energy Technologies in the UK", out.width = "60%"}
+```{r animatedMap, fig.cap="An Animated Map of Renewable Energy Technologies in the UK", out.width = "100%"}
 knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif")
 ```
 
@@ -139,7 +141,7 @@ As we have used three separate graphs, it is not possible to use **gganimate**.
 The final result is shown in Figure \@ref(fig:animatedPlot). To organise the layout, I have used the fantastic **patchwork** [@R-patchwork], which makes it really easy to align multiple ggplot objects. I would recommend checking out the package [here](https://github.com/thomasp85/patchwork).
 
 
-```{r, include = FALSE, echo = TRUE}
+```{r, echo = TRUE}
 
 # Only show constructed wind turbines
 REPD_wind <-
@@ -153,19 +155,11 @@ saveGIF({
     
   p <- 
     ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-    
-    # Plot Basemap
     geom_polygon(data =UK, aes(long, lat, group = group), fill = "#528076") +
-    
-    # Plot all points before reference year
     geom_point(data = filter(REPD_wind, year < i), 
                fill = "#b2d1e0", size = 2, alpha = 0.8, shape = 21) +
-    
-    # Highlight Reference Year
     geom_point(data = filter(REPD_wind, year == i), 
                fill = "gold", size = 3, shape = 21) +
-    
-    # Fine Tune the Plot
     coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
     labs(title = "Location of Installed Projects") +
     theme(panel.grid.major = element_blank(),

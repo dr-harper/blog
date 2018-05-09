@@ -47,13 +47,15 @@ p &lt;-
           axis.title = element_blank(),
           axis.ticks = element_blank(),
           panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;),
-          plot.title = element_text(hjust = 0, size = 20))
+          plot.title = element_text(hjust = 0, size = 16, vjust=0)) +
+  ggtitle(&quot;Technology: &quot;)
 
 # Save to file
+ani.options(ani.width=800, ani.height=600)
 gganimate(p, &quot;renewableTech.gif&quot;)</code></pre>
 <p>The results are shown in Figure <a href="#fig:animatedMap">1</a>.</p>
 <div class="figure"><span id="fig:animatedMap"></span>
-<img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif" alt="An Animated Map of Renewable Energy Technologies in the UK" width="60%" />
+<img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif" alt="An Animated Map of Renewable Energy Technologies in the UK" width="100%" />
 <p class="caption">
 Figure 1: An Animated Map of Renewable Energy Technologies in the UK
 </p>
@@ -69,6 +71,65 @@ Figure 1: An Animated Map of Renewable Energy Technologies in the UK
 </ol>
 <p>As we have used three separate graphs, it is not possible to use <strong>gganimate</strong>.</p>
 <p>The final result is shown in Figure <a href="#fig:animatedPlot">2</a>. To organise the layout, I have used the fantastic <strong>patchwork</strong> <span class="citation">(Pedersen 2017)</span>, which makes it really easy to align multiple ggplot objects. I would recommend checking out the package <a href="https://github.com/thomasp85/patchwork">here</a>.</p>
+<pre class="r"><code># Only show constructed wind turbines
+REPD_wind &lt;-
+  REPD %&gt;%
+  filter(`Technology Type` == &quot;Wind Onshore&quot;) %&gt;%
+  filter(Status.Summary == &quot;Approved&quot;)
+
+# Create gif
+saveGIF({
+  for (i in 1990:2018){
+    
+  p &lt;- 
+    ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+    geom_polygon(data =UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
+    geom_point(data = filter(REPD_wind, year &lt; i), 
+               fill = &quot;#b2d1e0&quot;, size = 2, alpha = 0.8, shape = 21) +
+    geom_point(data = filter(REPD_wind, year == i), 
+               fill = &quot;gold&quot;, size = 3, shape = 21) +
+    coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
+    labs(title = &quot;Location of Installed Projects&quot;) +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text = element_blank(),
+          axis.title = element_blank(),
+          axis.ticks = element_blank(),
+          panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;),
+          plot.title = element_text(hjust = 0.5))
+  
+  p2 &lt;- 
+    ggplot(filter(REPD_wind, year &lt;= i), aes(x = year, y = `Installed Capacity (MWelec)`)) +
+    geom_col(aes(fill= year &gt;= i)) +
+    scale_fill_manual(values = c(&quot;#b2d1e0&quot;,&quot;gold&quot;)) +
+    scale_x_continuous(limits = c(1990, 2018), expand = c(0,0)) +
+    scale_y_continuous(limits = c(0, 2000), expand = c(0,0)) +
+    labs(title = &quot;Annual Installed Capacity&quot;, x = &quot;Year&quot;, y = &quot;Installed Capacity (MW)&quot;) +
+    theme(legend.position = &quot;none&quot;,
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;),
+          plot.title = element_text(hjust = 0.5))
+  
+  
+  p3 &lt;- ggplot(data = NULL, aes(x = 1990:2018, y = 1)) +
+    geom_line() +
+    geom_point(aes(fill = (x = 1990:2018 &gt; i)), shape = 21, size = 5) +
+    theme_void() +
+    theme(legend.position = &quot;none&quot;) +
+    scale_fill_manual(values = c(&quot;#b2d1e0&quot;,&quot;gold&quot;)) +
+    geom_label(aes(x = i, y = 1, label = i), vjust = -0.5) +
+    theme(panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;))
+    
+  
+  
+  # Print plots using patchwork
+  print(p + p2 - p3 + plot_layout(ncol = 1, heights = c(5, 1)))
+  }
+
+
+}, movie.name = &quot;windDevelopment.gif&quot;, interval = 1, ani.width = 1000, ani.height = 700)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 <div class="figure"><span id="fig:animatedPlot"></span>
 <img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif" alt="Complete Animated Plot" width="100%" />
 <p class="caption">
