@@ -11,13 +11,14 @@ categories:
 tags:
   - R
   - DataViz
+  - Renewable Energy
 bibliography: bib.bib
 ---
 
 
 
-<p><meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopmentSummary.gif"/> <meta name="twitter:card" content="summary_large_image"></p>
-<p>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R <strong>ggplot2</strong> <span class="citation">(Wickham and Chang 2018)</span> has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
+<p><meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/cover.png"/> <meta name="twitter:card" content="summary_large_image"></p>
+<p>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R <strong>ggplot2</strong> <span class="citation">(Wickham et al. 2018)</span> has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
 <p>In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</p>
 <div id="example-data" class="section level2">
 <h2>Example Data</h2>
@@ -39,7 +40,7 @@ p &lt;-
     ggplot() +
     geom_polygon(data=UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
     geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, frame = `Technology Type`, fill = `Technology Type`),
-               size = 5, shape = 21, alpha = 0.8) +
+               size = 5, shape = 21, alpha = 0.7) +
     coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
@@ -79,16 +80,16 @@ REPD_wind &lt;-
 
 # Create gif
 invisible(saveGIF({
-  for (i in 1990:2018){
+  for (i in 1990:2017){
     
   p &lt;- 
-    ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-    geom_polygon(data =UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
+    ggplot(data = NULL, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+    geom_polygon(data = UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
     geom_point(data = filter(REPD_wind, year &lt; i), 
-               fill = &quot;#b2d1e0&quot;, size = 2, alpha = 0.8, shape = 21) +
+               fill = &quot;#b2d1e0&quot;, size = 3, alpha = 0.8, shape = 21) +
     geom_point(data = filter(REPD_wind, year == i), 
-               fill = &quot;gold&quot;, size = 3, shape = 21) +
-    coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
+               fill = &quot;gold&quot;, size = 5, shape = 21) +
+    coord_equal(xlim = c(-150000, 900000), ylim = c(0, 1200000)) +
     labs(title = &quot;Location of Installed Projects&quot;) +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
@@ -112,13 +113,13 @@ invisible(saveGIF({
           plot.title = element_text(hjust = 0.5))
   
   
-  p3 &lt;- ggplot(data = NULL, aes(x = 1990:2018, y = 1)) +
+  p3 &lt;- ggplot(data = NULL, aes(x = 1990:2017, y = 1)) +
     geom_line() +
-    geom_point(aes(fill = (x = 1990:2018 &gt; i)), shape = 21, size = 5) +
+    geom_point(aes(fill = (x = 1990:2017 &gt; i)), shape = 21, size = 5) +
     theme_void() +
     theme(legend.position = &quot;none&quot;) +
     scale_fill_manual(values = c(&quot;#b2d1e0&quot;,&quot;gold&quot;)) +
-    geom_label(aes(x = i, y = 1, label = i), vjust = -0.5) +
+    geom_text(aes(x = i, y = 1, label = i), vjust = -1, size = 9) +
     theme(panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;))
     
   
@@ -130,9 +131,9 @@ invisible(saveGIF({
 
 }, movie.name = &quot;windDevelopment.gif&quot;, interval = 1, ani.width = 1000, ani.height = 700))</code></pre>
 <div class="figure"><span id="fig:animatedPlot"></span>
-<img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif" alt="Complete Animated Plot" width="100%" />
+<img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif" alt="The development of Onshore wind energy in the UK" width="100%" />
 <p class="caption">
-Figure 2: Complete Animated Plot
+Figure 2: The development of Onshore wind energy in the UK
 </p>
 </div>
 </div>
@@ -140,6 +141,10 @@ Figure 2: Complete Animated Plot
 <h2>Smoother Animation</h2>
 <p>A problem with the animation package is that the transitions are not very smooth between the points. If you are looking for a more delicate transition, the <strong>tweenr</strong> package (<a href="https://github.com/thomasp85/tweenr">available here</a>) may be a good option. Essentially, the package interpolates your dataset, adding extra values between each of your specified frames, which enables a smoother transition.</p>
 <p>An example of this package is beyond the scope of this article, but you may want to check out the examples on the <a href="https://github.com/thomasp85/tweenr">GitHub page</a>, or alternatively <a href="http://blog.revolutionanalytics.com/2017/05/tweenr.html">this blog</a> provides some cool examples.</p>
+</div>
+<div id="the-new-gganimate" class="section level2">
+<h2>The new gganimate</h2>
+<p>I was very pleased to see the author of many fantastic R packages, Thomas Lin Pedersen, is working on a revised version of ggplot. This will make it easier to create animated plots with smooth transitions, without the need to use Tweenr. You should follow the package development on GitHub: <a href="https://github.com/thomasp85/gganimate" class="uri">https://github.com/thomasp85/gganimate</a></p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
@@ -158,7 +163,7 @@ Figure 2: Complete Animated Plot
 <p>Pedersen, Thomas Lin. 2017. <em>Patchwork: The Composer of Ggplots</em>. <a href="https://github.com/thomasp85/patchwork" class="uri">https://github.com/thomasp85/patchwork</a>.</p>
 </div>
 <div id="ref-R-ggplot2">
-<p>Wickham, Hadley, and Winston Chang. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
+<p>Wickham, Hadley, Winston Chang, Kara Woo, Thomas Lin Pedersen, Claus Wilke, and Kohske Takahashi. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
 </div>
 <div id="ref-R-animation">
 <p>Xie, Yihui. 2017. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href="https://yihui.name/animation" class="uri">https://yihui.name/animation</a>.</p>

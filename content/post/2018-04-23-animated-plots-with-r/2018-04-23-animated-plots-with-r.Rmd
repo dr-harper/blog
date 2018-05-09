@@ -11,10 +11,11 @@ categories:
 tags:
   - R
   - DataViz
+  - Renewable Energy
 bibliography: bib.bib
 ---
 
-<meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopmentSummary.gif"/>
+<meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/cover.png"/>
 <meta name="twitter:card" content="summary_large_image">
 
 ```{r setup, include = FALSE}
@@ -106,7 +107,7 @@ p <-
     ggplot() +
     geom_polygon(data=UK, aes(long, lat, group = group), fill = "#528076") +
     geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, frame = `Technology Type`, fill = `Technology Type`),
-               size = 5, shape = 21, alpha = 0.8) +
+               size = 5, shape = 21, alpha = 0.7) +
     coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
@@ -151,16 +152,16 @@ REPD_wind <-
 
 # Create gif
 invisible(saveGIF({
-  for (i in 1990:2018){
+  for (i in 1990:2017){
     
   p <- 
-    ggplot(df, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
-    geom_polygon(data =UK, aes(long, lat, group = group), fill = "#528076") +
+    ggplot(data = NULL, aes(x = `X-coordinate`, y = `Y-coordinate`)) +
+    geom_polygon(data = UK, aes(long, lat, group = group), fill = "#528076") +
     geom_point(data = filter(REPD_wind, year < i), 
-               fill = "#b2d1e0", size = 2, alpha = 0.8, shape = 21) +
+               fill = "#b2d1e0", size = 3, alpha = 0.8, shape = 21) +
     geom_point(data = filter(REPD_wind, year == i), 
-               fill = "gold", size = 3, shape = 21) +
-    coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
+               fill = "gold", size = 5, shape = 21) +
+    coord_equal(xlim = c(-150000, 900000), ylim = c(0, 1200000)) +
     labs(title = "Location of Installed Projects") +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
@@ -184,13 +185,13 @@ invisible(saveGIF({
           plot.title = element_text(hjust = 0.5))
   
   
-  p3 <- ggplot(data = NULL, aes(x = 1990:2018, y = 1)) +
+  p3 <- ggplot(data = NULL, aes(x = 1990:2017, y = 1)) +
     geom_line() +
-    geom_point(aes(fill = (x = 1990:2018 > i)), shape = 21, size = 5) +
+    geom_point(aes(fill = (x = 1990:2017 > i)), shape = 21, size = 5) +
     theme_void() +
     theme(legend.position = "none") +
     scale_fill_manual(values = c("#b2d1e0","gold")) +
-    geom_label(aes(x = i, y = 1, label = i), vjust = -0.5) +
+    geom_text(aes(x = i, y = 1, label = i), vjust = -1, size = 9) +
     theme(panel.background = element_rect(fill = "grey99", colour = "grey80"))
     
   
@@ -203,7 +204,7 @@ invisible(saveGIF({
 }, movie.name = "windDevelopment.gif", interval = 1, ani.width = 1000, ani.height = 700))
 ```
 
-```{r animatedPlot, out.width = "100%", fig.cap="Complete Animated Plot"}
+```{r animatedPlot, out.width = "100%", fig.cap="The development of Onshore wind energy in the UK"}
 knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/windDevelopment.gif")
 ```
 
@@ -213,6 +214,10 @@ knitr::include_graphics("https://mikeyharper.uk/post/2018-04-23-animated-plots-w
 A problem with the animation package is that the transitions are not very smooth between the points. If you are looking for a more delicate transition, the **tweenr** package ([available here](https://github.com/thomasp85/tweenr)) may be a good option. Essentially, the package interpolates your dataset, adding extra values between each of your specified frames, which enables a smoother transition.
 
 An example of this package is beyond the scope of this article, but you may want to check out the examples on the [GitHub page](https://github.com/thomasp85/tweenr), or alternatively [this blog](http://blog.revolutionanalytics.com/2017/05/tweenr.html) provides some cool examples.
+
+## The new gganimate
+
+I was very pleased to see the author of many fantastic R packages, Thomas Lin Pedersen, is working on a revised version of ggplot. This will make it easier to create animated plots with smooth transitions, without the need to use Tweenr. You should follow the package development on GitHub: https://github.com/thomasp85/gganimate
 
 ## Conclusion
 
