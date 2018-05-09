@@ -217,7 +217,9 @@ An example of this package is beyond the scope of this article, but you may want
 
 ## The new gganimate
 
-I was very pleased to see the author of many fantastic R packages, Thomas Lin Pedersen, is working on a revised version of ggplot. This will make it easier to create animated plots with smooth transitions, without the need to use Tweenr. You should follow the package development on GitHub: https://github.com/thomasp85/gganimate
+I was very pleased to see the author of many fantastic R packages, Thomas Lin Pedersen, is working on a revised version of gganimate. This will make it easier to create animated plots with smooth transitions, without the need to use Tweenr. You should follow the package development on GitHub: https://github.com/thomasp85/gganimate, and check out Twitter for some great examples of how it can be used: https://twitter.com/thomasp85
+
+
 
 ## Conclusion
 
