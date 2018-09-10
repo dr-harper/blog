@@ -20,6 +20,9 @@ bibliography: bib.bib
 <p><meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/cover.png"/> <meta name="twitter:card" content="summary_large_image"></p>
 <p>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R <strong>ggplot2</strong> <span class="citation">(Wickham et al. 2018)</span> has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
 <p>In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</p>
+<blockquote>
+<p>Note, since this originally written, there have been a few rebuild of the <strong>gganimate</strong> package. See the new repository for information: <a href="https://github.com/thomasp85/gganimate" class="uri">https://github.com/thomasp85/gganimate</a></p>
+</blockquote>
 <div id="example-data" class="section level2">
 <h2>Example Data</h2>
 <p>A lot of my research is around renewable energy, in particularly modelling onshore wind energy within the UK. Fortunately, the UK is great for open data, and the UK government record <a href="https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract">all renewable energy planning applications</a>. Over 5000 projects are recorded, providing planning status, technology type, and most crucially for this example, the location of the project.</p>
@@ -28,35 +31,36 @@ bibliography: bib.bib
 <div id="example-1-renewable-energy-locations" class="section level2">
 <h2>Example 1: Renewable Energy Locations</h2>
 <p>The <a href="http://ggplot2.tidyverse.org/reference/facet_grid.html">ggplot facet</a> is a commonly used tool for displaying similar datasets. However, an animation can also be used to visualise the results as a single plot, but rotate through each of the layers avaialble. For example, using the example renewable energy dataset, we can display the locations of each renewable energy technology in the UK.</p>
-<p>If you are using <strong>ggplot</strong>, and only want to create an animated plot containing a single figure, I would recommend the <strong>gganimate</strong> <span class="citation">(c)) 2016)</span> package. It provides a convenient wrapper to the <strong>animation</strong> package, and animated plots can be created by adding a <code>frame</code> variable to a ggplot layer, and then using the <code>gganimate</code> function to call the plot.</p>
+<p>If you are using <strong>ggplot</strong>, and only want to create an animated plot containing a single figure, I would recommend the <strong>gganimate</strong> <span class="citation">(Pedersen and Robinson 2017)</span> package. It provides a convenient wrapper to the <strong>animation</strong> package, and animated plots can be created by adding a <code>frame</code> variable to a ggplot layer, and then using the <code>gganimate</code> function to call the plot. The results are shown in Figure <a href="#fig:animatedMap">1</a>.</p>
 <pre class="r"><code>library(gganimate)
 
-# Create gif
+# filter data
 REPD_tech &lt;- 
-  REPD %&gt;%
-  filter(`Status.Summary` == &quot;Approved&quot;)
+REPD %&gt;%
+filter(`Status.Summary` == &quot;Approved&quot;)
 
-p &lt;- 
-    ggplot() +
-    geom_polygon(data=UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
-    geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, frame = `Technology Type`, fill = `Technology Type`),
-               size = 5, shape = 21, alpha = 0.7) +
-    coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
-    theme(panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          axis.text = element_blank(),
-          axis.title = element_blank(),
-          axis.ticks = element_blank(),
-          panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;),
-          plot.title = element_text(hjust = 0, size = 16, vjust=0)) +
-  ggtitle(&quot;Technology: &quot;)
+# build GIF
+ggplot() +
+  geom_polygon(data=UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
+  geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, fill = `Technology Type`),
+             size = 5, shape = 21, alpha = 0.7) +
+  
+  # gganimate parts
+  transition_states(`Technology Type`, transition_length = 2, state_length = 20) +
+  enter_fade() +
+  exit_fade() +
 
-# Save to file
-ani.options(ani.width=800, ani.height=600)
-gganimate(p, &quot;renewableTech.gif&quot;)</code></pre>
-<p>The results are shown in Figure <a href="#fig:animatedMap">1</a>.</p>
+# Styling
+  coord_equal(xlim = c(-75000, 825000), ylim = c(0, 1200000)) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;),
+        plot.title = element_text(hjust = 0, size = 16, vjust=0))</code></pre>
 <div class="figure"><span id="fig:animatedMap"></span>
-<img src="https://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/renewableTech.gif" alt="An Animated Map of Renewable Energy Technologies in the UK" width="100%" />
+<img src="/post/2018-04-23-animated-plots-with-r/2018-04-23-animated-plots-with-r_files/figure-html/animatedMap-1.gif" alt="An Animated Map of Renewable Energy Technologies in the UK" width="100%" />
 <p class="caption">
 Figure 1: An Animated Map of Renewable Energy Technologies in the UK
 </p>
@@ -156,17 +160,17 @@ Figure 2: The development of Onshore wind energy in the UK
 <div id="references" class="section level2 unnumbered">
 <h2>References</h2>
 <div id="refs" class="references">
-<div id="ref-R-gganimate">
-<p>c)). 2016. <em>Gganimate: Create Easy Animations with Ggplot2</em>. <a href="http://github.com/dgrtwo/gganimate" class="uri">http://github.com/dgrtwo/gganimate</a>.</p>
-</div>
 <div id="ref-R-patchwork">
 <p>Pedersen, Thomas Lin. 2017. <em>Patchwork: The Composer of Ggplots</em>. <a href="https://github.com/thomasp85/patchwork" class="uri">https://github.com/thomasp85/patchwork</a>.</p>
 </div>
+<div id="ref-R-gganimate">
+<p>Pedersen, Thomas Lin, and David Robinson. 2017. <em>Gganimate: A Grammar of Animated Graphics</em>. <a href="http://github.com/thomasp85/gganimate" class="uri">http://github.com/thomasp85/gganimate</a>.</p>
+</div>
 <div id="ref-R-ggplot2">
-<p>Wickham, Hadley, Winston Chang, Kara Woo, Thomas Lin Pedersen, Claus Wilke, and Kohske Takahashi. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.</p>
+<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, and Kara Woo. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="uri">https://CRAN.R-project.org/package=ggplot2</a>.</p>
 </div>
 <div id="ref-R-animation">
-<p>Xie, Yihui. 2017. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href="https://yihui.name/animation" class="uri">https://yihui.name/animation</a>.</p>
+<p>Xie, Yihui. 2017. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href="https://CRAN.R-project.org/package=animation" class="uri">https://CRAN.R-project.org/package=animation</a>.</p>
 </div>
 </div>
 </div>

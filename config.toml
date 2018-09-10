@@ -4,6 +4,8 @@ baseurl = "https://mikeyharper.uk/"
 # Remark if you want to disable multilingual support.
 DefaultContentLanguage = "en"
 
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
 # If you want all of the languages to be put below their respective language code,
 # enable DefaultContentLanguageInSubdir = true. Without enabling it english content
 # will be in the root and other languages in their respective subfolder such as /sv/.
