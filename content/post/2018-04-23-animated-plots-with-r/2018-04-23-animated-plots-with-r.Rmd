@@ -108,7 +108,8 @@ REPD %>%
 filter(`Status.Summary` == "Approved")
 
 # build GIF
-ggplot() +
+p <- 
+  ggplot() +
   geom_polygon(data=UK, aes(long, lat, group = group), fill = "#528076") +
   geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, fill = `Technology Type`),
              size = 5, shape = 21, alpha = 0.7) +
@@ -128,6 +129,8 @@ ggplot() +
         panel.background = element_rect(fill = "grey99", colour = "grey80"),
         plot.title = element_text(hjust = 0, size = 16, vjust=0))
 
+
+animate(p, length = 15, width = 700, height = 400)
 ```
 
 ## Example 2: Development of Onshore Wind

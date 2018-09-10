@@ -186,7 +186,7 @@
     &middot; by Mikey Harper
   
   &middot; Read in about 6 min
-  &middot; (1240 words)
+  &middot; (1252 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fanimated-plots-with-r%2f" onclick="window.open(this.href, 'mywin',
@@ -256,7 +256,8 @@ REPD %&gt;%
 filter(`Status.Summary` == &quot;Approved&quot;)
 
 # build GIF
-ggplot() +
+p &lt;- 
+  ggplot() +
   geom_polygon(data=UK, aes(long, lat, group = group), fill = &quot;#528076&quot;) +
   geom_point(data = REPD_tech, aes(x = `X-coordinate`, y = `Y-coordinate`, fill = `Technology Type`),
              size = 5, shape = 21, alpha = 0.7) +
@@ -274,7 +275,10 @@ ggplot() +
         axis.title = element_blank(),
         axis.ticks = element_blank(),
         panel.background = element_rect(fill = &quot;grey99&quot;, colour = &quot;grey80&quot;),
-        plot.title = element_text(hjust = 0, size = 16, vjust=0))</code></pre>
+        plot.title = element_text(hjust = 0, size = 16, vjust=0))
+
+
+animate(p, length = 15, width = 700, height = 400)</code></pre>
 <div class="figure"><span id="fig:animatedMap"></span>
 <img src="/post/2018-04-23-animated-plots-with-r/2018-04-23-animated-plots-with-r_files/figure-html/animatedMap-1.gif" alt="An Animated Map of Renewable Energy Technologies in the UK" width="100%" />
 <p class="caption">
