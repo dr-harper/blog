@@ -17,7 +17,7 @@ library(rgdal)
 library(sf)
 library(tidyverse)
 
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
 
 # Load data
 wp <- readOGR("London_to_Basingstoke_walk.gpx", layer = "track_points")
@@ -34,7 +34,7 @@ This blog post aims to capture the enjoyment and pain of undertaking the challen
 
 The route we followed prioritised directness over scenic beauty. Figure \@ref(fig:route) shows the route we followed, and it is almost a direct straight bearing between London and Basingstoke. This was great for efficiency, but as explained later, some of the roads definitely made it hard to remain motivated.
 
-```{r route, fig.cap = "The Route"}
+```{r route, fig.cap = "The Route from London to Basingstoke", out.width = "100%"}
 leaflet(line) %>%
   addTiles() %>%
   addPolylines()
