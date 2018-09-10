@@ -60,6 +60,10 @@ Once we were outside London, we had always known the next 15 miles would be fair
 
 After passing through Backwater, we were treated with the joy of leaving the A30 for the first time in almost 20 miles. We passed through Hawley Common and Yately Heath Wood. Both these places were peaceful and felt like a world-away from the busy roads we had largely been following for the previous 10 hours.
 
+```{r yately, fig.cap = "Yately Forest, mone of the most beautiful parts of the walk."}
+knitr::include_graphics("YHW.jpg")
+```
+
 It is amazing how much this lifted the spirits of the team, and particularly mine. We had not been able to talk properly for the best part of 4 hours, and finally we could walk side-by-side as a group and talk and laugh our way as the time passed. It is easy to focus on the physical exersion of these kind of challenges, but these kind of moments are really important in keeping going on such an event.
 
 ## 56 to 75km: approaching Basingstoke
@@ -86,59 +90,7 @@ Thank you so much to all the kind donations made! It was such a great morale boo
 
 # Photos
 
-Below is a selection of photos of the day. They largely only show the parts of the day where we were enjoying ourselves, so they are fairly non-evenly spaced throughout the walk.
-
-<script src="https://www.publicalbum.org/js/pa-embed-player.min.js" async></script>
-<div class="pa-embed-player" style="width:100%; height:480px; display:none;"
-  data-link="https://photos.app.goo.gl/hjyXJQMh2yyin7dKA"
-  data-title="London to Basingstoke"
-  data-descrition="44 new photos added to shared album">
-  <!-- 44 images -->
-  <img data-src="https://lh3.googleusercontent.com/aZG22A5C3X5m_hQ0NnbvvpneH26BPfeXLOrs7X0XA4ikso6V3RP9Et5-GPHAPcXBryIxibkogEwtW1vJTde48eEBT02EpO6cUdxAR6Vdh3BvAtQEd9xwYtFGgpf5kN-8nK3r6_cDgw=w3024-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/QVLwiGaRJ8x9YAP5uw3Wz1Hsam1EoupiuPxqsxraVQWmyqdxm852OJtgSuvRU6qg-IsV3gipEMt4mYdunT4EWfO6vvkyS18VTfqImAqTTKm-yqh7dbs7Wf5pFXVPBc5vLfU69nYAZw=w3024-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/nOXxQgwogMS82E9PH1zMZHx11NvrOcD9hDSjPHQIrqGxmE6XC8MONFDMknt1Lhafc8OVuBNlyOUqtRLvfK5NEkLcNSdANtRhSInNVogYobjHkaOX4maesR76HFexg6Ra0NltTPFffA=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/xApYJF7G-NERKjBgvDCULhESEyeUwvLdm6sdQvbzsOTvk3fwZD1kR3y1fQ8yxkfByFmmVu5IXs_hCdZlF1Uh45nnkYmLoqp6MCV7cL8PeccIAih_1VZ8Z5f9i_RflPfNpE7owSPrKA=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/ADEXByC6WsJhc4lGzgCCKxxbB0IiqAHLV5kuXCvzLWXgL6jpwzmiIgAmZGF3TY48gF1uqDdH1T0ytE9P9Rk40xtEDB6IhDIVT2GJeG801J4sp_nI2aV3P9Ut1JnPJWcgm7jpJMToiQ=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/uSrUBTUG4U_gfZ24LdDw55-Hg5UkZjtm7vX5SAFEESdmQYKrwpc414Lux2p4sYViHbRpimZZ3d_-WVmyd25EFDC8P0Gya3tk1tabmFu6OeRtFfoqh3JAxFbVUU8iIu-NCc3TGB9_mQ=w2444-h2386" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/xszQJegsLZ_8Rt6spgJNVvUyrw3uf68JepMcR6M-V_7O6tzzDHj9i1NvJhiT92PeFspBy3tjM_Ds8kvVZPuFOkuvhbcSiGwOB3L5xTsQwTK2GhtdEW3Httv1IAE_bxrYnIoFR0ms4A=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/iQS0ydSCb9gYq91B-RaO1USomIr_eokY2x4cHWIZZjCideYs6YERCUyxesoin3WYcwlmMnR_iN2QC7Y8hMDzQY7T4v5GIb0BuE2hNTly5S0QpB8El0909VfRV7l4fTyVgCNVOBvGGA=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/Pe6Z_hYecyfvwBWcvNykaLtFgo5gzd9w8QMG5uf0_1ivLyeAgMDQSl7TLpYYSScwY6fZkYPdzV8_s7EOmlMFrzJYZ4U1BhOeHN9aGfNvNc6Fe2v-o4crn8PJNij-W_gRtyQOqt8oxQ=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/MoHuUJevJU_XYSyvuLxF63l3Cm8lyEvd6mIPf_SkWklM2meg1mGvgqiq64oyVAaA9l6N58Iv2H6B2VpELezXLXxMlGQg8iDPdkt0w_QXWgn0iRSkTAH4JIY3BdbovuQ012P3qF3sZw=w2448-h3264" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/ut0wN6GMMNzdTB1n5TOZ0a1hWTVp8kdNYbJERncIOEnxRjWdQFgR_ARD1hdgQAS8BGAgtaSnsX6wgoRsXV-TL3G4vYSEKLiXpDZi8Hx64eEgDOqnKT9DvrEoZqhMHaHbQk-D366dsw=w1440-h1525" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/VF_yYGAuHM2BpciOwpoxsKW3SIr68BUKzTJjVHlkkS8eWhv4iANCJdJpy6Ca5mzKg-uTwl4JfQDJt0ut_HfvDECFOK34QlB5wv5M_Eqv8VkUNhzqFX3ambj5t_vx2eS4XV4n5ctL2w=w3264-h2448" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/i5HoVKUWOX2sulJ8BBjHSexULi5TetxPDDQx89KcL3r-AZFP6tBmuOOZk2IsMtCvcKD2Lqp0qSa5_pn1CZ4WS1li8Zvs8uCOEYzZuEjJVk42T_ULSoYySaEqnlo06qlZzvV9iFRneA=w3024-h3023" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/YvbsjuFYq9tHa1hF2O0AkHf4dob6nmKgoRRWYIDDptakTof75g6OW-7Iu2XH7ejebAWh4LOPyLJsbu59wDEvESG62QmwbOjFdj3gknGEg3J4l5Ikezl8D4OlUxpjC-Zc4Mxd1DM1ZQ=w2448-h3264" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/GeZfLDfUatik9adAJyj5Widy25xdWSgoASfNOmoG7Z9V4oTvTIHySKldqu13jbPQNaPwTnSbZFq29D7UiviROLz4VqxcDz6DIBZdD8hbCr9_WiCMk3tiOFGTDjqoI_0SHfULyFAc4Q=w2703-h2703" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/LB8dVpGjDXGOXEEB_o-CG69hEvSxfXblaxSYGCM6UcEUjhnBlN6OM-wJVDz3JZoQwNa3Uj3lCVoWkZNqt3W2qRtG_HTKKY9mDrFeM0pIE4MN4HkMqOv1q8WdzYyCBl9mmBn5Hk3y_Q=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/z7mp1hR-NLZb6llNCx9aW7LGBNkxumYpi0WqqqZjPXy1fBcPQsmBPbulW_umtBFUScX_Ut2v7Mzz_Pj4PHabwTqhIBbv_UERqQuuJTfqVmq1QJgMw2R8nCsyI_tw4Yj9bzIqCeLNBw=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/Q6o4RDpq95oCTGk4-0gyEk9RG78XYQ0gHs03KuK8oXBskaTCxDsnOU9cofCnxOORLxLFIu5j2fAibYFk-IHLiQcdbBBnncnf-cG2dudGgoQ-sDuavoDeYpDTw_wqkQkhDH3D2wqc_A=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/bLEmadcz2pdd4UCK3joNi93mzzM_UXVLo5FaFQzuCS7gpHMgCk9oxEszfBKE8y6Huaa94B12GJ8uplvyMz5p2YN3onZC3N9uwIuqUbbo3p5sqkMbudOpTpSqB9AOhMG3k0R27abH7A=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/jx_1wFK9DR7iyrB6aa-Wp4gzvI6XcjwiIiUfzXeBS5bjPJ3wUgT0iRCH5grSJ51SFrsG8hyTpJ09XnjcVvxAR4GfJOwY3VW03MHqXt8xAmimZKhsGKVCo8ESJ5GUgJFBBgUwlptH9A=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/XAYQaQV-ejXIum29czhZu-P1vFeMh-6g5AVLS6QmlSXalIIXA69FufORGtM9m9-OEgEO-mqYJxlBYcPXTdvuy82r3S8nOSGpIA2PCKJP9RDQw3FoLFN3vLlzSiWHt0oDeDcXnBM_ZQ=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/xzZxrmjumTmeRqPE8AEkjKWISi6I7ux0jWvY_MHZGUO8Wg2X-UQsETVNOROTLObPouZLuqD4Z_cOpTOZoZs0jZ7teSd1ltbGQ1mi-WDwCaUBo-AzHHO4gXyR485rX-8r3ZrkmdXYdQ=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/vM115lAr8O-TwomhSOBfWSyPZmbmn_m4kOAU7pJj1dKJhk1qWfIcDhX31ZdY8gV6d1_J287If5TBPgGu9X3SQBMGzPi4_HjTFcRsn-Rzx5Jer1fKnFdaX3tqctfrq9U2TCZUPZ63JQ=w2310-h2310" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/jyPpQ0aAfKAh6IZqmPm0BhWJesI9CEGqe9Ld1C93y9WKz6mTTmBwEgKmkKgIKAvl3V6jtb7JkqM0JqfN_mJ5jrbd5szTZrFa7nUEJ5gVthijTcmfCBTnbgc0GhHbKpit5EgoZ5X3og=w1941-h2588" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/RpPADYqgeUiXnr5tv1GdFgP5iMkzMWiNeAkEt97Ni-ocvkqr1DRplR5UDiJXnNmxlz8P4k7Phn2dlI0QHpV-LzMHAbokjb_VXHw-LdnTMoHGqofHwxnouBMF5C99894RCPiNKgzPVg=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/KUNYVsMNHu2XcHHB76pwuk-AjD4hhSVmQ3MPJYzP9jSi8nQ60bvk8vxf0qOtKp5DUfmQ1zPjXGx3nzd7eqhWuQuwJ1kP0i8dgm5XItCNS_pAYhtHUNSSvLfDfNNdtG8mk2vuut5s8w=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/GDv_6O2dcx7_l9CJJA8QCshu0SoDCFVgmhVDH3wyHrv4Gdqy_w3RfsfV7TqE9PgZUUuGWDBUaRN-6vLpvzX0dOYj42stBUz6WLo29ew7gqfsy7OhZxTFQT5vNMGMQoEr-yHLcJ21UQ=w1440-h2328" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/FPdAr73PbO-Od5kc17NotX9YWXaHCMEM0Pl1_vpSmWF8LMakFuKEXxNdJPOJffSAkfm_FplaIeh73AqlgCREQoTnKMyhWGTwHoIjjhSua7pra1hCmgJOxpQt_W3Ryc4f5Jq5tSdVyA=w2533-h2533" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/6ruU7gLibGpb6J7PRtiQwaSsguY2dCNgi1V5FiX02K9emEmEtBV0tc8OD4jYBFH2MLbDMDvdE5QFZwaULiLZfcERTiMPnKsqO0ruYtT-64HKpUdqMafQHIZyXfyTyVrwbWo_DgHP9w=w2448-h3264" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/MRWdLIy3mjDq-A1XOAj7rk8iL_t0wBpKxvgAYUqRLONFTKhzIdsNZHBGGyV8zlEInum2WIkYo0_UUL3rVhMyUj0gZKiU8NEMhiEkgpmcReqsTprotMr2om6DtCOUeEjNXfBcuuOJNw=w2146-h2862" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/i2BcflrN6GlInnh_eYPKWgj2uWCD73ePqvuX3D7aDhr-xANh7-VGj14DhOSq1auJ9izrkuMvSyfZriANMxRaKzpWY7nrk49lkymvZbqZb7Hwtl9Bd7qMWBP13BPKpTPNu32f69A-uA=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/HF2c9-9a4orJqkU8sX0m9ksIayGQ-ESxJw_6a7qn9EYAHv7aDl8BMORmiR3D_X-HSJsAiZNvkcCO5vmZPJPTK8Li4wXNLKa2N2_VpCXTe9LlNoUy_8iGn1XooSOtzs602w04nvmoUw=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/DY4qv__BTS8Cyu0DdKHMF5MD3BYWFtkVywHAHtk2TzPIyX1QsKNDhsWCiFkDjOr5jPhDYkUClnE9_dOasN33cvmVXIKb6cDgx75cJSxEqT0ZLe3luTdnqllx6XuBrxzpawfpSBlEPw=w2335-h3113" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/X7jwu4LbU-2Kk7bcxrI9z7fMxUxHkU0mLhJeqrrRjKn6K2GwaDsyF_W4krKnUsoRmyB-rO4Iu_XAJrHoNURTLDFEnC_F9xMSWunnBVq09k-MVuUoAk6E0kEJ530tBGMfXg4FH4ZJ3g=w2850-h2850" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/VB8MntFJtOa300l8od8tyYpyEdc0DFTy-rCKqxyv2hxgvFDfcpKdT-MKnJRsW3N_FUNB9jM2-3j8Aou4z07XOEN7dGaDDlIG5ZbNKQLVxt6KihaoGQzPrNjB7jlJdHW5Xmt5IMmcaw=w2867-h2867" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/XWBMF8XA3geTqZeSXzeAG9Q2g4gQpMG6zZKk9Y9VWu9GbhO0wXvjXuSFii4yJtnbF2FFlN2otIQyHaeJ8CU6vgdRJ5G7r2xvD894kpnb27IwU610vL0Es5s9DNb-2QZr6rksD1DDFA=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/2mzGOzRYCiBNTHnldiakqTQxH6uemKBsBe_t9HOcjIhlP5wBuf7tDy2NFBr1ajxc2fiNYDNG7YGbria4kboPCHTEuuid9C6AMXQmZmrlfjOVDpIpkwXkE182qYO5B7RPlFohxBVkaA=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/aMgxSCpYTPvABKpP0KdC12GH1GwW21OC1jc8Q1EWm5n1pDlrx9XnDONl_5eT-Sm1vTKgbN36NOe1crqTRdGKmfGfK5CX0kJLh1ITDpyDArJ5l24qgj1kyMwF8XGkevv1CfBKuxwD6w=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/KeiftYOS6k-pbRemTkYijFOZI2goM2HO-UUQzNXzh1gY7Fedr6-WfF42RxzOq3ZRPoEZWYsQ-um9PYVI0pengu-HzSbtNwmKjJqzR-3jEwe24DELho1gCPrvlS_ICcNM_vpAO3Jg0A=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/a64mTcePwEeQ1edCbtgAVHDeLJHiteM-W0Aw6vrINaxQGG8n83qg5K-enrWMMhbEXREg-pvSzfIYtBJGqPFE2T1vOZUMrQ29IKtsAY8e5WSkCuO9Vwz9o8OrfK2iLtokuwS7nvZSTQ=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/246VMv03y6J7uYs5oTK7OuuhlsKMbI7J0IVYvVcRVyi5H7YcOS5D-JXvDVI4364KRfx9YSKWpY_GMC7mdbWkDrkt4pSxEsefr4eephXEzlMIX-KXhEO1dEmlThXzsAbe1FsucNPAeQ=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/16iBk8bpFrlnmBV20v2AryfsVAyUChMNtGQ42SzCPM23FcQYfW2YL0KoXJwyCQg-MxJW1gV4ODu1HuDHpeE2kmWAdS8ExCbuZJVyP4sBlOF29Xat7d5cA576QnFzGbSoX-_efgifoA=w4032-h3024" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/2HhQZqPVkXQ1r-rhLWKjJtOn6rpkprTvmIKWVJ9Mn7AB8-oEa8Xe4iR7GELF7vuv6oKzoeiAA10647VHxkgJc9EPNTXKn5HfKO_s75Ct4nbxlDhNGGKKGA-NO3b6-z6kBA7KKXv-JQ=w3024-h4032" src="" alt="" />
-  <img data-src="https://lh3.googleusercontent.com/RbqSF0T_w6suzJn2oXaICfj5A_R_h9KqhfqNRfu3E-2mm1XVjuaiEqQSZity_GBjZ860jUoqj14_L84whOY8bLNK8eHgtfq1IG2W5bGrSuw_MKuDwiO9ndf_iw-NjUGAV9BI0ND4Kg=w1398-h2156" src="" alt="" />
-</div>
+Check out all of our photos on Google Photos: https://photos.app.goo.gl/hjyXJQMh2yyin7dKA
 
 # Conclusion
 
