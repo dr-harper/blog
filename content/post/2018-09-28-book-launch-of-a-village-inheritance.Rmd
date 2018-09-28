@@ -7,11 +7,12 @@ categories: [book]
 tags: [book]
 type: post
 description: "Back in 2014, I discovered a beaten old manuscript written by my grandparents back in the 1973. Today, after smany hours we officially launched the finished book!"
-header_image: "/images/bookCover.jpg"
+header_image: "https://github.com/dr-harper/blog/blob/master/images/bookCover.jpg"
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(out.width = "100%")
+knitr::opts_chunk$set(out.width = "100%",
+                      echo = FALSE)
 ```
 
 It was with great pleasure today that I was able to launch the book "A Village Inheritance" with my grandmonther, Clare, at Williton Library in Somerset. Over 30 people attended the talk as I discussed the making of the book, and my dad Bryan gave a reading from the book.
@@ -35,7 +36,7 @@ It was a fairly painstaking process converting the book. 40 year old typewritten
 A lot of work went into finding all the images for the book. The ones in the original book were all low-quality copies, and therefore I spent hours going through all of my grandpas old photos. A notable example were the house drawings, which were produced in 1921 and clearly reaching suffering after 100 years of being in storage. I got these digitally restored to be able to include in the book, and I think they are one of my favourite parts of the book.
 
 ```{r housePlans, fig.cap = "The original house drawings, produced in the 1920s and showing their age!"}
-knitr::include_graphics("images/houseDrawings.jpg")
+knitr::include_graphics("https://github.com/dr-harper/blog/blob/master/images/houseDrawings.jpg?raw=true")
 ```
 
 With the written content and images sourced and updated, it was ready to try and get the book published. Fortunately, I have always liked formatting my work (I would spend way too long making any university assignments look pretty before submission). So I set about trying to make the book look professional, and ended up editing a LaTeX book template. With the book finally finished, I self-published the book through Kindle Direct Publishing which made it surprising easy to sell books without having to invest lots of money upfront.
