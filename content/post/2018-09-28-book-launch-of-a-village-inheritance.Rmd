@@ -1,0 +1,56 @@
+---
+title: Book Launch of “A Village Inheritance"
+author: Mikey Harper
+date: '2018-09-28'
+slug: book-launch-of-a-village-inheritance
+categories: [book]
+tags: [book]
+type: post
+description: "Back in 2014, I discovered a beaten old manuscript written by my grandparents back in the 1973. Today, after smany hours we officially launched the finished book!"
+header_image: "/images/bookCover.jpg"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(out.width = "100%")
+```
+
+It was with great pleasure today that I was able to launch the book "A Village Inheritance" with my grandmonther, Clare, at Williton Library in Somerset. Over 30 people attended the talk as I discussed the making of the book, and my dad Bryan gave a reading from the book.
+
+# The Book
+
+Part family history, local history and autobiography, the book tells the story of my grandparents, Clare and Glyn Court, after they inherited Glyn's childhood home and family business in 1967  Already leading busy lives as teachers, they weren’t prepared for the added responsibility and pressures which came from leading a village shop whilst bringing up a young family. The story of running the business, highlighting their excitement, optimism and the difficulties they faced.
+
+My grandparents have always had a natural flair for storytelling. My grandpa had an amazing ability to bring history to life, and was able to capture the spirit and feel of victorian Somerset. He had such a love for Somerset, a passion which reflected through his writing in this book.
+
+# The making of the book
+
+I discovered a beaten copy of the book after my grandparents mentioned it in passing back in 2015. At the time I don't really know what my overall aim was, but I had the thought that I should convert the original copy to an electronic version. I don't think I intended to get it published at the time, but just thought it would be a great way to share the text within the family.
+
+```{r bookOld, fig.cap = "The finished book by the original manuscript."}
+knitr::include_graphics("images/BookOldNew.jpg")
+```
+
+It was a fairly painstaking process converting the book. 40 year old typewritten text is not easily recognised by image recognition software, and although I was able to scan all the book, about 5% of letters were misread. A "d" could easily be recognised as "ci", specs of dirt on the paper would create all sorts of mayhem. It took several rounds of proofreading for all the little errors to be eeked out (although I imagine there will still be errors somewhere in the book!).
+
+A lot of work went into finding all the images for the book. The ones in the original book were all low-quality copies, and therefore I spent hours going through all of my grandpas old photos. A notable example were the house drawings, which were produced in 1921 and clearly reaching suffering after 100 years of being in storage. I got these digitally restored to be able to include in the book, and I think they are one of my favourite parts of the book.
+
+```{r housePlans, fig.cap = "The original house drawings, produced in the 1920s and showing their age!"}
+knitr::include_graphics("images/houseDrawings.jpg")
+```
+
+With the written content and images sourced and updated, it was ready to try and get the book published. Fortunately, I have always liked formatting my work (I would spend way too long making any university assignments look pretty before submission). So I set about trying to make the book look professional, and ended up editing a LaTeX book template. With the book finally finished, I self-published the book through Kindle Direct Publishing which made it surprising easy to sell books without having to invest lots of money upfront.
+
+## Get the book
+
+The book is available to purchase through [Amazon}(https://amzn.to/2N7gi6U). 
+
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=GB&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=mikeyharper-21&language=en_GB&marketplace=amazon&region=GB&placement=1982900849&asins=1982900849&linkId=fd404c52b4ca486b34888e30bccd02d4&show_border=true&link_opens_in_new_window=true"></iframe>
+
+## The start of a bigger project
+
+My grandpa spent his entire life writing, having produced many books, articles and weekly columns in the local paper. He was still busy writing up to the time he passed away, and was busy working on two books which were nearing completion. He also has an extensive archive of unpublished work from a lifetime.
+
+In the last few years, we grew very close through his literature. He was so thrilled that a grandson of his was interested in his work, and I was equally as excited that my grandfather had written a such much down for us all to enjoy. However, much of this work is not available for all to enjoy, so I have set about a mission to publish as much of his work as possible. *A Village Inheritance* marks the first step in this process, but there are many more books and collections which are planned for the future.
+
+I have set up the website www.glyncourt.co.uk, and over the coming years I will start to build the collection of his works. It is a mamouth of a task, and given the amount he has written, it could potentially take me a lifetime to complete. I have a vision where his work is available for all to enjoy, so make sure to check back in the future once I have had time to update the website!
+
