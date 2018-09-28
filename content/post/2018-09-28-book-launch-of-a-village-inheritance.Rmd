@@ -7,7 +7,7 @@ categories: [book]
 tags: [book]
 type: post
 description: "Back in 2014, I discovered a beaten old manuscript written by my grandparents back in the 1973. Today, after smany hours we officially launched the finished book!"
-header_image: "https://github.com/dr-harper/blog/blob/master/images/bookCover.jpg"
+header_image: "https://i.imgur.com/dOAF2NK.jpg"
 ---
 
 ```{r, include = FALSE}
