@@ -37,7 +37,7 @@ It was a fairly painstaking process converting the book. 40 year old typewritten
 
 A lot of work went into finding all the images for the book. The ones in the original book were all low-quality copies, and therefore I spent hours going through all of my grandpas old photos. A notable example were the house drawings, which were produced in 1921 and clearly reaching suffering after 100 years of being in storage. I got these digitally restored to be able to include in the book, and I think they are one of my favourite parts of the book.
 
-```{r housePlans, fig.cap = "The original house drawings, produced in the 1920s and showing their age!"}
+```{r housePlans, fig.cap = "The original house drawings produced in the 1920s (left) and the digitally restored copy (right)."}
 knitr::include_graphics("https://github.com/dr-harper/blog/blob/master/images/houseDrawings.jpg?raw=true")
 ```
 
