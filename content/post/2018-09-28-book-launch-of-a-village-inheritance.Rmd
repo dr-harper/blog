@@ -17,7 +17,7 @@ knitr::opts_chunk$set(out.width = "100%",
 
 It was with great pleasure today that I was able to launch the book "*[A Village Inheritance](https://amzn.to/2zD1eu8)*" with my grandmonther, Clare Court, at Williton Library in Somerset. The event was a culmination of several years of hard work to get the book ready for publishing, and almost 50 years since the book was originally written, the book is available for all to enjoy!
 
-We had no idea how many people would be interested in such an event. As I travelled to Somerset this morning, I had no idea that almost 30 people would find the time in their days to attend our talk. But we were amazed to see so many people join us, and it was fantastic to be able to share our story of the book with them and share the work of my grandparents with so many people.
+We had no idea how many people would be interested in such an event. As I travelled to Somerset this morning, I wouldn't have expected that almost 30 people would find the time in their days to attend our talk. But we were amazed to see so many people join us, and it was fantastic to be able to share our story of the book with them and share the work of my grandparents with so many people.
 
 This blog provides a short write-up on the launch, the book, the process of creating it and finally the longer term project to help publish as much of my grandfather's work as possible.
 
@@ -33,7 +33,7 @@ I discovered a beaten copy of the book after my grandparents mentioned it in pas
 knitr::include_graphics("https://github.com/dr-harper/blog/blob/master/images/BookOldNew.jpg?raw=true")
 ```
 
-It was a fairly painstaking process converting the book. 40 year old typewritten text is not easily recognised by image recognition software, and although I was able to scan all the book, about 5% of letters were misread. A "d" could easily be recognised as "ci", specs of dirt on the paper would create all sorts of mayhem. It took several rounds of proofreading for all the little errors to be eeked out (although I imagine there will still be errors somewhere in the book!).
+It was a fairly painstaking process converting the book. 40 year old typewritten text is not easily recognised by image recognition software, and although I was able to scan all the book, about 5% of letters were misread. A "d" could easily be recognised as "ci", specs of dirt on the paper would create all sorts of mayhem. It took several rounds of proofreading for all the little errors to be weeded out (although I imagine there will still be errors somewhere in the book!).
 
 A lot of work went into finding all the images for the book. The ones in the original book were all low-quality copies, and therefore I spent hours going through all of my grandpas old photos. A notable example were the house drawings, which were produced in 1921 and clearly reaching suffering after 100 years of being in storage. I got these digitally restored to be able to include in the book, and I think they are one of my favourite parts of the book.
 
@@ -61,7 +61,7 @@ My grandpa spent his entire life writing, having produced many books, articles a
 
 In the last few years, we grew very close through his literature. He was so thrilled that a grandson of his was interested in his work, and I was equally as excited that my grandfather had written a such much down for us all to enjoy. However, much of this work is not available for all to enjoy, so I have set about a mission to publish as much of his work as possible. *A Village Inheritance* marks the first step in this process, but there are many more books and collections which are planned for the future.
 
-I have set up the website www.glyncourt.co.uk, and over the coming years I will start to build the collection of his works. It is a mamouth of a task, and given the amount he has written, it could potentially take me a lifetime to complete. I have a vision where his work is available for all to enjoy, so make sure to check back in the future once I have had time to update the website!
+I have set up the website www.glyncourt.co.uk, and over the coming years I will start to build the collection of his works. It is a mammoth of a task, and given the amount he has written, it could potentially take me a lifetime to complete. I have a vision where his work is available for all to enjoy, so make sure to check back in the future once I have had time to update the website!
 
 # Conclusion
 
