@@ -162,14 +162,6 @@ weight = 3
 identifier = ""
 url = "/about/"
 
-# [[Languages.en.menu.main]]
-# name = "Showcase"
-# pre = "<i class='fa fa-trophy'></i>&nbsp"
-# weight = 4
-# identifier = "showcase"
-# url = "showcase"
-
-
 [[Languages.en.menu.footer]] # add  links to the bottom right corner.
 name = "Hosted on Github"
 identifier = "github"
@@ -182,7 +174,3 @@ languageCode = "en"
 weight = 1
 copyright = "(c) 2018 Copyright Mikey Harper"
 title = "Mikey Harper" # Site title
-
-
-
-
