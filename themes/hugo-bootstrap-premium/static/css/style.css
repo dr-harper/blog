@@ -139,8 +139,7 @@ code.has-jax {
   padding: 0px;
 }
 
-/* Custom CSS */
-
+/* Custom CSS used for new article thumbnails */
 .holder {
   display: flex;
   flex-direction: row;
@@ -163,6 +162,8 @@ img {
   transition: 1s ease;
 }
 
+
+/* Custom CSS */
 .col-container {
   display: table;
   width: 100%;
@@ -207,13 +208,13 @@ img {
   
 }
 
-@media (max-width:990px) {
+@media (max-width:700px) {
   .flex-col {
     flex-basis: calc(50% - 12px);
   }
 }
 
-@media (max-width:990px) {
+@media (max-width:700px) {
   .flex-col {
     flex-basis: 100%;
   }
