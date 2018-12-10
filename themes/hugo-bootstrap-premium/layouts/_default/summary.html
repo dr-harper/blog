@@ -1,24 +1,10 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <table style="width: 100%;">
-      <col width="40%">
-      <col width="60%">
-  <tr>
-    <td>
-      {{ .Render "summary.image"}}
-    </td>
-    <td>
-      {{ .Render "summary.hat" }}
-      {{ .Render "summary.content" }}
-    </td>
-  </tr>
-</table>
-  
+<div class="flex-row">
+  <div class="flex-col">
+    {{ .Render "summary.image"}}
   </div>
+  <div class="flex-col">
+    {{ .Render "summary.hat"}}
+    {{ .Render "summary.content"}}
+    {{ partial "bloc/content/readlink.html" . }}
   </div>
-
-
-
-
-
-
+</div>

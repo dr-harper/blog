@@ -139,6 +139,7 @@ code.has-jax {
   padding: 0px;
 }
 
+/* Custom CSS */
 
 .holder {
   display: flex;
@@ -148,6 +149,7 @@ code.has-jax {
   padding:0; 
   margin:0;
 }
+
 
 img {
   object-fit: cover;
@@ -160,3 +162,64 @@ img {
   opacity: 0.5;
   transition: 1s ease;
 }
+
+.col-container {
+  display: table;
+  width: 100%;
+}
+.col2 {
+  display: table-cell;
+  width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .col2 { 
+    display: block;
+    width: 100%;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+
+.flex-row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  align-items:flex-start;
+  background-color: #F8F9F9;
+  border: 1px solid #EAEDED;
+}
+
+.flex-col {
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  flex: 1;
+  flex-direction: column;
+  box-sizing:border-box;
+  
+}
+
+@media (max-width:990px) {
+  .flex-col {
+    flex-basis: calc(50% - 12px);
+  }
+}
+
+@media (max-width:990px) {
+  .flex-col {
+    flex-basis: 100%;
+  }
+}
+
+h2 {
+    margin-top: 0;
+}
+
