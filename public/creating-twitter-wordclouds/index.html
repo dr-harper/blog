@@ -18,7 +18,7 @@
   
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Creating Twitter Wordcloudsin R  &middot; Mikey Harper</title>
+  <title>Creating Twitter Wordclouds using R  &middot; Mikey Harper</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -30,7 +30,7 @@
 <meta name="keywords" content="DataViz, Data, R, web, ">
 
 
-<meta property="og:title" content="Creating Twitter Wordcloudsin R  &middot; Mikey Harper ">
+<meta property="og:title" content="Creating Twitter Wordclouds using R  &middot; Mikey Harper ">
 <meta property="og:site_name" content="Mikey Harper"/>
 <meta property="og:url" content="/creating-twitter-wordclouds/" />
 <meta property="og:locale" content="en">
@@ -61,7 +61,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@@MikeyLHarper" />
 <meta name="twitter:creator" content="@@MikeyLHarper" />
-<meta name="twitter:title" content="Creating Twitter Wordcloudsin R" />
+<meta name="twitter:title" content="Creating Twitter Wordclouds using R" />
 <meta name="twitter:description" content="A guide on how to make wordclouds using the rtweet package in R." />
 <meta name="twitter:url" content="/creating-twitter-wordclouds/" />
 <meta name="twitter:domain" content="/">
@@ -176,7 +176,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <div class="text-center">
 
-    <h1>Creating Twitter Wordcloudsin R
+    <h1>Creating Twitter Wordclouds using R
 </h1>
 
     <div class="metas">
@@ -190,13 +190,13 @@
     &middot; by Mikey Harper
   
   &middot; Read in about 4 min
-  &middot; (848 words)
+  &middot; (837 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=Creating%20Twitter%20Wordcloudsin%20R&amp;url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Creating%20Twitter%20Wordclouds%20using%20R&amp;url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
     <a href="https://plus.google.com/share?url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
@@ -205,10 +205,10 @@
     <a href="http://www.reddit.com/submit?url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcreating-twitter-wordclouds%2f&amp;title=Creating%20Twitter%20Wordcloudsin%20R" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcreating-twitter-wordclouds%2f&amp;title=Creating%20Twitter%20Wordclouds%20using%20R" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=Creating%20Twitter%20Wordcloudsin%20R&amp;body=Check out this site %2fcreating-twitter-wordclouds%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Creating%20Twitter%20Wordclouds%20using%20R&amp;body=Check out this site %2fcreating-twitter-wordclouds%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   </small>
@@ -349,8 +349,6 @@ Figure 1: Our tweet wordcloud
 </p>
 </div>
 <p>We can play around with this basic setup, and I would recommend checking out the <a href="https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html">package documentation</a> to see some of the things that can be done. For example, we can provide our own image as a mask to customise the shape of the wordcloud. The output is shown in Figure <a href="#fig:wordCloud2"><strong>??</strong></a>.</p>
-<pre class="r"><code>wordcloud_twitter &lt;- wordcloud2(data = textCorpus[1:500,], figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;))
-wordcloud_twitter</code></pre>
 </div>
 </div>
 <div id="conclusion" class="section level1">
@@ -384,7 +382,7 @@ wordcloud_twitter</code></pre>
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=Creating%20Twitter%20Wordcloudsin%20R&amp;url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Creating%20Twitter%20Wordclouds%20using%20R&amp;url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
     <a href="https://plus.google.com/share?url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
@@ -393,10 +391,10 @@ wordcloud_twitter</code></pre>
     <a href="http://www.reddit.com/submit?url=%2fcreating-twitter-wordclouds%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcreating-twitter-wordclouds%2f&amp;title=Creating%20Twitter%20Wordcloudsin%20R" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcreating-twitter-wordclouds%2f&amp;title=Creating%20Twitter%20Wordclouds%20using%20R" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=Creating%20Twitter%20Wordcloudsin%20R&amp;body=Check out this site %2fcreating-twitter-wordclouds%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Creating%20Twitter%20Wordclouds%20using%20R&amp;body=Check out this site %2fcreating-twitter-wordclouds%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -476,7 +474,7 @@ wordcloud_twitter</code></pre>
       <ul>
          
          <li>
-            <a href="/creating-twitter-wordclouds/">Creating Twitter Wordcloudsin R</a>
+            <a href="/creating-twitter-wordclouds/">Creating Twitter Wordclouds using R</a>
          </li>
          
          <li>

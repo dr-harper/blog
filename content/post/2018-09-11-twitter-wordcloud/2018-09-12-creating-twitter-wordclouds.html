@@ -1,5 +1,5 @@
 ---
-title: Creating Twitter Wordcloudsin R
+title: Creating Twitter Wordclouds using R
 author: Mikey Harper
 description: A guide on how to make wordclouds using the rtweet package in R.
 date: '2018-12-12'
@@ -125,8 +125,6 @@ Figure 1: Our tweet wordcloud
 </p>
 </div>
 <p>We can play around with this basic setup, and I would recommend checking out the <a href="https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html">package documentation</a> to see some of the things that can be done. For example, we can provide our own image as a mask to customise the shape of the wordcloud. The output is shown in Figure <a href="#fig:wordCloud2"><strong>??</strong></a>.</p>
-<pre class="r"><code>wordcloud_twitter &lt;- wordcloud2(data = textCorpus[1:500,], figPath = system.file(&quot;examples/t.png&quot;,package = &quot;wordcloud2&quot;))
-wordcloud_twitter</code></pre>
 </div>
 </div>
 <div id="conclusion" class="section level1">
