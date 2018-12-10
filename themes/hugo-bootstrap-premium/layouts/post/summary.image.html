@@ -1,8 +1,10 @@
+<a href="{{ .Permalink }}">
 <div class="holder">
-<img src="{{ if (isset .Params "header_image") }}
+<img src="
+{{ if (isset .Params "header_image") }}
     {{$.Param "header_image" | absURL }}
 {{ else }}
     {{"/image/stockImage.jpeg"}}
 {{ end }}">
 </div>
-
+</a>

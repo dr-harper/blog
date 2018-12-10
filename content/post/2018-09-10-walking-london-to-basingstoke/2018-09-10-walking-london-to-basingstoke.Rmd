@@ -8,7 +8,7 @@ categories: [walking, data]
 tags:
   - maps
 type: post
-header_image: "https://i.imgur.com/2oNkZI4.jpg"
+header_image: "/images/YHW.jpg"
 ---
 
 ```{r setup, include = FALSE}
@@ -59,10 +59,6 @@ Once we were outside London, we had always known the next 15 miles would be fair
 ## 49 to 56km: off the main road (briefly)
 
 After passing through Backwater, we were treated with the joy of leaving the A30 for the first time in almost 20 miles. We passed through Hawley Common and Yately Heath Wood. Both these places were peaceful and felt like a world-away from the busy roads we had largely been following for the previous 10 hours.
-
-```{r yately, fig.cap = "Yately Forest, one of the most beautiful parts of the walk."}
-knitr::include_graphics("https://i.imgur.com/YY8Favc.jpg")
-```
 
 It is amazing how much this lifted the spirits of the team, and particularly mine. We had not been able to talk properly for the best part of 4 hours, and finally we could walk side-by-side as a group and talk and laugh our way as the time passed. It is easy to focus on the physical exertion of these kind of challenges, but these kind of moments are really important in keeping going on such an event.
 

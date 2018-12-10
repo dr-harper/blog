@@ -13,10 +13,8 @@ tags:
   - DataViz
   - Renewable Energy
 bibliography: bib.bib
+header_image: "/images/animatedPlots.png"
 ---
-
-<meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/cover.png"/>
-<meta name="twitter:card" content="summary_large_image">
 
 ```{r setup, include = FALSE}
 # May need to install patchwork and gganimate

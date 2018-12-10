@@ -42,7 +42,7 @@
 <meta property="og:article:modified_time" content="2018-05-01T00:00:00Z" />
 
 
-<meta property="og:image" content="https://i.imgur.com/qftiHnU.jpg"/>
+<meta property="og:image" content="/images/flowcharts.jpg"/>
 
 
   
@@ -219,7 +219,7 @@
 </div>
 
       
-<img src= https://i.imgur.com/qftiHnU.jpg alt="Mountain View">
+<img src= /images/flowcharts.jpg alt="Mountain View">
 
 
 <br>
@@ -232,8 +232,6 @@
 <script src="/rmarkdown-libs/grViz-binding/grViz.js"></script>
 
 
-<meta property="og:image" content="https://i.imgur.com/hPZn2K6.jpg"/>
-<meta name="twitter:card" content="summary_large_image">
 <p>The old cliché goes that “<em>A picture is worth a thousand words</em>”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail.</p>
 <p>In this post, I highlight some of the great features of making diagrams in R, and highlight how they can be easily connected to data from your analysis to produce dynamic data flowchart. This can make it much easier for readers to engage with your data analysis and understand how your complex models work.</p>
 <div id="making-diagrams-in-r" class="section level2">
@@ -242,7 +240,7 @@
 <pre class="r"><code>install.packages(&quot;DiagrammeR&quot;)</code></pre>
 <p>The creation of figures in R is further simplified by the integration with RStudio, which provides native support for <code>.dot</code>, <code>.mmd</code> or <code>.gv</code> files which can be used for containing charts. RStudio provides syntax highlighting for any of these files, and allows you to quickly preview the results of the diagram within the view window, as shown in Figure <a href="#fig:diagrammeR-dot">1</a></p>
 <div class="figure" style="text-align: center"><span id="fig:diagrammeR-dot"></span>
-<img src="https://i.imgur.com/ApNI0je.png" alt="Using Graphviz within R Studio" width="100%" />
+<img src="/images/RstudioFlowcharts.png" alt="Using Graphviz within R Studio" width="100%" />
 <p class="caption">
 Figure 1: Using Graphviz within R Studio
 </p>

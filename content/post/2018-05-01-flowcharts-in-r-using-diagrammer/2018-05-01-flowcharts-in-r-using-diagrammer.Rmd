@@ -11,7 +11,7 @@ tags:
   - R Markdown
   - DiagrammeR
 bibliography: bib.bib
-header_image: "https://i.imgur.com/qftiHnU.jpg"
+header_image: "/images/flowcharts.jpg"
 ---
 
 ```{r setup, include=FALSE}
@@ -21,10 +21,6 @@ knitr::opts_chunk$set(message = FALSE, out.width = "100%", fig.align = "center")
 library(DiagrammeR)
 knitr::write_bib("DiagrammeR", file = "bib.bib")
 ```
-
-<meta property="og:image" content="https://i.imgur.com/hPZn2K6.jpg"/>
-<meta name="twitter:card" content="summary_large_image">
-
 
 The old cliché goes that "*A picture is worth a thousand words*". This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail. 
 
@@ -41,7 +37,7 @@ install.packages("DiagrammeR")
 The creation of figures in R is further simplified by the integration with RStudio, which provides native support for `.dot`, `.mmd` or `.gv` files which can be used for containing charts. RStudio provides syntax highlighting for any of these files, and allows you to quickly preview the results of the diagram within the view window, as shown in Figure \@ref(fig:diagrammeR-dot)
 
 ```{r diagrammeR-dot, fig.cap="Using Graphviz within R Studio", echo = FALSE}
-knitr::include_graphics("https://i.imgur.com/ApNI0je.png")
+knitr::include_graphics("/images/RstudioFlowcharts.png")
 ```
 
 While this guide by no means attempt to replace the detailed guidance provided [on the package website](http://rich-iannone.github.io/DiagrammeR/index.html), it is important to highlight a few of the basic features of the plots. **DiagrammeR** uses the processing function called `grViz()`. What you pass into `grViz()` is a valid graph specification in the DOT language, with the figure being supplied as either an external file or inline code within R.

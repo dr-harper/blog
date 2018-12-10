@@ -74,7 +74,9 @@ Things I probably should have packed but didn't:
 
 While no means an essential part of the planning, I decided that I wanted to design a custom Jersey. I used [Owayo](https://www.owayo.co.uk), who provide a relatively good online designer which you can use to customise your design. Ordering two came to around £65 each. With a bit of playing around I came up with the following design.
 
-![LEJOG Jerseys, designed using Owayo](/images/LEJOG Jersey HiRes.jpg)
+```{r, fig.cap = "LEJOG Jerseys, designed using Owayo", echo = FALSE}
+knitr::include_graphics("/images/LEJOGJerseyHiRes.jpg")
+```
 
 I was really happy with the end result. I would definitely recommend getting a Jersey if you have the time to organise it. The map on the back was a great conversation starter with a lot of people who otherwise wouldn’t have known what we were doing.
 
