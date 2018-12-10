@@ -5,7 +5,16 @@
   </header>
   <ul class="container content">
     {{ range $index, $foo := .Paginator.Pages }}
-      {{ .Render "list.li" }}
+      <div class="flex-row">
+  <div class="flex-col">
+    {{ .Render "summary.image"}}
+  </div>
+  <div class="flex-col">
+    {{ .Render "summary.hat"}}
+    {{ .Render "summary.content"}}
+    {{ partial "bloc/content/readlink.html" . }}
+  </div>
+</div>
     {{ end }}
   </ul>
   {{ partial "bloc/content/pagination.html" . }}
