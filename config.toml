@@ -92,7 +92,6 @@ switchlang = false
 BrandImage = "" #top header brand image.
 brand = "Mikey Harper" # brand image alt text.
 topline = "few words about your site"
-footline = "code with <i class='fa fa-heart'></i>"
 
 customJS = []
 customCSS = ["/css/style_custom.css"]

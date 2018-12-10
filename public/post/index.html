@@ -1,302 +1,580 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>Posts - Mikey Harper</title>
-  <meta name="generator" content="Hugo 0.52" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="">
-  
-  <meta name="description" content="">
-  
-  <meta name="keywords" content="">
-  <meta property="og:site_name" content="Mikey Harper">
-  <meta property="og:title" content="Posts">
-  <meta property="og:url" content="/post/">
-  
-  <meta property="og:image" content="/image/theme/og.png">
   
   
-  <meta property="og:description" content="">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109605445-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
   
-  <meta property="og:type" content="blog">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@@MikeyLHarper">
-  <meta name="twitter:title" content="Posts">
-  <meta name="twitter:url" content="/post/">
-  
-  <meta name="twitter:description" content="">
+    gtag('config', 'UA-109605445-1');
+  </script>
+
   
   
-  <meta name="twitter:image:src" content="/image/theme/og.png">
-  
-  <link rel="shortcut icon" href="/image/theme/favicon.ico">
-  <link href="https://fonts.googleapis.com/earlyaccess/sawarabigothic.css" rel="stylesheet" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Mikey Harper">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Posts  &middot; Mikey Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="Posts  &middot; Mikey Harper ">
+<meta property="og:site_name" content="Mikey Harper"/>
+<meta property="og:url" content="/post/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="website" />
+
+
+
+<link href="/post/index.xml" rel="alternate" type="application/rss+xml" title="Posts" />
+
+<link rel="canonical" href="/post/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.52" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+<link rel="stylesheet" href="/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="/css/highlight/custom.css">
+
+
+
+
 </head>
-
-<body>
-  <div id="wrap" class="wrap">
-    <header class="header">
-  <div class="site-title"><a href="/">Mikey Harper</a></div>
-  <p class="site-desc"></p>
-  
-</header>
-
-    <main class="main">
-      <section class="articles">
-        <h2>Recent Post</h2>
-        <div class="pure-g">
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="/">
+          Mikey Harper
           
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/creating-twitter-wordclouds/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/creating-twitter-wordclouds/">
-    <h3>Creating Twitter Wordclouds using R</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-12-12T00:00:00Z">2018.12.12</time>
-  </span>
-  <p >I recently finished my PhD, and my supervisor, Patrick James, always described me as a “data monster” in reference to how much I enjoyed playing with data. He was a massive influence throughout my PhD, so I felt it was only appropriate to get him a data-related gift when I finished. To this effect, I made him a wordcloud of all his tweet history!
-This blog post explains how we can interact with Twitter data in R using the rtweet (Kearney 2018) package, and convert this raw data into pretty visualisations using the wordcloud2 (Lang 2018) package....</p>
-</article>
-
           
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/book-launch-of-a-village-inheritance/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/book-launch-of-a-village-inheritance/">
-    <h3>Book Launch of “A Village Inheritance&#34;</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-09-28T00:00:00Z">2018.09.28</time>
-  </span>
-  <p >It was with great pleasure today that I was able to launch the book “A Village Inheritance” with my grandmonther, Clare Court, at Williton Library in Somerset. The event was a culmination of several years of hard work to get the book ready for publishing, and almost 50 years since the book was originally written, the book is available for all to enjoy!
-We had no idea how many people would be interested in such an event....</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/walking-london-to-basingstoke/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/walking-london-to-basingstoke/">
-    <h3>Walking from London to Basingstoke</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-09-10T00:00:00Z">2018.09.10</time>
-  </span>
-  <p >On Saturday 8th September 2017, I attempted to walk from London to Southampton as part of a charity fundraising event for Cameroon Catalyst. Unfortunately, I was unable to complete the whole route, as I had to withdraw due to injury at the 50 mile mark at Basingstoke, but it was an overall fantastic experience which I was proud to undertake.
-This blog post aims to capture the enjoyment and pain of undertaking the challenge!...</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/animated-plots-with-r/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/animated-plots-with-r/">
-    <h3>Animated Plots with R</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-05-09T00:00:00Z">2018.05.09</time>
-  </span>
-  <p >Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R ggplot2 (Wickham et al. 2018) has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in the now famous TED talk by Hans Rosling....</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/flowcharts-in-r-using-diagrammer/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/flowcharts-in-r-using-diagrammer/">
-    <h3>Data-driven flowcharts in R using DiagrammeR</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-05-01T00:00:00Z">2018.05.01</time>
-  </span>
-  <p >The old cliché goes that “A picture is worth a thousand words”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail....</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/caching-with-knitr-and-rmarkdown/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/caching-with-knitr-and-rmarkdown/">
-    <h3>Caching with knitr and Rmarkdown</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-04-19T00:00:00Z">2018.04.19</time>
-  </span>
-  <p >R Markdown is fantastic tool to
-Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
- Invalidating Cache One limitation which can create problems with caching is that it is
-https://stackoverflow.com/q/18376008/7347699
-As an example, if we have the basic R Markdown file
---- output: pdf_document --- ``{r} z &lt;- &quot;Title 5&quot; y &lt;- &quot;Some Text&quot; x &lt;- &quot;x2&quot; ``` ``{r cars2, cache = TRUE, cache....</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/migrating-to-blogdown/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/migrating-to-blogdown/">
-    <h3>Migrating blog to Blogdown</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-03-26T00:00:00Z">2018.03.26</time>
-  </span>
-  <p >I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
-Note: this post does not intend to be a full tutorial on how to set up your blog....</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/calculating-neighbouring-polygons-in-r/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/calculating-neighbouring-polygons-in-r/">
-    <h3>Calculating Neighbouring Polygons in R</h3>
-  </a>
-  <span>
-    <time datetime=" 2018-03-02T00:00:00Z">2018.03.02</time>
-  </span>
-  <p >A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
-Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads shapefile library(igraph) # build network library(spdep) # builds network library(RColorBrewer) # for plot colour palette library(ggplot2) # plots results # Load Data powiaty &lt;- shapefile(&quot;C:/Users/Mikey/Downloads/powiaty/powiaty&quot;) Firstly the poly2nb function is used to calculate neighbouring regions:
-# Find neighbouring areas nb_q &lt;- poly2nb(powiaty) This creates our spatial mesh, which we can see here:...</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/mapping-uk-local-political-data/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/mapping-uk-local-political-data/">
-    <h3>Mapping UK Local Political Data</h3>
-  </a>
-  <span>
-    <time datetime=" 2017-11-07T00:00:00Z">2017.11.07</time>
-  </span>
-  <p >knitr::opts_chunk$set(eval=FALSE) For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here.
-Setup R was used to run the analysis. The code uses a number of packages to process the data:...</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">
-    <h3>Writing reports in RStudio: an introduction to RMarkdown</h3>
-  </a>
-  <span>
-    <time datetime=" 2017-10-02T00:00:00Z">2017.10.02</time>
-  </span>
-  <p >RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
-The presentation was designed to provide a whistle-stop tour of the benefits of RMarkdown, explaining the basic syntax to get started and highlighting some of the more advance things which you could use RMarkdown for....</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/gis-in-r/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/gis-in-r/">
-    <h3>Using R for Geospatial Data Analysis</h3>
-  </a>
-  <span>
-    <time datetime=" 2017-09-01T00:00:00Z">2017.09.01</time>
-  </span>
-  <p >Intro Although R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to highlgiht why people may want to consider using R for their GIS, and highlight some of the benefits of using R in their analyses.
- Why use R for GIS There are many benefits of using R for GIS, but to me the top three reasons would be:...</p>
-</article>
-
-          
-            <article class="card pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
-  <a class="card__thumb" href="/wind-turbinesuccess/">
-    <img src="/image/theme/og.png" alt="">
-  </a>
-  <a href="/wind-turbinesuccess/">
-    <h3>Identifying key influences for planning acceptance of onshore wind turbines</h3>
-  </a>
-  <span>
-    <time datetime=" 2017-07-07T00:00:00Z">2017.07.07</time>
-  </span>
-  <p >I had the pleasure of presenting my work at the ECOS 2017 conference in San Diego, California. This page summarises the work and findings, with the research paper providing a more detailed decription.
-Read the full paper
-What is the problem? Wind energy provides a key opportunity for the UK government to meet decarbonisation targets. There is wide avaialbility of resource across the country, and onshore wind provides one of the most mature and cost-effective methods to supply renewable electricity....</p>
-</article>
-
-          
+          </a>
         </div>
-      </section>
-      
-        <nav class="pagination">
-          
-          <span class="pagination__current">1 / 2 Page</span>
-          
-          <a class="pagination__link pagination__link--next" href="/post/page/2/">Next &gt;</a>
-          
-        </nav>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="/" >
+                <i class='fa fa-home'></i>&nbsp
+                 Home
+              </a>
+            </li>
+            
+            <li class="active">
+
+              <a href="/post/" >
+                <i class='fa fa-pencil'></i>&nbsp
+                Blog
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/about/" >
+                <i class='fa fa-user'></i>&nbsp
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
         
-    </main>
-    <footer class="footer">
-  <section class="author">
-    <h2>Author</h2>
-    <div class="pure-g">
-      <div class="author__image pure-u-1-5 pure-u-md-1-8">
-        <img src="/image/theme/author.png" alt="">
       </div>
-      <div class="author__info pure-u-4-5 pure-u-md-7-8">
-        
-        <h3>Your Name</h3>
-        
-        
-        <p>I am a frontend engineer working in Sendai City, Japan.</p>
-        
-        <ul class="author__links">
-          
-          <li>
-            <a href="https://github.com/mikey-harper" target="_blank">
-              <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxMDI0IiB3aWR0aD0iMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNTEyIDBDMjI5LjI1IDAgMCAyMjkuMjUgMCA1MTJjMCAyMjYuMjUgMTQ2LjY4OCA0MTguMTI1IDM1MC4xNTYgNDg1LjgxMiAyNS41OTQgNC42ODggMzQuOTM4LTExLjEyNSAzNC45MzgtMjQuNjI1IDAtMTIuMTg4LTAuNDY5LTUyLjU2Mi0wLjcxOS05NS4zMTJDMjQyIDkwOC44MTIgMjExLjkwNiA4MTcuNSAyMTEuOTA2IDgxNy41Yy0yMy4zMTItNTkuMTI1LTU2Ljg0NC03NC44NzUtNTYuODQ0LTc0Ljg3NS00Ni41MzEtMzEuNzUgMy41My0zMS4xMjUgMy41My0zMS4xMjUgNTEuNDA2IDMuNTYyIDc4LjQ3IDUyLjc1IDc4LjQ3IDUyLjc1IDQ1LjY4OCA3OC4yNSAxMTkuODc1IDU1LjYyNSAxNDkgNDIuNSA0LjY1NC0zMyAxNy45MDQtNTUuNjI1IDMyLjUtNjguMzc1QzMwNC45MDYgNzI1LjQzOCAxODUuMzQ0IDY4MS41IDE4NS4zNDQgNDg1LjMxMmMwLTU1LjkzOCAxOS45NjktMTAxLjU2MiA1Mi42NTYtMTM3LjQwNi01LjIxOS0xMy0yMi44NDQtNjUuMDk0IDUuMDYyLTEzNS41NjIgMCAwIDQyLjkzOC0xMy43NSAxNDAuODEyIDUyLjUgNDAuODEyLTExLjQwNiA4NC41OTQtMTcuMDMxIDEyOC4xMjUtMTcuMjE5IDQzLjUgMC4xODggODcuMzEyIDUuODc1IDEyOC4xODggMTcuMjgxIDk3LjY4OC02Ni4zMTIgMTQwLjY4OC01Mi41IDE0MC42ODgtNTIuNSAyOCA3MC41MzEgMTAuMzc1IDEyMi41NjIgNS4xMjUgMTM1LjUgMzIuODEyIDM1Ljg0NCA1Mi42MjUgODEuNDY5IDUyLjYyNSAxMzcuNDA2IDAgMTk2LjY4OC0xMTkuNzUgMjQwLTIzMy44MTIgMjUyLjY4OCAxOC40MzggMTUuODc1IDM0Ljc1IDQ3IDM0Ljc1IDk0Ljc1IDAgNjguNDM4LTAuNjg4IDEyMy42MjUtMC42ODggMTQwLjUgMCAxMy42MjUgOS4zMTIgMjkuNTYyIDM1LjI1IDI0LjU2MkM4NzcuNDM4IDkzMCAxMDI0IDczOC4xMjUgMTAyNCA1MTIgMTAyNCAyMjkuMjUgNzk0Ljc1IDAgNTEyIDB6Ii8+PC9zdmc+" alt="">
-            </a>
-          </li>
-          
-          
-          <li>
-            <a href="https://twitter.com/@MikeyLHarper" target="_blank">
-              <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MDAiIGlkPSJzdmcyIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSI1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6Y2M9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL25zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzIGlkPSJkZWZzNCIvPjxnIGlkPSJsYXllcjEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTU1Mi4zNjIxOCkiPjxyZWN0IGhlaWdodD0iNTAwIiBpZD0icmVjdDI5OTAtMSIgcng9IjI1MCIgcnk9IjI1MCIgc3R5bGU9ImZpbGw6IzU1YWNlZTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZSIgd2lkdGg9IjUwMCIgeD0iMCIgeT0iNTUyLjM2MjE4Ii8+PGcgaWQ9ImxheWVyMS05IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNTQ5LjAwNTE1LDgwLjI5NDM3MikiLz48ZyBpZD0ibGF5ZXIxLTYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01NzUuNzE0MjksMzkuOTk5OTk5KSIvPjxnIGlkPSJsYXllcjEtOTMiIHRyYW5zZm9ybT0ibWF0cml4KDAuOTk5Mjg5NDUsMCwwLDAuOTk5Mjg5NDUsNDc0LjcwMDIsLTQwLjgxOTI4KSIvPjxwYXRoIGQ9Im0gMzA5Ljg1LDY3Mi4zMTIxOCBjIC0zNS40NzA3OSwwLjg5ODc5IC02My45MjUsMjkuOTMxMzggLTYzLjkyNSw2NS42MjUgMCw1LjEzODI3IDAuNTUxMjIsMTAuMTYxNTYgMS42NzUsMTQuOTc1IC01NC41NjU2NywtMi43NDEyNiAtMTAyLjk0Mjg3LC0yOC44Nzc0OSAtMTM1LjMyNSwtNjguNiAtNS42NTE0Nyw5LjY5MTkxIC04LjksMjAuOTgxNTggLTguOSwzMy4wMjUgMCwyMi43NzQ2NyAxMS42MDgwOSw0Mi44NTQzOCAyOS4yMjUsNTQuNjI1IC0xMC43NTcyMiwtMC4zNDQyOCAtMjAuODk2MDYsLTMuMzA3NTggLTI5Ljc1LC04LjIyNSAtMC4wMDUsMC4yNzI4MiAwLDAuNTcwNjkgMCwwLjg1IDAsMzEuODA0MDIgMjIuNjM3OSw1OC4zMDg4IDUyLjY3NSw2NC4zNSAtNS41MDg1MiwxLjQ5NDA2IC0xMS4zMTA3NSwyLjMgLTE3LjMsMi4zIC00LjIzNTM0LDAgLTguMzQyMDMsLTAuNDAxOTggLTEyLjM1LC0xLjE3NSA4LjM2MDIyLDI2LjA4MTA5IDMyLjU3NTA2LDQ1LjA3Mzg1IDYxLjMsNDUuNiAtMjIuNDY5MzcsMTcuNjEwNDMgLTUwLjczNTM0LDI4LjEgLTgxLjUsMjguMSAtNS4yOTQxNiwwIC0xMC41MzY3NSwtMC4yODkzOCAtMTUuNjc1LC0wLjkgMjkuMDYyNzIsMTguNjM2ODMgNjMuNTUyODIsMjkuNSAxMDAuNjI1LDI5LjUgMTIwLjc2NTUyLDAgMTg2LjgsLTEwMC4wNDA1OCAxODYuOCwtMTg2LjggMCwtMi44NDUyIC0wLjA1MTcsLTUuNzA1NzcgLTAuMTc1LC04LjUyNSAxMi44MjI5NCwtOS4yMzcyIDIzLjk1NDU0LC0yMC44MDc3NiAzMi43NSwtMzMuOTc1IC0xMS43NjQxLDUuMjI5MjIgLTI0LjQxNTg2LDguNzcxNDYgLTM3LjcsMTAuMzUgMTMuNTYzNDYsLTguMTE5OSAyMy45NzA2MSwtMjAuOTgxNjYgMjguODc1LC0zNi4zMjUgLTEyLjY4NjUyLDcuNTI4NzcgLTI2LjczOTkzLDEzLjAwMDg1IC00MS43LDE1Ljk1IC0xMS45NzE5NywtMTIuNzU3OTggLTI5LjA0MTM3LC0yMC43MjUgLTQ3LjkyNSwtMjAuNzI1IC0wLjU2NjQ2LDAgLTEuMTM2OTgsLTAuMDE0MyAtMS43LDAgeiIgaWQ9InJlY3QyOTg5IiBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIi8+PC9nPjwvc3ZnPg==" alt="">
-            </a>
-          </li>
-          
-          
-          <li>
-            <a href="https://www.facebook.com/mikey.harper" target="_blank">
-              <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MDAiIGlkPSJzdmcyIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSI1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6Y2M9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL25zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzIGlkPSJkZWZzNCIvPjxnIGlkPSJsYXllcjEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTU1Mi4zNjIxOCkiPjxyZWN0IGhlaWdodD0iNTAwIiBpZD0icmVjdDM3NTgtMSIgcng9IjI1MCIgcnk9IjI1MCIgc3R5bGU9ImZpbGw6IzQ1NjE5ZDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZSIgd2lkdGg9IjUwMCIgeD0iMCIgeT0iNTUyLjM2MjE4Ii8+PHBhdGggZD0iTSAyODkuNjg3NSA2MCBDIDIyMS45MDMxNyA2MCAxOTkuNTMxMjUgOTEuMTAwNTcgMTk5LjUzMTI1IDE0NC40Mzc1IEwgMTk5LjUzMTI1IDE4Ni42NTYyNSBMIDE1NSAxODYuNjU2MjUgTCAxNTUgMjUwLjAzMTI1IEwgMTk5LjUzMTI1IDI1MC4wMzEyNSBMIDE5OS41MzEyNSA0NDAgTCAyODEuNjU2MjUgNDQwIEwgMjgxLjY1NjI1IDI1MC4wMzEyNSBMIDMzNy40Njg3NSAyNTAuMDMxMjUgTCAzNDQuOTY4NzUgMTg2LjY1NjI1IEwgMjgxLjY1NjI1IDE4Ni42NTYyNSBMIDI4MS42NTYyNSAxNDkgQyAyODEuNjU2MjUgMTMxLjk3OTY2IDI4NS4zOTE0OCAxMjMuMzQzNzUgMzExLjgxMjUgMTIzLjM0Mzc1IEwgMzQ0Ljk2ODc1IDEyMy4zNDM3NSBMIDM0NC45Njg3NSA2MCBMIDI4OS42ODc1IDYwIHogIiBpZD0icmVjdDI5ODktMSIgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCw1NTIuMzYyMTgpIi8+PC9nPjwvc3ZnPg==" alt="">
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-  </section>
-  <small>©Mikey Harper</small>
-</footer>
+    </nav>
+  </header>
+
+
+
+
+<style>.bigbox{margin-top: 60px}</style>
+
+<div class="bigbox"></div>
+<img src="/kenya.jpg" alt="Mountain View">
+<div id="main-content" class="container">
+  <header>
+    <h1>Posts
+</h1>
+
+  </header>
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/creating-twitter-wordclouds/">Creating Twitter Wordclouds using R</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-12-12">12 Dec, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/dataviz" class="label label-primary">DataViz</a>
+  
+  <a href="/tags/data" class="label label-primary">Data</a>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/web" class="label label-primary">web</a>
+  
+
 
   </div>
+</div>
 
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/book-launch-of-a-village-inheritance/">Book Launch of “A Village Inheritance&#34;</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-09-28">28 Sep, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/book" class="label label-primary">book</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/walking-london-to-basingstoke/">Walking from London to Basingstoke</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-09-10">10 Sep, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/maps" class="label label-primary">maps</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/animated-plots-with-r/">Animated Plots with R</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-05-09">9 May, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/dataviz" class="label label-primary">DataViz</a>
+  
+  <a href="/tags/renewable-energy" class="label label-primary">Renewable Energy</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/flowcharts-in-r-using-diagrammer/">Data-driven flowcharts in R using DiagrammeR</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-05-01">1 May, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r-markdown" class="label label-primary">R Markdown</a>
+  
+  <a href="/tags/diagrammer" class="label label-primary">DiagrammeR</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/caching-with-knitr-and-rmarkdown/">DRAFT :: Caching with knitr and Rmarkdown</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-04-19">19 Apr, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/reproducible-resaerch" class="label label-primary">Reproducible Resaerch</a>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/migrating-to-blogdown/">Migrating blog to Blogdown</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-03-26">26 Mar, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/web" class="label label-primary">web</a>
+  
+  <a href="/tags/blogdown" class="label label-primary">Blogdown</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/calculating-neighbouring-polygons-in-r/">DRAFT :: Calculating Neighbouring Polygons in R</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-03-02">2 Mar, 2018</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/gis" class="label label-primary">GIS</a>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/mapping-uk-local-political-data/">Mapping UK Local Political Data</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2017-11-07">7 Nov, 2017</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/data" class="label label-primary">Data</a>
+  
+  <a href="/tags/mapping" class="label label-primary">Mapping</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2017-10-02">2 Oct, 2017</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/presentation" class="label label-primary">Presentation</a>
+  
+  <a href="/tags/reproducible-resaerch" class="label label-primary">Reproducible Resaerch</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/gis-in-r/">Using R for Geospatial Data Analysis</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2017-09-01">1 Sep, 2017</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/gis" class="label label-primary">GIS</a>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/presentation" class="label label-primary">Presentation</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/wind-turbinesuccess/">Identifying key influences for planning acceptance of onshore wind turbines</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2017-07-07">7 Jul, 2017</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/gis" class="label label-primary">GIS</a>
+  
+  <a href="/tags/r" class="label label-primary">R</a>
+  
+  <a href="/tags/presentation" class="label label-primary">Presentation</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+    <div>
+  <h2 style = "font-size: 200%"><a href="/cycling-lands-end-to-john-o-groats/">Cycling Lands End to John O&#39;Groats</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2016-12-12">12 Dec, 2016</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/cycling" class="label label-primary">Cycling</a>
+  
+  <a href="/tags/maps" class="label label-primary">maps</a>
+  
+  <a href="/tags/gis" class="label label-primary">GIS</a>
+  
+
+
+  </div>
+</div>
+
+
+  
+  
+
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="https://github.com/mikey-harper/blog">Hosted on Github</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  &copy; 2018 Copyright Mikey Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/site.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src="/js/script.js"></script>
 
-</body>
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE =  null ; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
 </html>
