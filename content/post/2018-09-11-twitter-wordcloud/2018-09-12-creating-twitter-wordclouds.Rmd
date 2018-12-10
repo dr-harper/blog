@@ -116,7 +116,7 @@ wordcloud <- wordcloud2(data = textCorpus, minRotation = 0, maxRotation = 0, ell
 wordcloud
 ```
 
-We can play around with this basic setup, and I would recommend checking out the [package documentation](https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html) to see some of the things that can be done. For example, we can provide our own image as a mask to customise the shape of the wordcloud. The output is shown in Figure \@ref(fig:wordCloud2).
+We can play around with this basic setup, and I would recommend checking out the [package documentation](https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html) to see some of the things that can be done. For example, we can provide our own image as a mask to customise the shape of the wordcloud.
 
 # Conclusion
 
