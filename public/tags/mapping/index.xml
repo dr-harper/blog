@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mapping on Mikey Harper</title>
+    <link>/tags/mapping/</link>
+    <description>Recent content in Mapping on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/mapping/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mapping UK Local Political Data</title>
+      <link>/mapping-uk-local-political-data/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/mapping-uk-local-political-data/</guid>
+      <description>knitr::opts_chunk$set(eval=FALSE) For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here.
+Setup R was used to run the analysis. The code uses a number of packages to process the data:</description>
+    </item>
+    
+  </channel>
+</rss>

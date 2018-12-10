@@ -124,7 +124,6 @@ code.has-jax {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -139,4 +138,20 @@ code.has-jax {
 .boxed {
   padding: 10px;
 }
+
+
+.holder {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 250px;
+}
+
+img {
+  object-fit: cover;
+  flex: 1;
+  margin-right: 0rem;
+  overflow: hidden;
+}
+
 

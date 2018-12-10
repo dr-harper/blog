@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book on Mikey Harper</title>
+    <link>/tags/book/</link>
+    <description>Recent content in Book on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Fri, 28 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Book Launch of “A Village Inheritance&#34;</title>
+      <link>/book-launch-of-a-village-inheritance/</link>
+      <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/book-launch-of-a-village-inheritance/</guid>
+      <description>It was with great pleasure today that I was able to launch the book “A Village Inheritance” with my grandmonther, Clare Court, at Williton Library in Somerset. The event was a culmination of several years of hard work to get the book ready for publishing, and almost 50 years since the book was originally written, the book is available for all to enjoy!
+We had no idea how many people would be interested in such an event.</description>
+    </item>
+    
+  </channel>
+</rss>

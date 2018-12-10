@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Mikey Harper</title>
+    <link>/tags/web/</link>
+    <description>Recent content in Web on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating Twitter Wordclouds using R</title>
+      <link>/creating-twitter-wordclouds/</link>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/creating-twitter-wordclouds/</guid>
+      <description>I recently finished my PhD, and my supervisor, Patrick James, always described me as a “data monster” in reference to how much I enjoyed playing with data. He was a massive influence throughout my PhD, so I felt it was only appropriate to get him a data-related gift when I finished. To this effect, I made him a wordcloud of all his tweet history!
+This blog post explains how we can interact with Twitter data in R using the rtweet (Kearney 2018) package, and convert this raw data into pretty visualisations using the wordcloud2 (Lang 2018) package.</description>
+    </item>
+    
+    <item>
+      <title>Migrating blog to Blogdown</title>
+      <link>/migrating-to-blogdown/</link>
+      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/migrating-to-blogdown/</guid>
+      <description>I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
+Note: this post does not intend to be a full tutorial on how to set up your blog.</description>
+    </item>
+    
+  </channel>
+</rss>
