@@ -156,13 +156,6 @@ identifier = "home"
 url = ""
 
 [[Languages.en.menu.main]]
-name = "Blog"
-pre = "<i class='fa fa-pencil'></i>&nbsp"
-weight = 2
-identifier = "post"
-url = "/post/"
-
-[[Languages.en.menu.main]]
 name = "About"
 pre = "<i class='fa fa-user'></i>&nbsp"
 weight = 3
