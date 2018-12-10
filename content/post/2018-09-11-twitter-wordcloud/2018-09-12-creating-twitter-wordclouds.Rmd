@@ -1,7 +1,7 @@
 ---
-title: Creating Twitter Wordclouds
+title: Creating Twitter Wordcloudsin R
 author: Mikey Harper
-description: Guide on how to make wordclouds using the rtweet package in R.
+description: A guide on how to make wordclouds using the rtweet package in R.
 date: '2018-12-12'
 slug: creating-twitter-wordclouds
 categories:
@@ -18,9 +18,6 @@ bibliography: packages.bib
 header_image: "https://i.imgur.com/PLz9aN2.png"
 ---
 
-<meta property="og:image" content="https://i.imgur.com/PLz9aN2.png"/>
-<meta name="twitter:card" content="summary_large_image">
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(out.width = "100%",
                       warning = FALSE,
@@ -28,6 +25,7 @@ knitr::opts_chunk$set(out.width = "100%",
 
 library(webshot)
 library(htmlwidgets)
+library(widgetframe)
 
 knitr::write_bib(c("rtweet", "wordcloud2", "tm", "qdapRegex"), file = "packages.bib")
 ```
@@ -50,9 +48,8 @@ The packages used in the analysis are listed as follows:
 library(rtweet)        # Used for extracting the tweets
 library(tm)            # Text mining cleaning
 library(stringr)       # Removing characters
-library(qdapRegex)
-library(wordcloud2)
-library(dplyr)        
+library(qdapRegex)     # Removing URLs 
+library(wordcloud2)    # Creating the wordcloud
 ```
 
 ## Extracting Tweets
@@ -121,8 +118,8 @@ wordcloud
 
 We can play around with this basic setup, and I would recommend checking out the [package documentation](https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html) to see some of the things that can be done. For example, we can provide our own image as a mask to customise the shape of the wordcloud. The output is shown in Figure \@ref(fig:wordCloud2).
 
-```{r wordCloud2, fig.cap = "Wordcloud with our Twitter outline"}
-wordcloud_twitter <- wordcloud2(data = textCorpus, figPath = "twitter.png")
+```{r wordCloud2, fig.cap = "Wordcloud with our Twitter outline", eval = FALSE}
+wordcloud_twitter <- wordcloud2(data = textCorpus[1:500,], figPath = system.file("examples/t.png",package = "wordcloud2"))
 wordcloud_twitter
 ```
 
