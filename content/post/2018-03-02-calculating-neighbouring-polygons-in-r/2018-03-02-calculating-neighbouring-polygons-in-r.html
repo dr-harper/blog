@@ -44,7 +44,8 @@ B &lt;- as(nb_B, &quot;symmetricMatrix&quot;)
 g1 &lt;- graph.adjacency(B, mode=&quot;undirected&quot;)
 dg1 &lt;- diameter(g1)
 sp_mat &lt;- shortest.paths(g1)</code></pre>
-<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe. I wasn’t sure what would be best to use as the ID for referring to datasets so I chose the <code>jpt_kod_je</code> variable.</p>
+<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.
+I wasn’t sure what would be best to use as the ID for referring to datasets so I chose the <code>jpt_kod_je</code> variable.</p>
 <pre class="r"><code># Name used to identify data
 referenceCol &lt;- powiaty$jpt_kod_je
   

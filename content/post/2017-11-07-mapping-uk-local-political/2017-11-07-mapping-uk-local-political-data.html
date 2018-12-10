@@ -47,7 +47,7 @@ boundaries &lt;- shapefile(&quot;infuse_dist_lyr_2011_clipped/infuse_dist_lyr_20
 <pre class="r"><code># Optional simplify of rasters. This is useful if you want to reduce the size of the shapefile to make it easier to plot
 boundaries_sim &lt;- gSimplify(boundaries, tol=150, topologyPreserve=TRUE)
 shapefile(boundaries_sim, &quot;Boundaries_simplified&quot;, overwrite = TRUE) </code></pre>
-<p>Note: this function does not respect boundaries. You will get slight gaps between regions.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Note: this function does not respect boundaries. You will get slight gaps between regions.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 <div id="code" class="section level2">
 <h2>Code</h2>
@@ -164,6 +164,6 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>The package <code>rmapshaper</code> could be used instead which respects border geometries, as described <a href="https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html">here</a><a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>The package <code>rmapshaper</code> could be used instead which respects border geometries, as described <a href="https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html">here</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>

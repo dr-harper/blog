@@ -54,7 +54,7 @@ A lot of my research is around renewable energy, in particularly modelling onsho
 
 ```{r message=FALSE, warning=FALSE}
 # Load Data from Gist
-REPD <- readr::read_csv(RCurl::getURL("https://gist.githubusercontent.com/mikey-harper/abc79ce4ec63644324aa2e6134ddf1ac/raw/86cd7513b7dfb56005e1fe0a7e98dc6ecffb74f4/REPD.csv"))
+REPD <- readr::read_tsv(RCurl::getURL("https://gist.githubusercontent.com/dr-harper/abc79ce4ec63644324aa2e6134ddf1ac/raw/49f8a5d6c5c41395af46428007048be7301b9f7b/REPD.csv"))
 
 # A summary table was made to convert the summary status
 planning_summary <- read.table(text = "

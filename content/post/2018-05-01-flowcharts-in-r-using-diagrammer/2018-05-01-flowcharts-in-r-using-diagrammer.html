@@ -20,7 +20,8 @@ header_image: "https://i.imgur.com/qftiHnU.jpg"
 <script src="/rmarkdown-libs/grViz-binding/grViz.js"></script>
 
 
-<p><meta property="og:image" content="https://i.imgur.com/hPZn2K6.jpg"/> <meta name="twitter:card" content="summary_large_image"></p>
+<meta property="og:image" content="https://i.imgur.com/hPZn2K6.jpg"/>
+<meta name="twitter:card" content="summary_large_image">
 <p>The old cliché goes that “<em>A picture is worth a thousand words</em>”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail.</p>
 <p>In this post, I highlight some of the great features of making diagrams in R, and highlight how they can be easily connected to data from your analysis to produce dynamic data flowchart. This can make it much easier for readers to engage with your data analysis and understand how your complex models work.</p>
 <div id="making-diagrams-in-r" class="section level2">
@@ -35,7 +36,8 @@ Figure 1: Using Graphviz within R Studio
 </p>
 </div>
 <p>While this guide by no means attempt to replace the detailed guidance provided <a href="http://rich-iannone.github.io/DiagrammeR/index.html">on the package website</a>, it is important to highlight a few of the basic features of the plots. <strong>DiagrammeR</strong> uses the processing function called <code>grViz()</code>. What you pass into <code>grViz()</code> is a valid graph specification in the DOT language, with the figure being supplied as either an external file or inline code within R.</p>
-<p>There are many different types of graphs which can be drawn, but in this post we will focus on directed graphs (<code>diagraph</code>), which are most typically used within flowcharts. This must be specified at the start of the plot. Graphs can be controlled by three functions:</p>
+<p>There are many different types of graphs which can be drawn, but in this post we will focus on directed graphs (<code>diagraph</code>), which are most typically used within flowcharts. This must be specified at the start of the plot.
+Graphs can be controlled by three functions:</p>
 <ul>
 <li><code>graph</code>: this sets the overall layout, themes of the plot</li>
 <li><code>node</code>: the boxes in the flowchart</li>
@@ -147,7 +149,7 @@ Figure 5: An example of subgraphs used to highlight grouping within a dataset
 <h2>References</h2>
 <div id="refs" class="references">
 <div id="ref-R-DiagrammeR">
-<p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
+<p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
 </div>
 </div>
 </div>

@@ -17,7 +17,8 @@ bibliography: bib.bib
 
 
 
-<p><meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/cover.png"/> <meta name="twitter:card" content="summary_large_image"></p>
+<meta property="og:image" content="http://mikeyharper.uk/post/2018-04-23-animated-plots-with-r/cover.png"/>
+<meta name="twitter:card" content="summary_large_image">
 <p>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R <strong>ggplot2</strong> <span class="citation">(Wickham et al. 2018)</span> has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in <a href="https://www.youtube.com/watch?v=hVimVzgtD6w">the now famous TED talk by Hans Rosling</a>.</p>
 <p>In this post, I wanted to show an example of how animated plots can be used to convey geospatial data.</p>
 <blockquote>
@@ -26,7 +27,7 @@ bibliography: bib.bib
 <div id="example-data" class="section level2">
 <h2>Example Data</h2>
 <p>A lot of my research is around renewable energy, in particularly modelling onshore wind energy within the UK. Fortunately, the UK is great for open data, and the UK government record <a href="https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract">all renewable energy planning applications</a>. Over 5000 projects are recorded, providing planning status, technology type, and most crucially for this example, the location of the project.</p>
-<p>What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the <strong>animation</strong> <span class="citation">(Xie 2017)</span> package can be used to create such an animated GIF. You will need to install <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> for this to work.</p>
+<p>What is fascinating about renewable energy is how the number of projects have increased so quickly over the last 30 years. An animation is a fantastic way to visualise this growth in projects, and the <strong>animation</strong> <span class="citation">(Xie 2017)</span> package can be used to create such an animated GIF. You will need to install <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> for this to work.</p>
 </div>
 <div id="example-1-renewable-energy-locations" class="section level2">
 <h2>Example 1: Renewable Energy Locations</h2>
@@ -165,22 +166,22 @@ Figure 2: The development of Onshore wind energy in the UK
 <h2>References</h2>
 <div id="refs" class="references">
 <div id="ref-R-patchwork">
-<p>Pedersen, Thomas Lin. 2017. <em>Patchwork: The Composer of Ggplots</em>. <a href="https://github.com/thomasp85/patchwork" class="uri">https://github.com/thomasp85/patchwork</a>.</p>
+<p>Pedersen, Thomas Lin. 2017. <em>Patchwork: The Composer of Ggplots</em>. <a href="https://github.com/thomasp85/patchwork">https://github.com/thomasp85/patchwork</a>.</p>
 </div>
 <div id="ref-R-gganimate">
-<p>Pedersen, Thomas Lin, and David Robinson. 2017. <em>Gganimate: A Grammar of Animated Graphics</em>. <a href="http://github.com/thomasp85/gganimate" class="uri">http://github.com/thomasp85/gganimate</a>.</p>
+<p>Pedersen, Thomas Lin, and David Robinson. 2017. <em>Gganimate: A Grammar of Animated Graphics</em>. <a href="http://github.com/thomasp85/gganimate">http://github.com/thomasp85/gganimate</a>.</p>
 </div>
 <div id="ref-R-ggplot2">
-<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, and Kara Woo. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="uri">https://CRAN.R-project.org/package=ggplot2</a>.</p>
+<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, and Kara Woo. 2018. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.</p>
 </div>
 <div id="ref-R-animation">
-<p>Xie, Yihui. 2017. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href="https://CRAN.R-project.org/package=animation" class="uri">https://CRAN.R-project.org/package=animation</a>.</p>
+<p>Xie, Yihui. 2017. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href="https://CRAN.R-project.org/package=animation">https://CRAN.R-project.org/package=animation</a>.</p>
 </div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>On Windows, be sure to select the “install legacy utilities” option during install: <strong>animation</strong> requires the “convert” utility to operate.)<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>On Windows, be sure to select the “install legacy utilities” option during install: <strong>animation</strong> requires the “convert” utility to operate.)<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>

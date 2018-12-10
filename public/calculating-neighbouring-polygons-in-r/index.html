@@ -68,7 +68,7 @@
 <link rel="canonical" href="/calculating-neighbouring-polygons-in-r/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -229,7 +229,10 @@
 <br>
 
 <div class="content", style = "margin-top:10px">
-  <p>A while back on StackOverflow, I answered a question on how: <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246" class="uri">https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246</a></p>
+  
+
+
+<p>A while back on StackOverflow, I answered a question on how: <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246" class="uri">https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246</a></p>
 <div id="code" class="section level1">
 <h1>Code</h1>
 <pre class="r"><code>knitr::opts_chunk$set(eval=FALSE)</code></pre>
@@ -259,7 +262,8 @@ B &lt;- as(nb_B, &quot;symmetricMatrix&quot;)
 g1 &lt;- graph.adjacency(B, mode=&quot;undirected&quot;)
 dg1 &lt;- diameter(g1)
 sp_mat &lt;- shortest.paths(g1)</code></pre>
-<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe. I wasn’t sure what would be best to use as the ID for referring to datasets so I chose the <code>jpt_kod_je</code> variable.</p>
+<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.
+I wasn’t sure what would be best to use as the ID for referring to datasets so I chose the <code>jpt_kod_je</code> variable.</p>
 <pre class="r"><code># Name used to identify data
 referenceCol &lt;- powiaty$jpt_kod_je
   
@@ -412,6 +416,14 @@ names(ggplot_powiaty)</code></pre>
       <ul>
          
          <li>
+            <a href="/creating-twitter-wordclouds/">Creating Twitter Wordclouds</a>
+         </li>
+         
+         <li>
+            <a href="/book-launch-of-a-village-inheritance/">Book Launch of “A Village Inheritance&#34;</a>
+         </li>
+         
+         <li>
             <a href="/walking-london-to-basingstoke/">Walking from London to Basingstoke</a>
          </li>
          
@@ -443,14 +455,6 @@ names(ggplot_powiaty)</code></pre>
             <a href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
          </li>
          
-         <li>
-            <a href="/gis-in-r/">Using R for Geospatial Data Analysis</a>
-         </li>
-         
-         <li>
-            <a href="/wind-turbinesuccess/">Identifying key influences for planning acceptance of onshore wind turbines</a>
-         </li>
-         
       </ul>
    </div>
 </div>
@@ -471,19 +475,19 @@ names(ggplot_powiaty)</code></pre>
          
          <li><a href="/Tags/presentation">presentation</a></li>
          
-         <li><a href="/Tags/maps">maps</a></li>
-         
-         <li><a href="/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
-         
-         <li><a href="/Tags/blogdown">blogdown</a></li>
-         
-         <li><a href="/Tags/cycling">cycling</a></li>
-         
          <li><a href="/Tags/data">data</a></li>
          
          <li><a href="/Tags/dataviz">dataviz</a></li>
          
-         <li><a href="/Tags/diagrammer">diagrammer</a></li>
+         <li><a href="/Tags/maps">maps</a></li>
+         
+         <li><a href="/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
+         
+         <li><a href="/Tags/web">web</a></li>
+         
+         <li><a href="/Tags/blogdown">blogdown</a></li>
+         
+         <li><a href="/Tags/book">book</a></li>
          
       </ul>
    </div>

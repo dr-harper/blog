@@ -70,7 +70,7 @@
 <link rel="canonical" href="/mapping-uk-local-political-data/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -233,7 +233,10 @@
 <br>
 
 <div class="content", style = "margin-top:10px">
-  <pre class="r"><code>knitr::opts_chunk$set(eval=FALSE)</code></pre>
+  
+
+
+<pre class="r"><code>knitr::opts_chunk$set(eval=FALSE)</code></pre>
 <p>For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. This provides a technical overview of the data. The R code used to create the analysis is available through GitHub <a href="https://github.com/mikey-harper/mikey-harper.github.io/blob/master/_code/Political%20Data/PoliticalDataAggregation.R">here</a>.</p>
 <div id="setup" class="section level2">
 <h2>Setup</h2>
@@ -265,7 +268,7 @@ boundaries &lt;- shapefile(&quot;infuse_dist_lyr_2011_clipped/infuse_dist_lyr_20
 <pre class="r"><code># Optional simplify of rasters. This is useful if you want to reduce the size of the shapefile to make it easier to plot
 boundaries_sim &lt;- gSimplify(boundaries, tol=150, topologyPreserve=TRUE)
 shapefile(boundaries_sim, &quot;Boundaries_simplified&quot;, overwrite = TRUE) </code></pre>
-<p>Note: this function does not respect boundaries. You will get slight gaps between regions.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Note: this function does not respect boundaries. You will get slight gaps between regions.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 <div id="code" class="section level2">
 <h2>Code</h2>
@@ -382,7 +385,7 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>The package <code>rmapshaper</code> could be used instead which respects border geometries, as described <a href="https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html">here</a><a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>The package <code>rmapshaper</code> could be used instead which respects border geometries, as described <a href="https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html">here</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
@@ -493,6 +496,14 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
       <ul>
          
          <li>
+            <a href="/creating-twitter-wordclouds/">Creating Twitter Wordclouds</a>
+         </li>
+         
+         <li>
+            <a href="/book-launch-of-a-village-inheritance/">Book Launch of “A Village Inheritance&#34;</a>
+         </li>
+         
+         <li>
             <a href="/walking-london-to-basingstoke/">Walking from London to Basingstoke</a>
          </li>
          
@@ -524,14 +535,6 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
             <a href="/writing-reports-in-rstudio-an-introduction-to-rmarkdown/">Writing reports in RStudio: an introduction to RMarkdown</a>
          </li>
          
-         <li>
-            <a href="/gis-in-r/">Using R for Geospatial Data Analysis</a>
-         </li>
-         
-         <li>
-            <a href="/wind-turbinesuccess/">Identifying key influences for planning acceptance of onshore wind turbines</a>
-         </li>
-         
       </ul>
    </div>
 </div>
@@ -552,19 +555,19 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
          
          <li><a href="/Tags/presentation">presentation</a></li>
          
-         <li><a href="/Tags/maps">maps</a></li>
-         
-         <li><a href="/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
-         
-         <li><a href="/Tags/blogdown">blogdown</a></li>
-         
-         <li><a href="/Tags/cycling">cycling</a></li>
-         
          <li><a href="/Tags/data">data</a></li>
          
          <li><a href="/Tags/dataviz">dataviz</a></li>
          
-         <li><a href="/Tags/diagrammer">diagrammer</a></li>
+         <li><a href="/Tags/maps">maps</a></li>
+         
+         <li><a href="/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
+         
+         <li><a href="/Tags/web">web</a></li>
+         
+         <li><a href="/Tags/blogdown">blogdown</a></li>
+         
+         <li><a href="/Tags/book">book</a></li>
          
       </ul>
    </div>
