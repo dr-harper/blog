@@ -89,7 +89,7 @@ text <-
   removeWords(c("amp"))                   # Final cleanup of other small changes
 ```
 
-Having cleaned the data, we can format the table. The function 'TermDocumentMatrix' is used to construct a frequency table of the wprds from the text string above. This table is sorted by frequency to make it easier to inspect. A quick summary of the most common words is shown in Table \@ref(tab:keywords).
+Having cleaned the data, we can format the table. The function 'TermDocumentMatrix' is used to construct a frequency table of the words from the text string above. This table is sorted by frequency to make it easier to inspect. A quick summary of the most common words is shown in Table \@ref(tab:keywords).
 
 ```{r}
 # Convert the data into a summary table
@@ -117,6 +117,47 @@ wordcloud
 ```
 
 We can play around with this basic setup, and I would recommend checking out the [package documentation](https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html) to see some of the things that can be done. For example, we can provide our own image as a mask to customise the shape of the wordcloud.
+
+# Wrapping It all up
+
+If we want to create Wordclouds for multiple users, we can wrap the above code up into a function. Below is the `TweetsToWordcloud` function:
+
+```{r}
+TweetsToWordcloud <- function(username){
+  
+  tweets <- get_timelines(username, n = 3200)
+  
+  # Clean the data
+  text <- str_c(tweets$text, collapse = "") %>%
+  str_remove("\\n") %>%                   # remove linebreaks
+  rm_twitter_url() %>%                    # Remove URLS
+  rm_url() %>%
+  str_remove_all("#\\S+") %>%             # Remove any hashtags
+  str_remove_all("@\\S+") %>%             # Remove any @ mentions
+  removeWords(stopwords("english")) %>%   # Remove common words (a, the, it etc.)
+  removeNumbers() %>%
+  stripWhitespace() %>%
+  removeWords(c("amp"))                   # Final cleanup of other small changes
+  
+    # Convert the data into a summary table
+  textCorpus <- 
+    Corpus(VectorSource(text)) %>%
+    TermDocumentMatrix() %>%
+    as.matrix()
+  
+  textCorpus <- sort(rowSums(textCorpus), decreasing=TRUE)
+  textCorpus <- data.frame(word = names(textCorpus), freq=textCorpus, row.names = NULL)
+  
+  wordcloud <- wordcloud2(data = textCorpus, minRotation = 0, maxRotation = 0, ellipticity = 0.6)
+  return(wordcloud)
+}
+```
+
+Then using this function on another example of another one of my academic supervisors:
+
+```{r, fig.cap = "A wordcloud using the TweetsToWordcloud function"}
+TweetsToWordcloud(username = "dataknut")
+```
 
 # Conclusion
 
