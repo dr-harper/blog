@@ -1,7 +1,7 @@
 ---
 title: Creating Twitter Wordclouds in R
 author: Mikey Harper
-description: A guide on how to make wordclouds using the rtweet package in R.
+description: A guide on creating wordclouds using the rtweet package in R.
 date: '2018-12-12'
 slug: creating-twitter-wordclouds
 categories:
