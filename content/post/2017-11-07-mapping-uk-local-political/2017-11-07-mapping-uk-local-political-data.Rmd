@@ -11,6 +11,7 @@ tags:
   - R
   - Data
   - Mapping
+header_image: "/images/political.png"
 ---
 
 ```{r}
@@ -110,9 +111,6 @@ pairs_shp_data <- merge(names_LA, names_shp_council, by = "Altered") %>%
 After the initial matching, there were still unjoined pairs. These had a number of inconsistencies, and therefore manual pairs were assigned to join the remaining names. In additional, counties within Northern Ireland are not included within the political dataset, and therefore no pairings were made:
 
 ```{r}
-pairs_manual <- read.csv("https://raw.githubusercontent.com/mikey-harper/mikey-harper.github.io/master/_code/Political%20Data/ManualPairs.csv")
-pairs_shp_data <- rbind(pairs_shp_data, pairs_manual)
-
 data_council_long_matched <- merge(data_council_long, pairs_shp_data, by.x = "Authority", by.y = "LAName", all.x = FALSE)
 boundaries <- merge(boundaries, pairs_shp_data, by.x = "geo_label", by.y = "Boundary", all.x = FALSE)
 ```
@@ -174,11 +172,13 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
 
 ## Geospatial Plot
 
-```{r}
+Below we plot the results for the UK.
+
+```{r control, fig.cap="UK political map by controlling party, 2016"}
 boundaries_sf <- st_as_sf(boundaries)
+
+plot(boundaries_sf)
 ```
-
-
 
 ## Further Considerations
 
@@ -202,6 +202,5 @@ National Records of Scotland, 2011 Census: Digitised Boundary Data (Scotland) [c
 ```{r include=FALSE}
 unlink("infuse_dist_lyr_2011_clipped", recursive = TRUE)
 unlink("Boundaries_simplified.*")
-
 ```
 

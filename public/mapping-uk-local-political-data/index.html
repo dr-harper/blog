@@ -42,6 +42,8 @@
 <meta property="og:article:modified_time" content="2017-11-07T00:00:00Z" />
 
 
+<meta property="og:image" content="/images/political.png"/>
+
 
   
     
@@ -143,13 +145,6 @@
     </nav>
   </header>
 
-
-
-
-<style>.bigbox{margin-top: 60px}</style>
-
-<div class="bigbox"></div>
-<img src="/kenya.jpg" alt="Mountain View">
 <div class="container">
   <div class="row">
     <div class="col-sm-9">
@@ -170,7 +165,7 @@
     &middot; by Mikey Harper
   
   &middot; Read in about 6 min
-  &middot; (1224 words)
+  &middot; (1226 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fmapping-uk-local-political-data%2f" onclick="window.open(this.href, 'mywin',
@@ -213,6 +208,8 @@
 </div>
 
       
+<img src= /images/political.png alt="Mountain View">
+
 
 <br>
 
@@ -291,10 +288,7 @@ pairs_shp_data &lt;- merge(names_LA, names_shp_council, by = &quot;Altered&quot;
   set_colnames(c(&quot;LAName&quot;, &quot;Boundary&quot;)) %&gt;%
   set_rownames(NULL) </code></pre>
 <p>After the initial matching, there were still unjoined pairs. These had a number of inconsistencies, and therefore manual pairs were assigned to join the remaining names. In additional, counties within Northern Ireland are not included within the political dataset, and therefore no pairings were made:</p>
-<pre class="r"><code>pairs_manual &lt;- read.csv(&quot;https://raw.githubusercontent.com/mikey-harper/mikey-harper.github.io/master/_code/Political%20Data/ManualPairs.csv&quot;)
-pairs_shp_data &lt;- rbind(pairs_shp_data, pairs_manual)
-
-data_council_long_matched &lt;- merge(data_council_long, pairs_shp_data, by.x = &quot;Authority&quot;, by.y = &quot;LAName&quot;, all.x = FALSE)
+<pre class="r"><code>data_council_long_matched &lt;- merge(data_council_long, pairs_shp_data, by.x = &quot;Authority&quot;, by.y = &quot;LAName&quot;, all.x = FALSE)
 boundaries &lt;- merge(boundaries, pairs_shp_data, by.x = &quot;geo_label&quot;, by.y = &quot;Boundary&quot;, all.x = FALSE)</code></pre>
 <p>Now the two datasets are able to be cross-reference, it is easy to display figures of your choice.</p>
 </div>
@@ -344,7 +338,10 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
 </div>
 <div id="geospatial-plot" class="section level2">
 <h2>Geospatial Plot</h2>
-<pre class="r"><code>boundaries_sf &lt;- st_as_sf(boundaries)</code></pre>
+<p>Below we plot the results for the UK.</p>
+<pre class="r"><code>boundaries_sf &lt;- st_as_sf(boundaries)
+
+plot(boundaries_sf)</code></pre>
 </div>
 <div id="further-considerations" class="section level2">
 <h2>Further Considerations</h2>

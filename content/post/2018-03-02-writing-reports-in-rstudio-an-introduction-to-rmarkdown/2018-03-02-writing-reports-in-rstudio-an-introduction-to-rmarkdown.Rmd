@@ -13,6 +13,7 @@ type: post
 
 topics:
   - Technical
+header_image: "/images/RMarkdownPres.png"
 ---
 
 RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
