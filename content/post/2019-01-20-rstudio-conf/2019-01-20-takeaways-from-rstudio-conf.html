@@ -1,0 +1,63 @@
+---
+title: "Some of the things I learnt at rstudio::conf 2019"
+author: Michael Harper
+date: '2019-01-20'
+slug: takeaways-from-rstudio-conf
+categories: []
+tags: []
+type: post
+description: "My reflection rstudio::conf 2019 and all the packages discovered"
+keywords:
+  - key
+  - words
+header_image: "/images/austinStreaks.jpg"
+---
+
+
+
+<p>rstudio::conf 2019 is sadly over. I can honestly say it was one of the most interesting and educational conferences that I have been to, and I have come back with a long list of ideas which I want to get using right away! Here are some of the key points that I learned this week, with links to useful packages you may want to check out!</p>
+<div id="shiny-is-maturing-into-a-serious-tool-for-production" class="section level2">
+<h2>Shiny is maturing into a serious tool for production</h2>
+<p>There is often a perception that Shiny is good for prototyping, whilst deploying the app should be reserved for other programming languages. <strong>This is definitely not the case</strong>, as discussed by Joe Cheng in his keynote speach. To assist in this process making production-ready shiny apps, there are some great packages which were showcased:</p>
+<ul>
+<li><p><strong><a href="https://rstudio.github.io/shinytest/articles/shinytest.html">shinytest</a></strong>: does your process of testing your shiny app currently involve launching the app and clicking around until you break something? This package makes it easy to record tests which can be run automatically, allowing you to know if you have accidentally broken your app with your latest changes.</p></li>
+<li><p><strong><a href="https://rstudio.github.io/shinyloadtest/">shinyloadtest</a></strong>: once you have built your app, this package can help assess how the app will perfom under multiple users. It simulates traffic and provides useful graphs which can show you where you may be facing perfomance constraints in the app.</p></li>
+<li><p><strong><a href="https://cran.r-project.org/web/packages/ipc/vignettes/shinymp.html">ipc</a></strong>: this targets a smaller group of users who may want to develop apps which contain long computations. This package provides tools for helping with launching child processes which means that the app can still run while the calculation is being done in the background.</p></li>
+</ul>
+</div>
+<div id="r-markdown-continues-to-get-even-better" class="section level2">
+<h2>R Markdown continues to get even better!</h2>
+<p>I pretty much do all my work in R Markdown, and one of my most common frustrations has been making pretty tables. While <strong><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra</a></strong> does a great job of allowing extensive customisation, it can be a bit tricky to get set up and will often force the user to select a single output format.</p>
+<p><strong><a href="https://github.com/rstudio/gt">gt</a></strong> package does a way with a lot of the difficulty, and allows you to create beautiful tables for HTML and PDF outputs. The syntax is really simple and users can format data, modify columns, change the colour with a few lines of code. Extra mention should be given the author <a href="https://twitter.com/riannone?lang=en-gb">Richard Iannone</a> for how beautiful the documentation is!</p>
+<p><img src="/images/gt_workflow_diagram.svg" /></p>
+<p><strong><a href="https://github.com/rstudio/pagedown">pagedown</a></strong> is another useful package in addition to the family of R Markdown packages including <strong><a href="https://bookdown.org/yihui/bookdown/">bookdown</a></strong> and <strong><a href="https://bookdown.org/yihui/blogdown/">blogdown</a></strong>. It allows users to create paged HTML documents, and provide some great templates. If you have ever wanted to write your CV in R Markdown, it is now easier than ever!</p>
+<p>It was great to be able to speak to many of the R users and see how interested others are in R Markdown. There was great interest in gaining more ideas on how to take the R Markdown documents to the next level with customisation, something that I am trying to address with the <a href="https://github.com/dr-harper/rmarkdown-cookbook">R Markdown Cookbook</a>. Feedback would be greatly appreciated if there is any topic you would like to be covered in the book!</p>
+</div>
+<div id="spatial-modelling-in-r-is-getting-easier" class="section level2">
+<h2>Spatial modelling in R is getting easier</h2>
+<p>A lot of my work deals with spatial analysis, and it has always been slightly fiddly to handle this data in R. I particularly found this to be a big barrier to new users of R who were familiar with spatial modelling, but were trying to program for the first time. There has been some great progress in the past year as demonstrated at the conference:</p>
+<ul>
+<li><p><strong><a href="https://cran.r-project.org/web/packages/sf/vignettes/sf1.html">sf</a></strong>: I started doing geospatial analysis in R over two years ago, and it has always been quite fiddly to interact with this data. The sf uses more familiar terms to query the data and with <a href="https://www.tidyverse.org/articles/2018/10/ggplot2-3-1-0/">version 3.1.0</a> of ggplot, it makes it possible to directly plot spatial object using the <code>geom_sf</code> argument.</p></li>
+<li><p><strong><a href="https://r-spatial.github.io/stars/articles/blog1.html">stars</a></strong>: similar to the sf package, this package aims to make the handling of raster data more efficient. One the areas this seeks to improve is the handling of large datasets, something which can be quite a frustrating and slow experience at the moment!</p></li>
+<li><p><strong><a href="https://github.com/tylermorganwall/rayshader">rayshader</a></strong>: making pretty maps is always important for communicating results. This package can help producing 2D and 3D hillshaded maps.</p></li>
+</ul>
+</div>
+<div id="rstudio-keep-making-great-utilities-for-package-development" class="section level2">
+<h2>RStudio keep making great utilities for package development</h2>
+<p>I spent a lot of the week in the programming sessions, and was amazed at the amount of new tools being developed to make the life of package development easier. Some of the tools include:</p>
+<ul>
+<li><p><strong><a href="https://github.com/r-lib/pkg">pkgman</a></strong>: package installation will typically be done with the <code>install.packages</code> command, but this package seems to offer many improvements making package installation quicker and more reliable. I can see this quickly becoming my default package for installing and loading packages.</p></li>
+<li><p><strong><a href="https://github.com/jimhester/itdepends">itdepends</a></strong>: not all dependencies in your code should be treated equally. However, if you write code which utilises functions from lots of different packages, you can leave yourself vulnerable to things breaking in the future. This package is designed to help assess the dependencies within your code, and can be a useful tool for working out whether you can reduce the dependencies in your package. This is still in early development, but this is definitely one to watch.</p></li>
+<li><p><strong><a href="https://github.com/r-lib/vctrs">vctrs</a></strong>: if a package is ever made by Hadley Wickham you can be rest assured that it is both useful and well designed. It provides tools for handling vectors in a more consistent manner, and helps eliminate some of the more quirky behaviour of base R.</p></li>
+</ul>
+</div>
+<div id="the-r-community-is-incredible" class="section level2">
+<h2>The R community is incredible</h2>
+<p>Finally, I wanted to reflect how awesome the whole R community is! I lost count of the number of great people I met, and the whole conference was incredibly welcoming throughout. The breadth of the</p>
+<p>I think it is also important to recognise the benefit which RStudio have on the R community. Their development within the tidyverse and beyond is astonishing, and their coordination across the packages makes using the software so seamless.</p>
+</div>
+<div id="viewing-the-resources" class="section level2">
+<h2>Viewing the resources</h2>
+<p>Keep an eye on the R Studio conference for the upcoming videos. All the talks are available from previous years here: <a href="https://resources.rstudio.com/rstudio-conf-2018" class="uri">https://resources.rstudio.com/rstudio-conf-2018</a></p>
+<p>Looking forward to 2020 and San Francisco!</p>
+</div>

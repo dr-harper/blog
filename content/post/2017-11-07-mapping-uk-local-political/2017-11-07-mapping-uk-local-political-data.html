@@ -137,10 +137,9 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
 </div>
 <div id="geospatial-plot" class="section level2">
 <h2>Geospatial Plot</h2>
-<p>Below we plot the results for the UK.</p>
+<p>Below we plot the results for the UK:</p>
 <pre class="r"><code>boundaries_sf &lt;- st_as_sf(boundaries)
-
-plot(boundaries_sf)</code></pre>
+plot(boundaries_sf, max.plot = 1)</code></pre>
 </div>
 <div id="further-considerations" class="section level2">
 <h2>Further Considerations</h2>

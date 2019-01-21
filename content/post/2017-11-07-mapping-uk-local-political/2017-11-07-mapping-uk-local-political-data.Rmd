@@ -172,12 +172,11 @@ ggplot(data_melt, aes(x = Year, y = value, group = variable, fill = variable)) +
 
 ## Geospatial Plot
 
-Below we plot the results for the UK.
+Below we plot the results for the UK:
 
 ```{r control, fig.cap="UK political map by controlling party, 2016"}
 boundaries_sf <- st_as_sf(boundaries)
-
-plot(boundaries_sf)
+plot(boundaries_sf, max.plot = 1)
 ```
 
 ## Further Considerations

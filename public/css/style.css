@@ -7,16 +7,17 @@ html {
 
 
 
-.caption { text-align: center;
-           margin-top: 10px;
-           margin-bottom: 30px;
-           font-weight:bold
+.caption { 
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight:bold
 }
 
 body {
   /* Margin bottom by footer height */
   font-family: 'Open Sans', 'sans-serif';
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 70px;
 }
 .footer {

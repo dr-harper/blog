@@ -9,10 +9,33 @@
     <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
-    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Some of the things I learnt at rstudio::conf 2019</title>
+      <link>/takeaways-from-rstudio-conf/</link>
+      <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/takeaways-from-rstudio-conf/</guid>
+      <description>rstudio::conf 2019 is sadly over. I can honestly say it was one of the most interesting and educational conferences that I have been to, and I have come back with a long list of ideas which I want to get using right away! Here are some of the key points that I learned this week, with links to useful packages you may want to check out!
+Shiny is maturing into a serious tool for production There is often a perception that Shiny is good for prototyping, whilst deploying the app should be reserved for other programming languages.</description>
+    </item>
+    
+    <item>
+      <title>How I got into data science</title>
+      <link>/becoming-data-scientist/</link>
+      <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/becoming-data-scientist/</guid>
+      <description>I was lucky enough to attend the rstudio::conf 2019. If there was one
+When you’ve written the same code 3 times, write a function
+When you’ve given the same in-person advice 3 times, write a blog post
+&amp;mdash; David Robinson (@drob) November 9, 2017  I partly wrote this post to address his tweet, but I also felt
+One of the questions I have found myself often discussing is my route into a data scientist?</description>
+    </item>
     
     <item>
       <title>Creating Twitter Wordclouds in R</title>
@@ -145,6 +168,15 @@ What is the problem? Wind energy provides a key opportunity for the UK governmen
       <author>m.harper@outlook.com (Mikey Harper)</author>
       <guid>/cycling-lands-end-to-john-o-groats/</guid>
       <description>Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/</guid>
+      <description>.terms_of_use { font-family: sans-serif; font-size: 100%; } .citation { font-family: sans-serif; font-size: 100%; font-weight: bold; }    This UK Data Service Census Support boundary dataset is made available to you under the terms of the UK Open Government Licence v3. Your use of the UK Data Service is subject to the terms of the UK Data Service End User Licence The following copyright statements MUST be used when reproducing or using this dataset, for example when displaying boundary data as a map or other graphic within a written report: Contains National Statistics data &amp;#169 Crown copyright and database right [year] Contains NRS data &amp;#169 Crown copyright and database right [year] Source: NISRA : Website: www.</description>
     </item>
     
   </channel>

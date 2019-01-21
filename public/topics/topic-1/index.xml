@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Topic 1 on Mikey Harper</title>
+    <link>/topics/topic-1/</link>
+    <description>Recent content in Topic 1 on Mikey Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
+    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <lastBuildDate>Sun, 20 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/topics/topic-1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Some of the things I learnt at rstudio::conf 2019</title>
+      <link>/takeaways-from-rstudio-conf/</link>
+      <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/takeaways-from-rstudio-conf/</guid>
+      <description>rstudio::conf 2019 is sadly over. I can honestly say it was one of the most interesting and educational conferences that I have been to, and I have come back with a long list of ideas which I want to get using right away! Here are some of the key points that I learned this week, with links to useful packages you may want to check out!
+Shiny is maturing into a serious tool for production There is often a perception that Shiny is good for prototyping, whilst deploying the app should be reserved for other programming languages.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -9,10 +9,23 @@
     <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
     <copyright>(c) 2018 Copyright Mikey Harper</copyright>
-    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/data/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How I got into data science</title>
+      <link>/becoming-data-scientist/</link>
+      <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <guid>/becoming-data-scientist/</guid>
+      <description>I was lucky enough to attend the rstudio::conf 2019. If there was one
+When you’ve written the same code 3 times, write a function
+When you’ve given the same in-person advice 3 times, write a blog post
+&amp;mdash; David Robinson (@drob) November 9, 2017  I partly wrote this post to address his tweet, but I also felt
+One of the questions I have found myself often discussing is my route into a data scientist?</description>
+    </item>
     
     <item>
       <title>Creating Twitter Wordclouds in R</title>
