@@ -45,7 +45,7 @@
 <link rel="canonical" href="/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.48" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -140,7 +140,7 @@
   </div>
   <div class="flex-col">
     <div>
-  <h2 style = "font-size: 200%"><a href="/takeaways-from-rstudio-conf/">Some of the things I learnt at rstudio::conf 2019</a>
+  <h2 style = "font-size: 200%"><a href="/takeaways-from-rstudio-conf/">Things I learnt at rstudio::conf 2019</a>
 </h2>
 
   <div class="margin-0">
@@ -511,11 +511,11 @@
   
   
     R Markdown is fantastic tool to
-Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
- Invalidating Cache One limitation which can create problems with caching is that it is
+CachingIt can slow things does if these have to run large computations within your analysis. For example, you may have a
+Invalidating CacheOne limitation which can create problems with caching is that it is
 https://stackoverflow.com/q/18376008/7347699
 As an example, if we have the basic R Markdown file
---- output: pdf_document --- ``{r} z &lt;- &quot;Title 5&quot; y &lt;- &quot;Some Text&quot; x &lt;- &quot;x2&quot; ``` ``{r cars2, cache = TRUE, cache.
+---output: pdf_document---``{r}z &lt;- &quot;Title 5&quot;y &lt;- &quot;Some Text&quot;x &lt;- &quot;x2&quot;`````{r cars2, cache = TRUE, cache.
   
 
 
@@ -619,8 +619,8 @@ Note: this post does not intend to be a full tutorial on how to set up your blog
   
   
     A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
-Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads shapefile library(igraph) # build network library(spdep) # builds network library(RColorBrewer) # for plot colour palette library(ggplot2) # plots results # Load Data powiaty &lt;- shapefile(&quot;C:/Users/Mikey/Downloads/powiaty/powiaty&quot;) Firstly the poly2nb function is used to calculate neighbouring regions:
-# Find neighbouring areas nb_q &lt;- poly2nb(powiaty) This creates our spatial mesh, which we can see here:
+Codeknitr::opts_chunk$set(eval=FALSE)# Load packageslibrary(raster) # loads shapefilelibrary(igraph) # build networklibrary(spdep) # builds networklibrary(RColorBrewer) # for plot colour palettelibrary(ggplot2) # plots results# Load Datapowiaty &lt;- shapefile(&quot;C:/Users/Mikey/Downloads/powiaty/powiaty&quot;)Firstly the poly2nb function is used to calculate neighbouring regions:
+# Find neighbouring areasnb_q &lt;- poly2nb(powiaty)This creates our spatial mesh, which we can see here:
   
 
 
@@ -893,49 +893,6 @@ Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads s
   </div>
 </div>
         
-          <div class="flex-row">
-  <div class="flex-col">
-    <a href="/">
-<div class="holder">
-<img src="
-
-    /image/stockImage.jpeg
-">
-</div>
-</a>
-  </div>
-  <div class="flex-col">
-    <div>
-  <h2 style = "font-size: 200%"><a href="/"></a>
-</h2>
-
-  <div class="margin-0">
-    <small>
-  <i class="fa fa-calendar"></i>
-  <time datetime="0001-01-01">1 Jan, 0001</time>
-</small>
-
-    
-
-  </div>
-</div>
-
-    <p>
-  
-  
-    .terms_of_use { font-family: sans-serif; font-size: 100%; } .citation { font-family: sans-serif; font-size: 100%; font-weight: bold; }    This UK Data Service Census Support boundary dataset is made available to you under the terms of the UK Open Government Licence v3. Your use of the UK Data Service is subject to the terms of the UK Data Service End User Licence The following copyright statements MUST be used when reproducing or using this dataset, for example when displaying boundary data as a map or other graphic within a written report: Contains National Statistics data &#169 Crown copyright and database right [year] Contains NRS data &#169 Crown copyright and database right [year] Source: NISRA : Website: www.
-  
-
-
-</p>
-
-
-
-    <a href="/">Read more...</a>
-
-  </div>
-</div>
-        
         
 
       </div>
@@ -974,7 +931,7 @@ Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads s
       <ul>
          
          <li>
-            <a href="/takeaways-from-rstudio-conf/">Some of the things I learnt at rstudio::conf 2019</a>
+            <a href="/takeaways-from-rstudio-conf/">Things I learnt at rstudio::conf 2019</a>
          </li>
          
          <li>

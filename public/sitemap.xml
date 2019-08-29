@@ -88,10 +88,6 @@
   </url>
   
   <url>
-    <loc>/</loc>
-  </url>
-  
-  <url>
     <loc>/tags/blogdown/</loc>
     <lastmod>2018-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>

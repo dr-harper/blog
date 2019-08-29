@@ -21,11 +21,11 @@
       <author>m.harper@outlook.com (Mikey Harper)</author>
       <guid>/caching-with-knitr-and-rmarkdown/</guid>
       <description>R Markdown is fantastic tool to
-Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
- Invalidating Cache One limitation which can create problems with caching is that it is
+CachingIt can slow things does if these have to run large computations within your analysis. For example, you may have a
+Invalidating CacheOne limitation which can create problems with caching is that it is
 https://stackoverflow.com/q/18376008/7347699
 As an example, if we have the basic R Markdown file
---- output: pdf_document --- ``{r} z &amp;lt;- &amp;quot;Title 5&amp;quot; y &amp;lt;- &amp;quot;Some Text&amp;quot; x &amp;lt;- &amp;quot;x2&amp;quot; ``` ``{r cars2, cache = TRUE, cache.</description>
+---output: pdf_document---``{r}z &amp;lt;- &amp;quot;Title 5&amp;quot;y &amp;lt;- &amp;quot;Some Text&amp;quot;x &amp;lt;- &amp;quot;x2&amp;quot;`````{r cars2, cache = TRUE, cache.</description>
     </item>
     
     <item>

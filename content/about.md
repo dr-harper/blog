@@ -9,17 +9,5 @@ toc = true
 
 ## About Me
 
-I am a currently working as a research assist at the University of Southampton as part of the Sustainable Energy Research Group. My work primarily focusses on the analysis of large datasets and the geospatial modelling of renewable energy technologies.
+Implementation Analyst at the Flowminder Foundation with 18 months of professional experience as a data analyst. Data-focussed PhD in renewable energy modelling and experience analysing electricity consumption data, with a passion for sustainable development. Strong at writing efficient code to solve technical challenges and using data visualisation to communicate results. Collaborative team player who enjoys working closely with colleagues and external stakeholders. 
 
-## Background
-
-I have a MEng Civil Engineering at the University of Southampton, graduating in 2014. I studied a PhD in renewable energy modelling, and completed in January 2018.
-
-## Research Interests
-
-- Renewable Energy
-- Geospatial Modelling
-- International Development
-- Data Analysis
-- Reproducible Research
-- Machine Learning
