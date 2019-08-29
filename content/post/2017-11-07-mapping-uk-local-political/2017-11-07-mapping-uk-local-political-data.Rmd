@@ -11,7 +11,6 @@ tags:
   - R
   - Data
   - Mapping
-header_image: "/images/political.png"
 ---
 
 ```{r}
