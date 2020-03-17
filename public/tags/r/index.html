@@ -45,7 +45,7 @@
 <link rel="canonical" href="/tags/r/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -270,11 +270,11 @@
   
   
     R Markdown is fantastic tool to
-CachingIt can slow things does if these have to run large computations within your analysis. For example, you may have a
-Invalidating CacheOne limitation which can create problems with caching is that it is
+Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
+ Invalidating Cache One limitation which can create problems with caching is that it is
 https://stackoverflow.com/q/18376008/7347699
 As an example, if we have the basic R Markdown file
----output: pdf_document---``{r}z &lt;- &quot;Title 5&quot;y &lt;- &quot;Some Text&quot;x &lt;- &quot;x2&quot;`````{r cars2, cache = TRUE, cache.
+--- output: pdf_document --- ``{r} z &lt;- &quot;Title 5&quot; y &lt;- &quot;Some Text&quot; x &lt;- &quot;x2&quot; ``` ``{r cars2, cache = TRUE, cache.
   
 
 
@@ -378,8 +378,8 @@ Note: this post does not intend to be a full tutorial on how to set up your blog
   
   
     A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
-Codeknitr::opts_chunk$set(eval=FALSE)# Load packageslibrary(raster) # loads shapefilelibrary(igraph) # build networklibrary(spdep) # builds networklibrary(RColorBrewer) # for plot colour palettelibrary(ggplot2) # plots results# Load Datapowiaty &lt;- shapefile(&quot;C:/Users/Mikey/Downloads/powiaty/powiaty&quot;)Firstly the poly2nb function is used to calculate neighbouring regions:
-# Find neighbouring areasnb_q &lt;- poly2nb(powiaty)This creates our spatial mesh, which we can see here:
+Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads shapefile library(igraph) # build network library(spdep) # builds network library(RColorBrewer) # for plot colour palette library(ggplot2) # plots results # Load Data powiaty &lt;- shapefile(&quot;C:/Users/Mikey/Downloads/powiaty/powiaty&quot;) Firstly the poly2nb function is used to calculate neighbouring regions:
+# Find neighbouring areas nb_q &lt;- poly2nb(powiaty) This creates our spatial mesh, which we can see here:
   
 
 

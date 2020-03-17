@@ -30,8 +30,8 @@ The presentation was designed to provide a whistle-stop tour of the benefits of 
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Mikey Harper)</author>
       <guid>/gis-in-r/</guid>
-      <description>IntroAlthough R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to highlgiht why people may want to consider using R for their GIS, and highlight some of the benefits of using R in their analyses.
-Why use R for GISThere are many benefits of using R for GIS, but to me the top three reasons would be:</description>
+      <description>Intro Although R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to highlgiht why people may want to consider using R for their GIS, and highlight some of the benefits of using R in their analyses.
+ Why use R for GIS There are many benefits of using R for GIS, but to me the top three reasons would be:</description>
     </item>
     
     <item>
@@ -42,7 +42,7 @@ The presentation was designed to provide a whistle-stop tour of the benefits of 
       <guid>/wind-turbinesuccess/</guid>
       <description>I had the pleasure of presenting my work at the ECOS 2017 conference in San Diego, California. This page summarises the work and findings, with the research paper providing a more detailed decription.
 Read the full paper
-What is the problem?Wind energy provides a key opportunity for the UK government to meet decarbonisation targets. There is wide avaialbility of resource across the country, and onshore wind provides one of the most mature and cost-effective methods to supply renewable electricity.</description>
+What is the problem? Wind energy provides a key opportunity for the UK government to meet decarbonisation targets. There is wide avaialbility of resource across the country, and onshore wind provides one of the most mature and cost-effective methods to supply renewable electricity.</description>
     </item>
     
   </channel>
