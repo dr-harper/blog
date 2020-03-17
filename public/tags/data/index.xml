@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data on Mikey Harper</title>
+    <title>Data on Michael Harper</title>
     <link>/tags/data/</link>
-    <description>Recent content in Data on Mikey Harper</description>
+    <description>Recent content in Data on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
-    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
+    <copyright>(c) 2020 Copyright Michael Harper</copyright>
     <lastBuildDate>Fri, 18 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/data/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <title>How I got into data science</title>
       <link>/becoming-data-scientist/</link>
       <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/becoming-data-scientist/</guid>
       <description>I was lucky enough to attend the rstudio::conf 2019. If there was one
 When you’ve written the same code 3 times, write a function
@@ -31,7 +31,7 @@ One of the questions I have found myself often discussing is my route into a dat
       <title>Creating Twitter Wordclouds in R</title>
       <link>/creating-twitter-wordclouds/</link>
       <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/creating-twitter-wordclouds/</guid>
       <description>I recently finished my PhD, and my supervisor, Patrick James, always described me as a “data monster” in reference to how much I enjoyed playing with data. He was a massive influence throughout my PhD, so I felt it was only appropriate to get him a data-related gift when I finished. To this effect, I made him a wordcloud of all his tweet history!
 This blog post explains how we can interact with Twitter data in R using the rtweet (Kearney 2018) package, and convert this raw data into pretty visualisations using the wordcloud2 (Lang 2018) package.</description>
@@ -41,7 +41,7 @@ This blog post explains how we can interact with Twitter data in R using the rtw
       <title>Mapping UK Local Political Data</title>
       <link>/mapping-uk-local-political-data/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/mapping-uk-local-political-data/</guid>
       <description>knitr::opts_chunk$set(eval=FALSE) For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here.
 Setup R was used to run the analysis. The code uses a number of packages to process the data:</description>

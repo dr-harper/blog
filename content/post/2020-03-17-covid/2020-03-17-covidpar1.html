@@ -202,13 +202,16 @@ Figure 2: Rates of growth in cases of COVID-19, measured in days after the 200 c
   df_all_spatial %&gt;%
   filter(type == &quot;cases&quot;) %&gt;%
   group_by(region) %&gt;%
-  top_n(n = 1, wt = casespermillion) %&gt;%
+  top_n(n = 1, wt = casespermillion)
+
+outbreaks_top &lt;- 
+  outbreaks %&gt;%
   ungroup() %&gt;%
   arrange(-casespermillion) %&gt;%
   mutate(morethan200cases = value &gt; 200)
 
 p1 &lt;- 
-  outbreaks %&gt;%
+  outbreaks_top %&gt;%
   filter(morethan200cases == TRUE) %&gt;%
   ggplot(aes(x = reorder(region, casespermillion), y = casespermillion)) +
   geom_col(aes(fill = continent)) +
@@ -222,7 +225,7 @@ p1 &lt;-
 
 
 p2 &lt;- 
-  outbreaks %&gt;%
+  outbreaks_top %&gt;%
   filter(morethan200cases == TRUE) %&gt;%
   ggplot(aes(x = reorder(region, casespermillion), y = value)) +
   geom_col(aes(fill = continent)) +

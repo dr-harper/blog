@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reproducible Resaerch on Mikey Harper</title>
+    <title>Reproducible Resaerch on Michael Harper</title>
     <link>/tags/reproducible-resaerch/</link>
-    <description>Recent content in Reproducible Resaerch on Mikey Harper</description>
+    <description>Recent content in Reproducible Resaerch on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
-    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
+    <copyright>(c) 2020 Copyright Michael Harper</copyright>
     <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/reproducible-resaerch/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <title>Caching with knitr and Rmarkdown</title>
       <link>/caching-with-knitr-and-rmarkdown/</link>
       <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/caching-with-knitr-and-rmarkdown/</guid>
       <description>R Markdown is fantastic tool to
 Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
@@ -32,7 +32,7 @@ As an example, if we have the basic R Markdown file
       <title>Writing reports in RStudio: an introduction to RMarkdown</title>
       <link>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</guid>
       <description>RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
 The presentation was designed to provide a whistle-stop tour of the benefits of RMarkdown, explaining the basic syntax to get started and highlighting some of the more advance things which you could use RMarkdown for.</description>

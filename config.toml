@@ -42,13 +42,13 @@ tag = "Tags"
 topic = "Topics"
 
 [author]
-name = "Mikey Harper"
+name = "Michael Harper"
 email = "m.harper@outlook.com"
 
 [twitter]
 card = "summary_large_image"
-site = "@MikeyLHarper"
-creator = "@MikeyLHarper"
+site = "@DrMichaelHarper"
+creator = "@DrMichaelHarper"
 
 #
 # All parameters below here are optional and can be mixed and matched.
@@ -90,7 +90,7 @@ bootswatchtheme = "flatly"
 switchlang = false
 # You can use markdown here.
 BrandImage = "" #top header brand image.
-brand = "Mikey Harper" # brand image alt text.
+brand = "Michael Harper" # brand image alt text.
 topline = "few words about your site"
 
 customJS = []
@@ -114,12 +114,12 @@ highlight = "custom"
 googleAnalytics = ""
 
 # Sidebar social links.
-github = "mikey-harper" # Your Github profile ID
+github = "dr-harper" # Your Github profile ID
 bitbucket = "" # Your Bitbucket profile ID
 linkedin = "mikeyharper" # Your LinkedIn profile ID (from public URL)
 googleplus = "" # Your Google+ profile ID
 facebook = "mikey.harper" # Your Facebook profile ID
-twitter = "@MikeyLHarper" # Your Twitter profile ID
+twitter = "@DrMichaelHarper" # Your Twitter profile ID
 youtube = ""  # Your Youtube channel ID
 flattr = ""  # populate with your flattr uid
 
@@ -172,5 +172,5 @@ url = "https://github.com/mikey-harper/blog"
 [Languages.en]
 languageCode = "en"
 weight = 1
-copyright = "(c) 2018 Copyright Mikey Harper"
-title = "Mikey Harper" # Site title
+copyright = "(c) 2020 Copyright Michael Harper"
+title = "Michael Harper" # Site title

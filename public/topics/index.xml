@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Topics on Mikey Harper</title>
+    <title>Topics on Michael Harper</title>
     <link>/topics/</link>
-    <description>Recent content in Topics on Mikey Harper</description>
+    <description>Recent content in Topics on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
-    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
+    <copyright>(c) 2020 Copyright Michael Harper</copyright>
     <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/topics/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <title>Personal</title>
       <link>/topics/personal/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/topics/personal/</guid>
       <description></description>
     </item>
@@ -27,7 +27,7 @@
       <title>Technical</title>
       <link>/topics/technical/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/topics/technical/</guid>
       <description></description>
     </item>

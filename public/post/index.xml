@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Mikey Harper</title>
+    <title>Posts on Michael Harper</title>
     <link>/post/</link>
-    <description>Recent content in Posts on Mikey Harper</description>
+    <description>Recent content in Posts on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
-    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
+    <copyright>(c) 2020 Copyright Michael Harper</copyright>
     <lastBuildDate>Tue, 17 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <title>COVID-19 Preliminary Data Analysis</title>
       <link>/covid-19-march-17/</link>
       <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/covid-19-march-17/</guid>
       <description>As a data analyst, I always get happy when I discover there are great datasets available for interesting and important global events. I make a lot of my own decision making through data, and therefore this data gives me a way to cut through all the media noise which can often be present. This is certainly the case with the COVID-19 outbreak which is currently sweeping the UK media!</description>
     </item>
@@ -27,7 +27,7 @@
       <title>Things I learnt at rstudio::conf 2019</title>
       <link>/takeaways-from-rstudio-conf/</link>
       <pubDate>Sun, 20 Jan 2019 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/takeaways-from-rstudio-conf/</guid>
       <description>Cover photo by atmtx  rstudio::conf 2019 is sadly over. I can honestly say it was one of the most interesting and educational conferences that I have been to, and I have come back with a long list of ideas which I want to get using right away! Here are some of the key points that I learned this week, with links to useful packages you may want to check out!</description>
     </item>
@@ -36,7 +36,7 @@
       <title>How I got into data science</title>
       <link>/becoming-data-scientist/</link>
       <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/becoming-data-scientist/</guid>
       <description>I was lucky enough to attend the rstudio::conf 2019. If there was one
 When you’ve written the same code 3 times, write a function
@@ -49,7 +49,7 @@ One of the questions I have found myself often discussing is my route into a dat
       <title>Creating Twitter Wordclouds in R</title>
       <link>/creating-twitter-wordclouds/</link>
       <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/creating-twitter-wordclouds/</guid>
       <description>I recently finished my PhD, and my supervisor, Patrick James, always described me as a “data monster” in reference to how much I enjoyed playing with data. He was a massive influence throughout my PhD, so I felt it was only appropriate to get him a data-related gift when I finished. To this effect, I made him a wordcloud of all his tweet history!
 This blog post explains how we can interact with Twitter data in R using the rtweet (Kearney 2018) package, and convert this raw data into pretty visualisations using the wordcloud2 (Lang 2018) package.</description>
@@ -59,7 +59,7 @@ This blog post explains how we can interact with Twitter data in R using the rtw
       <title>Book Launch of “A Village Inheritance&#34;</title>
       <link>/book-launch-of-a-village-inheritance/</link>
       <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/book-launch-of-a-village-inheritance/</guid>
       <description>It was with great pleasure today that I was able to launch the book “A Village Inheritance” with my grandmonther, Clare Court, at Williton Library in Somerset. The event was a culmination of several years of hard work to get the book ready for publishing, and almost 50 years since the book was originally written, the book is available for all to enjoy!
 We had no idea how many people would be interested in such an event.</description>
@@ -69,7 +69,7 @@ We had no idea how many people would be interested in such an event.</descriptio
       <title>Walking from London to Basingstoke</title>
       <link>/walking-london-to-basingstoke/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/walking-london-to-basingstoke/</guid>
       <description>On Saturday 8th September 2017, I attempted to walk from London to Southampton as part of a charity fundraising event for Cameroon Catalyst. Unfortunately, I was unable to complete the whole route, as I had to withdraw due to injury at the 50 mile mark at Basingstoke, but it was an overall fantastic experience which I was proud to undertake.
 This blog post aims to capture the enjoyment and pain of undertaking the challenge!</description>
@@ -79,7 +79,7 @@ This blog post aims to capture the enjoyment and pain of undertaking the challen
       <title>Animated Plots with R</title>
       <link>/animated-plots-with-r/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/animated-plots-with-r/</guid>
       <description>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R ggplot2 (Wickham et al. 2018) has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in the now famous TED talk by Hans Rosling.</description>
     </item>
@@ -88,7 +88,7 @@ This blog post aims to capture the enjoyment and pain of undertaking the challen
       <title>Data-driven flowcharts in R using DiagrammeR</title>
       <link>/flowcharts-in-r-using-diagrammer/</link>
       <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/flowcharts-in-r-using-diagrammer/</guid>
       <description>The old cliché goes that “A picture is worth a thousand words”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail.</description>
     </item>
@@ -97,7 +97,7 @@ This blog post aims to capture the enjoyment and pain of undertaking the challen
       <title>Caching with knitr and Rmarkdown</title>
       <link>/caching-with-knitr-and-rmarkdown/</link>
       <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/caching-with-knitr-and-rmarkdown/</guid>
       <description>R Markdown is fantastic tool to
 Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
@@ -111,7 +111,7 @@ As an example, if we have the basic R Markdown file
       <title>Migrating blog to Blogdown</title>
       <link>/migrating-to-blogdown/</link>
       <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/migrating-to-blogdown/</guid>
       <description>I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
 Note: this post does not intend to be a full tutorial on how to set up your blog.</description>
@@ -121,7 +121,7 @@ Note: this post does not intend to be a full tutorial on how to set up your blog
       <title>Calculating Neighbouring Polygons in R</title>
       <link>/calculating-neighbouring-polygons-in-r/</link>
       <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/calculating-neighbouring-polygons-in-r/</guid>
       <description>A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
 Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads shapefile library(igraph) # build network library(spdep) # builds network library(RColorBrewer) # for plot colour palette library(ggplot2) # plots results # Load Data powiaty &amp;lt;- shapefile(&amp;quot;C:/Users/Mikey/Downloads/powiaty/powiaty&amp;quot;) Firstly the poly2nb function is used to calculate neighbouring regions:
@@ -132,7 +132,7 @@ Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads s
       <title>Mapping UK Local Political Data</title>
       <link>/mapping-uk-local-political-data/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/mapping-uk-local-political-data/</guid>
       <description>knitr::opts_chunk$set(eval=FALSE) For my PhD research, I needed to collect local political data for the UK. This article documents the data sources and procedure used to create a suitable dataset for my analysis. This provides a technical overview of the data. The R code used to create the analysis is available through GitHub here.
 Setup R was used to run the analysis. The code uses a number of packages to process the data:</description>
@@ -142,7 +142,7 @@ Setup R was used to run the analysis. The code uses a number of packages to proc
       <title>Writing reports in RStudio: an introduction to RMarkdown</title>
       <link>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</guid>
       <description>RMarkdown is a powerful tool for producing documents with embedded R code, allowing you to easily reproduce analysis and greatly simplify your data-driven workflow. It can be used to generate dynamic reports, presentations, journal papers, and even your thesis!
 The presentation was designed to provide a whistle-stop tour of the benefits of RMarkdown, explaining the basic syntax to get started and highlighting some of the more advance things which you could use RMarkdown for.</description>
@@ -152,7 +152,7 @@ The presentation was designed to provide a whistle-stop tour of the benefits of 
       <title>Using R for Geospatial Data Analysis</title>
       <link>/gis-in-r/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/gis-in-r/</guid>
       <description>Intro Although R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to highlgiht why people may want to consider using R for their GIS, and highlight some of the benefits of using R in their analyses.
  Why use R for GIS There are many benefits of using R for GIS, but to me the top three reasons would be:</description>
@@ -162,7 +162,7 @@ The presentation was designed to provide a whistle-stop tour of the benefits of 
       <title>Identifying key influences for planning acceptance of onshore wind turbines</title>
       <link>/wind-turbinesuccess/</link>
       <pubDate>Fri, 07 Jul 2017 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/wind-turbinesuccess/</guid>
       <description>I had the pleasure of presenting my work at the ECOS 2017 conference in San Diego, California. This page summarises the work and findings, with the research paper providing a more detailed decription.
 Read the full paper
@@ -173,7 +173,7 @@ What is the problem? Wind energy provides a key opportunity for the UK governmen
       <title>Cycling Lands End to John O&#39;Groats</title>
       <link>/cycling-lands-end-to-john-o-groats/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/cycling-lands-end-to-john-o-groats/</guid>
       <description>Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.</description>
     </item>

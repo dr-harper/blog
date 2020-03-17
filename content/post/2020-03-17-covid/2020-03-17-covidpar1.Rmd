@@ -269,7 +269,7 @@ p1 <-
 
 
 p2 <- 
-  outbreaks %>%
+  outbreaks_top %>%
   filter(morethan200cases == TRUE) %>%
   ggplot(aes(x = reorder(region, casespermillion), y = value)) +
   geom_col(aes(fill = continent)) +
@@ -290,13 +290,6 @@ combined + plot_layout(guides = "collect") + patchwork::plot_annotation(title = 
 Europe has some surprisingly high levels of the virus. Some of the media have been referring to Europe as the COVID-19 hotspot, but having looked at the data, I can't help but feel that large parts of the world are just not collecting data with the same level of accuracy. This graph shows how most of the highest-ranking countries are in Europe. The US is a prime example where real numbers are predicted to be much higher than the official stats!
 
 It is interesting seeing some of the smaller European countries high up the list. At this stage of the outbreak, where there are still relatively controlled cases, these small cases are more likely to represent outliers. Time will tell how these change.
-
-# 
-
-```{r}
-DT::datatable(outbreaks)
-```
-
 
 # Conclusion
 

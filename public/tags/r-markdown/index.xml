@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R Markdown on Mikey Harper</title>
+    <title>R Markdown on Michael Harper</title>
     <link>/tags/r-markdown/</link>
-    <description>Recent content in R Markdown on Mikey Harper</description>
+    <description>Recent content in R Markdown on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Mikey Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Mikey Harper)</webMaster>
-    <copyright>(c) 2018 Copyright Mikey Harper</copyright>
+    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
+    <copyright>(c) 2020 Copyright Michael Harper</copyright>
     <lastBuildDate>Tue, 01 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <title>Data-driven flowcharts in R using DiagrammeR</title>
       <link>/flowcharts-in-r-using-diagrammer/</link>
       <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Mikey Harper)</author>
+      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/flowcharts-in-r-using-diagrammer/</guid>
       <description>The old cliché goes that “A picture is worth a thousand words”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail.</description>
     </item>
