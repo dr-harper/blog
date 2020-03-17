@@ -141,8 +141,8 @@ p &lt;- ggplot(dataSelect, aes(x = date, y = casespermillion)) +
                    expand = c(0,0), breaks = &quot;2 week&quot;, date_labels = &quot; %d %B&quot;) +
   theme(plot.margin = unit(c(1,5,1,1), &quot;lines&quot;)) 
 p</code></pre>
-<div class="figure"><span id="fig:normalisedContagion"></span>
-<img src="/post/2020-03-17-covid/2020-03-17-covidpar1_files/figure-html/normalisedContagion-1.png" alt="Normalised rates of COVID-19 for some of the main countries with outbreaks" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:normalisedContagion"></span>
+<img src="/post/2020-03-17-covid/2020-03-17-covidpar1_files/figure-html/normalisedContagion-1.png" alt="Normalised rates of COVID-19 for some of the main countries with outbreaks" width="100%" />
 <p class="caption">
 Figure 1: Normalised rates of COVID-19 for some of the main countries with outbreaks
 </p>
@@ -185,8 +185,8 @@ p
 gt &lt;- ggplotGrob(p)
 gt$layout$clip[gt$layout$name == &quot;panel&quot;] &lt;- &quot;off&quot;
 grid::grid.draw(gt)</code></pre>
-<div class="figure"><span id="fig:growthRates"></span>
-<img src="/post/2020-03-17-covid/2020-03-17-covidpar1_files/figure-html/growthRates-1.png" alt="Rates of growth in cases of COVID-19, measured in days after the 200 case was recorded" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:growthRates"></span>
+<img src="/post/2020-03-17-covid/2020-03-17-covidpar1_files/figure-html/growthRates-1.png" alt="Rates of growth in cases of COVID-19, measured in days after the 200 case was recorded" width="100%" />
 <p class="caption">
 Figure 2: Rates of growth in cases of COVID-19, measured in days after the 200 case was recorded
 </p>
@@ -238,8 +238,8 @@ p2 &lt;-
 # Plots combined using patchwork package
 combined &lt;- p1 + p2 &amp; theme(legend.position = &quot;right&quot;)
 combined + plot_layout(guides = &quot;collect&quot;) + patchwork::plot_annotation(title = &quot;Comparing normalised rates vs total cases&quot;, caption = &quot;Note: Only displaying countries with more than 200 reported cases&quot;, subtitle = &quot;Although China still accounts for the vast majority of cases, the overall rates are lower \nthan many European countries&quot;)</code></pre>
-<div class="figure"><span id="fig:outbreaks"></span>
-<img src="/post/2020-03-17-covid/2020-03-17-covidpar1_files/figure-html/outbreaks-1.png" alt="A comparison of the normalised ranking of countries against total cases" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:outbreaks"></span>
+<img src="/post/2020-03-17-covid/2020-03-17-covidpar1_files/figure-html/outbreaks-1.png" alt="A comparison of the normalised ranking of countries against total cases" width="100%" />
 <p class="caption">
 Figure 3: A comparison of the normalised ranking of countries against total cases
 </p>
