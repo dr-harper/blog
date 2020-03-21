@@ -9,10 +9,19 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Mon, 26 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Animated Maps</title>
+      <link>/tags/animated-maps/</link>
+      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>/tags/animated-maps/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Blogdown</title>
@@ -47,6 +56,15 @@
       <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/tags/data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Visualisation</title>
+      <link>/tags/data-visualisation/</link>
+      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>/tags/data-visualisation/</guid>
       <description></description>
     </item>
     

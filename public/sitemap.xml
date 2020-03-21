@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/covid-19-maps/</loc>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/covid-19-march-17/</loc>
     <lastmod>2020-03-17T00:00:00+00:00</lastmod>
   </url>
@@ -93,6 +98,12 @@
   </url>
   
   <url>
+    <loc>/tags/animated-maps/</loc>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/blogdown/</loc>
     <lastmod>2018-03-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -113,6 +124,12 @@
   <url>
     <loc>/tags/data/</loc>
     <lastmod>2019-01-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/data-visualisation/</loc>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,7 +165,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -160,7 +177,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2020-03-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -196,7 +213,7 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2018-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

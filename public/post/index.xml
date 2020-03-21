@@ -9,10 +9,20 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Tue, 17 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Visualising Covid-19 With Animated, Static and Interactive Maps</title>
+      <link>/covid-19-maps/</link>
+      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>/covid-19-maps/</guid>
+      <description>About I have reflecting on the unprecedented week in the UK. Even this time last week, the country seemed fairly laid back as government advice was largely to continue with business as usual. It is all very different to now, with schools set to close on Monday and most people either working from home or not working at all.
+This blog post provides details of anaylsis and data viusalisation to assess the spread of virus, giving three example maps which I have produced.</description>
+    </item>
     
     <item>
       <title>COVID-19 Preliminary Data Analysis</title>
