@@ -9,10 +9,20 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Fri, 20 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The problem with Linear graphs and Covid-19</title>
+      <link>/covid-19-linear-graphs/</link>
+      <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>/covid-19-linear-graphs/</guid>
+      <description>On 23rd March, the UK introduced unprecedent measures to lockdown the country in the wake of the continuing Covid-19 outbreak. This followed a week of slowly escalating measures all designed to increase the amount of social distancing and reduce the spread of the virus. This article dives into some of the statistics available for this week and provide some more context for readers going further into the crisis.
+I reiterate my previous comments than I am not an epidimologist, but someone with an interest in data.</description>
+    </item>
     
     <item>
       <title>Visualising Covid-19 With Animated, Static and Interactive Maps</title>

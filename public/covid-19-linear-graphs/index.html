@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109605445-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-109605445-1');
+  </script>
+
+  
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>The problem with Linear graphs and Covid-19  &middot; Michael Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="As more countries find themselves challenging the growth of Covid-19, we explore the data behind the outbreak to see the trajectories that countries are taking." />
+
+<meta name="keywords" content="Covid 19, Data Visualisation, ">
+
+
+<meta property="og:title" content="The problem with Linear graphs and Covid-19  &middot; Michael Harper ">
+<meta property="og:site_name" content="Michael Harper"/>
+<meta property="og:url" content="/covid-19-linear-graphs/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="As more countries find themselves challenging the growth of Covid-19, we explore the data behind the outbreak to see the trajectories that countries are taking."/>
+<meta property="og:article:published_time" content="2020-03-24T00:00:00Z" />
+<meta property="og:article:modified_time" content="2020-03-24T00:00:00Z" />
+
+
+<meta property="og:image" content="/images/linearGraphs.png"/>
+
+
+  
+    
+<meta property="og:article:tag" content="Covid 19">
+    
+<meta property="og:article:tag" content="Data Visualisation">
+    
+  
+
+  
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@@DrMichaelHarper" />
+<meta name="twitter:creator" content="@@DrMichaelHarper" />
+<meta name="twitter:title" content="The problem with Linear graphs and Covid-19" />
+<meta name="twitter:description" content="As more countries find themselves challenging the growth of Covid-19, we explore the data behind the outbreak to see the trajectories that countries are taking." />
+<meta name="twitter:url" content="/covid-19-linear-graphs/" />
+<meta name="twitter:domain" content="/">
+  
+
+  
+
+
+
+<link rel="canonical" href="/covid-19-linear-graphs/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.52" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+<link rel="stylesheet" href="/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="/css/highlight/custom.css">
+
+
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="/">
+          Michael Harper
+          
+          
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="/"  title=" Home">
+                <i class='fa fa-home'></i>&nbsp
+                 Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="/about/"  title="About">
+                <i class='fa fa-user'></i>&nbsp
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>The problem with Linear graphs and Covid-19
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2020-03-24">24 Mar, 2020</time>
+</small>
+
+
+  <small>
+    &middot; by Michael Harper
+  
+  &middot; Read in about 6 min
+  &middot; (1275 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=The%20problem%20with%20Linear%20graphs%20and%20Covid-19&amp;url=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcovid-19-linear-graphs%2f&amp;title=The%20problem%20with%20Linear%20graphs%20and%20Covid-19" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=The%20problem%20with%20Linear%20graphs%20and%20Covid-19&amp;body=Check out this site %2fcovid-19-linear-graphs%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="/tags/covid-19" class="label label-primary">Covid 19</a>
+  
+  <a href="/tags/data-visualisation" class="label label-primary">Data Visualisation</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      
+<img src= /images/linearGraphs.png alt="Mountain View">
+
+
+<br>
+
+<div class="content", style = "margin-top:10px">
+  
+
+
+<p>On 23rd March, the UK introduced unprecedent measures to lockdown the country in the wake of the continuing Covid-19 outbreak. This followed a week of slowly escalating measures all designed to increase the amount of <a href="https://en.wikipedia.org/wiki/Social_distancing">social distancing</a> and reduce the spread of the virus. This article dives into some of the statistics available for this week and provide some more context for readers going further into the crisis.</p>
+<p>I reiterate my previous comments than I am not an epidimologist, but someone with an interest in data. My aim is to understand data and to reach an informed opinion.</p>
+<div id="the-problem-with-linear-graphs" class="section level1">
+<h1>The Problem With Linear Graphs</h1>
+<p>To most of the world, the rise of Covid-19 has come as a massive surpise. One of the big challenges people have had in communicating the risk of Covid-19 is that it has been raising exponentially. <em>“Why should we worry about this when it is so small?”</em>, people have been saying. Even at the stage where the UK is now, where we have experienced 336 deaths, it is difficult to tell how whether we are on the same trajectory as countries such as Spain or Italy, which are recording 2311 and 6077 respectively. As a result, it is easy to downplay the threat, and as can be still clearly seen, many people are not taking the warnings from the government seriously. Humans tend to be really bad at thinking about exponential changes (ask any person in their 20s how much they are putting into their pension).</p>
+<p>In situations like this where we are dealing with a exponential growth, logarithmic plots enable us to easily visualise the rate of change much easier. Plotted on this, we transform the exponential curve into a straight line. If the line gets steeper, it means the virus is spreading quicker, while reducing the gradient shows that the virus is getting under control. Graph <a href="#fig:linearGraphs">1</a> shows a comparison of a linear and logarithmic plot of the same data. On a linear scale, the UK is still far behind the levels of Italy, however the logarithmic plot reveals that rates of growth in the UK are occuring at a similar rate to those in Italy. It is also possible to see that the rate at which new infections are being recorded in Italy are starting to decrease, potentially a useful indicator that the national lockdown is starting to take effect.</p>
+<div class="figure" style="text-align: center"><span id="fig:linearGraphs"></span>
+<img src="/post/2020-03-24-covid-lockdown/2020-03-24-covid-lockdown_files/figure-html/linearGraphs-1.png" alt="Comparison of linear and logarithmic graphs. Linear graphs make it hard to assess see whether the virus is slowing down" width="768" />
+<p class="caption">
+Figure 1: Comparison of linear and logarithmic graphs. Linear graphs make it hard to assess see whether the virus is slowing down
+</p>
+</div>
+</div>
+<div id="the-uks-trajectory" class="section level1">
+<h1>The UK’s trajectory</h1>
+<p>Now that I have done my explaining logarithmic plots, we can dive into the proper analysis. <a href="https://www.independent.co.uk/news/health/coronavirus-update-testing-news-herd-immunity-who-uk-cases-map-a9402051.html">As has been widely noted</a>, there are vast differences between the ways in which countries are testing for Covid-19, with countries like the UK currently only routinely people in hoispital. However, the UK does plan to increase tests to <a href="https://www.bbc.co.uk/news/health-51943612">25,000 a day within 4 weeks</a>.</p>
+<p>To get a more accurate international comparison, the number of deaths provide us an easier metric, which is shown in Graph £ref(fig:deathPlot) which compares the numbers of deaths in key countries<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. It highlights how the UK, Spain and Italy are all on trajectories higher than what China was at a similar stage of the outbreak of Covid-19, and deaths in the UK have been doubling every two days. It can be expected that as countries ramp up their social distancing methods, that we can expect a consequent reduction of infections and resulting in a slowdown of deaths, something which appears to be beginning in Italy.</p>
+<p>It is interesting to see how both Japan and South Korea have been able to keep the rates lower, approximately doubling each week. <a href="https://www.nytimes.com/2020/03/23/briefing/south-korea-coronavirus-treatment-olympics.html">It has been noted that South Korea</a> have been particularly effective at testing and containing the spread of Covid-19, operating 600 testing centres across the country, then tracking any identified positive infections.</p>
+<div class="figure" style="text-align: center"><span id="fig:deathPlot"></span>
+<img src="/post/2020-03-24-covid-lockdown/2020-03-24-covid-lockdown_files/figure-html/deathPlot-1.png" alt="Cumulative number of deaths plotted for the key countries frequently used in discussions, compared against dates since outbreaks" width="768" />
+<p class="caption">
+Figure 2: Cumulative number of deaths plotted for the key countries frequently used in discussions, compared against dates since outbreaks
+</p>
+</div>
+<p>Graph <a href="#fig:casesPlots">3</a> allows us to see the relative performance of more countries. Note, the plot uses number of cases as there is still not a fully available dataset for deaths, especially for countries which have recently experience outbreaks. We can clearly see that many countries are following the same trajectory as Italy, which provides cause for concern.</p>
+<div class="figure" style="text-align: center"><span id="fig:casesPlots"></span>
+<img src="/post/2020-03-24-covid-lockdown/2020-03-24-covid-lockdown_files/figure-html/casesPlots-1.png" alt="Comparison of countries which have outbreaks with more than 200 recorded cases" width="1152" />
+<p class="caption">
+Figure 3: Comparison of countries which have outbreaks with more than 200 recorded cases
+</p>
+</div>
+<p>Note, I have used the absolute values within the plot, not adjusting for population. This has been hotly debated in many countries, namely the US where critics of the idea of imposing a lockdown point at US having a much larger population than countries like Italy, therefore in reality the problem is much smaller. However, as noted by <a href="https://twitter.com/jburnmurdoch/status/1238914490772701185">John Burn-Murdoch</a>: <em>“Normalised numbers are good at showing relatively how much strain a country is under, but they’re unsuited to tracking the extent/state of a country’s outbreak, which spreads at ~same pace regardless of country size.”</em></p>
+</div>
+<div id="china-as-an-example" class="section level1">
+<h1>China as an example</h1>
+<p>A lot of the focus within the UK has been on the idea that the new lockdown measures will be a short time, with Prime Minister Boris Johnson has said he believes the UK can “turn the tide” against the outbreak within the next 12 weeks and the country can “send coronavirus packing”. While indeed we can make significant measures to reduce the spread of Covid-19 over the coming months, the battle will indeed be much longer.</p>
+<p>To explore this, we can look at the example of China, who have been within quarantine for 8 weeks. One argument which is commonly used to provide optimism (most typically by those people who are trying to downplay the concerns) is that China have shown a massive reduction in new cases, as shown in Graph <a href="#fig:chinaRates">4</a>. This is indeed true, and it provides us hope of what proper lockdown measures can achieve, however, critically, there are stil indeed new cases being found. If normal life resumes at the end of the lockdown on 8th April, it is likely that there will again be an increase in the numbers.</p>
+<div class="figure" style="text-align: center"><span id="fig:chinaRates"></span>
+<img src="/post/2020-03-24-covid-lockdown/2020-03-24-covid-lockdown_files/figure-html/chinaRates-1.png" alt="Daily confirmed cases of COVID-19 in China" width="672" />
+<p class="caption">
+Figure 4: Daily confirmed cases of COVID-19 in China
+</p>
+</div>
+<p>However, the idea that this can be over and done with is increasingly becoming clearer to both the media and the broader public. As summarised well in this <a href="https://www.bbc.co.uk/news/health-51963486">BBC article</a>, we have several real options. The only way in which Covid-19 could be ended quickly is if a large proportion of the population become infected, something which clearly is not idealy.</p>
+<p>If you want to get an understanding of the longer term implications, I would strongly recommend you checkout the tool which lets you explore the different type of mitigations and their impact they will have on the spread of the virus: <a href="https://neherlab.org/covid19/" class="uri">https://neherlab.org/covid19/</a>.</p>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>Reflecting on this, I felt like there were quite a lot of negative points to be drawn. Rates are growing in many countries, and even countries where rates are reducing are not out of harms way. However, I do think that at this stage of a pandemic, it is really important that the risks are communicated. The cost of inaction is too high to pretend that things will be okay. Yes they can be okay, but it will take concerted effort from the population over long periods of time to do this.</p>
+<p>For those interested in the technical background to these plots, you may wish to check out the code which is available <a href="https://github.com/dr-harper/Covid19analysis">here</a>.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>I was half-way through making this plot when I found out that the <a href="https://www.ft.com/coronavirus-latest">Financial Times</a> have also made some similar visulisations. I ended up using some of their design elements for inspirations<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=The%20problem%20with%20Linear%20graphs%20and%20Covid-19&amp;url=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=%2fcovid-19-linear-graphs%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcovid-19-linear-graphs%2f&amp;title=The%20problem%20with%20Linear%20graphs%20and%20Covid-19" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=The%20problem%20with%20Linear%20graphs%20and%20Covid-19&amp;body=Check out this site %2fcovid-19-linear-graphs%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="/covid-19-maps/" title="Visualising Covid-19 With Animated, Static and Interactive Maps">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//mikeyharper.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+   
+   <hr>
+   
+   <div class="section">
+      </br>
+      <div class="user one"></div>
+      </br>
+      <header>
+         <div class="title" style="text-align:center; font-size=80%"><b>About Me</b></div>
+      </header>
+        </br>
+      <p padding-left: 50px> Data scientist with interests in data visualisation, machine learning, geospatial modelling, energy and international development.<br><a href="/about/">Read More...</a></p>
+      <div style="margin-left: 1.2em; line-height: 2; font-size: 120%">
+         <a href="https://goo.gl/jpE8an"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp Southampton</a> <br /> 
+         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i>&nbsp Stackoverflow</a> <br /> 
+         <a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br /> 
+         <a href="https://www.facebook.com/mikey.harper"><i class="fa fa-facebook-official" style="color:#3b5998;"></i>&nbsp Facebook</a> <br />
+         <a href="https://www.linkedin.com/in/mikeyharper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp LinkedIn</a> <br /> 
+         <a href="https://twitter.com/@MikeyLHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp Twitter</a> <br /> 
+      </div>
+   </div>
+</div>
+<hr>
+
+<div class="section">
+   <header>
+      <div class="title"><b>Latest Posts</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li>
+            <a href="/covid-19-linear-graphs/">The problem with Linear graphs and Covid-19</a>
+         </li>
+         
+         <li>
+            <a href="/covid-19-maps/">Visualising Covid-19 With Animated, Static and Interactive Maps</a>
+         </li>
+         
+         <li>
+            <a href="/covid-19-march-17/">COVID-19 Preliminary Data Analysis</a>
+         </li>
+         
+         <li>
+            <a href="/takeaways-from-rstudio-conf/">Things I learnt at rstudio::conf 2019</a>
+         </li>
+         
+         <li>
+            <a href="/becoming-data-scientist/">How I got into data science</a>
+         </li>
+         
+         <li>
+            <a href="/creating-twitter-wordclouds/">Creating Twitter Wordclouds in R</a>
+         </li>
+         
+         <li>
+            <a href="/book-launch-of-a-village-inheritance/">Book Launch of “A Village Inheritance&#34;</a>
+         </li>
+         
+         <li>
+            <a href="/walking-london-to-basingstoke/">Walking from London to Basingstoke</a>
+         </li>
+         
+         <li>
+            <a href="/animated-plots-with-r/">Animated Plots with R</a>
+         </li>
+         
+         <li>
+            <a href="/flowcharts-in-r-using-diagrammer/">Data-driven flowcharts in R using DiagrammeR</a>
+         </li>
+         
+      </ul>
+   </div>
+</div>
+<hr>
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Tag</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="/Tags/r">r</a></li>
+         
+         <li><a href="/Tags/gis">gis</a></li>
+         
+         <li><a href="/Tags/data">data</a></li>
+         
+         <li><a href="/Tags/presentation">presentation</a></li>
+         
+         <li><a href="/Tags/data-visualisation">data-visualisation</a></li>
+         
+         <li><a href="/Tags/dataviz">dataviz</a></li>
+         
+         <li><a href="/Tags/maps">maps</a></li>
+         
+         <li><a href="/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
+         
+         <li><a href="/Tags/web">web</a></li>
+         
+         <li><a href="/Tags/animated-maps">animated-maps</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Topic</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="/Topics/technical">technical</a></li>
+         
+         <li><a href="/Topics/personal">personal</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+<hr>
+</div>
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="https://github.com/mikey-harper/blog">Hosted on Github</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  &copy; 2020 Copyright Michael Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE =  null ; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
