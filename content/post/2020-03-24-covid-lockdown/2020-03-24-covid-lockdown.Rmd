@@ -1,5 +1,5 @@
 ---
-title: "The problem with Linear graphs and Covid-19"
+title: "UK goes into lockdown: further Covid-19 analysis"
 type: post
 author: Michael Harper
 date: '2020-03-24'
@@ -11,7 +11,7 @@ header_image: "/images/linearGraphs.png"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = F, fig.align = "center")
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = F, fig.align = "center", out.width = "100%")
 
 library(here)
 library(readr)
@@ -150,7 +150,7 @@ ggplot() +
        y = "Cumulative Number of Deaths",
        fill = "Country",
        title = "COVID-19 related deaths per country",
-       subtitle = "UK, Spain and Italy have higher levels of deaths than China at this stage of the pandemic",
+       subtitle = "UK, Spain and Italy have higher levels of deaths than China at the same stage of the pandemic",
            caption = glue::glue("Data Source: John Jopkins University
                          Data updated on {date}
                          CC BY 4.0 Michael Harper 2020", date = max(df_plot2$date))) +
@@ -167,7 +167,7 @@ ggplot() +
 
 Graph \@ref(fig:casesPlots) allows us to see the relative performance of more countries. Note, the plot uses number of cases as there is still not a fully available dataset for deaths, especially for countries which have recently experience outbreaks. We can clearly see that many countries are following the same trajectory as Italy, which provides cause for concern. 
 
-```{r casesPlots, fig.height=8, fig.width=12, fig.cap = "Comparison of countries which have outbreaks with more than 200 recorded cases"}
+```{r casesPlots, fig.height=7.5, fig.width=11, fig.cap = "Comparison of countries which have outbreaks with more than 200 recorded cases"}
 
 df_plot1 <-
   df_all_spatial %>%
