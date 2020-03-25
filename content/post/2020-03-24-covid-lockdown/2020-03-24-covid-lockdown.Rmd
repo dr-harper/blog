@@ -86,7 +86,7 @@ To get a more accurate international comparison, the number of deaths provide us
 It is interesting to see how both Japan and South Korea have been able to keep the rates lower, approximately doubling each week. [It has been noted that South Korea](https://www.nytimes.com/2020/03/23/briefing/south-korea-coronavirus-treatment-olympics.html) have been particularly effective at testing and containing the spread of Covid-19, operating 600 testing centres across the country, then tracking any identified positive infections.
 
 
-```{r deathPlot, fig.height=8, fig.width=8, message = F, warning = F, fig.cap = "Cumulative number of deaths plotted for the key countries frequently used in discussions, compared against dates since outbreaks"}
+```{r deathPlot, fig.height=6, fig.width=8, message = F, warning = F, fig.cap = "Cumulative number of deaths plotted for the key countries frequently used in discussions, compared against dates since outbreaks"}
 
 # Define the colour palette for the plot
 set_swatch(c(
@@ -152,7 +152,7 @@ ggplot() +
        title = "COVID-19 related deaths per country",
        subtitle = "UK, Spain and Italy have higher levels of deaths than China at the same stage of the pandemic",
            caption = glue::glue("Data Source: John Jopkins University
-                         Data updated on {date}
+                         Data updated on {date}, Graph design inspired by Financial Times
                          CC BY 4.0 Michael Harper 2020", date = max(df_plot2$date))) +
   scale_y_log10(expand = c(0, 0)) +
   scale_x_continuous(expand = c(0, 0), breaks = c(0, 7, 14, 21, 28, 35)) +
@@ -167,7 +167,7 @@ ggplot() +
 
 Graph \@ref(fig:casesPlots) allows us to see the relative performance of more countries. Note, the plot uses number of cases as there is still not a fully available dataset for deaths, especially for countries which have recently experience outbreaks. We can clearly see that many countries are following the same trajectory as Italy, which provides cause for concern. 
 
-```{r casesPlots, fig.height=7.5, fig.width=11, fig.cap = "Comparison of countries which have outbreaks with more than 200 recorded cases"}
+```{r casesPlots, fig.height=10, fig.width=8, fig.cap = "Comparison of countries which have outbreaks with more than 200 recorded cases"}
 
 df_plot1 <-
   df_all_spatial %>%
@@ -193,7 +193,7 @@ ggplot(df_plot1) +
   labs(
     x = "Days Since 200th Case",
     y = "Number of Reported Cases",
-    title = "Outbreaks are now underway in many countries, with some at similar trajectories as Italy",
+    title = "Many countries are following similar Covid-19 trajectories as Italy",
     subtitle = "Cumulative number of confirmed cases, by number of days since 100th case",
     caption = glue::glue("Data Source: John Jopkins University
                          Data updated on {date}
@@ -204,7 +204,7 @@ ggplot(df_plot1) +
                 labels = function(x) format(x, scientific = FALSE),
                 expand = c(0,0)) +
   scale_x_continuous(limits = c(0, 30), expand = c(0,0)) +
-  facet_wrap(region ~ ., ncol = 9, shrink = FALSE) +
+  facet_wrap(region ~ ., ncol = 6, shrink = FALSE) +
   theme(
     aspect.ratio = 1,
     panel.grid = element_blank()
