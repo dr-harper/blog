@@ -116,9 +116,9 @@ googleAnalytics = ""
 # Sidebar social links.
 github = "dr-harper" # Your Github profile ID
 bitbucket = "" # Your Bitbucket profile ID
-linkedin = "mikeyharper" # Your LinkedIn profile ID (from public URL)
+linkedin = "dr-harper" # Your LinkedIn profile ID (from public URL)
 googleplus = "" # Your Google+ profile ID
-facebook = "mikey.harper" # Your Facebook profile ID
+facebook = "" # Your Facebook profile ID
 twitter = "@DrMichaelHarper" # Your Twitter profile ID
 youtube = ""  # Your Youtube channel ID
 flattr = ""  # populate with your flattr uid
