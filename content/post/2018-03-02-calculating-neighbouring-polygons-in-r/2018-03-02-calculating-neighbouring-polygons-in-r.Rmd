@@ -1,8 +1,9 @@
 ---
 title: Calculating Neighbouring Polygons in R
-author: Mikey Harper
-date: '2018-03-02'
-draft: true
+type: post
+author: Michael Harper
+date: '2020-07-02'
+draft: false
 slug: calculating-neighbouring-polygons-in-r
 categories:
   - GIS
@@ -12,44 +13,59 @@ tags:
   - R
 ---
 
-A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
-
-# Code
-
-```{r}
-knitr::opts_chunk$set(eval=FALSE)
+```{r, include=F}
+knitr::opts_chunk$set(eval=T)
 ```
 
+A while back on StackOverflow, I [answered a question](https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246) on how to produce a map which showed how many polygons away a location was from another, as shown in Figure \@ref(fig:mapResult). This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from [Roger Bivand](https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html) here.
+
+```{r mapResult, fig.cap="The final output!"}
+knitr::include_graphics("https://i.stack.imgur.com/6kBT6.png")
+```
+
+# Setup
+
+In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the **igraph** [@R-igraph] **spdep** [@R-spdep] and **spatialreg** [@R-spatialreg] packages. We also use the **raster** [@R-raster] package to download some example data, and **ggplot2** [@R-ggplot2] for the final visualisation.
 
 ```{r, message = FALSE}
 # Load packages
 library(raster) # loads shapefile
 library(igraph) # build network
 library(spdep) # builds network
+library(spatialreg)
 library(RColorBrewer)  # for plot colour palette
 library(ggplot2) # plots results
-    
+library(tmap)
+```
+
+First downloading the data as follows. The input data is shown in Figure \@ref(fig:loadData). You could easily provide your own shapefile here instead or run the code for a different country by changing the three-digit code. For my example, I have selected Hungary:
+
+```{r loadData, fig.cap = "Loaded data for the raster package"}
 # Load Data
-powiaty <- shapefile("C:/Users/Mikey/Downloads/powiaty/powiaty")
+boundaries <- raster::getData(name = "GADM", country = "HUN", level = 2)
+
+# Show data
+tm_shape(boundaries) +
+  tm_polygons()
 ```
 
-Firstly the `poly2nb` function is used to calculate neighbouring regions:
+## Extracting neigbours
 
-```{r}
+Firstly the `poly2nb` function is used to calculate neighbouring regions, based on contiguous boundaries, that is sharing one or more boundary point. The resulting mesh and coordinates is shown in Figure \@ref(fig:produceMesh)
+
+```{r produceMesh, fig.cap = "Mesh outputs from poly2nb"}
 # Find neighbouring areas
-nb_q <- poly2nb(powiaty)
-```
+nb_q <- poly2nb(boundaries)
 
-This creates our spatial mesh, which we can see here:
-
-```{r}
 # Plot original results
-coords <- coordinates(powiaty)
-plot(powiaty)
+coords <- coordinates(boundaries)
+
+# Show the results
+plot(boundaries)
 plot(nb_q, coords, col="grey", add = TRUE)
 ```
 
-This is the bit where I am not 100% sure what is happening. Basically, it is working out the shortest distance between all the shapefiles in the network, and returns a matrix of these pairs.
+With this mesh, we can then calculate the shortest path between two locations. The follow function returns a list for each and every pair of polygons.
 
 ```{r}
 # Sparse matrix
@@ -58,56 +74,44 @@ B <- as(nb_B, "symmetricMatrix")
     
 # Calculate shortest distance
 g1 <- graph.adjacency(B, mode="undirected")
-dg1 <- diameter(g1)
 sp_mat <- shortest.paths(g1)
 ```
 
 Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.
-I wasn't sure what would be best to use as the ID for referring to datasets so I chose the `jpt_kod_je` variable. 
 
 ```{r}
 # Name used to identify data
-referenceCol <- powiaty$jpt_kod_je
+referenceCol <- boundaries$GID_2
   
 # Rename spatial matrix
 sp_mat2 <- as.data.frame(sp_mat)
-sp_mat2$id <- rownames(powiaty@data)
-names(sp_mat2) <- paste0("Ref", referenceCol)
+sp_mat2$id <- rownames(boundaries@data)
+names(sp_mat2) <- paste0(referenceCol)
           
 # Add distance to shapefile data
-powiaty@data <- cbind(powiaty@data, sp_mat2)
-powiaty@data$id <- rownames(powiaty@data)
+boundaries@data <- cbind(boundaries@data, sp_mat2)
+boundaries@data$id <- rownames(boundaries@data)
 ```
 
 The data is now in a suitable format to display. Using the basic function `spplot` we can get a graph quite quickly:
 
 ```{r}
-
-displaylayer <- "Ref1261" # id for Krakow
-
-# Plot the results as a basic spplot
-spplot(powiaty, displaylayer)
-
+tm_shape(boundaries) +
+  tm_polygons("HUN.15.5_1", n = 15) 
 ```
 
-I prefer ggplot for plotting more complex graphs as you can control the styling easier. However it is a bit more picky about how the data is fed into it, so we need to reformat the data for it before we build the graph:
+# Plotting in ggplot2
 
-```{r}
-# Or if you want to do it in ggplot
-filtered <- data.frame(id = sp_mat2[,ncol(sp_mat2)], dist = sp_mat2[[displaylayer]]) 
+I prefer ggplot for plotting more complex graphs as you can control the styling easier. Fortunately, **ggplot2** now directly supports spatial data through `geom_sf` format. I have customised it a bit by removing elements which aren't required and added a background. The final map is shown below in Figure \@ref(fig:finalMap).
 
-ggplot_powiaty <- powiaty %>% fortify()
-ggplot_powiaty <- merge(x = ggplot_powiaty, y = filtered, by = "id")
-names(ggplot_powiaty)
-```
+```{r finalMap, fig.cap="Final Neighbouring Region Map"}
 
-And the plot. I have customised it a bit by removing elements which aren't required and added a background. Also, to make the region at the centre of the search black, I subset the data using `ggplot_powiaty[ggplot_powiaty$dist == 0, ]`, and then plot this as another polygon.
+# Convert data to sf format
+boundaries_sf <- sf::st_as_sf(boundaries)
 
-```{r, fig.asp= 1, fig.cap="Final Neighbouring Region Map"}
-ggplot(ggplot_powiaty, aes(x = long, y = lat, group = group, fill = dist)) +
-  geom_polygon(colour = "black") +
-  geom_polygon(data =ggplot_powiaty[ggplot_powiaty$dist == 0, ],
-               fill = "grey60") +
+ggplot(boundaries_sf) +
+  geom_sf(aes(fill = HUN.15.5_1)) +
+  geom_sf(fill = "grey", alpha = ifelse(boundaries_sf$GID_2 == "HUN.15.5_1", 1, 0)) +
     labs(title = "Distance of Counties from Krakow", caption = "Mikey Harper") +
   scale_fill_gradient2(low = "#d73027", mid = "#fee08b", high = "#1a9850", midpoint = 10) +
   theme(

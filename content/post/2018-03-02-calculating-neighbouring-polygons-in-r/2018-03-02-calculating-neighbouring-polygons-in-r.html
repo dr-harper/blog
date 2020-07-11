@@ -1,8 +1,9 @@
 ---
 title: Calculating Neighbouring Polygons in R
-author: Mikey Harper
-date: '2018-03-02'
-draft: true
+type: post
+author: Michael Harper
+date: '2020-07-02'
+draft: false
 slug: calculating-neighbouring-polygons-in-r
 categories:
   - GIS
@@ -12,68 +13,94 @@ tags:
   - R
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p>A while back on StackOverflow, I answered a question on how: <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246" class="uri">https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246</a></p>
-<div id="code" class="section level1">
-<h1>Code</h1>
-<pre class="r"><code>knitr::opts_chunk$set(eval=FALSE)</code></pre>
+<p>A while back on StackOverflow, I <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246">answered a question</a> on how to produce a map which showed how many polygons away a location was from another, as shown in Figure <a href="#fig:mapResult">1</a>. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from <a href="https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html">Roger Bivand</a> here.</p>
+<pre class="r"><code>knitr::include_graphics(&quot;https://i.stack.imgur.com/6kBT6.png&quot;)</code></pre>
+<div class="figure"><span id="fig:mapResult"></span>
+<img src="https://i.stack.imgur.com/6kBT6.png" alt="The final output!"  />
+<p class="caption">
+Figure 1: The final output!
+</p>
+</div>
+<div id="setup" class="section level1">
+<h1>Setup</h1>
+<p>In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the <strong>igraph</strong> <span class="citation">[@R-igraph]</span> <strong>spdep</strong> <span class="citation">[@R-spdep]</span> and <strong>spatialreg</strong> <span class="citation">[@R-spatialreg]</span> packages. We also use the <strong>raster</strong> <span class="citation">[@R-raster]</span> package to download some example data, and <strong>ggplot2</strong> <span class="citation">[@R-ggplot2]</span> for the final visualisation.</p>
 <pre class="r"><code># Load packages
 library(raster) # loads shapefile
 library(igraph) # build network
 library(spdep) # builds network
+library(spatialreg)
 library(RColorBrewer)  # for plot colour palette
 library(ggplot2) # plots results
-    
-# Load Data
-powiaty &lt;- shapefile(&quot;C:/Users/Mikey/Downloads/powiaty/powiaty&quot;)</code></pre>
-<p>Firstly the <code>poly2nb</code> function is used to calculate neighbouring regions:</p>
+library(tmap)</code></pre>
+<p>First downloading the data as follows. The input data is shown in Figure <a href="#fig:loadData">2</a>. You could easily provide your own shapefile here instead or run the code for a different country by changing the three-digit code. For my example, I have selected Hungary:</p>
+<pre class="r"><code># Load Data
+boundaries &lt;- raster::getData(name = &quot;GADM&quot;, country = &quot;HUN&quot;, level = 2)
+
+# Show data
+tm_shape(boundaries) +
+  tm_polygons()</code></pre>
+<div class="figure"><span id="fig:loadData"></span>
+<img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/loadData-1.png" alt="Loaded data for the raster package" width="672" />
+<p class="caption">
+Figure 2: Loaded data for the raster package
+</p>
+</div>
+<div id="extracting-neigbours" class="section level2">
+<h2>Extracting neigbours</h2>
+<p>Firstly the <code>poly2nb</code> function is used to calculate neighbouring regions, based on contiguous boundaries, that is sharing one or more boundary point. The resulting mesh and coordinates is shown in Figure <a href="#fig:produceMesh">3</a></p>
 <pre class="r"><code># Find neighbouring areas
-nb_q &lt;- poly2nb(powiaty)</code></pre>
-<p>This creates our spatial mesh, which we can see here:</p>
-<pre class="r"><code># Plot original results
-coords &lt;- coordinates(powiaty)
-plot(powiaty)
+nb_q &lt;- poly2nb(boundaries)
+
+# Plot original results
+coords &lt;- coordinates(boundaries)
+
+# Show the results
+plot(boundaries)
 plot(nb_q, coords, col=&quot;grey&quot;, add = TRUE)</code></pre>
-<p>This is the bit where I am not 100% sure what is happening. Basically, it is working out the shortest distance between all the shapefiles in the network, and returns a matrix of these pairs.</p>
+<div class="figure"><span id="fig:produceMesh"></span>
+<img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/produceMesh-1.png" alt="Mesh outputs from poly2nb" width="672" />
+<p class="caption">
+Figure 3: Mesh outputs from poly2nb
+</p>
+</div>
+<p>With this mesh, we can then calculate the shortest path between two locations. The follow function returns a list for each and every pair of polygons.</p>
 <pre class="r"><code># Sparse matrix
 nb_B &lt;- nb2listw(nb_q, style=&quot;B&quot;, zero.policy=TRUE)
 B &lt;- as(nb_B, &quot;symmetricMatrix&quot;)
     
 # Calculate shortest distance
 g1 &lt;- graph.adjacency(B, mode=&quot;undirected&quot;)
-dg1 &lt;- diameter(g1)
 sp_mat &lt;- shortest.paths(g1)</code></pre>
-<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.
-I wasn’t sure what would be best to use as the ID for referring to datasets so I chose the <code>jpt_kod_je</code> variable.</p>
+<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.</p>
 <pre class="r"><code># Name used to identify data
-referenceCol &lt;- powiaty$jpt_kod_je
+referenceCol &lt;- boundaries$GID_2
   
 # Rename spatial matrix
 sp_mat2 &lt;- as.data.frame(sp_mat)
-sp_mat2$id &lt;- rownames(powiaty@data)
-names(sp_mat2) &lt;- paste0(&quot;Ref&quot;, referenceCol)
+sp_mat2$id &lt;- rownames(boundaries@data)
+names(sp_mat2) &lt;- paste0(referenceCol)
           
 # Add distance to shapefile data
-powiaty@data &lt;- cbind(powiaty@data, sp_mat2)
-powiaty@data$id &lt;- rownames(powiaty@data)</code></pre>
+boundaries@data &lt;- cbind(boundaries@data, sp_mat2)
+boundaries@data$id &lt;- rownames(boundaries@data)</code></pre>
 <p>The data is now in a suitable format to display. Using the basic function <code>spplot</code> we can get a graph quite quickly:</p>
-<pre class="r"><code>displaylayer &lt;- &quot;Ref1261&quot; # id for Krakow
+<pre class="r"><code>tm_shape(boundaries) +
+  tm_polygons(&quot;HUN.15.5_1&quot;, n = 15) </code></pre>
+<p><img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+<div id="plotting-in-ggplot2" class="section level1">
+<h1>Plotting in ggplot2</h1>
+<p>I prefer ggplot for plotting more complex graphs as you can control the styling easier. Fortunately, <strong>ggplot2</strong> now directly supports spatial data through <code>geom_sf</code> format. I have customised it a bit by removing elements which aren’t required and added a background. The final map is shown below in Figure <a href="#fig:finalMap">4</a>.</p>
+<pre class="r"><code># Convert data to sf format
+boundaries_sf &lt;- sf::st_as_sf(boundaries)
 
-# Plot the results as a basic spplot
-spplot(powiaty, displaylayer)</code></pre>
-<p>I prefer ggplot for plotting more complex graphs as you can control the styling easier. However it is a bit more picky about how the data is fed into it, so we need to reformat the data for it before we build the graph:</p>
-<pre class="r"><code># Or if you want to do it in ggplot
-filtered &lt;- data.frame(id = sp_mat2[,ncol(sp_mat2)], dist = sp_mat2[[displaylayer]]) 
-
-ggplot_powiaty &lt;- powiaty %&gt;% fortify()
-ggplot_powiaty &lt;- merge(x = ggplot_powiaty, y = filtered, by = &quot;id&quot;)
-names(ggplot_powiaty)</code></pre>
-<p>And the plot. I have customised it a bit by removing elements which aren’t required and added a background. Also, to make the region at the centre of the search black, I subset the data using <code>ggplot_powiaty[ggplot_powiaty$dist == 0, ]</code>, and then plot this as another polygon.</p>
-<pre class="r"><code>ggplot(ggplot_powiaty, aes(x = long, y = lat, group = group, fill = dist)) +
-  geom_polygon(colour = &quot;black&quot;) +
-  geom_polygon(data =ggplot_powiaty[ggplot_powiaty$dist == 0, ],
-               fill = &quot;grey60&quot;) +
+ggplot(boundaries_sf) +
+  geom_sf(aes(fill = HUN.15.5_1)) +
+  geom_sf(fill = &quot;grey&quot;, alpha = ifelse(boundaries_sf$GID_2 == &quot;HUN.15.5_1&quot;, 1, 0)) +
     labs(title = &quot;Distance of Counties from Krakow&quot;, caption = &quot;Mikey Harper&quot;) +
   scale_fill_gradient2(low = &quot;#d73027&quot;, mid = &quot;#fee08b&quot;, high = &quot;#1a9850&quot;, midpoint = 10) +
   theme(
@@ -89,4 +116,10 @@ names(ggplot_powiaty)</code></pre>
     panel.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA), 
     legend.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA),
     panel.border = element_blank())</code></pre>
+<div class="figure"><span id="fig:finalMap"></span>
+<img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/finalMap-1.png" alt="Final Neighbouring Region Map" width="672" />
+<p class="caption">
+Figure 4: Final Neighbouring Region Map
+</p>
+</div>
 </div>
