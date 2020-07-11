@@ -1,28 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gis on Michael Harper</title>
+    <title>GIS on Michael Harper</title>
     <link>/tags/gis/</link>
-    <description>Recent content in Gis on Michael Harper</description>
+    <description>Recent content in GIS on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Fri, 02 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/gis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Calculating Neighbouring Polygons in R</title>
+      <title>Visualising Neighbouring Polygons in R</title>
       <link>/calculating-neighbouring-polygons-in-r/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/calculating-neighbouring-polygons-in-r/</guid>
-      <description>A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
-Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads shapefile library(igraph) # build network library(spdep) # builds network library(RColorBrewer) # for plot colour palette library(ggplot2) # plots results # Load Data powiaty &amp;lt;- shapefile(&amp;quot;C:/Users/Mikey/Downloads/powiaty/powiaty&amp;quot;) Firstly the poly2nb function is used to calculate neighbouring regions:
-# Find neighbouring areas nb_q &amp;lt;- poly2nb(powiaty) This creates our spatial mesh, which we can see here:</description>
+      <description>A while back on StackOverflow, I answered a question on how to produce a map which showed how many polygons away a location was from another, as shown in Figure 1. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from Roger Bivand here.</description>
     </item>
     
     <item>

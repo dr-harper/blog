@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Michael Harper</title>
@@ -9,10 +9,19 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Tue, 24 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Dec 2016 14:41:00 +0100</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Visualising Neighbouring Polygons in R</title>
+      <link>/calculating-neighbouring-polygons-in-r/</link>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>/calculating-neighbouring-polygons-in-r/</guid>
+      <description>A while back on StackOverflow, I answered a question on how to produce a map which showed how many polygons away a location was from another, as shown in Figure 1. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from Roger Bivand here.</description>
+    </item>
     
     <item>
       <title>UK goes into lockdown: further Covid-19 analysis</title>
@@ -20,8 +29,7 @@
       <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/covid-19-linear-graphs/</guid>
-      <description>On 23rd March, the UK introduced unprecedent measures to lockdown the country in the wake of the continuing Covid-19 outbreak. This followed a week of slowly escalating measures all designed to increase the amount of social distancing and reduce the spread of the virus. This article dives into some of the statistics available for this week and provide some more context for readers going further into the crisis.
-I reiterate my previous comments than I am not an epidimologist, but someone with an interest in data.</description>
+      <description>On 23rd March, the UK introduced unprecedent measures to lockdown the country in the wake of the continuing Covid-19 outbreak. This followed a week of slowly escalating measures all designed to increase the amount of social distancing and reduce the spread of the virus. This article dives into some of the statistics available for this week and provide some more context for readers going further into the crisis.</description>
     </item>
     
     <item>
@@ -50,19 +58,6 @@ This blog post provides details of anaylsis and data viusalisation to assess the
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/takeaways-from-rstudio-conf/</guid>
       <description>Cover photo by atmtx  rstudio::conf 2019 is sadly over. I can honestly say it was one of the most interesting and educational conferences that I have been to, and I have come back with a long list of ideas which I want to get using right away! Here are some of the key points that I learned this week, with links to useful packages you may want to check out!</description>
-    </item>
-    
-    <item>
-      <title>How I got into data science</title>
-      <link>/becoming-data-scientist/</link>
-      <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/becoming-data-scientist/</guid>
-      <description>I was lucky enough to attend the rstudio::conf 2019. If there was one
-When you’ve written the same code 3 times, write a function
-When you’ve given the same in-person advice 3 times, write a blog post
-&amp;mdash; David Robinson (@drob) November 9, 2017  I partly wrote this post to address his tweet, but I also felt
-One of the questions I have found myself often discussing is my route into a data scientist?</description>
     </item>
     
     <item>
@@ -114,20 +109,6 @@ This blog post aims to capture the enjoyment and pain of undertaking the challen
     </item>
     
     <item>
-      <title>Caching with knitr and Rmarkdown</title>
-      <link>/caching-with-knitr-and-rmarkdown/</link>
-      <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/caching-with-knitr-and-rmarkdown/</guid>
-      <description>R Markdown is fantastic tool to
-Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
- Invalidating Cache One limitation which can create problems with caching is that it is
-https://stackoverflow.com/q/18376008/7347699
-As an example, if we have the basic R Markdown file
---- output: pdf_document --- ``{r} z &amp;lt;- &amp;quot;Title 5&amp;quot; y &amp;lt;- &amp;quot;Some Text&amp;quot; x &amp;lt;- &amp;quot;x2&amp;quot; ``` ``{r cars2, cache = TRUE, cache.</description>
-    </item>
-    
-    <item>
       <title>Migrating blog to Blogdown</title>
       <link>/migrating-to-blogdown/</link>
       <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
@@ -135,17 +116,6 @@ As an example, if we have the basic R Markdown file
       <guid>/migrating-to-blogdown/</guid>
       <description>I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
 Note: this post does not intend to be a full tutorial on how to set up your blog.</description>
-    </item>
-    
-    <item>
-      <title>Calculating Neighbouring Polygons in R</title>
-      <link>/calculating-neighbouring-polygons-in-r/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/calculating-neighbouring-polygons-in-r/</guid>
-      <description>A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
-Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads shapefile library(igraph) # build network library(spdep) # builds network library(RColorBrewer) # for plot colour palette library(ggplot2) # plots results # Load Data powiaty &amp;lt;- shapefile(&amp;quot;C:/Users/Mikey/Downloads/powiaty/powiaty&amp;quot;) Firstly the poly2nb function is used to calculate neighbouring regions:
-# Find neighbouring areas nb_q &amp;lt;- poly2nb(powiaty) This creates our spatial mesh, which we can see here:</description>
     </item>
     
     <item>

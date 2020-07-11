@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Michael Harper</title>
@@ -9,10 +9,19 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Visualising Neighbouring Polygons in R</title>
+      <link>/calculating-neighbouring-polygons-in-r/</link>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>/calculating-neighbouring-polygons-in-r/</guid>
+      <description>A while back on StackOverflow, I answered a question on how to produce a map which showed how many polygons away a location was from another, as shown in Figure 1. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from Roger Bivand here.</description>
+    </item>
     
     <item>
       <title>Creating Twitter Wordclouds in R</title>
@@ -34,20 +43,6 @@ This blog post explains how we can interact with Twitter data in R using the rtw
     </item>
     
     <item>
-      <title>Caching with knitr and Rmarkdown</title>
-      <link>/caching-with-knitr-and-rmarkdown/</link>
-      <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/caching-with-knitr-and-rmarkdown/</guid>
-      <description>R Markdown is fantastic tool to
-Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
- Invalidating Cache One limitation which can create problems with caching is that it is
-https://stackoverflow.com/q/18376008/7347699
-As an example, if we have the basic R Markdown file
---- output: pdf_document --- ``{r} z &amp;lt;- &amp;quot;Title 5&amp;quot; y &amp;lt;- &amp;quot;Some Text&amp;quot; x &amp;lt;- &amp;quot;x2&amp;quot; ``` ``{r cars2, cache = TRUE, cache.</description>
-    </item>
-    
-    <item>
       <title>Migrating blog to Blogdown</title>
       <link>/migrating-to-blogdown/</link>
       <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
@@ -55,17 +50,6 @@ As an example, if we have the basic R Markdown file
       <guid>/migrating-to-blogdown/</guid>
       <description>I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
 Note: this post does not intend to be a full tutorial on how to set up your blog.</description>
-    </item>
-    
-    <item>
-      <title>Calculating Neighbouring Polygons in R</title>
-      <link>/calculating-neighbouring-polygons-in-r/</link>
-      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/calculating-neighbouring-polygons-in-r/</guid>
-      <description>A while back on StackOverflow, I answered a question on how: https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246
-Code knitr::opts_chunk$set(eval=FALSE) # Load packages library(raster) # loads shapefile library(igraph) # build network library(spdep) # builds network library(RColorBrewer) # for plot colour palette library(ggplot2) # plots results # Load Data powiaty &amp;lt;- shapefile(&amp;quot;C:/Users/Mikey/Downloads/powiaty/powiaty&amp;quot;) Firstly the poly2nb function is used to calculate neighbouring regions:
-# Find neighbouring areas nb_q &amp;lt;- poly2nb(powiaty) This creates our spatial mesh, which we can see here:</description>
     </item>
     
     <item>

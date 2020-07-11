@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data on Michael Harper</title>
@@ -9,23 +9,10 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Fri, 18 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/data/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>How I got into data science</title>
-      <link>/becoming-data-scientist/</link>
-      <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/becoming-data-scientist/</guid>
-      <description>I was lucky enough to attend the rstudio::conf 2019. If there was one
-When you’ve written the same code 3 times, write a function
-When you’ve given the same in-person advice 3 times, write a blog post
-&amp;mdash; David Robinson (@drob) November 9, 2017  I partly wrote this post to address his tweet, but I also felt
-One of the questions I have found myself often discussing is my route into a data scientist?</description>
-    </item>
     
     <item>
       <title>Creating Twitter Wordclouds in R</title>

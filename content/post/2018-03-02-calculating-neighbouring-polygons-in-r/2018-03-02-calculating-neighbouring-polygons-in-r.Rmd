@@ -1,5 +1,5 @@
 ---
-title: Calculating Neighbouring Polygons in R
+title: Visualising Neighbouring Polygons in R
 type: post
 author: Michael Harper
 date: '2020-07-02'
@@ -11,10 +11,12 @@ categories:
 tags:
   - GIS
   - R
+description: Guide on how to make neighbouring boundary maps in R.
+header_image: "/images/coverNeighbouring.png"
 ---
 
 ```{r, include=F}
-knitr::opts_chunk$set(eval=T)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = F, fig.align = "center", out.width = "100%")
 ```
 
 A while back on StackOverflow, I [answered a question](https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246) on how to produce a map which showed how many polygons away a location was from another, as shown in Figure \@ref(fig:mapResult). This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from [Roger Bivand](https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html) here.
@@ -112,7 +114,6 @@ boundaries_sf <- sf::st_as_sf(boundaries)
 ggplot(boundaries_sf) +
   geom_sf(aes(fill = HUN.15.5_1)) +
   geom_sf(fill = "grey", alpha = ifelse(boundaries_sf$GID_2 == "HUN.15.5_1", 1, 0)) +
-    labs(title = "Distance of Counties from Krakow", caption = "Mikey Harper") +
   scale_fill_gradient2(low = "#d73027", mid = "#fee08b", high = "#1a9850", midpoint = 10) +
   theme(
     axis.line = element_blank(),
@@ -127,6 +128,11 @@ ggplot(boundaries_sf) +
     panel.background = element_rect(fill = "#f5f5f2", color = NA), 
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
     panel.border = element_blank())
+```
+
+
+```{r, include=F}
+ggsave("../../../public/images/coverNeighbouring.png", width = 6, height = 4)
 ```
 
 

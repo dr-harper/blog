@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Visualisation on Michael Harper</title>
@@ -20,8 +20,7 @@
       <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/covid-19-linear-graphs/</guid>
-      <description>On 23rd March, the UK introduced unprecedent measures to lockdown the country in the wake of the continuing Covid-19 outbreak. This followed a week of slowly escalating measures all designed to increase the amount of social distancing and reduce the spread of the virus. This article dives into some of the statistics available for this week and provide some more context for readers going further into the crisis.
-I reiterate my previous comments than I am not an epidimologist, but someone with an interest in data.</description>
+      <description>On 23rd March, the UK introduced unprecedent measures to lockdown the country in the wake of the continuing Covid-19 outbreak. This followed a week of slowly escalating measures all designed to increase the amount of social distancing and reduce the spread of the virus. This article dives into some of the statistics available for this week and provide some more context for readers going further into the crisis.</description>
     </item>
     
     <item>

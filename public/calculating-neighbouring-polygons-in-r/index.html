@@ -18,29 +18,31 @@
   
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Calculating Neighbouring Polygons in R  &middot; Michael Harper</title>
+  <title>Visualising Neighbouring Polygons in R  &middot; Michael Harper</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="description" content="" />
+<meta name="description" content="Guide on how to make neighbouring boundary maps in R." />
 
 <meta name="keywords" content="GIS, R, ">
 
 
-<meta property="og:title" content="Calculating Neighbouring Polygons in R  &middot; Michael Harper ">
+<meta property="og:title" content="Visualising Neighbouring Polygons in R  &middot; Michael Harper ">
 <meta property="og:site_name" content="Michael Harper"/>
 <meta property="og:url" content="/calculating-neighbouring-polygons-in-r/" />
 <meta property="og:locale" content="en">
 
 
 <meta property="og:type" content="article" />
-<meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2018-03-02T00:00:00Z" />
-<meta property="og:article:modified_time" content="2018-03-02T00:00:00Z" />
+<meta property="og:description" content="Guide on how to make neighbouring boundary maps in R."/>
+<meta property="og:article:published_time" content="2020-07-02T00:00:00Z" />
+<meta property="og:article:modified_time" content="2020-07-02T00:00:00Z" />
 
+
+<meta property="og:image" content="/images/coverNeighbouring.png"/>
 
 
   
@@ -55,8 +57,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@@DrMichaelHarper" />
 <meta name="twitter:creator" content="@@DrMichaelHarper" />
-<meta name="twitter:title" content="Calculating Neighbouring Polygons in R" />
-<meta name="twitter:description" content="" />
+<meta name="twitter:title" content="Visualising Neighbouring Polygons in R" />
+<meta name="twitter:description" content="Guide on how to make neighbouring boundary maps in R." />
 <meta name="twitter:url" content="/calculating-neighbouring-polygons-in-r/" />
 <meta name="twitter:domain" content="/">
   
@@ -68,7 +70,7 @@
 <link rel="canonical" href="/calculating-neighbouring-polygons-in-r/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -147,27 +149,27 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <div class="text-center">
 
-    <h1>DRAFT :: Calculating Neighbouring Polygons in R
+    <h1>Visualising Neighbouring Polygons in R
 </h1>
 
     <div class="metas">
 <small>
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-03-02">2 Mar, 2018</time>
+  <time datetime="2020-07-02">2 Jul, 2020</time>
 </small>
 
 
   <small>
-    &middot; by Mikey Harper
+    &middot; by Michael Harper
   
-  &middot; Read in about 3 min
-  &middot; (500 words)
+  &middot; Read in about 2 min
+  &middot; (347 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=Calculating%20Neighbouring%20Polygons%20in%20R&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Visualising%20Neighbouring%20Polygons%20in%20R&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
     <a href="https://plus.google.com/share?url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
@@ -176,10 +178,10 @@
     <a href="http://www.reddit.com/submit?url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f&amp;title=Calculating%20Neighbouring%20Polygons%20in%20R" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f&amp;title=Visualising%20Neighbouring%20Polygons%20in%20R" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=Calculating%20Neighbouring%20Polygons%20in%20R&amp;body=Check out this site %2fcalculating-neighbouring-polygons-in-r%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Visualising%20Neighbouring%20Polygons%20in%20R&amp;body=Check out this site %2fcalculating-neighbouring-polygons-in-r%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   </small>
@@ -202,88 +204,57 @@
 </div>
 
       
+<img src= /images/coverNeighbouring.png alt="Mountain View">
+
 
 <br>
 
 <div class="content", style = "margin-top:10px">
   
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p>A while back on StackOverflow, I answered a question on how: <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246" class="uri">https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246</a></p>
-<div id="code" class="section level1">
-<h1>Code</h1>
-<pre class="r"><code>knitr::opts_chunk$set(eval=FALSE)</code></pre>
-<pre class="r"><code># Load packages
-library(raster) # loads shapefile
-library(igraph) # build network
-library(spdep) # builds network
-library(RColorBrewer)  # for plot colour palette
-library(ggplot2) # plots results
-    
-# Load Data
-powiaty &lt;- shapefile(&quot;C:/Users/Mikey/Downloads/powiaty/powiaty&quot;)</code></pre>
-<p>Firstly the <code>poly2nb</code> function is used to calculate neighbouring regions:</p>
-<pre class="r"><code># Find neighbouring areas
-nb_q &lt;- poly2nb(powiaty)</code></pre>
-<p>This creates our spatial mesh, which we can see here:</p>
-<pre class="r"><code># Plot original results
-coords &lt;- coordinates(powiaty)
-plot(powiaty)
-plot(nb_q, coords, col=&quot;grey&quot;, add = TRUE)</code></pre>
-<p>This is the bit where I am not 100% sure what is happening. Basically, it is working out the shortest distance between all the shapefiles in the network, and returns a matrix of these pairs.</p>
-<pre class="r"><code># Sparse matrix
-nb_B &lt;- nb2listw(nb_q, style=&quot;B&quot;, zero.policy=TRUE)
-B &lt;- as(nb_B, &quot;symmetricMatrix&quot;)
-    
-# Calculate shortest distance
-g1 &lt;- graph.adjacency(B, mode=&quot;undirected&quot;)
-dg1 &lt;- diameter(g1)
-sp_mat &lt;- shortest.paths(g1)</code></pre>
-<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.
-I wasn’t sure what would be best to use as the ID for referring to datasets so I chose the <code>jpt_kod_je</code> variable.</p>
-<pre class="r"><code># Name used to identify data
-referenceCol &lt;- powiaty$jpt_kod_je
-  
-# Rename spatial matrix
-sp_mat2 &lt;- as.data.frame(sp_mat)
-sp_mat2$id &lt;- rownames(powiaty@data)
-names(sp_mat2) &lt;- paste0(&quot;Ref&quot;, referenceCol)
-          
-# Add distance to shapefile data
-powiaty@data &lt;- cbind(powiaty@data, sp_mat2)
-powiaty@data$id &lt;- rownames(powiaty@data)</code></pre>
+<p>A while back on StackOverflow, I <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246">answered a question</a> on how to produce a map which showed how many polygons away a location was from another, as shown in Figure <a href="#fig:mapResult">1</a>. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from <a href="https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html">Roger Bivand</a> here.</p>
+<div class="figure" style="text-align: center"><span id="fig:mapResult"></span>
+<img src="https://i.stack.imgur.com/6kBT6.png" alt="The final output!" width="100%" />
+<p class="caption">
+Figure 1: The final output!
+</p>
+</div>
+<div id="setup" class="section level1">
+<h1>Setup</h1>
+<p>In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the <strong>igraph</strong> <span class="citation">[@R-igraph]</span> <strong>spdep</strong> <span class="citation">[@R-spdep]</span> and <strong>spatialreg</strong> <span class="citation">[@R-spatialreg]</span> packages. We also use the <strong>raster</strong> <span class="citation">[@R-raster]</span> package to download some example data, and <strong>ggplot2</strong> <span class="citation">[@R-ggplot2]</span> for the final visualisation.</p>
+<p>First downloading the data as follows. The input data is shown in Figure <a href="#fig:loadData">2</a>. You could easily provide your own shapefile here instead or run the code for a different country by changing the three-digit code. For my example, I have selected Hungary:</p>
+<div class="figure" style="text-align: center"><span id="fig:loadData"></span>
+<img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/loadData-1.png" alt="Loaded data for the raster package" width="100%" />
+<p class="caption">
+Figure 2: Loaded data for the raster package
+</p>
+</div>
+<div id="extracting-neigbours" class="section level2">
+<h2>Extracting neigbours</h2>
+<p>Firstly the <code>poly2nb</code> function is used to calculate neighbouring regions, based on contiguous boundaries, that is sharing one or more boundary point. The resulting mesh and coordinates is shown in Figure <a href="#fig:produceMesh">3</a></p>
+<div class="figure" style="text-align: center"><span id="fig:produceMesh"></span>
+<img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/produceMesh-1.png" alt="Mesh outputs from poly2nb" width="100%" />
+<p class="caption">
+Figure 3: Mesh outputs from poly2nb
+</p>
+</div>
+<p>With this mesh, we can then calculate the shortest path between two locations. The follow function returns a list for each and every pair of polygons.</p>
+<p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.</p>
 <p>The data is now in a suitable format to display. Using the basic function <code>spplot</code> we can get a graph quite quickly:</p>
-<pre class="r"><code>displaylayer &lt;- &quot;Ref1261&quot; # id for Krakow
-
-# Plot the results as a basic spplot
-spplot(powiaty, displaylayer)</code></pre>
-<p>I prefer ggplot for plotting more complex graphs as you can control the styling easier. However it is a bit more picky about how the data is fed into it, so we need to reformat the data for it before we build the graph:</p>
-<pre class="r"><code># Or if you want to do it in ggplot
-filtered &lt;- data.frame(id = sp_mat2[,ncol(sp_mat2)], dist = sp_mat2[[displaylayer]]) 
-
-ggplot_powiaty &lt;- powiaty %&gt;% fortify()
-ggplot_powiaty &lt;- merge(x = ggplot_powiaty, y = filtered, by = &quot;id&quot;)
-names(ggplot_powiaty)</code></pre>
-<p>And the plot. I have customised it a bit by removing elements which aren’t required and added a background. Also, to make the region at the centre of the search black, I subset the data using <code>ggplot_powiaty[ggplot_powiaty$dist == 0, ]</code>, and then plot this as another polygon.</p>
-<pre class="r"><code>ggplot(ggplot_powiaty, aes(x = long, y = lat, group = group, fill = dist)) +
-  geom_polygon(colour = &quot;black&quot;) +
-  geom_polygon(data =ggplot_powiaty[ggplot_powiaty$dist == 0, ],
-               fill = &quot;grey60&quot;) +
-    labs(title = &quot;Distance of Counties from Krakow&quot;, caption = &quot;Mikey Harper&quot;) +
-  scale_fill_gradient2(low = &quot;#d73027&quot;, mid = &quot;#fee08b&quot;, high = &quot;#1a9850&quot;, midpoint = 10) +
-  theme(
-    axis.line = element_blank(),
-    axis.text.x = element_blank(),
-    axis.text.y = element_blank(),
-    axis.ticks = element_blank(),
-    axis.title.x = element_blank(),
-    axis.title.y = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.grid.major = element_blank(),
-    plot.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA), 
-    panel.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA), 
-    legend.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA),
-    panel.border = element_blank())</code></pre>
+<p><img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="plotting-in-ggplot2" class="section level1">
+<h1>Plotting in ggplot2</h1>
+<p>I prefer ggplot for plotting more complex graphs as you can control the styling easier. Fortunately, <strong>ggplot2</strong> now directly supports spatial data through <code>geom_sf</code> format. I have customised it a bit by removing elements which aren’t required and added a background. The final map is shown below in Figure <a href="#fig:finalMap">4</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:finalMap"></span>
+<img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/finalMap-1.png" alt="Final Neighbouring Region Map" width="100%" />
+<p class="caption">
+Figure 4: Final Neighbouring Region Map
+</p>
+</div>
 </div>
 
 </div>
@@ -295,7 +266,7 @@ names(ggplot_powiaty)</code></pre>
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=Calculating%20Neighbouring%20Polygons%20in%20R&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Visualising%20Neighbouring%20Polygons%20in%20R&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
     <a href="https://plus.google.com/share?url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
@@ -304,10 +275,10 @@ names(ggplot_powiaty)</code></pre>
     <a href="http://www.reddit.com/submit?url=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f&amp;title=Calculating%20Neighbouring%20Polygons%20in%20R" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fcalculating-neighbouring-polygons-in-r%2f&amp;title=Visualising%20Neighbouring%20Polygons%20in%20R" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=Calculating%20Neighbouring%20Polygons%20in%20R&amp;body=Check out this site %2fcalculating-neighbouring-polygons-in-r%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Visualising%20Neighbouring%20Polygons%20in%20R&amp;body=Check out this site %2fcalculating-neighbouring-polygons-in-r%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -316,18 +287,12 @@ names(ggplot_powiaty)</code></pre>
     <nav><ul class="pager">
     
         <li class="previous">
-          <a href="/mapping-uk-local-political-data/" title="Mapping UK Local Political Data">
+          <a href="/covid-19-linear-graphs/" title="UK goes into lockdown: further Covid-19 analysis">
             <span aria-hidden="true">&larr;</span>Previous
           </a>
         </li>
     
 
-    
-      <li class="next">
-        <a href="/migrating-to-blogdown/" title="Migrating blog to Blogdown">
-            Next <span aria-hidden="true">&rarr;</span>
-        </a>
-      </li>
     
     </ul> </nav>
   
@@ -392,6 +357,10 @@ names(ggplot_powiaty)</code></pre>
       <ul>
          
          <li>
+            <a href="/calculating-neighbouring-polygons-in-r/">Visualising Neighbouring Polygons in R</a>
+         </li>
+         
+         <li>
             <a href="/covid-19-linear-graphs/">UK goes into lockdown: further Covid-19 analysis</a>
          </li>
          
@@ -405,10 +374,6 @@ names(ggplot_powiaty)</code></pre>
          
          <li>
             <a href="/takeaways-from-rstudio-conf/">Things I learnt at rstudio::conf 2019</a>
-         </li>
-         
-         <li>
-            <a href="/becoming-data-scientist/">How I got into data science</a>
          </li>
          
          <li>
@@ -449,11 +414,11 @@ names(ggplot_powiaty)</code></pre>
          
          <li><a href="/Tags/gis">gis</a></li>
          
-         <li><a href="/Tags/data">data</a></li>
-         
          <li><a href="/Tags/presentation">presentation</a></li>
          
          <li><a href="/Tags/covid-19">covid-19</a></li>
+         
+         <li><a href="/Tags/data">data</a></li>
          
          <li><a href="/Tags/data-visualisation">data-visualisation</a></li>
          
@@ -461,9 +426,9 @@ names(ggplot_powiaty)</code></pre>
          
          <li><a href="/Tags/maps">maps</a></li>
          
-         <li><a href="/Tags/reproducible-resaerch">reproducible-resaerch</a></li>
-         
          <li><a href="/Tags/web">web</a></li>
+         
+         <li><a href="/Tags/animated-maps">animated-maps</a></li>
          
       </ul>
    </div>
@@ -521,7 +486,7 @@ names(ggplot_powiaty)</code></pre>
     
 <div class="container copyright">
     <small>
-  &copy; 2020 Copyright Michael Harper
+  (c) 2020 Copyright Michael Harper
 
   </small>
 </div>

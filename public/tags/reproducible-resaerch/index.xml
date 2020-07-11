@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reproducible Resaerch on Michael Harper</title>
@@ -9,24 +9,10 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/reproducible-resaerch/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Caching with knitr and Rmarkdown</title>
-      <link>/caching-with-knitr-and-rmarkdown/</link>
-      <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/caching-with-knitr-and-rmarkdown/</guid>
-      <description>R Markdown is fantastic tool to
-Caching It can slow things does if these have to run large computations within your analysis. For example, you may have a
- Invalidating Cache One limitation which can create problems with caching is that it is
-https://stackoverflow.com/q/18376008/7347699
-As an example, if we have the basic R Markdown file
---- output: pdf_document --- ``{r} z &amp;lt;- &amp;quot;Title 5&amp;quot; y &amp;lt;- &amp;quot;Some Text&amp;quot; x &amp;lt;- &amp;quot;x2&amp;quot; ``` ``{r cars2, cache = TRUE, cache.</description>
-    </item>
     
     <item>
       <title>Writing reports in RStudio: an introduction to RMarkdown</title>
