@@ -162,8 +162,8 @@
   <small>
     &middot; by Michael Harper
   
-  &middot; Read in about 2 min
-  &middot; (347 words)
+  &middot; Read in about 4 min
+  &middot; (661 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=%2fcalculating-neighbouring-polygons-in-r%2f" onclick="window.open(this.href, 'mywin',
@@ -214,46 +214,128 @@
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p>A while back on StackOverflow, I <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246">answered a question</a> on how to produce a map which showed how many polygons away a location was from another, as shown in Figure <a href="#fig:mapResult">1</a>. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from <a href="https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html">Roger Bivand</a> here.</p>
-<div class="figure" style="text-align: center"><span id="fig:mapResult"></span>
-<img src="https://i.stack.imgur.com/6kBT6.png" alt="The final output!" width="100%" />
-<p class="caption">
-Figure 1: The final output!
-</p>
-</div>
+<p>A while back on StackOverflow, I <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246">answered a question</a> on how to produce a map which showed how many polygons away a location was from another. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from <a href="https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html">Roger Bivand</a> here.</p>
 <div id="setup" class="section level1">
 <h1>Setup</h1>
-<p>In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the <strong>igraph</strong> <span class="citation">[@R-igraph]</span> <strong>spdep</strong> <span class="citation">[@R-spdep]</span> and <strong>spatialreg</strong> <span class="citation">[@R-spatialreg]</span> packages. We also use the <strong>raster</strong> <span class="citation">[@R-raster]</span> package to download some example data, and <strong>ggplot2</strong> <span class="citation">[@R-ggplot2]</span> for the final visualisation.</p>
-<p>First downloading the data as follows. The input data is shown in Figure <a href="#fig:loadData">2</a>. You could easily provide your own shapefile here instead or run the code for a different country by changing the three-digit code. For my example, I have selected Hungary:</p>
+<p>In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the <strong>igraph</strong> <span class="citation">(file. 2020)</span> <strong>spdep</strong> <span class="citation">(Bivand 2019)</span> and <strong>spatialreg</strong> <span class="citation">(Bivand and Piras 2019)</span> packages. We also use the <strong>raster</strong> <span class="citation">(Hijmans 2020)</span> package to download some example data, and <strong>ggplot2</strong> <span class="citation">(Wickham et al. 2020)</span> for the final visualisation.</p>
+<pre class="r"><code># Loading example data
+library(raster) # loads shapefile
+
+# Data Analysis
+library(igraph) # build network
+library(spdep) # builds network
+library(spatialreg)
+
+# Visualisation
+library(RColorBrewer)  # for plot colour palette
+library(ggplot2) # plots results
+library(tmap)</code></pre>
+<p>First downloading the data as follows. The input data is shown in Figure <a href="#fig:loadData">1</a>. You could easily provide your own shapefile here instead or run the code for a different country by changing the three-digit code. For my example, I have selected Hungary:</p>
+<pre class="r"><code># Load Data
+boundaries &lt;- raster::getData(name = &quot;GADM&quot;, country = &quot;HUN&quot;, level = 2)
+
+# Show data
+tm_shape(boundaries) +
+  tm_polygons()</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:loadData"></span>
 <img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/loadData-1.png" alt="Loaded data for the raster package" width="100%" />
 <p class="caption">
-Figure 2: Loaded data for the raster package
+Figure 1: Loaded data for the raster package
 </p>
 </div>
 <div id="extracting-neigbours" class="section level2">
 <h2>Extracting neigbours</h2>
-<p>Firstly the <code>poly2nb</code> function is used to calculate neighbouring regions, based on contiguous boundaries, that is sharing one or more boundary point. The resulting mesh and coordinates is shown in Figure <a href="#fig:produceMesh">3</a></p>
+<p>Firstly the <code>poly2nb</code> function is used to calculate neighbouring regions, based on contiguous boundaries, that is sharing one or more boundary point. The resulting mesh and coordinates is shown in Figure <a href="#fig:produceMesh">2</a></p>
+<pre class="r"><code># Find neighbouring areas
+nb_q &lt;- poly2nb(boundaries)
+
+# Plot original results
+coords &lt;- coordinates(boundaries)
+
+# Show the results
+plot(boundaries)
+plot(nb_q, coords, col=&quot;grey&quot;, add = TRUE)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:produceMesh"></span>
 <img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/produceMesh-1.png" alt="Mesh outputs from poly2nb" width="100%" />
 <p class="caption">
-Figure 3: Mesh outputs from poly2nb
+Figure 2: Mesh outputs from poly2nb
 </p>
 </div>
 <p>With this mesh, we can then calculate the shortest path between two locations. The follow function returns a list for each and every pair of polygons.</p>
+<pre class="r"><code># Sparse matrix
+nb_B &lt;- nb2listw(nb_q, style=&quot;B&quot;, zero.policy=TRUE)
+B &lt;- as(nb_B, &quot;symmetricMatrix&quot;)
+    
+# Calculate shortest distance
+g1 &lt;- graph.adjacency(B, mode=&quot;undirected&quot;)
+sp_mat &lt;- shortest.paths(g1)</code></pre>
 <p>Having made the calculations, the data can now be formatted to get into plotting format, so the shortest path matrix is merged with the spatial dataframe.</p>
+<pre class="r"><code># Name used to identify data
+referenceCol &lt;- boundaries$GID_2
+  
+# Rename spatial matrix
+sp_mat2 &lt;- as.data.frame(sp_mat)
+sp_mat2$id &lt;- rownames(boundaries@data)
+names(sp_mat2) &lt;- paste0(referenceCol)
+          
+# Add distance to shapefile data
+boundaries@data &lt;- cbind(boundaries@data, sp_mat2)
+boundaries@data$id &lt;- rownames(boundaries@data)</code></pre>
 <p>The data is now in a suitable format to display. Using the basic function <code>spplot</code> we can get a graph quite quickly:</p>
+<pre class="r"><code>tm_shape(boundaries) +
+  tm_polygons(&quot;HUN.15.5_1&quot;, n = 15) </code></pre>
 <p><img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="plotting-in-ggplot2" class="section level1">
 <h1>Plotting in ggplot2</h1>
-<p>I prefer ggplot for plotting more complex graphs as you can control the styling easier. Fortunately, <strong>ggplot2</strong> now directly supports spatial data through <code>geom_sf</code> format. I have customised it a bit by removing elements which aren’t required and added a background. The final map is shown below in Figure <a href="#fig:finalMap">4</a>.</p>
+<p>I prefer ggplot for plotting more complex graphs as you can control the styling easier. Fortunately, <strong>ggplot2</strong> now directly supports spatial data through <code>geom_sf</code> format. I have customised it a bit by removing elements which aren’t required and added a background. The final map is shown below in Figure <a href="#fig:finalMap">3</a>.</p>
+<pre class="r"><code># Convert data to sf format
+boundaries_sf &lt;- sf::st_as_sf(boundaries)
+
+ggplot(boundaries_sf) +
+  geom_sf(aes(fill = HUN.15.5_1)) +
+  geom_sf(fill = &quot;grey&quot;, alpha = ifelse(boundaries_sf$GID_2 == &quot;HUN.15.5_1&quot;, 1, 0)) +
+  scale_fill_gradient2(low = &quot;#d73027&quot;, mid = &quot;#fee08b&quot;, high = &quot;#1a9850&quot;, midpoint = 10) +
+  labs(fill = &quot;Distance from \nselected zone&quot;) +
+  theme(
+    axis.line = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    plot.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA), 
+    panel.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA), 
+    legend.background = element_rect(fill = &quot;#f5f5f2&quot;, color = NA),
+    panel.border = element_blank())</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:finalMap"></span>
 <img src="/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/finalMap-1.png" alt="Final Neighbouring Region Map" width="100%" />
 <p class="caption">
-Figure 4: Final Neighbouring Region Map
+Figure 3: Final Neighbouring Region Map
 </p>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references hanging-indent">
+<div id="ref-R-spdep">
+<p>Bivand, Roger. 2019. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.</p>
+</div>
+<div id="ref-R-spatialreg">
+<p>Bivand, Roger, and Gianfranco Piras. 2019. <em>Spatialreg: Spatial Regression Analysis</em>. <a href="https://CRAN.R-project.org/package=spatialreg">https://CRAN.R-project.org/package=spatialreg</a>.</p>
+</div>
+<div id="ref-R-igraph">
+<p>file., See AUTHORS. 2020. <em>Igraph: Network Analysis and Visualization</em>. <a href="https://CRAN.R-project.org/package=igraph">https://CRAN.R-project.org/package=igraph</a>.</p>
+</div>
+<div id="ref-R-raster">
+<p>Hijmans, Robert J. 2020. <em>Raster: Geographic Data Analysis and Modeling</em>. <a href="https://CRAN.R-project.org/package=raster">https://CRAN.R-project.org/package=raster</a>.</p>
+</div>
+<div id="ref-R-ggplot2">
+<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.</p>
+</div>
 </div>
 </div>
 

@@ -13,28 +13,29 @@ tags:
   - R
 description: Guide on how to make neighbouring boundary maps in R.
 header_image: "/images/coverNeighbouring.png"
+bibliography: references.bib
 ---
 
 ```{r, include=F}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = F, fig.align = "center", out.width = "100%")
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = F, fig.align = "center", out.width = "100%")
 ```
 
-A while back on StackOverflow, I [answered a question](https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246) on how to produce a map which showed how many polygons away a location was from another, as shown in Figure \@ref(fig:mapResult). This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from [Roger Bivand](https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html) here.
-
-```{r mapResult, fig.cap="The final output!"}
-knitr::include_graphics("https://i.stack.imgur.com/6kBT6.png")
-```
+A while back on StackOverflow, I [answered a question](https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246) on how to produce a map which showed how many polygons away a location was from another. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from [Roger Bivand](https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html) here.
 
 # Setup
 
 In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the **igraph** [@R-igraph] **spdep** [@R-spdep] and **spatialreg** [@R-spatialreg] packages. We also use the **raster** [@R-raster] package to download some example data, and **ggplot2** [@R-ggplot2] for the final visualisation.
 
 ```{r, message = FALSE}
-# Load packages
+# Loading example data
 library(raster) # loads shapefile
+
+# Data Analysis
 library(igraph) # build network
 library(spdep) # builds network
 library(spatialreg)
+
+# Visualisation
 library(RColorBrewer)  # for plot colour palette
 library(ggplot2) # plots results
 library(tmap)
@@ -115,6 +116,7 @@ ggplot(boundaries_sf) +
   geom_sf(aes(fill = HUN.15.5_1)) +
   geom_sf(fill = "grey", alpha = ifelse(boundaries_sf$GID_2 == "HUN.15.5_1", 1, 0)) +
   scale_fill_gradient2(low = "#d73027", mid = "#fee08b", high = "#1a9850", midpoint = 10) +
+  labs(fill = "Distance from \nselected zone") +
   theme(
     axis.line = element_blank(),
     axis.text.x = element_blank(),
@@ -133,7 +135,10 @@ ggplot(boundaries_sf) +
 
 ```{r, include=F}
 ggsave("../../../public/images/coverNeighbouring.png", width = 6, height = 4)
+
+knitr::write_bib(loadedNamespaces(), file = "references.bib")
 ```
 
+# References
 
 

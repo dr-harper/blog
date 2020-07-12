@@ -20,7 +20,8 @@
       <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>/calculating-neighbouring-polygons-in-r/</guid>
-      <description>A while back on StackOverflow, I answered a question on how to produce a map which showed how many polygons away a location was from another, as shown in Figure 1. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from Roger Bivand here.</description>
+      <description>A while back on StackOverflow, I answered a question on how to produce a map which showed how many polygons away a location was from another. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from Roger Bivand here.
+Setup In order to calculate neighbouring polygons, we need to form a network of nodes for the data.</description>
     </item>
     
     <item>
