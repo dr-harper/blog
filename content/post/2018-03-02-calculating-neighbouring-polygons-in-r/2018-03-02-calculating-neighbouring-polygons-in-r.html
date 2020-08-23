@@ -22,7 +22,7 @@ bibliography: references.bib
 <p>A while back on StackOverflow, I <a href="https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246">answered a question</a> on how to produce a map which showed how many polygons away a location was from another. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from <a href="https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html">Roger Bivand</a> here.</p>
 <div id="setup" class="section level1">
 <h1>Setup</h1>
-<p>In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the <strong>igraph</strong> <span class="citation">(file. 2020)</span> <strong>spdep</strong> <span class="citation">(Bivand 2019)</span> and <strong>spatialreg</strong> <span class="citation">(Bivand and Piras 2019)</span> packages. We also use the <strong>raster</strong> <span class="citation">(Hijmans 2020)</span> package to download some example data, and <strong>ggplot2</strong> <span class="citation">(Wickham et al. 2020)</span> for the final visualisation.</p>
+<p>In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the <strong>igraph</strong> <span class="citation">(file. 2020)</span> <strong>spdep</strong> <span class="citation">(Bivand 2020)</span> and <strong>spatialreg</strong> <span class="citation">(Bivand and Piras 2019)</span> packages. We also use the <strong>raster</strong> <span class="citation">(Hijmans 2020)</span> package to download some example data, and <strong>ggplot2</strong> <span class="citation">(Wickham et al. 2020)</span> for the final visualisation.</p>
 <pre class="r"><code># Loading example data
 library(raster) # loads shapefile
 
@@ -127,7 +127,7 @@ Figure 3: Final Neighbouring Region Map
 <h1>References</h1>
 <div id="refs" class="references hanging-indent">
 <div id="ref-R-spdep">
-<p>Bivand, Roger. 2019. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.</p>
+<p>Bivand, Roger. 2020. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.</p>
 </div>
 <div id="ref-R-spatialreg">
 <p>Bivand, Roger, and Gianfranco Piras. 2019. <em>Spatialreg: Spatial Regression Analysis</em>. <a href="https://CRAN.R-project.org/package=spatialreg">https://CRAN.R-project.org/package=spatialreg</a>.</p>
