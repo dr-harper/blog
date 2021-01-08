@@ -2,34 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Covid 19 on Michael Harper</title>
-    <link>/tags/covid-19/</link>
+    <link>https://mikeyharper.uk/tags/covid-19/</link>
     <description>Recent content in Covid 19 on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Tue, 24 Mar 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/covid-19/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 24 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/tags/covid-19/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UK goes into lockdown: further Covid-19 analysis</title>
-      <link>/covid-19-linear-graphs/</link>
+      <link>https://mikeyharper.uk/covid-19-linear-graphs/</link>
       <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/covid-19-linear-graphs/</guid>
+      <guid>https://mikeyharper.uk/covid-19-linear-graphs/</guid>
       <description>On 23rd March, the UK introduced unprecedent measures to lockdown the country in the wake of the continuing Covid-19 outbreak. This followed a week of slowly escalating measures all designed to increase the amount of social distancing and reduce the spread of the virus. This article dives into some of the statistics available for this week and provide some more context for readers going further into the crisis.</description>
     </item>
     
     <item>
       <title>Visualising Covid-19 With Animated, Static and Interactive Maps</title>
-      <link>/covid-19-maps/</link>
+      <link>https://mikeyharper.uk/covid-19-maps/</link>
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/covid-19-maps/</guid>
-      <description>About I have reflecting on the unprecedented week in the UK. Even this time last week, the country seemed fairly laid back as government advice was largely to continue with business as usual. It is all very different to now, with schools set to close on Monday and most people either working from home or not working at all.
+      <guid>https://mikeyharper.uk/covid-19-maps/</guid>
+      <description>AboutI have reflecting on the unprecedented week in the UK. Even this time last week, the country seemed fairly laid back as government advice was largely to continue with business as usual. It is all very different to now, with schools set to close on Monday and most people either working from home or not working at all.
 This blog post provides details of anaylsis and data viusalisation to assess the spread of virus, giving three example maps which I have produced.</description>
     </item>
     

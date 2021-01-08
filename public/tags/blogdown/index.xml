@@ -2,24 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogdown on Michael Harper</title>
-    <link>/tags/blogdown/</link>
+    <link>https://mikeyharper.uk/tags/blogdown/</link>
     <description>Recent content in Blogdown on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Mon, 26 Mar 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/blogdown/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 26 Mar 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/tags/blogdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Migrating blog to Blogdown</title>
-      <link>/migrating-to-blogdown/</link>
+      <link>https://mikeyharper.uk/migrating-to-blogdown/</link>
       <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/migrating-to-blogdown/</guid>
+      <guid>https://mikeyharper.uk/migrating-to-blogdown/</guid>
       <description>I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
 Note: this post does not intend to be a full tutorial on how to set up your blog.</description>
     </item>

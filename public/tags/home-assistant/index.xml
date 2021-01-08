@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home Assistant on Michael Harper</title>
+    <link>/tags/home-assistant/</link>
+    <description>Recent content in Home Assistant on Michael Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
+    <copyright>(c) 2020 Copyright Michael Harper</copyright>
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/home-assistant/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a CO2 Energy Sensor</title>
+      <link>/co2-light/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>/co2-light/</guid>
+      <description>What else better to do over the Christmas holidays than to come up new smart home devices! And this is exactly what I have done, building a light which provides me an update on the current carbon intensity of the electricity supply. I am quite happy with the end result, and this blog explains the motivation behind the idea, along with code for anyone who wants to replicate it.</description>
+    </item>
+    
+  </channel>
+</rss>

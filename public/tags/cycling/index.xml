@@ -2,24 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cycling on Michael Harper</title>
-    <link>/tags/cycling/</link>
+    <link>https://mikeyharper.uk/tags/cycling/</link>
     <description>Recent content in Cycling on Michael Harper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/cycling/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 12 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/tags/cycling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cycling Lands End to John O&#39;Groats</title>
-      <link>/cycling-lands-end-to-john-o-groats/</link>
+      <link>https://mikeyharper.uk/cycling-lands-end-to-john-o-groats/</link>
       <pubDate>Mon, 12 Dec 2016 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/cycling-lands-end-to-john-o-groats/</guid>
+      <guid>https://mikeyharper.uk/cycling-lands-end-to-john-o-groats/</guid>
       <description>Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.</description>
     </item>
     

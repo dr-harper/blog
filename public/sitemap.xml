@@ -3,212 +3,227 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/tags/gis/</loc>
+    <loc>https://mikeyharper.uk/tags/covid19/</loc>
+    <lastmod>2021-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/</loc>
+    <lastmod>2021-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/post/</loc>
+    <lastmod>2021-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/topics/smart-home/</loc>
+    <lastmod>2021-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/tags/</loc>
+    <lastmod>2021-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/topics/</loc>
+    <lastmod>2021-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/covid-positivity/</loc>
+    <lastmod>2021-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/tags/gis/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>https://mikeyharper.uk/tags/r/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
+    <loc>https://mikeyharper.uk/calculating-neighbouring-polygons-in-r/</loc>
     <lastmod>2020-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-07-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/calculating-neighbouring-polygons-in-r/</loc>
-    <lastmod>2020-07-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/covid-19/</loc>
+    <loc>https://mikeyharper.uk/tags/covid-19/</loc>
     <lastmod>2020-03-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/data/</loc>
+    <loc>https://mikeyharper.uk/tags/data-visualisation/</loc>
     <lastmod>2020-03-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/data-visualisation/</loc>
+    <loc>https://mikeyharper.uk/covid-19-linear-graphs/</loc>
     <lastmod>2020-03-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/covid-19-linear-graphs/</loc>
-    <lastmod>2020-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/animated-maps/</loc>
+    <loc>https://mikeyharper.uk/tags/animated-maps/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/covid-19-maps/</loc>
+    <loc>https://mikeyharper.uk/covid-19-maps/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/covid-19-march-17/</loc>
+    <loc>https://mikeyharper.uk/covid-19-march-17/</loc>
     <lastmod>2020-03-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/takeaways-from-rstudio-conf/</loc>
+    <loc>https://mikeyharper.uk/takeaways-from-rstudio-conf/</loc>
     <lastmod>2019-01-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/creating-twitter-wordclouds/</loc>
+    <loc>https://mikeyharper.uk/creating-twitter-wordclouds/</loc>
     <lastmod>2018-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/dataviz/</loc>
+    <loc>https://mikeyharper.uk/tags/data/</loc>
     <lastmod>2018-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/web/</loc>
+    <loc>https://mikeyharper.uk/tags/dataviz/</loc>
     <lastmod>2018-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/book/</loc>
+    <loc>https://mikeyharper.uk/tags/web/</loc>
+    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/tags/book/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/book-launch-of-a-village-inheritance/</loc>
+    <loc>https://mikeyharper.uk/book-launch-of-a-village-inheritance/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/maps/</loc>
+    <loc>https://mikeyharper.uk/tags/maps/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/walking-london-to-basingstoke/</loc>
+    <loc>https://mikeyharper.uk/walking-london-to-basingstoke/</loc>
     <lastmod>2018-09-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/animated-plots-with-r/</loc>
+    <loc>https://mikeyharper.uk/animated-plots-with-r/</loc>
     <lastmod>2018-05-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/renewable-energy/</loc>
+    <loc>https://mikeyharper.uk/tags/renewable-energy/</loc>
     <lastmod>2018-05-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/flowcharts-in-r-using-diagrammer/</loc>
+    <loc>https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/</loc>
     <lastmod>2018-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/diagrammer/</loc>
+    <loc>https://mikeyharper.uk/tags/diagrammer/</loc>
     <lastmod>2018-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/r-markdown/</loc>
+    <loc>https://mikeyharper.uk/tags/r-markdown/</loc>
     <lastmod>2018-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
+    <loc>https://mikeyharper.uk/tags/blogdown/</loc>
     <lastmod>2018-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/migrating-to-blogdown/</loc>
+    <loc>https://mikeyharper.uk/migrating-to-blogdown/</loc>
     <lastmod>2018-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/mapping/</loc>
+    <loc>https://mikeyharper.uk/tags/mapping/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/mapping-uk-local-political-data/</loc>
+    <loc>https://mikeyharper.uk/mapping-uk-local-political-data/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/topics/technical/</loc>
+    <loc>https://mikeyharper.uk/topics/technical/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/topics/</loc>
-    <lastmod>2017-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/presentation/</loc>
+    <loc>https://mikeyharper.uk/tags/presentation/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/reproducible-resaerch/</loc>
+    <loc>https://mikeyharper.uk/tags/reproducible-resaerch/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</loc>
+    <loc>https://mikeyharper.uk/writing-reports-in-rstudio-an-introduction-to-rmarkdown/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/gis-in-r/</loc>
+    <loc>https://mikeyharper.uk/gis-in-r/</loc>
     <lastmod>2017-09-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/wind-turbinesuccess/</loc>
+    <loc>https://mikeyharper.uk/wind-turbinesuccess/</loc>
     <lastmod>2017-07-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/cycling/</loc>
+    <loc>https://mikeyharper.uk/tags/cycling/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/cycling-lands-end-to-john-o-groats/</loc>
+    <loc>https://mikeyharper.uk/cycling-lands-end-to-john-o-groats/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/topics/personal/</loc>
+    <loc>https://mikeyharper.uk/topics/personal/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/about/</loc>
+    <loc>https://mikeyharper.uk/about/</loc>
     <lastmod>2016-12-05T14:41:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/showcase/</loc>
-    <lastmod>2016-12-05T14:41:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+    <loc>https://mikeyharper.uk/showcase/</loc>
     <lastmod>2016-12-05T14:41:00+01:00</lastmod>
   </url>
   

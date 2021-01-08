@@ -1,0 +1,206 @@
+---
+title: "Why COVID positivity rates and deaths don't linearly correlate"
+author: Michael Harper
+description: A review of analysis by Joel Smalley, and simulated results to highlight concerns surrounding the interpretation of the statistics.
+date: "2021-01-08"
+slug: covid-correlation
+type: post
+tags:
+    - COVID19
+topics:
+  - Smart Home
+header_image: "/images/simulationResults-1.png"
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>In the tweet thread <a href="https://twitter.com/RealJoelSmalley/status/1347219499020386306">here</a>, Joel raises concerns around the Covid Positivity rates and the strange relationship these have with Covid deaths. Kudos to him, he put the question out for peer review, so it seemed like a great opportunity to get some analysis out!</p>
+<div id="the-tweets" class="section level1">
+<h1>The tweets</h1>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+I wasn't going to tweet this because I cannot make sense of it. Nor can my colleagues. So, I'm going to open source it and see if the wider community can verify or refute this.
+</p>
+— Joel Smalley (<span class="citation">@RealJoelSmalley</span>) <a href="https://twitter.com/RealJoelSmalley/status/1347219499020386306?ref_src=twsrc%5Etfw">January 7, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+To prove this empirically, I ran a linear regression between the two series and solved for an optimal lag between positivity and deaths. 12 days also seems reasonable given infection-to-death interval is known to be between 18 and 25 days. But things look a bit crazy in the end! <a href="https://t.co/6mkfde2E8g">pic.twitter.com/6mkfde2E8g</a>
+</p>
+— Joel Smalley (<span class="citation">@RealJoelSmalley</span>) <a href="https://twitter.com/RealJoelSmalley/status/1347219511620100100?ref_src=twsrc%5Etfw">January 7, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>So, the big question here is about the strange behaviour of the regression relationship between the PCR test and deaths. Intuitively, we might expect this to be fairly linearly, but it has that weird squiggle in the middle. What is going on?!</p>
+<p>At first sight, the idea that linear regression is a suitable tool for this seems to hold true. We are told constantly that deaths normally happen 2 weeks after an infection, and therefore on the surface this all made sense. But on deeper inspection, there is more going on, and this post aims to provide a explanation for what seems a likely cause of this non-linear behaviour.</p>
+<p>This entire analysis is based off the publicly available datasets, and completed with the code available. Sorry if the code is messy: mostly written in a hurry to quickly prove the point!</p>
+</div>
+<div id="average-time-to-death-hides-part-of-the-picture" class="section level1">
+<h1>Average Time to Death hides part of the picture</h1>
+<p>A lot of emphasis falls on the average time to death, however the reality of it can vary massively with a broad length of time from infection to death. Several pieces of research have explored this relationship, including a <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf">report here which focusses on the UK</a>. The above graph goes into more detail than potentially needed for the point, but it does show usefully how the timespan varies.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="/images/SymptonsOnsetToDeath.PNG" alt="Histograms for onset-to-death, based on [UK Analysis](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf)" width="80%" />
+<p class="caption">
+Figure 1: Histograms for onset-to-death, based on <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf">UK Analysis</a>
+</p>
+</div>
+<p>So why does this matter? Well it means that each day is not a truly independent observation, and therefore introduces collinearity between the points. The deaths on a particular day are a function of the deaths on the previous 30, even 60 days. <a href="https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/" class="uri">https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/</a></p>
+</div>
+<div id="demonstrating-the-concept" class="section level1">
+<h1>Demonstrating the concept</h1>
+<p>Well I can’t just say it is an issue and then do nothing about! To highlight the issue, I thought I would simulate some data to show that we should not expect there to be a linear relationship between the PCR and Death rate. To do this requires several steps:</p>
+<ol style="list-style-type: decimal">
+<li>Calculate a sympton-to-death curve</li>
+<li>Compare this with infection rates</li>
+<li>Derive a daily death index</li>
+</ol>
+<p>My aim here was to try and demonstrate that the non-linearity of the data here is something which is to be expected.</p>
+<div id="calculating-a-sympton-to-death-curve" class="section level2">
+<h2>Calculating a sympton-to-death curve</h2>
+<p>Rather than using an average time to death, we can more reliably understand the death rate if we look at the probability of death with time. To do this, we can select a probability function which provides a good estimate of the likely death rate. For this I have derived from <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0596">Iwona et al. 2020</a>, who suggest that a Gamma distribution is suitable. I will instantly flag that this study was done in August, and since then the survivability of Covid-19 has improved due to improved medical knowledge, but the point here is not to give an accurate projection of the death rate.</p>
+<p>Note, this is the symptons-to-death. We also need to include the average incubation period of <a href="https://www.acpjournals.org/doi/10.7326/M20-0504">5 days</a>. Again, we could argue this is an average and should include a distribution, but it a fairly small factor so I will ignore any uncertainty on this value. The derived probability function is shown below:</p>
+<pre class="r"><code># Build the data
+xval &lt;- 0:60 # number of days forward
+yval &lt;- dgamma(xval - 5, shape = 2.2, 0.1) # values taken from Iwona et al.
+df &lt;- data.frame(x = xval, y = yval)
+
+# Show the distribution
+ggplot(df, aes(x = x, y = y)) + 
+  geom_line(size = 2) +
+  labs(x = &quot;Days&quot;, y = &quot;Probability&quot;, 
+       title = &quot;Sympton-onset-to-Death&quot;,
+       subtitle = &quot;Gamma distribution used for this analysis to model death rates after infection&quot;,
+       caption = &quot;Value derived from Iwona et al. 2020&quot;)</code></pre>
+<p><img src="/post/2021-01-deathvspcr/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="infection-rates" class="section level2">
+<h2>Infection Rates</h2>
+<p>The second important piece of information is the infection rate. This is provided by the ONS survey, with the data available <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronaviruscovid19infectionsurveypilot/24december2020">here</a>. Note the data is slightly out of date, and therefore will not provide me with loads of data for December.</p>
+<pre class="r"><code>data_ons &lt;- read_csv(&quot;dataRaw/ONSDeaths.csv&quot;, col_types = list(Date = col_date(format = &quot;%d/%m/%Y&quot;))) %&gt;%
+  filter(!is.na(Date))
+
+ggplot(data_ons, aes(x = Date, y = Percentage)) +
+  geom_line(size = 2) +
+  labs(title = &quot;Percentage testing positive for COVID-19&quot;,
+       caption = &quot;Source: Office for National Statistics – Coronavirus (COVID-19) Infection Survey&quot;) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_date(date_breaks = &quot;2 weeks&quot;, date_labels = &quot;%d\n %b&quot;)</code></pre>
+<p><img src="/post/2021-01-deathvspcr/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>For this analysis, we will need to have the data in a daily format, so it is interpolated as follows:</p>
+<pre class="r"><code># Interpolate the dataset to add missing values
+fullDates &lt;- data.frame(Date = seq.Date(from = min(data_ons$Date, na.rm = T),
+                                   to = max(data_ons$Date, na.rm = T),
+                                   by = 1)) %&gt;%
+  left_join(data_ons, by = &quot;Date&quot;)
+
+fullDates &lt;- na_interpolation(fullDates, option = &quot;spline&quot;)</code></pre>
+</div>
+<div id="simulate-a-death-dataset" class="section level2">
+<h2>Simulate a death dataset</h2>
+<p>Based on the two values, we can now simulate a death rate. To do this, I will take the daily infection rate, and project based on that data the likely death profile for the following time period. To help make a direct comparison, I will only look at deaths within 28 days of a positive test. I will make the assumption here that tests were only taken after concerns of symptons (5 days).</p>
+<pre class="r"><code>daysToConsider &lt;- 33</code></pre>
+<p>Note, for the purpose of this comparison, I don’t actually need the absolute number: I am more interested in the relative pattern of the data for the comparison. In fact, I am trying to actively avoid giving an exact number of death, as for this I would need more information: there are too many additional variables needed to accurately model the death, so it would be misleading to even suggest this.</p>
+<p>As the average positive infection lasts 4 week <a href="https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/">reference</a>, I will divide my infectivity by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!</p>
+<pre class="r"><code># For each day, calculate the future deaths which will occur based on the infectivity rate
+list_out &lt;- fullDates$Percentage %&gt;%
+  purrr::map(function(x) dgamma(x*(1:daysToConsider - 5), shape = 2.2, 0.1) / 28)
+
+# Converts this into a dataframe
+df_out &lt;- data.frame(matrix(unlist(list_out), nrow = length(list_out), byrow = T))
+
+# Lags each column by N days to account for the delay
+for(i in 1:daysToConsider){
+  
+  columnName &lt;- paste0(&quot;X&quot;, i)
+
+df_out &lt;- 
+  df_out %&gt;%
+  mutate(!!columnName := lag(!!sym(columnName), n = i))
+}
+
+# Sums all columns
+deaths &lt;- df_out %&gt;%
+  mutate(deathIndex = rowSums(.[1:ncol(.)], na.rm = T)) %&gt;%
+  select(deathIndex)
+
+# Join deaths to original dataset
+fullDatesDeaths &lt;- cbind(fullDates, deaths)</code></pre>
+</div>
+</div>
+<div id="results-of-simulation" class="section level1">
+<h1>Results of Simulation</h1>
+<p>After this processing, we have a data frame which gives us three columns: <code>Date</code>, <code>Percentage</code> which refers to the ONS Covid Survey Infection Rate and <code>deathIndex</code> a value which indicates the level of death we would expect on that day given the infectivity from the previous 33 days. Finally, <code>period</code> indicates the time period to help compare the work with Joel’s analysis.</p>
+<pre class="r"><code>fullDataAugustOnwards &lt;- fullDatesDeaths %&gt;%
+  filter(Date &gt; &quot;2020-08-01&quot;) %&gt;%
+  mutate(period = ifelse(Date &lt; &quot;2020-10-01&quot;, &quot;August&quot;, ifelse(Date &lt; &quot;2020-11-01&quot;, &quot;November&quot;, &quot;December&quot;)))
+
+knitr::kable(head(fullDataAugustOnwards), caption = &quot;Sample of the resulting data&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 1: </span>Sample of the resulting data</caption>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Percentage</th>
+<th align="right">deathIndex</th>
+<th align="left">period</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2020-08-02</td>
+<td align="right">0.0004752</td>
+<td align="right">1.29e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="even">
+<td align="left">2020-08-03</td>
+<td align="right">0.0004795</td>
+<td align="right">1.34e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-08-04</td>
+<td align="right">0.0004865</td>
+<td align="right">1.39e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="even">
+<td align="left">2020-08-05</td>
+<td align="right">0.0004941</td>
+<td align="right">1.43e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-08-06</td>
+<td align="right">0.0005000</td>
+<td align="right">1.48e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="even">
+<td align="left">2020-08-07</td>
+<td align="right">0.0005027</td>
+<td align="right">1.52e-05</td>
+<td align="left">August</td>
+</tr>
+</tbody>
+</table>
+<p>We can also look further forward and compare the number of deaths X days ahead of the date. Here we go 12 days ahead for comparison with the results from Joel. And look, here we have. It exhibits the clear kick backwards and starts the looping on itself. The line is by no means as jumpy as the results from Joel, but this is because of the simplicity of the model.</p>
+<div class="figure" style="text-align: center"><span id="fig:simulationResults"></span>
+<img src="/post/2021-01-deathvspcr/covidpositivityRatesDontCorrelate_files/figure-html/simulationResults-1.png" alt="Simulation Results" width="80%" />
+<p class="caption">
+Figure 2: Simulation Results
+</p>
+</div>
+<p>It appears the graphs made by Joel include some more data which I have not been able to source?</p>
+</div>
+<div id="what-is-happening" class="section level1">
+<h1>What is happening?</h1>
+<p>In times when there are slow and gradual changes in the infectivity, there may be the illusion that the PCR and Death rate are directly correlated. However, when there are rapid shifts in the level of infectivity, either upwards or downwards, we are likely to see that the linearity begins to break down.</p>
+<p>To reflect specifically on what has happened on the UK, we have undergone a fairly inconsistent few months. The combination of the lockdown in early November, the new strain, Christmas mixing and now the next lockdown. Many of these events have happened within the 28 days of each, and therefore the death statistics will be difficult to separate in such a fashion.</p>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>I hope this provides a useful overview of how statistics don’t always behave as you might always believe! We can expect there to be intuitative relatioships between datasets, but it is only when you dig deeper into the mechanisms of how things behave that you appreciate the factors.</p>
+<p>If you have any queries or questions, I welcome comments! This is really designed as a rough-and-ready example to highlight the data. If you would like to see the source code and data for this, feel free to check out this article on GitHub <a href="https://github.com/dr-harper/blog/tree/master/content/post/2021-01-deathvspcr">here</a></p>
+</div>

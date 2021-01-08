@@ -54,7 +54,7 @@
    <div class="content">
       <ul>
          {{ range first 10 $value.ByCount }}
-         <li><a href="{{$.LanguagePrefix }}/{{ $key }}/{{ .Name | urlize }}">{{ .Name }}</a></li>
+         <li><a href="{{ $key }}/{{ .Name | urlize }}">{{ .Name }}</a></li>
          {{ end }}
       </ul>
    </div>
