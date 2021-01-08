@@ -17,7 +17,7 @@ html {
 body {
   /* Margin bottom by footer height */
   font-family: 'Open Sans', 'sans-serif';
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 70px;
 }
 .footer {
@@ -67,7 +67,6 @@ img {
 
 p {
   text-align: justify;
-  font-size: 30px;
 }
 
 /* Responsive video? */

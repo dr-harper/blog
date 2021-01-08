@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109605445-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-109605445-1');
+  </script>
+
+  
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Why COVID positivity rates and deaths don&#39;t linearly correlate  &middot; Michael Harper</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="A review of analysis by Joel Smalley, and simulated results to highlight concerns surrounding the interpretation of the statistics." />
+
+<meta name="keywords" content="COVID19, ">
+
+
+<meta property="og:title" content="Why COVID positivity rates and deaths don&#39;t linearly correlate  &middot; Michael Harper ">
+<meta property="og:site_name" content="Michael Harper"/>
+<meta property="og:url" content="https://mikeyharper.uk/covid-correlation/" />
+<meta property="og:locale" content="en">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="A review of analysis by Joel Smalley, and simulated results to highlight concerns surrounding the interpretation of the statistics."/>
+<meta property="og:article:published_time" content="2021-01-08T00:00:00Z" />
+<meta property="og:article:modified_time" content="2021-01-08T00:00:00Z" />
+
+
+<meta property="og:image" content="https://mikeyharper.uk/images/simulationResults-1.png"/>
+
+
+  
+    
+<meta property="og:article:tag" content="COVID19">
+    
+  
+
+  
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@@DrMichaelHarper" />
+<meta name="twitter:creator" content="@@DrMichaelHarper" />
+<meta name="twitter:title" content="Why COVID positivity rates and deaths don&#39;t linearly correlate" />
+<meta name="twitter:description" content="A review of analysis by Joel Smalley, and simulated results to highlight concerns surrounding the interpretation of the statistics." />
+<meta name="twitter:url" content="https://mikeyharper.uk/covid-correlation/" />
+<meta name="twitter:domain" content="https://mikeyharper.uk/">
+  
+
+  
+
+
+<link rel="canonical" href="https://mikeyharper.uk/covid-correlation/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikeyharper.uk/touch-icon-144-precomposed.png">
+<link rel="icon" href="https://mikeyharper.uk/favicon.png">
+<meta name="generator" content="Hugo 0.75.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikeyharper.uk/css/bootswatch/flatly/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikeyharper.uk/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikeyharper.uk/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikeyharper.uk/css/style_custom.css">
+
+
+
+  <link rel="stylesheet" href="https://mikeyharper.uk/css/highlight/custom.css">
+
+
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <a class="navbar-brand" href="https://mikeyharper.uk/">
+          Michael Harper
+          
+          
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikeyharper.uk/"  title=" Home">
+                <i class='fa fa-home'></i>&nbsp
+                 Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikeyharper.uk/about/"  title="About">
+                <i class='fa fa-user'></i>&nbsp
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Why COVID positivity rates and deaths don&#39;t linearly correlate
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2021-01-08">8 Jan, 2021</time>
+</small>
+
+
+  <small>
+    &middot; by Michael Harper
+  
+  &middot; Read in about 8 min
+  &middot; (1646 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Why%20COVID%20positivity%20rates%20and%20deaths%20don%27t%20linearly%20correlate&amp;url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f&amp;title=Why%20COVID%20positivity%20rates%20and%20deaths%20don%27t%20linearly%20correlate" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Why%20COVID%20positivity%20rates%20and%20deaths%20don%27t%20linearly%20correlate&amp;body=Check out this site https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikeyharper.uk/tags/covid19" class="label label-primary">COVID19</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      
+<img src= /images/simulationResults-1.png alt="Mountain View">
+
+
+<br>
+
+<div class="content", style = "margin-top:10px">
+  
+<script src="https://mikeyharper.uk/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>In the tweet thread <a href="https://twitter.com/RealJoelSmalley/status/1347219499020386306">here</a>, Joel raises concerns around the Covid Positivity rates and the strange relationship these have with Covid deaths. Kudos to him, he put the question out for peer review, so it seemed like a great opportunity to get some analysis out!</p>
+<div id="the-tweets" class="section level1">
+<h1>The tweets</h1>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+I wasn't going to tweet this because I cannot make sense of it. Nor can my colleagues. So, I'm going to open source it and see if the wider community can verify or refute this.
+</p>
+— Joel Smalley (<span class="citation">@RealJoelSmalley</span>) <a href="https://twitter.com/RealJoelSmalley/status/1347219499020386306?ref_src=twsrc%5Etfw">January 7, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+To prove this empirically, I ran a linear regression between the two series and solved for an optimal lag between positivity and deaths. 12 days also seems reasonable given infection-to-death interval is known to be between 18 and 25 days. But things look a bit crazy in the end! <a href="https://t.co/6mkfde2E8g">pic.twitter.com/6mkfde2E8g</a>
+</p>
+— Joel Smalley (<span class="citation">@RealJoelSmalley</span>) <a href="https://twitter.com/RealJoelSmalley/status/1347219511620100100?ref_src=twsrc%5Etfw">January 7, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>So, the big question here is about the strange behaviour of the regression relationship between the PCR test and deaths. Intuitively, we might expect this to be fairly linearly, but it has that weird squiggle in the middle. What is going on?!</p>
+<p>At first sight, the idea that linear regression is a suitable tool for this seems to hold true. We are told constantly that deaths normally happen 2 weeks after an infection, and therefore on the surface this all made sense. But on deeper inspection, there is more going on, and this post aims to provide a explanation for what seems a likely cause of this non-linear behaviour.</p>
+<p>This entire analysis is based off the publicly available datasets, and completed with the code available. Sorry if the code is messy: mostly written in a hurry to quickly prove the point!</p>
+</div>
+<div id="average-time-to-death-hides-part-of-the-picture" class="section level1">
+<h1>Average Time to Death hides part of the picture</h1>
+<p>A lot of emphasis falls on the average time to death, however the reality of it can vary massively with a broad length of time from infection to death. Several pieces of research have explored this relationship, including a <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf">report here which focusses on the UK</a>. The above graph goes into more detail than potentially needed for the point, but it does show usefully how the timespan varies.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="https://mikeyharper.uk/images/SymptonsOnsetToDeath.PNG" alt="Histograms for onset-to-death, based on [UK Analysis](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf)" width="80%" />
+<p class="caption">
+Figure 1: Histograms for onset-to-death, based on <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf">UK Analysis</a>
+</p>
+</div>
+<p>So why does this matter? Well it means that each day is not a truly independent observation, and therefore introduces collinearity between the points. The deaths on a particular day are a function of the deaths on the previous 30, even 60 days. <a href="https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/" class="uri">https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/</a></p>
+</div>
+<div id="demonstrating-the-concept" class="section level1">
+<h1>Demonstrating the concept</h1>
+<p>Well I can’t just say it is an issue and then do nothing about! To highlight the issue, I thought I would simulate some data to show that we should not expect there to be a linear relationship between the PCR and Death rate. To do this requires several steps:</p>
+<ol style="list-style-type: decimal">
+<li>Calculate a sympton-to-death curve</li>
+<li>Compare this with infection rates</li>
+<li>Derive a daily death index</li>
+</ol>
+<p>My aim here was to try and demonstrate that the non-linearity of the data here is something which is to be expected.</p>
+<div id="calculating-a-sympton-to-death-curve" class="section level2">
+<h2>Calculating a sympton-to-death curve</h2>
+<p>Rather than using an average time to death, we can more reliably understand the death rate if we look at the probability of death with time. To do this, we can select a probability function which provides a good estimate of the likely death rate. For this I have derived from <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0596">Iwona et al. 2020</a>, who suggest that a Gamma distribution is suitable. I will instantly flag that this study was done in August, and since then the survivability of Covid-19 has improved due to improved medical knowledge, but the point here is not to give an accurate projection of the death rate.</p>
+<p>Note, this is the symptons-to-death. We also need to include the average incubation period of <a href="https://www.acpjournals.org/doi/10.7326/M20-0504">5 days</a>. Again, we could argue this is an average and should include a distribution, but it a fairly small factor so I will ignore any uncertainty on this value. The derived probability function is shown below:</p>
+<pre class="r"><code># Build the data
+xval &lt;- 0:60 # number of days forward
+yval &lt;- dgamma(xval - 5, shape = 2.2, 0.1) # values taken from Iwona et al.
+df &lt;- data.frame(x = xval, y = yval)
+
+# Show the distribution
+ggplot(df, aes(x = x, y = y)) + 
+  geom_line(size = 2) +
+  labs(x = &quot;Days&quot;, y = &quot;Probability&quot;, 
+       title = &quot;Sympton-onset-to-Death&quot;,
+       subtitle = &quot;Gamma distribution used for this analysis to model death rates after infection&quot;,
+       caption = &quot;Value derived from Iwona et al. 2020&quot;)</code></pre>
+<p><img src="https://mikeyharper.uk/post/2021-01-deathvspcr/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="infection-rates" class="section level2">
+<h2>Infection Rates</h2>
+<p>The second important piece of information is the infection rate. This is provided by the ONS survey, with the data available <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronaviruscovid19infectionsurveypilot/24december2020">here</a>. Note the data is slightly out of date, and therefore will not provide me with loads of data for December.</p>
+<pre class="r"><code>data_ons &lt;- read_csv(&quot;dataRaw/ONSDeaths.csv&quot;, col_types = list(Date = col_date(format = &quot;%d/%m/%Y&quot;))) %&gt;%
+  filter(!is.na(Date))
+
+ggplot(data_ons, aes(x = Date, y = Percentage)) +
+  geom_line(size = 2) +
+  labs(title = &quot;Percentage testing positive for COVID-19&quot;,
+       caption = &quot;Source: Office for National Statistics – Coronavirus (COVID-19) Infection Survey&quot;) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_date(date_breaks = &quot;2 weeks&quot;, date_labels = &quot;%d\n %b&quot;)</code></pre>
+<p><img src="https://mikeyharper.uk/post/2021-01-deathvspcr/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>For this analysis, we will need to have the data in a daily format, so it is interpolated as follows:</p>
+<pre class="r"><code># Interpolate the dataset to add missing values
+fullDates &lt;- data.frame(Date = seq.Date(from = min(data_ons$Date, na.rm = T),
+                                   to = max(data_ons$Date, na.rm = T),
+                                   by = 1)) %&gt;%
+  left_join(data_ons, by = &quot;Date&quot;)
+
+fullDates &lt;- na_interpolation(fullDates, option = &quot;spline&quot;)</code></pre>
+</div>
+<div id="simulate-a-death-dataset" class="section level2">
+<h2>Simulate a death dataset</h2>
+<p>Based on the two values, we can now simulate a death rate. To do this, I will take the daily infection rate, and project based on that data the likely death profile for the following time period. To help make a direct comparison, I will only look at deaths within 28 days of a positive test. I will make the assumption here that tests were only taken after concerns of symptons (5 days).</p>
+<pre class="r"><code>daysToConsider &lt;- 33</code></pre>
+<p>Note, for the purpose of this comparison, I don’t actually need the absolute number: I am more interested in the relative pattern of the data for the comparison. In fact, I am trying to actively avoid giving an exact number of death, as for this I would need more information: there are too many additional variables needed to accurately model the death, so it would be misleading to even suggest this.</p>
+<p>As the average positive infection lasts 4 week <a href="https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/">reference</a>, I will divide my infectivity by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!</p>
+<pre class="r"><code># For each day, calculate the future deaths which will occur based on the infectivity rate
+list_out &lt;- fullDates$Percentage %&gt;%
+  purrr::map(function(x) dgamma(x*(1:daysToConsider - 5), shape = 2.2, 0.1) / 28)
+
+# Converts this into a dataframe
+df_out &lt;- data.frame(matrix(unlist(list_out), nrow = length(list_out), byrow = T))
+
+# Lags each column by N days to account for the delay
+for(i in 1:daysToConsider){
+  
+  columnName &lt;- paste0(&quot;X&quot;, i)
+
+df_out &lt;- 
+  df_out %&gt;%
+  mutate(!!columnName := lag(!!sym(columnName), n = i))
+}
+
+# Sums all columns
+deaths &lt;- df_out %&gt;%
+  mutate(deathIndex = rowSums(.[1:ncol(.)], na.rm = T)) %&gt;%
+  select(deathIndex)
+
+# Join deaths to original dataset
+fullDatesDeaths &lt;- cbind(fullDates, deaths)</code></pre>
+</div>
+</div>
+<div id="results-of-simulation" class="section level1">
+<h1>Results of Simulation</h1>
+<p>After this processing, we have a data frame which gives us three columns: <code>Date</code>, <code>Percentage</code> which refers to the ONS Covid Survey Infection Rate and <code>deathIndex</code> a value which indicates the level of death we would expect on that day given the infectivity from the previous 33 days. Finally, <code>period</code> indicates the time period to help compare the work with Joel’s analysis.</p>
+<pre class="r"><code>fullDataAugustOnwards &lt;- fullDatesDeaths %&gt;%
+  filter(Date &gt; &quot;2020-08-01&quot;) %&gt;%
+  mutate(period = ifelse(Date &lt; &quot;2020-10-01&quot;, &quot;August&quot;, ifelse(Date &lt; &quot;2020-11-01&quot;, &quot;November&quot;, &quot;December&quot;)))
+
+knitr::kable(head(fullDataAugustOnwards), caption = &quot;Sample of the resulting data&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 1: </span>Sample of the resulting data</caption>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Percentage</th>
+<th align="right">deathIndex</th>
+<th align="left">period</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2020-08-02</td>
+<td align="right">0.0004752</td>
+<td align="right">1.29e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="even">
+<td align="left">2020-08-03</td>
+<td align="right">0.0004795</td>
+<td align="right">1.34e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-08-04</td>
+<td align="right">0.0004865</td>
+<td align="right">1.39e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="even">
+<td align="left">2020-08-05</td>
+<td align="right">0.0004941</td>
+<td align="right">1.43e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-08-06</td>
+<td align="right">0.0005000</td>
+<td align="right">1.48e-05</td>
+<td align="left">August</td>
+</tr>
+<tr class="even">
+<td align="left">2020-08-07</td>
+<td align="right">0.0005027</td>
+<td align="right">1.52e-05</td>
+<td align="left">August</td>
+</tr>
+</tbody>
+</table>
+<p>We can also look further forward and compare the number of deaths X days ahead of the date. Here we go 12 days ahead for comparison with the results from Joel. And look, here we have. It exhibits the clear kick backwards and starts the looping on itself. The line is by no means as jumpy as the results from Joel, but this is because of the simplicity of the model.</p>
+<div class="figure" style="text-align: center"><span id="fig:simulationResults"></span>
+<img src="https://mikeyharper.uk/post/2021-01-deathvspcr/covidpositivityRatesDontCorrelate_files/figure-html/simulationResults-1.png" alt="Simulation Results" width="80%" />
+<p class="caption">
+Figure 2: Simulation Results
+</p>
+</div>
+<p>It appears the graphs made by Joel include some more data which I have not been able to source?</p>
+</div>
+<div id="what-is-happening" class="section level1">
+<h1>What is happening?</h1>
+<p>In times when there are slow and gradual changes in the infectivity, there may be the illusion that the PCR and Death rate are directly correlated. However, when there are rapid shifts in the level of infectivity, either upwards or downwards, we are likely to see that the linearity begins to break down.</p>
+<p>To reflect specifically on what has happened on the UK, we have undergone a fairly inconsistent few months. The combination of the lockdown in early November, the new strain, Christmas mixing and now the next lockdown. Many of these events have happened within the 28 days of each, and therefore the death statistics will be difficult to separate in such a fashion.</p>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>I hope this provides a useful overview of how statistics don’t always behave as you might always believe! We can expect there to be intuitative relatioships between datasets, but it is only when you dig deeper into the mechanisms of how things behave that you appreciate the factors.</p>
+<p>If you have any queries or questions, I welcome comments! This is really designed as a rough-and-ready example to highlight the data. If you would like to see the source code and data for this, feel free to check out this article on GitHub <a href="https://github.com/dr-harper/blog/tree/master/content/post/2021-01-deathvspcr">here</a></p>
+</div>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Why%20COVID%20positivity%20rates%20and%20deaths%20don%27t%20linearly%20correlate&amp;url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f&amp;title=Why%20COVID%20positivity%20rates%20and%20deaths%20don%27t%20linearly%20correlate" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Why%20COVID%20positivity%20rates%20and%20deaths%20don%27t%20linearly%20correlate&amp;body=Check out this site https%3a%2f%2fmikeyharper.uk%2fcovid-correlation%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikeyharper.uk/calculating-neighbouring-polygons-in-r/" title="Visualising Neighbouring Polygons in R">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//mikeyharper.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+   
+   <hr>
+   
+   <div class="section">
+      </br>
+      <div class="user one"></div>
+      </br>
+      <header>
+         <div class="title" style="text-align:center; font-size: 110%"><b>About Me</b></div>
+      </header>
+        </br>
+      <p style="padding-left: 0px; font-size: 90%"> I'm a data scientist with interests in data visualisation, machine learning, geospatial analysis &#128506, energy &#9889 and international development. My blog contains an assortment of code which I hope are useful (and interesting) to others!<br><a href="https://mikeyharper.uk/about/">Read More...</a></p>
+      <div style="margin-left: 1.2em; line-height: 2; font-size: 120%">
+         <a href="https://goo.gl/jpE8an"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp Southampton</a> <br /> 
+         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i>&nbsp Stackoverflow</a> <br /> 
+         <a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br /> 
+         <a href="https://www.linkedin.com/in/dr-harper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp LinkedIn</a> <br /> 
+         <a href="https://twitter.com/@DrMichaelHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp Twitter</a> <br /> 
+      </div>
+   </div>
+</div>
+<hr>
+
+<div class="section">
+   <header>
+      <div class="title"><b>Latest Posts</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li>
+            <a href="https://mikeyharper.uk/covid-correlation/">Why COVID positivity rates and deaths don&#39;t linearly correlate</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/calculating-neighbouring-polygons-in-r/">Visualising Neighbouring Polygons in R</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/covid-19-linear-graphs/">UK goes into lockdown: further Covid-19 analysis</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/covid-19-maps/">Visualising Covid-19 With Animated, Static and Interactive Maps</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/covid-19-march-17/">COVID-19 Preliminary Data Analysis</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/takeaways-from-rstudio-conf/">Things I learnt at rstudio::conf 2019</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/creating-twitter-wordclouds/">Creating Twitter Wordclouds in R</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/book-launch-of-a-village-inheritance/">Book Launch of “A Village Inheritance&#34;</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/walking-london-to-basingstoke/">Walking from London to Basingstoke</a>
+         </li>
+         
+         <li>
+            <a href="https://mikeyharper.uk/animated-plots-with-r/">Animated Plots with R</a>
+         </li>
+         
+      </ul>
+   </div>
+</div>
+<hr>
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Tag</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="Tags/r">r</a></li>
+         
+         <li><a href="Tags/gis">gis</a></li>
+         
+         <li><a href="Tags/presentation">presentation</a></li>
+         
+         <li><a href="Tags/covid-19">covid-19</a></li>
+         
+         <li><a href="Tags/data">data</a></li>
+         
+         <li><a href="Tags/data-visualisation">data-visualisation</a></li>
+         
+         <li><a href="Tags/dataviz">dataviz</a></li>
+         
+         <li><a href="Tags/maps">maps</a></li>
+         
+         <li><a href="Tags/web">web</a></li>
+         
+         <li><a href="Tags/animated-maps">animated-maps</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+
+
+<div class="section taxonomies">
+   <header>
+      <div class="title"><b>Topic</b></div>
+   </header>
+   <div class="content">
+      <ul>
+         
+         <li><a href="Topics/technical">technical</a></li>
+         
+         <li><a href="Topics/personal">personal</a></li>
+         
+         <li><a href="Topics/smart-home">smart-home</a></li>
+         
+      </ul>
+   </div>
+</div>
+
+
+<hr>
+</div>
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+<a href="https://github.com/mikey-harper/blog">Hosted on Github</a> 
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+<div class="container copyright">
+    <small>
+  (c) 2020 Copyright Michael Harper
+
+  </small>
+</div>
+
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="https://mikeyharper.uk/js/jquery.min.js"></script>
+<script src="https://mikeyharper.uk/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikeyharper.uk/js/highlight.pack.js"></script>
+<script src="https://mikeyharper.uk/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+var ENABLE_POPOVER =  false , 
+EXPIRE_COOKIE =  5 , 
+SHOW_MODAL_TIMEOUT =  10000 , 
+MOUSE_LEAVE =  true , 
+MODAL_SIZE = "", 
+POST_URL = "https://zapier.com/hooks/catch/1227563/", 
+SIGNUP_HEADER = "Join Our Newsletter",
+HEADER_IMAGE = "//placehold.it/1000x600",
+IMG_DESCRIPTION = "Placeholder image for this popover modal optin form",
+SIGNUP_TEXT = "Signup today for free and be the first to get notified on new updates.",
+INPUT_PLACEHOLDER = "Enter your email",
+SUBMIT_BUTTON = "Subscribe",
+SUCCESS_MESSAGE = "Thanks for your subscription!",
+ERROR_MESSAGE = "Submitting form failed!",
+OPTIN =  true ,
+COOKIE_NAME = "mycookie1",
+CONTENTLANGUAGE =  null ; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

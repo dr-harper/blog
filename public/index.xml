@@ -12,10 +12,10 @@
     <lastBuildDate>Fri, 08 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why COVID positivity rates and deaths don&#39;t linearly correlate</title>
-      <link>https://mikeyharper.uk/covid-positivity/</link>
+      <link>https://mikeyharper.uk/covid-correlation/</link>
       <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>https://mikeyharper.uk/covid-positivity/</guid>
+      <guid>https://mikeyharper.uk/covid-correlation/</guid>
       <description>In the tweet thread here, Joel raises concerns around the Covid Positivity rates and the strange relationship these have with Covid deaths. Kudos to him, he put the question out for peer review, so it seemed like a great opportunity to get some analysis out!
 The tweetsI wasn&#39;t going to tweet this because I cannot make sense of it. Nor can my colleagues. So, I&#39;m going to open source it and see if the wider community can verify or refute this.</description>
     </item>
