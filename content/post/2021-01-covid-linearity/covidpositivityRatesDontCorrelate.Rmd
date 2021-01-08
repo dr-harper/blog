@@ -191,6 +191,6 @@ To reflect specifically on what has happened on the UK, we have undergone a fair
 
 # Conclusion
 
-I hope this provides a useful overview of how statistics don't always behave as you might always believe! We can expect there to be intuitative relatioships between datasets, but it is only when you dig deeper into the mechanisms of how things behave that you appreciate the factors.
+I hope this provides a useful overview of how statistics don't always behave as you might always believe! We can expect there to be intuitative relationships between datasets, but it is only when you dig deeper into the mechanisms of how things behave that you appreciate the factors.
 
 If you have any queries or questions, I welcome comments! This is really designed as a rough-and-ready example to highlight the data. If you would like to see the source code and data for this, feel free to check out this article on GitHub [here](https://github.com/dr-harper/blog/tree/master/content/post/2021-01-covid-linearity)
