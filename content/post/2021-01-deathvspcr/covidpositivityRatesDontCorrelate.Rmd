@@ -1,5 +1,5 @@
 ---
-title: "Why COVID positivity rates and deaths don't linearly correlate"
+title: "Why COVID positivity rates and deaths don't always correlate"
 author: Michael Harper
 description: A review of analysis by Joel Smalley, and simulated results to highlight concerns surrounding the interpretation of the statistics.
 date: "2021-01-08"
@@ -125,10 +125,10 @@ daysToConsider <- 33
 
 Note, for the purpose of this comparison, I don't actually need the absolute number: I am more interested in the relative pattern of the data for the comparison. In fact, I am trying to actively avoid giving an exact number of death, as for this I would need more information: there are too many additional variables needed to accurately model the death, so it would be misleading to even suggest this.
 
-As the average positive infection lasts 4 week [reference](https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/), I will divide my infectivity by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!
+As the average positive infection lasts 4 week [reference](https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/), I will divide my infection rates by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!
 
 ```{r}
-# For each day, calculate the future deaths which will occur based on the infectivity rate
+# For each day, calculate the future deaths which will occur based on the infection rate
 list_out <- fullDates$Percentage %>%
   purrr::map(function(x) dgamma(x*(1:daysToConsider - 5), shape = 2.2, 0.1) / 28)
 
@@ -156,7 +156,7 @@ fullDatesDeaths <- cbind(fullDates, deaths)
 
 # Results of Simulation
 
-After this processing, we have a data frame which gives us three columns: `Date`, `Percentage`  which refers to the ONS Covid Survey Infection Rate and `deathIndex` a value which indicates the level of death we would expect on that day given the infectivity from the previous 33 days. Finally, `period` indicates the time period to help compare the work with Joel's analysis.
+After this processing, we have a data frame which gives us three columns: `Date`, `Percentage`  which refers to the ONS Covid Survey Infection Rate and `deathIndex` a value which indicates the level of death we would expect on that day given the infection rate from the previous 33 days. Finally, `period` indicates the time period to help compare the work with Joel's analysis.
 
 ```{r}
 fullDataAugustOnwards <- fullDatesDeaths %>%
@@ -187,9 +187,9 @@ It appears the graphs made by Joel include some more data which I have not been 
 
 # What is happening?
 
-In times when there are slow and gradual changes in the infectivity, there may be the illusion that the PCR and Death rate are directly correlated. However, when there are rapid shifts in the level of infectivity, either upwards or downwards, we are likely to see that the linearity begins to break down.
+In times when there are slow and gradual changes in the infection rate, there may be the illusion that the infection rates and deaths  are directly correlated. However, when there are rapid shifts in the level of infection rate, either upwards or downwards, we are likely to see that the linearity begins to break down.
 
-To reflect specifically on what has happened on the UK, we have undergone a fairly inconsistent few months. The combination of the lockdown in early November, the new strain, Christmas mixing and now the next lockdown. Many of these events have happened within the 28 days of each, and therefore the death statistics will be difficult to separate in such a fashion.
+To reflect specifically on what has happened on the UK, we have undergone a fairly inconsistent few months. The combination of the lockdown in early November, the new strain, Christmas mixing and now the next lockdown have led to quite rapid shifts in the infection rates. To further complicate things, many of these events have happened within the 28 days of each, and therefore the death statistics will be difficult to separate entirely for each event.
 
 # Conclusion
 

@@ -1,5 +1,5 @@
 ---
-title: "Why COVID positivity rates and deaths don't linearly correlate"
+title: "Why COVID positivity rates and deaths don't always correlate"
 author: Michael Harper
 description: A review of analysis by Joel Smalley, and simulated results to highlight concerns surrounding the interpretation of the statistics.
 date: "2021-01-08"
@@ -101,8 +101,8 @@ fullDates &lt;- na_interpolation(fullDates, option = &quot;spline&quot;)</code><
 <p>Based on the two values, we can now simulate a death rate. To do this, I will take the daily infection rate, and project based on that data the likely death profile for the following time period. To help make a direct comparison, I will only look at deaths within 28 days of a positive test. I will make the assumption here that tests were only taken after concerns of symptons (5 days).</p>
 <pre class="r"><code>daysToConsider &lt;- 33</code></pre>
 <p>Note, for the purpose of this comparison, I don’t actually need the absolute number: I am more interested in the relative pattern of the data for the comparison. In fact, I am trying to actively avoid giving an exact number of death, as for this I would need more information: there are too many additional variables needed to accurately model the death, so it would be misleading to even suggest this.</p>
-<p>As the average positive infection lasts 4 week <a href="https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/">reference</a>, I will divide my infectivity by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!</p>
-<pre class="r"><code># For each day, calculate the future deaths which will occur based on the infectivity rate
+<p>As the average positive infection lasts 4 week <a href="https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/">reference</a>, I will divide my infection rates by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!</p>
+<pre class="r"><code># For each day, calculate the future deaths which will occur based on the infection rate
 list_out &lt;- fullDates$Percentage %&gt;%
   purrr::map(function(x) dgamma(x*(1:daysToConsider - 5), shape = 2.2, 0.1) / 28)
 
@@ -130,7 +130,7 @@ fullDatesDeaths &lt;- cbind(fullDates, deaths)</code></pre>
 </div>
 <div id="results-of-simulation" class="section level1">
 <h1>Results of Simulation</h1>
-<p>After this processing, we have a data frame which gives us three columns: <code>Date</code>, <code>Percentage</code> which refers to the ONS Covid Survey Infection Rate and <code>deathIndex</code> a value which indicates the level of death we would expect on that day given the infectivity from the previous 33 days. Finally, <code>period</code> indicates the time period to help compare the work with Joel’s analysis.</p>
+<p>After this processing, we have a data frame which gives us three columns: <code>Date</code>, <code>Percentage</code> which refers to the ONS Covid Survey Infection Rate and <code>deathIndex</code> a value which indicates the level of death we would expect on that day given the infection rate from the previous 33 days. Finally, <code>period</code> indicates the time period to help compare the work with Joel’s analysis.</p>
 <pre class="r"><code>fullDataAugustOnwards &lt;- fullDatesDeaths %&gt;%
   filter(Date &gt; &quot;2020-08-01&quot;) %&gt;%
   mutate(period = ifelse(Date &lt; &quot;2020-10-01&quot;, &quot;August&quot;, ifelse(Date &lt; &quot;2020-11-01&quot;, &quot;November&quot;, &quot;December&quot;)))
@@ -196,8 +196,8 @@ Figure 2: Simulation Results
 </div>
 <div id="what-is-happening" class="section level1">
 <h1>What is happening?</h1>
-<p>In times when there are slow and gradual changes in the infectivity, there may be the illusion that the PCR and Death rate are directly correlated. However, when there are rapid shifts in the level of infectivity, either upwards or downwards, we are likely to see that the linearity begins to break down.</p>
-<p>To reflect specifically on what has happened on the UK, we have undergone a fairly inconsistent few months. The combination of the lockdown in early November, the new strain, Christmas mixing and now the next lockdown. Many of these events have happened within the 28 days of each, and therefore the death statistics will be difficult to separate in such a fashion.</p>
+<p>In times when there are slow and gradual changes in the infection rate, there may be the illusion that the infection rates and deaths are directly correlated. However, when there are rapid shifts in the level of infection rate, either upwards or downwards, we are likely to see that the linearity begins to break down.</p>
+<p>To reflect specifically on what has happened on the UK, we have undergone a fairly inconsistent few months. The combination of the lockdown in early November, the new strain, Christmas mixing and now the next lockdown have led to quite rapid shifts in the infection rates. To further complicate things, many of these events have happened within the 28 days of each, and therefore the death statistics will be difficult to separate entirely for each event.</p>
 </div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
