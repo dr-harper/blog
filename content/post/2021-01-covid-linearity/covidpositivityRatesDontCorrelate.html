@@ -60,82 +60,23 @@ Figure 1: Histograms for onset-to-death, based on <a href="https://assets.publis
 <h2>Calculating a sympton-to-death curve</h2>
 <p>Rather than using an average time to death, we can more reliably understand the death rate if we look at the probability of death with time. To do this, we can select a probability function which provides a good estimate of the likely death rate. For this I have derived from <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0596">Iwona et al. 2020</a>, who suggest that a Gamma distribution is suitable. I will instantly flag that this study was done in August, and since then the survivability of Covid-19 has improved due to improved medical knowledge, but the point here is not to give an accurate projection of the death rate.</p>
 <p>Note, this is the symptons-to-death. We also need to include the average incubation period of <a href="https://www.acpjournals.org/doi/10.7326/M20-0504">5 days</a>. Again, we could argue this is an average and should include a distribution, but it a fairly small factor so I will ignore any uncertainty on this value. The derived probability function is shown below:</p>
-<pre class="r"><code># Build the data
-xval &lt;- 0:60 # number of days forward
-yval &lt;- dgamma(xval - 5, shape = 2.2, 0.1) # values taken from Iwona et al.
-df &lt;- data.frame(x = xval, y = yval)
-
-# Show the distribution
-ggplot(df, aes(x = x, y = y)) + 
-  geom_line(size = 2) +
-  labs(x = &quot;Days&quot;, y = &quot;Probability&quot;, 
-       title = &quot;Sympton-onset-to-Death&quot;,
-       subtitle = &quot;Gamma distribution used for this analysis to model death rates after infection&quot;,
-       caption = &quot;Value derived from Iwona et al. 2020&quot;)</code></pre>
 <p><img src="/post/2021-01-covid-linearity/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="infection-rates" class="section level2">
 <h2>Infection Rates</h2>
 <p>The second important piece of information is the infection rate. This is provided by the ONS survey, with the data available <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronaviruscovid19infectionsurveypilot/24december2020">here</a>. Note the data is slightly out of date, and therefore will not provide me with loads of data for December.</p>
-<pre class="r"><code>data_ons &lt;- read_csv(&quot;dataRaw/ONSDeaths.csv&quot;, col_types = list(Date = col_date(format = &quot;%d/%m/%Y&quot;))) %&gt;%
-  filter(!is.na(Date))
-
-ggplot(data_ons, aes(x = Date, y = Percentage)) +
-  geom_line(size = 2) +
-  labs(title = &quot;Percentage testing positive for COVID-19&quot;,
-       caption = &quot;Source: Office for National Statistics – Coronavirus (COVID-19) Infection Survey&quot;) +
-  scale_y_continuous(labels = scales::percent) +
-  scale_x_date(date_breaks = &quot;2 weeks&quot;, date_labels = &quot;%d\n %b&quot;)</code></pre>
 <p><img src="/post/2021-01-covid-linearity/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>For this analysis, we will need to have the data in a daily format, so it is interpolated as follows:</p>
-<pre class="r"><code># Interpolate the dataset to add missing values
-fullDates &lt;- data.frame(Date = seq.Date(from = min(data_ons$Date, na.rm = T),
-                                   to = max(data_ons$Date, na.rm = T),
-                                   by = 1)) %&gt;%
-  left_join(data_ons, by = &quot;Date&quot;)
-
-fullDates &lt;- na_interpolation(fullDates, option = &quot;spline&quot;)</code></pre>
 </div>
 <div id="simulate-a-death-dataset" class="section level2">
 <h2>Simulate a death dataset</h2>
 <p>Based on the two values, we can now simulate how death may vary with infection levels. To do this, I will take the daily infection rate, and project the expected level of death for the following time period. To help make a direct comparison, I will only look at deaths within 28 days of a positive test. I will make the assumption here that tests were only taken after concerns of symptons (5 days).</p>
-<pre class="r"><code>daysToConsider &lt;- 33</code></pre>
 <p>Note, for the purpose of this comparison, I don’t actually need the absolute number: I am more interested in the relative pattern of the data for the comparison. In fact, I am trying to actively avoid giving an exact number of death, as for this I would need more information: there are too many additional variables needed to accurately model the death, so it would be misleading to even suggest this.</p>
 <p>As the average positive infection lasts 4 week <a href="https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/">reference</a>, I will divide my infection rates by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!</p>
-<pre class="r"><code># For each day, calculate the future deaths which will occur based on the infection rate
-list_out &lt;- fullDates$Percentage %&gt;%
-  purrr::map(function(x) dgamma(x*(1:daysToConsider - 5), shape = 2.2, 0.1) / 28)
-
-# Converts this into a dataframe
-df_out &lt;- data.frame(matrix(unlist(list_out), nrow = length(list_out), byrow = T))
-
-# Lags each column by N days to account for the delay
-for(i in 1:daysToConsider){
-  
-  columnName &lt;- paste0(&quot;X&quot;, i)
-
-df_out &lt;- 
-  df_out %&gt;%
-  mutate(!!columnName := lag(!!sym(columnName), n = i))
-}
-
-# Sums all columns
-deaths &lt;- df_out %&gt;%
-  mutate(deathIndex = rowSums(.[1:ncol(.)], na.rm = T)) %&gt;%
-  select(deathIndex)
-
-# Join deaths to original dataset
-fullDatesDeaths &lt;- cbind(fullDates, deaths)</code></pre>
 </div>
 </div>
 <div id="results-of-simulation" class="section level1">
 <h1>Results of Simulation</h1>
 <p>After this processing, we have a data frame which gives us three columns: <code>Date</code>, <code>Percentage</code> which refers to the ONS Covid Survey Infection Rate and <code>deathIndex</code> a value which indicates the level of death we would expect on that day given the infection rate from the previous 33 days. Finally, <code>period</code> indicates the time period to help compare the work with Joel’s analysis.</p>
-<pre class="r"><code>fullDataAugustOnwards &lt;- fullDatesDeaths %&gt;%
-  filter(Date &gt; &quot;2020-08-01&quot;) %&gt;%
-  mutate(period = ifelse(Date &lt; &quot;2020-10-01&quot;, &quot;August&quot;, ifelse(Date &lt; &quot;2020-11-01&quot;, &quot;November&quot;, &quot;December&quot;)))
-
-knitr::kable(head(fullDataAugustOnwards), caption = &quot;Sample of the resulting data&quot;)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-7">Table 1: </span>Sample of the resulting data</caption>
 <thead>

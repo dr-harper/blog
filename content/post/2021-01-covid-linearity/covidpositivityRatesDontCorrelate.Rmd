@@ -17,7 +17,7 @@ header_image: "/images/simulationResults-1.png"
 library(tidyverse)
 
 options(knitr.graphics.error = FALSE)
-knitr::opts_chunk$set(echo = T,
+knitr::opts_chunk$set(echo = F,
                       fig.align = "center",
                       out.width = "80%")
 
@@ -102,8 +102,6 @@ ggplot(data_ons, aes(x = Date, y = Percentage)) +
   scale_y_continuous(labels = scales::percent) +
   scale_x_date(date_breaks = "2 weeks", date_labels = "%d\n %b")
 ```
-
-For this analysis, we will need to have the data in a daily format, so it is interpolated as follows:
 
 ```{r}
 # Interpolate the dataset to add missing values
