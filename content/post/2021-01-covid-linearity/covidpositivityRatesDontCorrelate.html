@@ -51,15 +51,15 @@ Figure 1: Histograms for onset-to-death, based on <a href="https://assets.publis
 <h1>Demonstrating the concept</h1>
 <p>Well I can’t just say it is an issue and then do nothing about! To highlight the issue, I thought I would simulate some data to show that we should not expect there to be a linear relationship between infections and death rate. To do this requires several steps:</p>
 <ol style="list-style-type: decimal">
-<li>Calculate a sympton-to-death curve</li>
+<li>Calculate a symptom-to-death curve</li>
 <li>Compare this with infection rates</li>
 <li>Derive a daily death index</li>
 </ol>
 <p>My aim here was to try and demonstrate that the non-linearity of the data here is something which is to be expected.</p>
-<div id="calculating-a-sympton-to-death-curve" class="section level2">
-<h2>Calculating a sympton-to-death curve</h2>
+<div id="calculating-a-symptom-to-death-curve" class="section level2">
+<h2>Calculating a symptom-to-death curve</h2>
 <p>Rather than using an average time to death, we can more reliably understand the death rate if we look at the probability of death with time. To do this, we can select a probability function which provides a good estimate of the likely death rate. For this I have derived from <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0596">Iwona et al. 2020</a>, who suggest that a Gamma distribution is suitable. I will instantly flag that this study was done in August, and since then the survivability of Covid-19 has improved due to improved medical knowledge, but the point here is not to give an accurate projection of the death rate.</p>
-<p>Note, this is the symptons-to-death. We also need to include the average incubation period of <a href="https://www.acpjournals.org/doi/10.7326/M20-0504">5 days</a>. Again, we could argue this is an average and should include a distribution, but it a fairly small factor so I will ignore any uncertainty on this value. The derived probability function is shown below:</p>
+<p>Note, this is the symptoms-to-death. We also need to include the average incubation period of <a href="https://www.acpjournals.org/doi/10.7326/M20-0504">5 days</a>. Again, we could argue this is an average and should include a distribution, but it a fairly small factor so I will ignore any uncertainty on this value. The derived probability function is shown below:</p>
 <p><img src="/post/2021-01-covid-linearity/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="infection-rates" class="section level2">
@@ -69,7 +69,7 @@ Figure 1: Histograms for onset-to-death, based on <a href="https://assets.publis
 </div>
 <div id="simulate-a-death-dataset" class="section level2">
 <h2>Simulate a death dataset</h2>
-<p>Based on the two values, we can now simulate how death may vary with infection levels. To do this, I will take the daily infection rate, and project the expected level of death for the following time period. To help make a direct comparison, I will only look at deaths within 28 days of a positive test. I will make the assumption here that tests were only taken after concerns of symptons (5 days).</p>
+<p>Based on the two values, we can now simulate how death may vary with infection levels. To do this, I will take the daily infection rate, and project the expected level of death for the following time period. To help make a direct comparison, I will only look at deaths within 28 days of a positive test. I will make the assumption here that tests were only taken after concerns of symptoms (5 days).</p>
 <p>Note, for the purpose of this comparison, I don’t actually need the absolute number: I am more interested in the relative pattern of the data for the comparison. In fact, I am trying to actively avoid giving an exact number of death, as for this I would need more information: there are too many additional variables needed to accurately model the death, so it would be misleading to even suggest this.</p>
 <p>As the average positive infection lasts 4 week <a href="https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/">reference</a>, I will divide my infection rates by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!</p>
 </div>
