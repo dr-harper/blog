@@ -160,7 +160,7 @@
     &middot; by Michael Harper
   
   &middot; Read in about 15 min
-  &middot; (3049 words)
+  &middot; (3063 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikeyharper.uk%2fcovid-east-west-relationship%2f" onclick="window.open(this.href, 'mywin',
@@ -254,7 +254,7 @@ COVID mortality follows a distinct pattern across Europe, from West to East, app
 </div>
 <div id="recreating-the-analysis" class="section level1">
 <h1>Recreating the analysis</h1>
-<p>To ensure a fair comparison, it is important we first recreate the analysis. As no methodology was published, we are going to try and get as much information out of the tweets as possible. I provide all my processing within <a href="https://github.com/dr-harper/covid-correlation/blob/main/R/analysis.Rmd">GitHub</a> for others to review, so please feel free to look if you want to understand more. If the assumptions are wrong, they can be tweaked.</p>
+<p>To ensure a fair comparison, it is important we first recreate the analysis. As no methodology was published, we are going to try and get as much information out of the tweets as possible. I provide all my processing within <a href="https://github.com/dr-harper/blog/tree/master/content/post/2021-01-covidEastWest">GitHub</a> for others to review, so please feel free to look if you want to understand more. If the assumptions are wrong, they can be tweaked.</p>
 <div id="data-sources" class="section level2">
 <h2>Data Sources</h2>
 <p>Two data sources were provided:</p>
@@ -310,7 +310,7 @@ Figure 4: Map showing the grouping assigned by Joel
 <div id="exploring-eastwest-correlation" class="section level1">
 <h1>Exploring East/West Correlation</h1>
 <p>Okay, so hopefully all of the work so far has made sense! As mentioned above, the above work from Joel provided a useful framing of the problem, but did not statistically prove a relationship from East to West. This section will explore this and try and understand if there is correlation.</p>
-<p>There are many statistical models available, but a good approach for this kind of question is to use a clustering analysis. As explained <a href="https://cran.r-project.org/web/packages/dtwclust/vignettes/dtwclust.pdf">here</a>:</p>
+<p>There are many statistical models available, but a good approach for this kind of question is to use a clustering analysis. This is a machine learning approach which tries to identiy similar patterns in data. As explained <a href="https://cran.r-project.org/web/packages/dtwclust/vignettes/dtwclust.pdf">here</a>:</p>
 <blockquote>
 <p>Cluster analysis is a task which concerns itself with the creation of groups of objects, where each group is called a cluster. Ideally, all members of the same cluster are similar to each other, but are as dissimilar as possible from objects in a different cluster</p>
 </blockquote>

@@ -212,7 +212,7 @@ While this provides interesting empirical evidence, in the format presented, it 
 
 Okay, so hopefully all of the work so far has made sense! As mentioned above, the above work from Joel provided a useful framing of the problem, but did not statistically prove a relationship from East to West. This section will explore this and try and understand if there is correlation.
 
-There are many statistical models available, but a good approach for this kind of question is to use a clustering analysis. As explained [here](https://cran.r-project.org/web/packages/dtwclust/vignettes/dtwclust.pdf):
+There are many statistical models available, but a good approach for this kind of question is to use a clustering analysis. This is a machine learning approach which tries to identiy similar patterns in data. As explained [here](https://cran.r-project.org/web/packages/dtwclust/vignettes/dtwclust.pdf):
 
 > Cluster analysis is a task which concerns itself with the creation of groups of objects, where each group is called a cluster. Ideally, all members of the same cluster are similar to each other, but are as dissimilar as possible from objects in a different cluster
 
@@ -323,7 +323,7 @@ Having established there do appear to be some patterns in the data, we can now e
 
 Again, to be faithful to the original analysis of Joel, my attention here is focussed to the Stringency Index data provided. As explained at the start, this gives us an indication of the level of restrictions introduced. Figure \@ref(fig:Stringency) provides these plots for each country. Pretty much every country follows a similar profile from April (increasing severity), slowly removing measures over the summer, and increasing the measures at Christmas. There are some notable exceptions including Belarus.
 
-```{r Stringency, fig.width = 10, fig.height=10, fig.cap = "Stringency Index provided for each country"}
+```{r Stringency, fig.width = 8, fig.height=8, fig.cap = "Stringency Index provided for each country"}
 df_selected %>%
   filter(!is.na(StringencyIndex)) %>%
   ggplot(aes(x = Date)) +
