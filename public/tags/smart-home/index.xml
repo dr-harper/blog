@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Smart Home on Michael Harper</title>
+    <link>https://mikeyharper.uk/tags/smart-home/</link>
+    <description>Recent content in Smart Home on Michael Harper</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
+    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
+    <copyright>(c) 2020 Copyright Michael Harper</copyright>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/tags/smart-home/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4 Lessons from the smart home</title>
+      <link>https://mikeyharper.uk/lessons-from-smart-home/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>https://mikeyharper.uk/lessons-from-smart-home/</guid>
+      <description>I sometimes joke with my wife that she is living in my smart home laboratory, and to be fair she kind of is. Almost every week, I play around with a new product or sensor, or change the way something behaves in my house. Some things have worked, others haven’t, but there is always a lesson to learn (and sometimes a wife to apologise to for annoying).
+Anyway, the aim of this blog is to capture some of the top takeways I have from my experiences, and share these to hopefully help others.</description>
+    </item>
+    
+  </channel>
+</rss>

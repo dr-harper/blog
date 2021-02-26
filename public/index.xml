@@ -9,7 +9,17 @@
     <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
     <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4 Lessons from the smart home</title>
+      <link>https://mikeyharper.uk/lessons-from-smart-home/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>https://mikeyharper.uk/lessons-from-smart-home/</guid>
+      <description>I sometimes joke with my wife that she is living in my smart home laboratory, and to be fair she kind of is. Almost every week, I play around with a new product or sensor, or change the way something behaves in my house. Some things have worked, others haven’t, but there is always a lesson to learn (and sometimes a wife to apologise to for annoying).
+Anyway, the aim of this blog is to capture some of the top takeways I have from my experiences, and share these to hopefully help others.</description>
+    </item>
+    
     <item>
       <title>East/West patterns in Covid-19: validating claims of correlation</title>
       <link>https://mikeyharper.uk/covid-east-west-relationship/</link>
@@ -18,16 +28,6 @@
       <guid>https://mikeyharper.uk/covid-east-west-relationship/</guid>
       <description>Recent analysis came out claiming that there was evidence of a East to West pattern of Covid impacts for Europe. The purpose of this article is to provide a statistical review of the claims made, and to help provide a clearer explanation around the work.
 If this article looks long and overly detailed, that is the very point. I want to explain the decisions along the way which are being made and will aim to be as objective as possible, and to do so in a way which is hopefully not too intimidating if you aren’t overly familiar with statistical analysis.</description>
-    </item>
-    
-    <item>
-      <title>Why COVID positivity rates and deaths don&#39;t always correlate</title>
-      <link>https://mikeyharper.uk/covid-correlation-2/</link>
-      <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>https://mikeyharper.uk/covid-correlation-2/</guid>
-      <description>Infection RatesThe second important piece of information is the infection rate. This is provided by the ONS survey, with the data available here. Note the data is slightly out of date, and therefore will not provide me with loads of data for December.
-Simulate a death datasetBased on the two values, we can now simulate how death may vary with infection levels. To do this, I will take the daily infection rate, and project the expected level of death for the following time period.</description>
     </item>
     
     <item>

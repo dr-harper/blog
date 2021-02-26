@@ -7,8 +7,6 @@ slug: covid-correlation
 type: post
 tags:
     - COVID19
-topics:
-  - Smart Home
 header_image: "/images/simulationResults-1.png"
 ---
 
@@ -26,10 +24,6 @@ library(tidyverse)
 library(ggthemr)
 library(imputeTS)
 ggthemr("light")
-
-knitr::opts_chunk$set(warning = F,
-                      message = F,
-                      fig.align = "center")
 ```
 
 In the tweet thread [here](https://twitter.com/RealJoelSmalley/status/1347219499020386306), Joel raises concerns around the Covid Positivity rates and the strange relationship these have with Covid deaths. Kudos to him, he put the question out for peer review, so it seemed like a great opportunity to get some analysis out!
