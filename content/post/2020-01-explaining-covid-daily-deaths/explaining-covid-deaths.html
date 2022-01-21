@@ -1,0 +1,73 @@
+---
+title: "Daily Covid-19 deaths statistics: an explainer"
+author: Michael Harper
+description: A guide on how to interpret the daily death statistics published released in the UK.
+date: "2021-01-11"
+slug: covid-deaths-explainer
+type: post
+tags:
+    - COVID19
+header_image: "/images/interpretingCovidDeaths.PNG"
+draft: FALSE
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/pymjs/pym.v1.js"></script>
+<script src="/rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+
+
+<p>There is a lot of emphasis on getting real-time data for COVID-19, and the NHS, ONS and other organisations have been pretty great at making this available. But as with any real-time datasets, there can be caveats around how to interpet them.</p>
+<p>This post aims to give a brief overview of the data, providing some real examples of what it represents, and mostly importantly, explains how to interpret them correctly.</p>
+<p>If you are interested in the underlying code, make sure to check out the source code for all this on GitHub <a href="https://github.com/dr-harper/blog/tree/master/content/post/2020-01-explaining-covid-daily-deaths">here</a>.</p>
+<div id="the-data" class="section level1">
+<h1>The data</h1>
+<p>The main dataset people refer to comes from the NHS <a href="https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-daily-deaths/">here</a>. They provide two datasets:</p>
+<ul>
+<li>A summary of total deaths since the start of the pandemic</li>
+<li>a Daily Update</li>
+</ul>
+<p>Most the attention goes on the daily updates. As noted in the documentation:</p>
+<blockquote>
+<p>“The Daily file contains only deaths from the latest reporting period, 4pm 2 days prior to publication until 4pm the day before publication. The Total file contains all reported deaths.”</p>
+</blockquote>
+<p>Now, probably the potentially confusing aspect is that there are technically two dates which can used for recording deaths:</p>
+<ul>
+<li>The day the death happened</li>
+<li>The day the death was recorded</li>
+</ul>
+<p><img src="/images/covidDeathTypes.PNG" width="80%" style="display: block; margin: auto;" /></p>
+<p>When you think about this, it makes sense, as it is impossible for the system to be updated instantly. This process takes typically around 3 days for the UK, although as I show later, can take significantly longer.</p>
+<p>For this example, I will show what both of these datasets mean.</p>
+</div>
+<div id="the-basics" class="section level1">
+<h1>The basics</h1>
+<p>So, before we dive into the full dataset, lets first look at a single day. For this example I have selected 2nd January 2021. This presents it as it comes directly from the CSV:</p>
+<div id="htmlwidget-1" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/post/2020-01-explaining-covid-daily-deaths/explaining-covid-deaths_files/figure-html//widgets/widget_singleTable.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<hr />
+<p>As you’ll see from the table, the data gives us a column for each day, with each row providing the deaths for a region. This table provides us with the date of death for all deaths registered on the 2nd. So for example, on the 2nd January, there were a total of 383 deaths in England. Of these, there were 157 deaths reported which happened on 31st December. Finally, you will note that there are some deaths which happened back in November which were also just reported! The graph below provides a representation of this data.</p>
+<p><img src="/post/2020-01-explaining-covid-daily-deaths/explaining-covid-deaths_files/figure-html/englandDeathsPlot-1.svg" width="80%" style="display: block; margin: auto;" /></p>
+<p>So, we have the basics of one day. Now lets compare a day a few days later: 5th January. The total number of deaths reported is 674, and again the plot helps show a similar pattern. But if we compare the two spreadsheets, you’ll notice that the values have dropped for some days. For example, on the 31st of December, the previous data showed 157 deaths occured, while this only shows 29 deaths. So what is going on?</p>
+<p><img src="/post/2020-01-explaining-covid-daily-deaths/explaining-covid-deaths_files/figure-html/englandDeaths5-1.svg" width="80%" style="display: block; margin: auto;" /></p>
+<p>Well, it is important to remember that the data for each day only records the deaths which happened in the last 24 hours. It is not cumulative. If we want to see the total deaths, we need to refer to “Total Deaths Spreadsheet”, which records the date of death, not the date it was recorded. This can be demonstrated visually below:</p>
+<p>The plot below shows how the data adds up. Each day, the new NHS death records are added, and as shown previously, these can go back days, weeks and potentially months.</p>
+<p><img src="/images/animateCovidDeaths.gif" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="delay-of-deaths-being-reported" class="section level1">
+<h1>Delay of Deaths being reported</h1>
+<p>As mentioned earlier, deaths can be delayed getting reported. The impact of this can be that there appears to be a temporary drop in deaths, even if deaths have been rising. The graph below shows the distribution of deaths recorded. The majority do get reported in the first two days, but it can be expected that it takes around a week until it is getting close to the full number.</p>
+<p><img src="/post/2020-01-explaining-covid-daily-deaths/explaining-covid-deaths_files/figure-html/deathHistogram-1.svg" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="got-any-questions" class="section level1">
+<h1>Got any questions?</h1>
+<p>There is a lot of information and data being made available, making it hard to know what to trust! Over the next few weeks, I will be continuing to explore some of these and hopefully providing data which can remove the confusion. As below, let me know if you have anything you want looking into!</p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+If you see anything you want questioning on COVID and want a second opinion, feel free to tag me. I'm not a virologist, but have a good understanding of statistics to provide what I feel is a balanced opinion to reviewing scientific research. <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> <a href="https://twitter.com/hashtag/lockdown2021?src=hash&amp;ref_src=twsrc%5Etfw">#lockdown2021</a>
+</p>
+— Michael Harper (<span class="citation">@DrMichaelHarper</span>) <a href="https://twitter.com/DrMichaelHarper/status/1346802224878514180?ref_src=twsrc%5Etfw">January 6, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>If this article has helped at all, it would mean a lot if you can like and share!</p>
+</div>

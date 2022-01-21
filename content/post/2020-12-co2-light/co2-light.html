@@ -1,0 +1,210 @@
+---
+title: Building a CO2 Energy Sensor
+author: Mikey Harper
+description: Keeping track of the current carbon emissions of the electricity supply with a notification light.
+date: '2021-08-28'
+slug: co2-light
+type: post
+tags:
+    - ESPhome
+    - Home Assistant
+    - Energy
+topics:
+  - Smart Home
+header_image: "/images/circuit.png"
+draft: true
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>What else better to do over the weekend than to come up new smart home devices! And this is exactly what I have done, building a light which provides me an update on the current carbon intensity of the electricity supply. I am quite happy with the end result, and this blog explains the motivation behind the idea, along with code for anyone who wants to replicate it. I hope it helps!</p>
+<div id="the-challenge-varying-co2-emmissions" class="section level1">
+<h1>The Challenge: Varying CO2 Emmissions</h1>
+<p>As we shift increasingly to using renewable energy resources, there becomes an increasing issue of not only <strong>how much</strong> electricity needs to be produced, but importantly <strong>when</strong>.</p>
+<p>Renewable energy like solar and wind operate very differently to “traditional” power stations such as coal and gas. There is much less control over exactly when they will produce energy and how much will be produced. This is highlighted below in Figure 2, showing the UK’s wind generation for March 2021. At its peak, wind was providing 13GW of electricity, which is enough energy to power 13 million homes! However, just a few days earlier, the output had been only a few GW.</p>
+<p><img src="/images/windMarch2021.PNG" width="80%" style="display: block; margin: auto;" /></p>
+<p>As a result of such large variations, the carbon intensity of the grid changes. When there is a lot of renewable energy available, the intensity is low, but if the sun isn’t shining, or wind isn’t blowing, then the carbon intensity is generally higher.</p>
+<p>Figure <a href="#fig:CarbonTrends">1</a> shows the Carbon intensity of the national grid over the past month.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:CarbonTrends"></span>
+<img src="/post/2020-12-co2-light/co2-light_files/figure-html/CarbonTrends-1.png" alt="Carbon Trends for November December" width="80%" />
+<p class="caption">
+Figure 1: Carbon Trends for November December
+</p>
+</div>
+</div>
+<div id="the-idea" class="section level1">
+<h1>The Idea</h1>
+<p>There are a few resources out there which inform users of potential carbon emissions from their consumption. For example:</p>
+<ul>
+<li><a href="nationalgrideso.com/news/introducing-our-carbon-intensity-app">The Carbon Intensity App</a></li>
+<li><a href="http://www.cs.ox.ac.uk/people/alex.rogers/gridcarbon/">GridCarbon</a></li>
+</ul>
+<p>However, part of the problem with these approaches is they mostly rely on you opening an app or visiting a website. Sure, this might work for technical enthusiast like myself, but will it really work for people such as my wife? My feeling with this project was that occupants of houses want to have a minimum tolerance for changing their behaviour: if they want to put the dishwasher on, they are very unlikely to want to go out of their way, check a graph and make a decision about when to run it. What we need is a simple visual prompt for people to be able to make a decision.</p>
+<p>So I came up with a basic side lamp idea, which could provide a visual cue to people. This can sit relatively unobtrusively, but equally is relatively easy to get an understanding of the current CO2 outputs. If you see red or yellow, it should hopefully make you think twice of whether you need to use the electricity now, or whether it could be deferred to another time!</p>
+</div>
+<div id="the-setup" class="section level1">
+<h1>The Setup</h1>
+<p>There are three main components to this project:</p>
+<ul>
+<li>The data</li>
+<li>The hardware: ESP Home</li>
+<li>Linking them up with Home Assistant</li>
+</ul>
+<p>Note, this tutorial is very Home Assistant focussed. It would probably be achievable coding this all in native Arduino code, so the solution might look a bit messy. But if like me you are competent in the tools above and don’t want to learn extra code innecessarily, this should help!</p>
+<div id="the-data-stream" class="section level2">
+<h2>The data stream</h2>
+<p>Firstly, we need a reliable and up-to-date dataset which provides us with the carbon emissions for the UK. For where I am based in the United Kingdom, two options for this:</p>
+<ul>
+<li><a href="https://www.home-assistant.io/integrations/co2signal/">co2signal</a>: offers a Home Assistant integration. This provides data for most of Europe, and many other parts of the world. The <a href="https://www.electricitymap.org/map">Electricity map</a> gives you a good place to check. You’ll need an account to use this, but have a free tier.</li>
+<li><a href="https://carbonintensity.org.uk/">Carbon Intensity API</a> this project is specifically for the UK, but offers a free API which gives carbon estimates. It also goes down a regional level if needed, although I didn’t use this for this work.</li>
+</ul>
+<p>Both these methodologies offer slightly different carbon emissions, as they have to calculate this themselves, however they are similar enough to not worry about. I ultimately decided to use the Carbon Intensity API. It offered a more extensive suite of APIs, and there was no limit on the calls made: I found that the co2signal would occasionally rate limit my calls resulting in an error. However, as Carbon Intensity offers no official integration, I instead decided to do the API calls instead.</p>
+<p>I came up with the following code for querying the API and bringing the data into Home Assistant. The code does a single API call every 1800 seconds (30 minutes). Template sensors are then used to extract the required values from the full JSON objet returned from the API call, which creates the sensors <code>sensor.carbon_intensity_value</code>, the gCO2e/kWh expressed as a numeric value, and <code>sensor.carbon_intensity_index</code>, a rating of the CO2 score, expressed from <code>very low</code>, <code>low</code>, <code>moderate</code> and <code>high</code> and <code>very high</code>. You can add this to your <code>sensors.yaml</code> within you Home Assistant configuration:</p>
+<pre class="yaml"><code> # Carbon Intensity for UK: Headline Figure
+  - platform: rest
+    name: Carbon Intensity Full
+    resource: https://api.carbonintensity.org.uk/intensity
+    json_attributes: data
+    scan_interval: 1800
+  - platform: template
+    sensors:
+      carbon_intensity_value:
+        friendly_name: &#39;Carbon Intensity Value&#39;
+        value_template: &#39;{{ state_attr(&quot;sensor.carbon_intensity_full&quot;, &quot;data&quot;)[0].intensity.actual}}&#39;
+        icon_template: &#39;mdi:molecule-co2&#39;
+        unit_of_measurement: &quot;CO2e/kWh&quot;
+      carbon_intensity_index:
+        friendly_name: &#39;Carbon Intensity Index&#39;
+        value_template: &#39;{{ state_attr(&quot;sensor.carbon_intensity_full&quot;, &quot;data&quot;)[0].intensity.index}}&#39;</code></pre>
+</div>
+<div id="the-hardware" class="section level2">
+<h2>The Hardware</h2>
+<p>For my light, I used <a href="https://esphome.io/">ESPHome</a>, which is one of the best Home Assistant integrations available for building Arduino based sensors. Instead of having to write the Arduino code yourself, you can instead focus on writing relatively simple YAML files which enable us to build some basic logic around.</p>
+<p>For the setup here, I only have three components:</p>
+<ol style="list-style-type: decimal">
+<li>The ESP8266 chip. I use a Wemo D1 mini here [link to AliExpress]</li>
+<li>The addressible LEDs: WS2812B are my go-to for any LEDs, but there is no real need for the addressible LEDs in this project [link to AliExpress]</li>
+<li>The Display [link to AliExpress]</li>
+<li>Some container: I had a light bulb drinking cup knocking around which seemed like the perfect object!</li>
+</ol>
+<p><img src="/images/circuit.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>The following code sets up the code. Note, that a lot of the code is for the display.</p>
+<pre class="yaml"><code>esphome:
+  name: carbonintensity
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret SSID
+  password: !secret SSIDPassword
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+
+light:
+  - platform: fastled_clockless
+    chipset: WS2812B
+    pin: D4
+    num_leds: 4
+    rgb_order: GRB
+    name: &quot;FastLED WS2811 Light&quot;
+    id: &quot;CarbonIntensity&quot;
+
+# Code for display
+sensor:
+  - platform: homeassistant
+    name: &quot;Grid CO2 Sensor From Home Assistant&quot;
+    entity_id: sensor.carbon_intensity_value
+    id: co2intensity
+    internal: True
+
+text_sensor:
+  - platform: homeassistant
+    name: &quot;CO2 Rating&quot;
+    entity_id: sensor.carbon_intensity_index
+    id: co2label
+    internal: True
+
+# Example configuration entry
+i2c:
+  sda: D1
+  scl: D2
+  scan: False
+  
+font:
+  - file: &quot;Roboto.ttf&quot;
+    id: my_font
+    size: 25
+    
+  - file: &quot;Roboto.ttf&quot;
+    id: my_font_2
+    size: 12
+
+display:
+  - platform: ssd1306_i2c
+    model: &quot;SH1106 128x64&quot;
+    reset_pin: D0
+    address: 0x3C
+    lambda: |-
+      // Print inside temperature (from homeassistant sensor)
+        it.printf(60, 30, id(my_font), TextAlign::BASELINE_RIGHT , &quot;%.0f&quot;, id(co2intensity).state);
+        it.printf(60, 30, id(my_font_2), TextAlign::BASELINE_LEFT , &quot;g CO2e kwh&quot;);
+        it.printf(60, 60, id(my_font_2), TextAlign::BASELINE_CENTER, &quot;Rating: %s&quot;, id(co2label).state.c_str());</code></pre>
+<p>You’ll note several things from the above: firstly, the device extracts the data from Home Assistant, and secondly, there is no logic controlling the colour of the light with ESPHome. It would probably be possible for the Wemo D1 to manage both of these, but the design ethos for ESPHome is that the majority of the thinking is done by the Home Assistant device itself.</p>
+</div>
+</div>
+<div id="automating-the-light-changes" class="section level1">
+<h1>Automating the Light changes</h1>
+<p>We have two options for making the light change colour</p>
+<p>I ultimately decided</p>
+<div id="changing-colour-based-on-value" class="section level2">
+<h2>Changing Colour based on value</h2>
+<p>If</p>
+<pre class="yaml"><code>alias: Carbon Intensity Bulb Update
+description: &#39;&#39;
+trigger:
+  - platform: state
+    entity_id: sensor.carbon_intensity_value
+condition: []
+action:
+  - service: light.turn_on
+    data_template:
+      entity_id: light.fastled_ws2811_light
+      hs_color: &gt;
+        {% if states(&#39;sensor.carbon_intensity_value&#39;) == &#39;unavailable&#39;%}[300,100]
+        {% elif states(&#39;sensor.carbon_intensity_value&#39;) | float &lt; 300 %}
+          [ {{ (-0.45 * states(&#39;sensor.carbon_intensity_value&#39;)|int + 135)|int }} , 100 ]
+        {%else%}[1,100] {% endif %}
+mode: single
+</code></pre>
+</div>
+<div id="change-colour-based-on-category" class="section level2">
+<h2>Change Colour Based on Category</h2>
+<p>As mentioned earlier, the Carbon Intensity API provides us with an index which scores the colour. We can instead use this to assign the colour. A benefit of this is that it makes it easier to set unique colours which stand out for the categories, but we will lose the smooth colour gradients across the groups. <strong>Ultimately this was my preferred route so it is what I used</strong>.</p>
+<p><img src="/post/2020-12-co2-light/co2-light_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre class="yaml"><code>service: light.turn_on
+data_template:
+  entity_id: light.fastled_ws2811_light
+  hs_color: &gt;
+    {% if states(&#39;sensor.carbon_intensity_index&#39;) == &#39;very low&#39; %}[120,100]
+    {% elif states(&#39;sensor.carbon_intensity_index&#39;) == &#39;low&#39; %}[80,100]
+    {% elif states(&#39;sensor.carbon_intensity_index&#39;) == &#39;moderate&#39; %}[50,100]
+    {% elif states(&#39;sensor.carbon_intensity_index&#39;) == &#39;high&#39; %}[20,100]
+    {% elif states(&#39;sensor.carbon_intensity_index&#39;) == &#39;very high&#39; %}[0,100]
+    {%else%}[300,100] {% endif %}
+</code></pre>
+</div>
+</div>
+<div id="potential-improvements" class="section level1">
+<h1>Potential Improvements</h1>
+<p>As shown in the apps,</p>
+</div>

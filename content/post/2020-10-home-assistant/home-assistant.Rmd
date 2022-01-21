@@ -1,0 +1,126 @@
+---
+title: "My Smart Home Setup"
+type: post
+author: Michael Harper
+date: '2020-10-01'
+slug: my-home-assistant
+categories: []
+tags: []
+description: ""
+header_image: "/images/linearGraphs.png"
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = F, fig.align = "center", out.width = "100%")
+
+```
+
+I have always had a fascination with technology, and there is no place more apparent than in the house. Ever since I was a teenager, a significant part of my limited disposable income has gone into buying different devices. I vividly remember buying my first radio controlled lights back in 2008, and felt amazing being able to turn lights on remotely! I also remember how my family never really understood why it got me so excited... something which continues to this day!
+
+Anyway, here we are, 12 years later, and the proud owner of my own house and actually earning a salary. It was therefore finally time to kit it out with all the smart tech I could! This blog gives an overview of my home setup, with some tips and tricks, and hopes to share useful ideas with any other smart home enthusiasts!
+
+# The Overall Setup
+
+Before going into detail, it is useful to give a quick overview of all the devices which I have in my house now, This list is by no means a finished list, and there are still things that I want to keep adding.
+
+```{r}
+
+
+```
+
+In this guide I reflect on three things:
+
+1. The Platform I used to set things up, Home Assistant
+2. The products I have linked to the platform
+3. Broader considerations around the platform
+
+----- 
+
+# The Platform: Home Assistant
+
+At the heart of my smart home is **Home Assistant**, an open source home automation platform which runs on a Raspberry Pi. The biggest appeal to me about this system was the ability to customise things to such a great extent, and the really wide number of integrations avaialable.
+
+In comparison to most other smart home hubs like Smart things, or Amazon Alexa, it does not store data in the cloud, but keeps it locally. So why is storing data locally a good thing? There are several reasons:
+
+- Reduce reliance on external servers: there are many examples of companies closing down their servers, re
+
+I must admit, the data being in the cloud is not that big of a put off for me for a security perspective. What was more annoying though is the reliance
+
+If you want to refer to a comprehensive guide for new users, I point no further than the Home Assistant [community post here](https://community.home-assistant.io/t/homeassistant-for-newcomers-what-it-is-what-is-hassio-hassos-hassbian-101-and-cookies/123004)
+
+https://www.home-assistant.io/integrations/
+
+## Setting Up
+
+This is not intended to be a full tutorial, but it is worth flagging that **setting up Home Assistant is really simple**. I run mine on a Raspberry Pi with an SD card, something which cost me about £40 in total. This setup should give great performance for the majority of users! See this [guide here](https://www.home-assistant.io/getting-started/). Once setup, the Raspberry Pi remains plugged into my home network and is accessible via a Web User Interface which makes it easy to control the tool. There is an Android and iOS app available as well.
+
+The basic setup is completely free, although I do pay the $5/month subscription towards [Nabu Casa](https://www.nabucasa.com/), the founder of Home Assistant. I'd say this is definitely worth it, as it makes it easy to access your Home Assistant remotely, enables easy integration with voice assistants like Google and Amazon. Finally, it is great to support the founders of this Open Source as I know the money is going towards improving the software.
+
+If you do go do the route of using Home Assistant, I would say that with great powers comes great responsibility. Yes, you can do lots of cool things with it, but it generally requires a bit more upkeep to get things up and running. Software needs updating. I personally find this process of seeing what has changed quite fun, but bear in mind the slight time commitment you create in setting up the system. I maybe spend an hour or so a week playing around with things.
+
+# Top Integrations
+
+
+## Lighting
+
+When it comes to lighting, you have two main options of how you control things; either you make the light switches smart and stick with normal bulbs, **or** you go for smart bulbs. There are benefits for each, but my advice would be to go down the smart bulb route, unless you have a specific light fitting which will not take a smart bulb.
+
+Having decided the overall technology route, it was down to choosing the bulbs themselves. There are lots of options out there for lighting, but I decided on using Philips Hue. These do happen to be the most expensive bulbs available, but this was done for several reasons:
+
+- I wanted to make sure that every light I have in my house could be controlled by a switch, and didn't require people to download an app or know a specific voice command. Many of the wifi bulbs available can only be controlled via a smart phone app. They offer great accessories, in particular [the remotes](https://www.amazon.co.uk/Philips-929001173761-Wireless-Installation-Free-Exclusive/dp/B0748KLR39/ref=asc_df_B0748KLR39/?tag=googshopuk-21&linkCode=df0&hvadid=231884719372&hvpos=&hvnetw=g&hvrand=4183682699480274354&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1007024&hvtargid=pla-355748854488&psc=1&th=1&psc=1). 
+- **The hub can work locally**: this means that even if the internet is down, the bulbs can still be controlled locally by the Philips Hue switches.
+- **They use Zigbee**: the bulbs run on their own Zigbee network. I have found this to be super reliable and I have never experienced any issues connecting to bulbs.
+
+- **They provide a great API**: There are loads of third party integrations which connect to Hue, and
+
+
+A disadvantage of the system would be the cost. If you want to buy colour bulbs off the shelf, you are looking at £40. However, there are sales frequently enough to bring the cost down. My golden rule tended to be to spend no more than £20 for colour bulbs, or £10 for white bulbs. Before you invest in Hue, **I would advise that you count up all the light fittings in your house**, because once you have done one room, it is very hard to resist not doing the rest of the house!
+
+As an added detail, I have actually removed all existing light switches from the house. This was a preventative measure to prevent people trying to turn the lights off at the switch!
+
+
+## Heating
+
+
+
+## Sensors
+
+## Zigbee Sensors
+
+
+
+## Building my own sensors with ESP8266
+
+One of my favourite things about Home Assistant is the ease of integration with [ESPHome](https://esphome.io/). This platform makes it easy to flash firmware onto ESP8266 chips, which are super cheap Wifi controllers that can be hooked up to an array of different sensors or other devices. , I have built:
+
+- Temperature, Humidity and Motion Sensor
+- **Electricity Power Meter**; Using a CT clamp and [this tutorial](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/interface-with-arduino), I built a power meter which provides me electricity readings every 15 seconds.
+- **Wifi Controlled Lights**: https://github.com/Aircoookie/WLED
+
+
+
+If you do want to play around with this, you will need basic skills in soldering to make the sensors. There is a great community around ESPHome, so there are lots of tutorials available on how to build things!In my house
+More will be shared on these specific setups in a future blog post!
+
+Having played around with a few different versions, my recommendation would the the Wemos D1 Mini. They are cheap, compact and offer a good number of pins for most applications. They are very easy to get hold of on [AliExpress](https://www.aliexpress.com/item/32635160765.html?spm=a2g0o.productlist.0.0.563c249cLaOns4&algo_pvid=2a0096c0-2bff-47df-be8a-502c45034e93&algo_expid=2a0096c0-2bff-47df-be8a-502c45034e93-1&btsid=0b0a119a16014227139773196ec2a2&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_). 
+
+# Consider the End User
+
+It is worth considering that in most smart homes, there tends to be one person who is **VERY** enthusiastic about the smart technology, while others are passively dragged along by the obsession. In my case, this would be my wife. Don't get me wrong, she likes aspects of the smart home, but definitely doesn't want to be opening an app on her phone any time she wants to do anything in the house.
+
+Taking this a step further, it is also important to think about people who don't live in your house. These people have to go a step further, as it is nice having visitors at a house without having to give them a brief tutorial of how to turn on the lights.  I think good smart solutions should fit as much with the natural thinking of people without requiring too much explanation. There should be a fallback
+
+# Check products before buying to see if they have a good API
+
+
+
+
+
+
+
+
+# Conclusion
+
+As I was writing this, I kept thinking to myself that this in itself could probably be the source of several more blog posts. Let me know if there are any aspects you'd like to hear more about!
