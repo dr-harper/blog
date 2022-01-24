@@ -162,6 +162,13 @@ weight = 3
 identifier = ""
 url = "/about/"
 
+[[Languages.en.menu.main]]
+name = "Showcase"
+pre = "<i class='fa fa-user'></i>&nbsp"
+weight = 3
+identifier = ""
+url = "/showcase/"
+
 [[Languages.en.menu.footer]] # add  links to the bottom right corner.
 name = "Hosted on Github"
 identifier = "github"
