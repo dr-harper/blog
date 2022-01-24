@@ -1,18 +1,21 @@
 ---
-date: "2016-12-05T14:41:00+01:00"
-title: "Showcasea"
-author: "author"
+date: "2021-12-05T14:41:00+01:00"
+title: "About"
+author: "Michael Harper"
 draft: false
 type: "page"
 ---
 
+
 ```{r setup, include = F}
+
 knitr::opts_chunk$set(echo = FALSE)
 options(knitr.graphics.error = FALSE)
+
 ```
 
 ```{r}
-jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/uploadedLogos/177399.jpg", title = "Data Scientist", company = "SSE Enterprise", link = "mylink"){
+jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/uploadedLogos/177399.jpg", title = "Data Scientist", company = "SSE Enterprise", dates = "", location = ""){
   
   knitr::asis_output(glue::glue('
 <!-- 2. Dotty Cell Borders -->
@@ -24,25 +27,24 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
 
 <!-- 3. Styling -->
 <table style=" 
-    background-color: #fff8f8;
+    background-color: #f9f9f9;
     text-align: left;
-    color: #484A47;
     font-size: 14px;
     line-height: 21px;
+    border:hidden;
     padding: 10px 40px;">
 <tbody>
-
 <tr>
-    <td rowspan="6" style="width:30%; padding-right:20px; vertical-align: middle;"><a href="Logo {{company}}"><img src="{{logo}}" width="170px"></a></td>
+    <td rowspan="6" style="width:30%; padding-right:20px; vertical-align: middle; border:hidden;"><img src="{{logo}}" width="170px"></td>
 
 <!-- 5. The Contact Details -->
-    <td colspan="5" style="font-size: 22px; font-weight: bold">{{title}}</td>
+    <td colspan="5" style="font-size: 22px; font-weight: bold border:hidden;">{{title}}</td>
   </tr>
   <tr>
-    <td colspan="5" style="" >{{company}}</td>
+    <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-business-time" style="color:#616A6B;"></i> {{dates}}</td>
   </tr>
   <tr>
-    <td colspan="5" style=""><a href="{{link}}" style="color: #8FC0A9; text-decoration: none;">{{link}}</a></td>
+    <td colspan="5" style="padding-bottom: 10px"><i class="fa fa-map-marker" aria-hidden="true" style="color:#616A6B;"></i> {{location}}</td>
   </tr>
 </table>', , .open = "{{", .close = "}}")
   )
@@ -50,23 +52,31 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
 }
 ```
 
-# OVO Energy
+I am a data scientist with a PhD in geospatial renewable energy modelling, with professional experience analysing electricity consumption data. I have a keen personal interest in smart home technology, having built a range of sensors to collect data and automate tasks throughout my home. I am a creative thinker who is proficient at writing efficient code to solve technical challenges and using data visualisation to communicate results, and champion the use of human centred design approaches to ensure projects meet the needs of people.
+
+
+## OVO Energy
 
 ```{r}
-jobTitle(logo = "/images/ovo_logo.svg",
+jobTitle(logo = "/images/OVOLogo.png",
          title = "Data Scientist",
          company = "OVO Energy",
-         link = "https://www.ovoenergy.com/")
-
+         dates = "May 2021 - Present",
+         location = "London, UK")
 ```
-
-
 
 ## SSE Enterprise
 
 ```{r}
-jobTitle(title = "Data Scientist",
-         company = "SSE Enterprise")
+jobTitle(logo = "/images/SSEEnterprise.png",
+         title = "Data Scientist",
+         company = "SSE Enterprise",
+         dates = "Sept 2020 - May 2021",
+         location = "Havant, UK")
+```
+
+```{r heatingOptimiser, fig.cap = "Much of my work at SSE was spent optmising heating schedules around occuopancy data."}
+knitr::include_graphics("/images/SSEHeatingOptimiser.PNG")
 ```
 
 
@@ -78,22 +88,21 @@ jobTitle(title = "Data Scientist",
 - Worked with data engineers to develop guidance on establishing data pipelines for migrating existing datasets into the new smart buildings platform. Key considerations were defining data quality standards and specifying a tagging framework that could be used to provide metadata for commercial smart buildings.
 - Actively flagged GDPR considerations around potential analytics and led the Data Protection Impact Assessment to ensure mitigations were in place.
 
-
-# Flowminder
-
+## Flowminder
 
 ```{r}
-jobTitle(logo = "https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2021/07/Flowminder-Logo.png",
-         title = "Implemnentation Analyst",
+jobTitle(logo = "/images/FlowminderLogo.png",
+         title = "Implementation Analyst",
          company = "Flowminder",
-         link = "www.flowminder.org")
+         dates = "Sept 2018 - Sept 2020",
+         location = "Southampton, UK")
 ```
-
-
 
 ```{r}
 knitr::include_graphics("/images/mobility_plots.png")
 ```
+
+**Key Achievements:**
 
 - Analysed Call Detail Records (CDRs) in countries including [Haiti](https://www.flowminder.org/media/wmjpg1li/haiti_digicel_dtm_slide_report_june2020_eng.pdf) to assess changes in mobility patterns caused by COVID-19 lockdown measures in countries, requiring timely data analytics from large datasets to produce insight to support government decision-makers. 
 - Developed high-quality R and SQL code to implement new functionality and improvements to Bayesian modelling approaches.
@@ -106,10 +115,10 @@ knitr::include_graphics("/images/mobility_plots.png")
 # University of Southampton
 
 ```{r}
-jobTitle(logo = "https://www.southampton.ac.uk/~ms18g18/Sotonlogogrey.png",
+jobTitle(logo = "/images/UoSLogo.png",
          title = "Research Data Analyst",
          company = "University of Southampton",
-         link = "https://energy.soton.ac.uk/")
+         dates = "Jan 2018 - Sept 2018")
 ```
 
 - Involved with the Solent Achieving Value from Efficiency (SAVE) project, leading the redesign of the existing code. Developed an R package and documentation for the use of the project, and refactored code to ensure better scalability.
@@ -120,6 +129,11 @@ jobTitle(logo = "https://www.southampton.ac.uk/~ms18g18/Sotonlogogrey.png",
 - Developed a web tool to be used by colleagues to analyse the dataset.
 
 # PhD 
+
+```{r}
+knitr::include_graphics("/images/windMap.jpeg")
+```
+
 
 - Data-driven PhD research has focussed on renewable energy modelling.
 - R used extensively within project for data mining, processing, geospatial modelling, statistical analysis and presenting results.

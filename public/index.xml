@@ -11,6 +11,25 @@
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
     <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About</title>
+      <link>https://mikeyharper.uk/about/</link>
+      <pubDate>Sun, 05 Dec 2021 14:41:00 +0100</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>https://mikeyharper.uk/about/</guid>
+      <description>I am a data scientist with a PhD in geospatial renewable energy modelling, with professional experience analysing electricity consumption data. I have a keen personal interest in smart home technology, having built a range of sensors to collect data and automate tasks throughout my home. I am a creative thinker who is proficient at writing efficient code to solve technical challenges and using data visualisation to communicate results, and champion the use of human centred design approaches to ensure projects meet the needs of people.</description>
+    </item>
+    
+    <item>
+      <title>My Work</title>
+      <link>https://mikeyharper.uk/showcase/</link>
+      <pubDate>Sun, 05 Dec 2021 14:41:00 +0100</pubDate>
+      <author>m.harper@outlook.com (Michael Harper)</author>
+      <guid>https://mikeyharper.uk/showcase/</guid>
+      <description>This page provides a list as part of my extended CV.
+OVO Energytd {border: 1px dotted black;}Data ScientistOVO EnergyMay 2021 - Presenttd {border: 1px dotted black;}Data ScientistSSE EnterpriseSept 2020 - May 2021Key Achievements:</description>
+    </item>
+    
+    <item>
       <title>4 Lessons from the smart home</title>
       <link>https://mikeyharper.uk/lessons-from-smart-home/</link>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
@@ -203,25 +222,6 @@ What is the problem?Wind energy provides a key opportunity for the UK governmen
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>https://mikeyharper.uk/cycling-lands-end-to-john-o-groats/</guid>
       <description>Back in May 2016, a friend and I undertook one of the challenges which we had wanted to do for years and cycled the length of the United Kingdom from Land’s End to John O’ Groats. It was a fantastic experience and something I would love to do again one day. This blog provides a summary of our trip and aims to aid anyone who may be planning their own trip.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mikeyharper.uk/about/</link>
-      <pubDate>Mon, 05 Dec 2016 14:41:00 +0100</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>https://mikeyharper.uk/about/</guid>
-      <description>About Me I am a data scientist with a PhD in geospatial renewable energy modelling, with professional experience analysing electricity consumption data. I have a keen personal interest in smart home technology, having built a range of sensors to collect data and automate tasks throughout my home. I am a creative thinker who is proficient at writing efficient code to solve technical challenges and using data visualisation to communicate results, and champion the use of human centred design approaches to ensure projects meet the needs of people.</description>
-    </item>
-    
-    <item>
-      <title>Showcasea</title>
-      <link>https://mikeyharper.uk/showcase/</link>
-      <pubDate>Mon, 05 Dec 2016 14:41:00 +0100</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>https://mikeyharper.uk/showcase/</guid>
-      <description>OVO Energytd {border: 1px dotted black;}Data ScientistOVO Energyhttps://www.ovoenergy.com/SSE Enterprisetd {border: 1px dotted black;}Data ScientistSSE EnterprisemylinkKey Achievements:
-Led the data science development of a new smart buildings platform, providing strategic guidance and a range of proof-of-concept models including occupancy classification, well-being monitoring and predictive maintenance models.</description>
     </item>
     
   </channel>

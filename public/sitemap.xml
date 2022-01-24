@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikeyharper.uk/about/</loc>
+    <lastmod>2021-12-05T14:41:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mikeyharper.uk/showcase/</loc>
+    <lastmod>2021-12-05T14:41:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikeyharper.uk/lessons-from-smart-home/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url>
@@ -230,16 +240,6 @@
   <url>
     <loc>https://mikeyharper.uk/topics/personal/</loc>
     <lastmod>2016-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mikeyharper.uk/about/</loc>
-    <lastmod>2016-12-05T14:41:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mikeyharper.uk/showcase/</loc>
-    <lastmod>2016-12-05T14:41:00+01:00</lastmod>
   </url>
   
 </urlset>
