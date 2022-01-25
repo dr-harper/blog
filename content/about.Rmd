@@ -1,16 +1,20 @@
 ---
 date: "2021-12-05T14:41:00+01:00"
-title: "About"
+title: "About Me"
 author: "Michael Harper"
 draft: false
 type: "page"
 ---
 
+<!--- <span class="label label-primary">R</span> --->
 
 ```{r setup, include = F}
 
 knitr::opts_chunk$set(echo = FALSE)
-options(knitr.graphics.error = FALSE)
+options(knitr.graphics.error = FALSE,
+        fig.align="centre",
+        fig.width = "70%",
+        out.width = "70%")
 
 ```
 
@@ -18,6 +22,8 @@ options(knitr.graphics.error = FALSE)
 jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/uploadedLogos/177399.jpg", title = "Data Scientist", company = "SSE Enterprise", dates = "", location = ""){
   
   knitr::asis_output(glue::glue('
+  <h2> {{company}} </h2>
+
 <!-- 2. Dotty Cell Borders -->
 <style>
   td {
@@ -44,18 +50,22 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
     <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-business-time" style="color:#616A6B;"></i> {{dates}}</td>
   </tr>
   <tr>
-    <td colspan="5" style="padding-bottom: 10px"><i class="fa fa-map-marker" aria-hidden="true" style="color:#616A6B;"></i> {{location}}</td>
+    <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-location" style="color:#616A6B;"></i> {{location}}</td>
   </tr>
+  <tr>
 </table>', , .open = "{{", .close = "}}")
   )
   
 }
 ```
 
-I am a data scientist with a PhD in geospatial renewable energy modelling, with professional experience analysing electricity consumption data. I have a keen personal interest in smart home technology, having built a range of sensors to collect data and automate tasks throughout my home. I am a creative thinker who is proficient at writing efficient code to solve technical challenges and using data visualisation to communicate results, and champion the use of human centred design approaches to ensure projects meet the needs of people.
+I have expertise in smart technology and energy, and passionate to use data to drive decarbonisation. I enjoy translating technical data science concepts into digestible information that can assist people to make the right decisions and save energy.
+
+-------------------
+
+## Professional Experience
 
 
-## OVO Energy
 
 ```{r}
 jobTitle(logo = "/images/OVOLogo.png",
@@ -64,8 +74,6 @@ jobTitle(logo = "/images/OVOLogo.png",
          dates = "May 2021 - Present",
          location = "London, UK")
 ```
-
-## SSE Enterprise
 
 ```{r}
 jobTitle(logo = "/images/SSEEnterprise.png",
@@ -79,16 +87,14 @@ jobTitle(logo = "/images/SSEEnterprise.png",
 knitr::include_graphics("/images/SSEHeatingOptimiser.PNG")
 ```
 
-
 **Key Achievements:**
 
-- Led the data science development of a new smart buildings platform, providing strategic guidance and a range of proof-of-concept models including occupancy classification, well-being monitoring and predictive maintenance models.
-- Implemented a Mixed-Integer Linear Programming optimising for Combined Heat and Power plant, extending a previously developed model to produce schedules which can be implemented in plant control systems. The project is expected to save £40,000 annually for the test site, with estimates suggesting £1 million can be saved across the full portfolio.
-- Developed a heating optimisation model using TensorFlow which calculates the optimal heating profile for buildings and identifies potential energy wastage due to heating outside of occupied periods. Trial sites have shown a potential 20% reduction in energy demand.
+- Led the data science development of a new smart buildings platform.
+- Developed a suite of models including occupancy classification, well-being monitoring and energy saving.
+- Implemented a Mixed-Integer Linear Programming optimising for Combined Heat and Power plant. Estimated savings suggested £1 million can be saved across the full portfolio.
+- Developed a heating optimisation model which calculates the optimal heating profile for buildings and identifies potential energy wastage due to heating outside of occupied periods. Trial sites demonstrated a 20% reduction in energy demand.
 - Worked with data engineers to develop guidance on establishing data pipelines for migrating existing datasets into the new smart buildings platform. Key considerations were defining data quality standards and specifying a tagging framework that could be used to provide metadata for commercial smart buildings.
-- Actively flagged GDPR considerations around potential analytics and led the Data Protection Impact Assessment to ensure mitigations were in place.
-
-## Flowminder
+- Responsible for managing GDPR considerations around potential analytics and led the Data Protection Impact Assessment to ensure mitigation was in place.
 
 ```{r}
 jobTitle(logo = "/images/FlowminderLogo.png",
@@ -104,21 +110,18 @@ knitr::include_graphics("/images/mobility_plots.png")
 
 **Key Achievements:**
 
-- Analysed Call Detail Records (CDRs) in countries including [Haiti](https://www.flowminder.org/media/wmjpg1li/haiti_digicel_dtm_slide_report_june2020_eng.pdf) to assess changes in mobility patterns caused by COVID-19 lockdown measures in countries, requiring timely data analytics from large datasets to produce insight to support government decision-makers. 
-- Developed high-quality R and SQL code to implement new functionality and improvements to Bayesian modelling approaches.
-- Wrote and deployed several cloud based web apps for geospatial visualisation and analysis, which were used to engage witt non-technical stakeholders.
-- Defined data visualisation standards and developed technical guidance on how to implement these across our projects.
-- Used Shiny to develop data visualisations and interactive dashboards tools to communicate the results of hierarchical Bayesian statistical models to non-technical decision makers.
-- Independently led the development of training sessions to improve organisational coding procedure, including the use of version control and code documentation.
+- Analysed Call Detail Records (CDRs) in countries including [Haiti](https://www.flowminder.org/media/wmjpg1li/haiti_digicel_dtm_slide_report_june2020_eng.pdf) to assess changes in mobility patterns caused by COVID-19 lockdown measures in countries.
+- Developed cloud based web apps for geospatial visualisation and analysis, which were used to engage witt non-technical stakeholders.
+- Led the development of training sessions to improve organisational coding procedure, including the use of version control and code documentation.
 - My biggest learning from this role was the importance of considering the needs of different stakeholders when transitioning research concepts into decision-making tools.
 
-# University of Southampton
 
 ```{r}
 jobTitle(logo = "/images/UoSLogo.png",
          title = "Research Data Analyst",
          company = "University of Southampton",
-         dates = "Jan 2018 - Sept 2018")
+         dates = "Jan 2018 - Sept 2018",
+         location = "Southampton")
 ```
 
 - Involved with the Solent Achieving Value from Efficiency (SAVE) project, leading the redesign of the existing code. Developed an R package and documentation for the use of the project, and refactored code to ensure better scalability.
@@ -128,12 +131,19 @@ jobTitle(logo = "/images/UoSLogo.png",
 - Validated and processed the survey results to ensure they were in a suitable format for further analysis by colleagues.
 - Developed a web tool to be used by colleagues to analyse the dataset.
 
-# PhD 
+# Education
+
+```{r}
+jobTitle(logo = "/images/UoSLogo.png",
+         title = "PhD, Renewable Energy Modelling",
+         company = "University of Southampton",
+         dates = "Sept 2014 - Jan 2017",
+         location = "Southampton")
+```
 
 ```{r}
 knitr::include_graphics("/images/windMap.jpeg")
 ```
-
 
 - Data-driven PhD research has focussed on renewable energy modelling.
 - R used extensively within project for data mining, processing, geospatial modelling, statistical analysis and presenting results.
@@ -141,3 +151,9 @@ knitr::include_graphics("/images/windMap.jpeg")
 - Multi-criteria decision analysis tool developed for locating onshore wind turbine considering economic, social and environmental parameters. Findings demonstrate the social limitations to onshore wind turbine development and highlights the impact of these restrictions on further development potential.
 - Research presented at two academic conferences in 2017 and published in two journals.
 
+```{r}
+jobTitle(logo = "/images/UoSLogo.png",
+         title = "MEng, Civil Engineering",
+         company = "University of Southampton",
+         dates = "2010 - 2014")
+```
