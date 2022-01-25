@@ -4,6 +4,7 @@ title: "About Me"
 author: "Michael Harper"
 draft: false
 type: "page"
+showsidebar: false
 ---
 
 <!--- <span class="label label-primary">R</span> --->
@@ -49,9 +50,6 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
   </tr>
   <tr>
     <td colspan="2" style="background-color: #f9f9f9; border:hidden;"> <i class="fa fa-calendar" style="color:#616A6B;"></i> {{dates}}</td>
-  </tr>
-  <tr>
-    <td colspan="2" style="background-color: #f9f9f9; border:hidden;"> <i class="fa fa-map-pin" style="color:#616A6B;"></i> {{location}}</td>
   </tr>
   <tr>
 </table>', , .open = "{{", .close = "}}")

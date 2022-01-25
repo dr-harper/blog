@@ -4,7 +4,7 @@ baseurl = "https://mikeyharper.uk/"
 # Remark if you want to disable multilingual support.
 DefaultContentLanguage = "en"
 
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"] 
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "(^|/)renv$", "renv\\.lock$"] 
 
 # If you want all of the languages to be put below their respective language code,
 # enable DefaultContentLanguageInSubdir = true. Without enabling it english content
@@ -94,7 +94,7 @@ brand = "Michael Harper" # brand image alt text.
 topline = "few words about your site"
 
 customJS = []
-customCSS = ["/css/style_custom.css"]
+customCSS = ["/css/style.css"]
 
 # Text for the top menu link, which goes to the root URL for the site.
 # Default (if omitted) is "Home".
@@ -174,3 +174,8 @@ languageCode = "en"
 weight = 1
 copyright = "(c) 2020 Copyright Michael Harper"
 title = "Michael Harper" # Site title
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
