@@ -11,12 +11,13 @@
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
     <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About</title>
+      <title>About Me</title>
       <link>https://mikeyharper.uk/about/</link>
       <pubDate>Sun, 05 Dec 2021 14:41:00 +0100</pubDate>
       <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>https://mikeyharper.uk/about/</guid>
-      <description>I am a data scientist with a PhD in geospatial renewable energy modelling, with professional experience analysing electricity consumption data. I have a keen personal interest in smart home technology, having built a range of sensors to collect data and automate tasks throughout my home. I am a creative thinker who is proficient at writing efficient code to solve technical challenges and using data visualisation to communicate results, and champion the use of human centred design approaches to ensure projects meet the needs of people.</description>
+      <description>R ---I have expertise in smart technology and energy, and passionate to use data to drive decarbonisation. I enjoy translating technical data science concepts into digestible information that can assist people to make the right decisions and save energy.
+Professional ExperienceOVO Energytd {border: 1px dotted black;}Data Scientist May 2021 - Present London, UKSSE Enterprisetd {border: 1px dotted black;}Data Scientist Sept 2020 - May 2021 Havant, UKFigure 1: Much of my work at SSE was spent optmising heating schedules around occuopancy data.</description>
     </item>
     
     <item>

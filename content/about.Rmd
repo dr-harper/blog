@@ -83,7 +83,7 @@ jobTitle(logo = "/images/SSEEnterprise.png",
          location = "Havant, UK")
 ```
 
-```{r heatingOptimiser, fig.cap = "Much of my work at SSE was spent optmising heating schedules around occuopancy data."}
+```{r heatingOptimiser, fig.cap = "Much of my work at SSE was spent optmising heating schedules around occuopancy data.", out.width="70%"}
 knitr::include_graphics("/images/SSEHeatingOptimiser.PNG")
 ```
 
@@ -149,7 +149,7 @@ knitr::include_graphics("/images/windMap.jpeg")
 - R used extensively within project for data mining, processing, geospatial modelling, statistical analysis and presenting results.
 - Developed statistical analysis tools to assess the likelihood of a wind turbine project receiving planning permission.
 - Multi-criteria decision analysis tool developed for locating onshore wind turbine considering economic, social and environmental parameters. Findings demonstrate the social limitations to onshore wind turbine development and highlights the impact of these restrictions on further development potential.
-- Research presented at two academic conferences in 2017 and published in two journals.
+- Research presented at two academic conferences in 2017 and published in two journals, both are available open access.
 
 ```{r}
 jobTitle(logo = "/images/UoSLogo.png",
