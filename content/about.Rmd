@@ -10,11 +10,11 @@ type: "page"
 
 ```{r setup, include = F}
 
-knitr::opts_chunk$set(echo = FALSE)
-options(knitr.graphics.error = FALSE,
-        fig.align="centre",
-        fig.width = "70%",
+knitr::opts_chunk$set(echo = FALSE,
+        fig.align="center",
         out.width = "70%")
+
+options(knitr.graphics.error = FALSE)
 
 ```
 
@@ -83,7 +83,7 @@ jobTitle(logo = "/images/SSEEnterprise.png",
          location = "Havant, UK")
 ```
 
-```{r heatingOptimiser, fig.cap = "Much of my work at SSE was spent optmising heating schedules around occuopancy data.", out.width="70%"}
+```{r heatingOptimiser, fig.cap = "Much of my work at SSE was spent optmising heating schedules around occuopancy data."}
 knitr::include_graphics("/images/SSEHeatingOptimiser.PNG")
 ```
 
