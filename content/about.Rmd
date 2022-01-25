@@ -22,8 +22,6 @@ options(knitr.graphics.error = FALSE)
 jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/uploadedLogos/177399.jpg", title = "Data Scientist", company = "SSE Enterprise", dates = "", location = ""){
   
   knitr::asis_output(glue::glue('
-  <h2> {{company}} </h2>
-
 <!-- 2. Dotty Cell Borders -->
 <style>
   td {
@@ -47,15 +45,18 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
     <td colspan="5" style="font-size: 22px; font-weight: bold border:hidden;">{{title}}</td>
   </tr>
   <tr>
-    <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-business-time" style="color:#616A6B;"></i> {{dates}}</td>
+    <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-business-time" style="color:#616A6B;"></i>{{company}}</td>
   </tr>
   <tr>
-    <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-location" style="color:#616A6B;"></i> {{location}}</td>
+    <td colspan="2" style="background-color: #f9f9f9; border:hidden;"> <i class="fa fa-calendar" style="color:#616A6B;"></i> {{dates}}</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="background-color: #f9f9f9; border:hidden;"> <i class="fa fa-map-pin" style="color:#616A6B;"></i> {{location}}</td>
   </tr>
   <tr>
 </table>', , .open = "{{", .close = "}}")
   )
-  
+
 }
 ```
 
@@ -65,8 +66,6 @@ I have expertise in smart technology and energy, and passionate to use data to d
 
 ## Professional Experience
 
-
-
 ```{r}
 jobTitle(logo = "/images/OVOLogo.png",
          title = "Data Scientist",
@@ -74,6 +73,9 @@ jobTitle(logo = "/images/OVOLogo.png",
          dates = "May 2021 - Present",
          location = "London, UK")
 ```
+
+
+------------------
 
 ```{r}
 jobTitle(logo = "/images/SSEEnterprise.png",
@@ -83,18 +85,19 @@ jobTitle(logo = "/images/SSEEnterprise.png",
          location = "Havant, UK")
 ```
 
-```{r heatingOptimiser, fig.cap = "Much of my work at SSE was spent optmising heating schedules around occuopancy data."}
-knitr::include_graphics("/images/SSEHeatingOptimiser.PNG")
-```
-
 **Key Achievements:**
 
 - Led the data science development of a new smart buildings platform.
-- Developed a suite of models including occupancy classification, well-being monitoring and energy saving.
+- Developed a suite of models including occupancy classification, well-being monitoring and heating optimisation. A 20% energy saving was achieved on trial buildings.
 - Implemented a Mixed-Integer Linear Programming optimising for Combined Heat and Power plant. Estimated savings suggested £1 million can be saved across the full portfolio.
-- Developed a heating optimisation model which calculates the optimal heating profile for buildings and identifies potential energy wastage due to heating outside of occupied periods. Trial sites demonstrated a 20% reduction in energy demand.
-- Worked with data engineers to develop guidance on establishing data pipelines for migrating existing datasets into the new smart buildings platform. Key considerations were defining data quality standards and specifying a tagging framework that could be used to provide metadata for commercial smart buildings.
+- Worked closely with data engineers to develop data pipelines for migrating existing datasets into the new smart buildings platform.
 - Responsible for managing GDPR considerations around potential analytics and led the Data Protection Impact Assessment to ensure mitigation was in place.
+
+```{r heatingOptimiser}
+knitr::include_graphics("/images/SSEHeatingOptimiser.PNG")
+```
+
+------------------
 
 ```{r}
 jobTitle(logo = "/images/FlowminderLogo.png",
@@ -111,9 +114,11 @@ knitr::include_graphics("/images/mobility_plots.png")
 **Key Achievements:**
 
 - Analysed Call Detail Records (CDRs) in countries including [Haiti](https://www.flowminder.org/media/wmjpg1li/haiti_digicel_dtm_slide_report_june2020_eng.pdf) to assess changes in mobility patterns caused by COVID-19 lockdown measures in countries.
-- Developed cloud based web apps for geospatial visualisation and analysis, which were used to engage witt non-technical stakeholders.
+- Developed web applications for geospatial visualisation and analysis, which were used to engage with non-technical stakeholders.
 - Led the development of training sessions to improve organisational coding procedure, including the use of version control and code documentation.
 - My biggest learning from this role was the importance of considering the needs of different stakeholders when transitioning research concepts into decision-making tools.
+
+------------------
 
 
 ```{r}
