@@ -1,6 +1,6 @@
 ---
-date: "2021-12-05T14:41:00+01:00"
-title: "About Me"
+date: "2022-01-01"
+title: " "
 author: "Michael Harper"
 draft: false
 type: "page"
@@ -10,8 +10,89 @@ showsidebar: false
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<!--- <span class="label label-primary">R</span> --->
-<p>I have expertise in smart technology and energy, and passionate to use data to drive decarbonisation. I enjoy translating technical data science concepts into digestible information that can assist people to make the right decisions and save energy.</p>
+<!--- Custom CSS --->
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal columns */
+.column {
+  flex: 2;
+  padding: 20px;
+}
+
+/* Create narrower equal columns */
+.columnThird {
+  flex: 1;
+  padding: 20px;
+}
+
+.row2 {
+  display: flex;
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+.customBlock {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: thin;
+  background-image: url("/images/light-bulb.png");
+  border-color: #F9BD3C;
+}
+
+</style>
+<center>
+<h3>
+Hi, I’m Michael 👋
+</h3>
+</center>
+<div class="row">
+<div class="columnThird">
+<center>
+<img src="/images/profilePic.jpg" alt="" style="border-radius: 50%; align:centre;">
+</center>
+<p style="font-size:30px; text-align: center">
+<a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i></a>
+<a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i></a>
+<a href="https://www.linkedin.com/in/dr-harper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i></a>
+<a href="https://twitter.com/@DrMichaelHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i></a>
+<a href="https://scholar.google.com/citations?user=qTkymQYAAAAJ&hl=en"><i class="fa fa-graduation-cap" style="color:#0084b4;"></i></a>
+</p>
+</div>
+<div class="column">
+<p style="font-size:25px">
+<p>I am a data scientist working in the energy sector. It’s my mission to help shift our energy reliance from fossil fuels to 100% renewable energy. Reaching such a target will require massive shifts in the way that both technology and people interact with the energy system.</p>
+<p>I love working on data science <strong>innovation projects</strong>. Some times they work, many times they fail, but the experience learned is always useful and helps steer the course to a beter solution.</p>
+</p>
+<p><strong>My top skills:</strong></p>
+<p><span class="label label-primary">R</span>
+<span class="label label-primary">Python</span>
+<span class="label label-primary">Google Cloud Platform</span>
+<span class="label label-primary">GIS</span>
+<span class="label label-primary">Data Visualisation</span></p>
+</div>
+</div>
+<hr />
+<div class="customBlock">
+<p><strong>Looking for data science support?</strong></p>
+<p>I do a limited amount of consulting, but if you have a data science project, feel free to drop me a line and we can discuss.</p>
+</div>
 <hr />
 <div id="professional-experience" class="section level2">
 <h2>Professional Experience</h2>
@@ -88,6 +169,8 @@ Data Scientist
 </tr>
 <tr>
 </table>
+<div class="row">
+<div class="column">
 <p><strong>Key Achievements:</strong></p>
 <ul>
 <li>Led the data science development of a new smart buildings platform.</li>
@@ -96,7 +179,11 @@ Data Scientist
 <li>Worked closely with data engineers to develop data pipelines for migrating existing datasets into the new smart buildings platform.</li>
 <li>Responsible for managing GDPR considerations around potential analytics and led the Data Protection Impact Assessment to ensure mitigation was in place.</li>
 </ul>
+</div>
+<div class="column">
 <p><img src="/images/SSEHeatingOptimiser.PNG" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
 <hr />
 <!-- 2. Dotty Cell Borders -->
 <style>
@@ -134,7 +221,8 @@ Implementation Analyst
 </tr>
 <tr>
 </table>
-<p><img src="/images/mobility_plots.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="row">
+<div class="column">
 <p><strong>Key Achievements:</strong></p>
 <ul>
 <li>Analysed Call Detail Records (CDRs) in countries including <a href="https://www.flowminder.org/media/wmjpg1li/haiti_digicel_dtm_slide_report_june2020_eng.pdf">Haiti</a> to assess changes in mobility patterns caused by COVID-19 lockdown measures in countries.</li>
@@ -142,6 +230,11 @@ Implementation Analyst
 <li>Led the development of training sessions to improve organisational coding procedure, including the use of version control and code documentation.</li>
 <li>My biggest learning from this role was the importance of considering the needs of different stakeholders when transitioning research concepts into decision-making tools.</li>
 </ul>
+</div>
+<div class="column">
+<p><img src="/images/mobility_plots.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
 <hr />
 <!-- 2. Dotty Cell Borders -->
 <style>
@@ -226,7 +319,9 @@ PhD, Renewable Energy Modelling
 </tr>
 <tr>
 </table>
-<p><img src="/images/windMap.jpeg" width="70%" style="display: block; margin: auto;" /></p>
+<div class="row">
+<div class="column">
+<p><strong>Key Achievements:</strong></p>
 <ul>
 <li>Data-driven PhD research has focussed on renewable energy modelling.</li>
 <li>R used extensively within project for data mining, processing, geospatial modelling, statistical analysis and presenting results.</li>
@@ -234,6 +329,11 @@ PhD, Renewable Energy Modelling
 <li>Multi-criteria decision analysis tool developed for locating onshore wind turbine considering economic, social and environmental parameters. Findings demonstrate the social limitations to onshore wind turbine development and highlights the impact of these restrictions on further development potential.</li>
 <li>Research presented at two academic conferences in 2017 and published in two journals, both are available open access.</li>
 </ul>
+</div>
+<div class="column">
+<p><img src="/images/windMap.jpeg" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
 <!-- 2. Dotty Cell Borders -->
 <style>
   td {

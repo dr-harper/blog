@@ -18,7 +18,7 @@
   
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>About Me  &middot; Michael Harper</title>
+  <title>   &middot; Michael Harper</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -30,7 +30,7 @@
 <meta name="keywords" content="">
 
 
-<meta property="og:title" content="About Me  &middot; Michael Harper ">
+<meta property="og:title" content="   &middot; Michael Harper ">
 <meta property="og:site_name" content="Michael Harper"/>
 <meta property="og:url" content="https://mikeyharper.uk/about/" />
 <meta property="og:locale" content="en">
@@ -38,8 +38,8 @@
 
 <meta property="og:type" content="article" />
 <meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2021-12-05T14:41:00&#43;01:00" />
-<meta property="og:article:modified_time" content="2021-12-05T14:41:00&#43;01:00" />
+<meta property="og:article:published_time" content="2022-01-01T00:00:00Z" />
+<meta property="og:article:modified_time" content="2022-01-01T00:00:00Z" />
 
 
 
@@ -49,7 +49,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@@DrMichaelHarper" />
 <meta name="twitter:creator" content="@@DrMichaelHarper" />
-<meta name="twitter:title" content="About Me" />
+<meta name="twitter:title" content=" " />
 <meta name="twitter:description" content="" />
 <meta name="twitter:url" content="https://mikeyharper.uk/about/" />
 <meta name="twitter:domain" content="https://mikeyharper.uk/">
@@ -138,10 +138,9 @@
 
   <div class="container">
   <div class="row">
-    Test2
-    <div class="col-sm-9">
+    <div class="col-sm-12">
       <header class="container hat">
-  <h1>About Me
+  <h1> 
 </h1>
 
 </header>
@@ -155,8 +154,89 @@
 <script src="https://mikeyharper.uk/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<!--- <span class="label label-primary">R</span> --->
-<p>I have expertise in smart technology and energy, and passionate to use data to drive decarbonisation. I enjoy translating technical data science concepts into digestible information that can assist people to make the right decisions and save energy.</p>
+<!--- Custom CSS --->
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal columns */
+.column {
+  flex: 2;
+  padding: 20px;
+}
+
+/* Create narrower equal columns */
+.columnThird {
+  flex: 1;
+  padding: 20px;
+}
+
+.row2 {
+  display: flex;
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+.customBlock {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: thin;
+  background-image: url("/images/light-bulb.png");
+  border-color: #F9BD3C;
+}
+
+</style>
+<center>
+<h3>
+Hi, I’m Michael 👋
+</h3>
+</center>
+<div class="row">
+<div class="columnThird">
+<center>
+<img src="https://mikeyharper.uk/images/profilePic.jpg" alt="" style="border-radius: 50%; align:centre;">
+</center>
+<p style="font-size:30px; text-align: center">
+<a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i></a>
+<a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i></a>
+<a href="https://www.linkedin.com/in/dr-harper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i></a>
+<a href="https://twitter.com/@DrMichaelHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i></a>
+<a href="https://scholar.google.com/citations?user=qTkymQYAAAAJ&hl=en"><i class="fa fa-graduation-cap" style="color:#0084b4;"></i></a>
+</p>
+</div>
+<div class="column">
+<p style="font-size:25px">
+<p>I am a data scientist working in the energy sector. It’s my mission to help shift our energy reliance from fossil fuels to 100% renewable energy. Reaching such a target will require massive shifts in the way that both technology and people interact with the energy system.</p>
+<p>I love working on data science <strong>innovation projects</strong>. Some times they work, many times they fail, but the experience learned is always useful and helps steer the course to a beter solution.</p>
+</p>
+<p><strong>My top skills:</strong></p>
+<p><span class="label label-primary">R</span>
+<span class="label label-primary">Python</span>
+<span class="label label-primary">Google Cloud Platform</span>
+<span class="label label-primary">GIS</span>
+<span class="label label-primary">Data Visualisation</span></p>
+</div>
+</div>
+<hr />
+<div class="customBlock">
+<p><strong>Looking for data science support?</strong></p>
+<p>I do a limited amount of consulting, but if you have a data science project, feel free to drop me a line and we can discuss.</p>
+</div>
 <hr />
 <div id="professional-experience" class="section level2">
 <h2>Professional Experience</h2>
@@ -233,6 +313,8 @@ Data Scientist
 </tr>
 <tr>
 </table>
+<div class="row">
+<div class="column">
 <p><strong>Key Achievements:</strong></p>
 <ul>
 <li>Led the data science development of a new smart buildings platform.</li>
@@ -241,7 +323,11 @@ Data Scientist
 <li>Worked closely with data engineers to develop data pipelines for migrating existing datasets into the new smart buildings platform.</li>
 <li>Responsible for managing GDPR considerations around potential analytics and led the Data Protection Impact Assessment to ensure mitigation was in place.</li>
 </ul>
+</div>
+<div class="column">
 <p><img src="https://mikeyharper.uk/images/SSEHeatingOptimiser.PNG" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
 <hr />
 <!-- 2. Dotty Cell Borders -->
 <style>
@@ -279,7 +365,8 @@ Implementation Analyst
 </tr>
 <tr>
 </table>
-<p><img src="https://mikeyharper.uk/images/mobility_plots.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="row">
+<div class="column">
 <p><strong>Key Achievements:</strong></p>
 <ul>
 <li>Analysed Call Detail Records (CDRs) in countries including <a href="https://www.flowminder.org/media/wmjpg1li/haiti_digicel_dtm_slide_report_june2020_eng.pdf">Haiti</a> to assess changes in mobility patterns caused by COVID-19 lockdown measures in countries.</li>
@@ -287,6 +374,11 @@ Implementation Analyst
 <li>Led the development of training sessions to improve organisational coding procedure, including the use of version control and code documentation.</li>
 <li>My biggest learning from this role was the importance of considering the needs of different stakeholders when transitioning research concepts into decision-making tools.</li>
 </ul>
+</div>
+<div class="column">
+<p><img src="https://mikeyharper.uk/images/mobility_plots.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
 <hr />
 <!-- 2. Dotty Cell Borders -->
 <style>
@@ -371,7 +463,9 @@ PhD, Renewable Energy Modelling
 </tr>
 <tr>
 </table>
-<p><img src="https://mikeyharper.uk/images/windMap.jpeg" width="70%" style="display: block; margin: auto;" /></p>
+<div class="row">
+<div class="column">
+<p><strong>Key Achievements:</strong></p>
 <ul>
 <li>Data-driven PhD research has focussed on renewable energy modelling.</li>
 <li>R used extensively within project for data mining, processing, geospatial modelling, statistical analysis and presenting results.</li>
@@ -379,6 +473,11 @@ PhD, Renewable Energy Modelling
 <li>Multi-criteria decision analysis tool developed for locating onshore wind turbine considering economic, social and environmental parameters. Findings demonstrate the social limitations to onshore wind turbine development and highlights the impact of these restrictions on further development potential.</li>
 <li>Research presented at two academic conferences in 2017 and published in two journals, both are available open access.</li>
 </ul>
+</div>
+<div class="column">
+<p><img src="https://mikeyharper.uk/images/windMap.jpeg" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
 <!-- 2. Dotty Cell Borders -->
 <style>
   td {
@@ -422,140 +521,6 @@ MEng, Civil Engineering
 
       
     </div>
-    
-      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-        <div>
-   
-   <hr>
-   
-   <div class="section">
-      </br>
-      <div class="user one"></div>
-      </br>
-      <header>
-         <div class="title" style="text-align:center; font-size: 110%"><b>About Me</b></div>
-      </header>
-        </br>
-      <p style="padding-left: 0px; font-size: 90%"> I'm a data scientist with interests in data visualisation, machine learning, geospatial analysis &#128506, energy &#9889 and international development. My blog contains an assortment of code which I hope are useful (and interesting) to others!<br><a href="https://mikeyharper.uk/about/">Read More...</a></p>
-      <div style="margin-left: 1.2em; line-height: 2; font-size: 120%">
-         <a href="https://goo.gl/maps/zhjY3Z8fCxNde1Vt9"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp London, UK</a> <br /> 
-         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i>&nbsp Stackoverflow</a> <br /> 
-         <a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br /> 
-         <a href="https://www.linkedin.com/in/dr-harper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp LinkedIn</a> <br /> 
-         <a href="https://twitter.com/@DrMichaelHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp Twitter</a> <br /> 
-         <a href="https://scholar.google.com/citations?user=qTkymQYAAAAJ&hl=en"><i class="fa fa-graduation-cap" style="color:#0084b4;"></i>&nbsp Google Scholar</a> <br /> 
-      </div>
-   </div>
-</div>
-<hr>
-
-<div class="section">
-   <header>
-      <div class="title"><b>Latest Posts</b></div>
-   </header>
-   <div class="content">
-      <ul>
-         
-         <li>
-            <a href="https://mikeyharper.uk/lessons-from-smart-home/">4 Lessons from the smart home</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/covid-east-west-relationship/">East/West patterns in Covid-19: validating claims of correlation</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/covid-deaths-explainer/">Daily Covid-19 deaths statistics: an explainer</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/covid-correlation/">Why COVID positivity rates and deaths don&#39;t always correlate</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/calculating-neighbouring-polygons-in-r/">Visualising Neighbouring Polygons in R</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/covid-19-linear-graphs/">UK goes into lockdown: further Covid-19 analysis</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/covid-19-maps/">Visualising Covid-19 With Animated, Static and Interactive Maps</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/covid-19-march-17/">COVID-19 Preliminary Data Analysis</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/takeaways-from-rstudio-conf/">Things I learnt at rstudio::conf 2019</a>
-         </li>
-         
-         <li>
-            <a href="https://mikeyharper.uk/creating-twitter-wordclouds/">Creating Twitter Wordclouds in R</a>
-         </li>
-         
-      </ul>
-   </div>
-</div>
-<hr>
-
-
-
-<div class="section taxonomies">
-   <header>
-      <div class="title"><b>Tag</b></div>
-   </header>
-   <div class="content">
-      <ul>
-         
-         <li><a href="Tags/r">r</a></li>
-         
-         <li><a href="Tags/gis">gis</a></li>
-         
-         <li><a href="Tags/covid19">covid19</a></li>
-         
-         <li><a href="Tags/presentation">presentation</a></li>
-         
-         <li><a href="Tags/covid-19">covid-19</a></li>
-         
-         <li><a href="Tags/data">data</a></li>
-         
-         <li><a href="Tags/data-visualisation">data-visualisation</a></li>
-         
-         <li><a href="Tags/dataviz">dataviz</a></li>
-         
-         <li><a href="Tags/maps">maps</a></li>
-         
-         <li><a href="Tags/web">web</a></li>
-         
-      </ul>
-   </div>
-</div>
-
-
-
-
-<div class="section taxonomies">
-   <header>
-      <div class="title"><b>Topic</b></div>
-   </header>
-   <div class="content">
-      <ul>
-         
-         <li><a href="Topics/technical">technical</a></li>
-         
-         <li><a href="Topics/personal">personal</a></li>
-         
-      </ul>
-   </div>
-</div>
-
-
-<hr>
-</div>
-      </div>
     
   </div>
 </div>

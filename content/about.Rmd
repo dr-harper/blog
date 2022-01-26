@@ -1,13 +1,11 @@
 ---
-date: "2021-12-05T14:41:00+01:00"
-title: "About Me"
+date: "2022-01-01"
+title: " "
 author: "Michael Harper"
 draft: false
 type: "page"
 showsidebar: false
 ---
-
-<!--- <span class="label label-primary">R</span> --->
 
 ```{r setup, include = F}
 
@@ -18,6 +16,106 @@ knitr::opts_chunk$set(echo = FALSE,
 options(knitr.graphics.error = FALSE)
 
 ```
+
+<!--- Custom CSS --->
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal columns */
+.column {
+  flex: 2;
+  padding: 20px;
+}
+
+/* Create narrower equal columns */
+.columnThird {
+  flex: 1;
+  padding: 20px;
+}
+
+.row2 {
+  display: flex;
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+.customBlock {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: thin;
+  background-image: url("/images/light-bulb.png");
+  border-color: #F9BD3C;
+}
+
+</style>
+
+<center> <h3> Hi, I'm Michael 👋 </h3></center>
+
+::::  {class="row"}
+::: {class="columnThird"}
+
+<center>
+<img src="/images/profilePic.jpg" alt="" style="border-radius: 50%; align:centre;">
+</center>
+
+<p style="font-size:30px; text-align: center">
+<a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i></a> 
+<a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i></a>
+<a href="https://www.linkedin.com/in/dr-harper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i></a>
+<a href="https://twitter.com/@DrMichaelHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i></a>
+<a href="https://scholar.google.com/citations?user=qTkymQYAAAAJ&hl=en"><i class="fa fa-graduation-cap" style="color:#0084b4;"></i></a>
+</p>
+
+:::
+
+::: {class="column"}
+
+<p style="font-size:25px">
+I am a data scientist working in the energy sector. It's my mission to help shift our energy reliance from fossil fuels to 100% renewable energy. Reaching such a target will require massive shifts in the way that both technology and people interact with the energy system.
+
+I love working on data science **innovation projects**. Some times they work, many times they fail, but the experience learned is always useful and helps steer the course to a beter solution.
+
+</p>
+
+
+**My top skills:**
+
+<span class="label label-primary">R</span>
+<span class="label label-primary">Python</span>
+<span class="label label-primary">Google Cloud Platform</span>
+<span class="label label-primary">GIS</span>
+<span class="label label-primary">Data Visualisation</span>
+
+:::
+::::
+
+-----------
+
+<div class="customBlock">
+
+**Looking for data science support?**
+
+I do a limited amount of consulting, but if you have a data science project, feel free to drop me a line and we can discuss.
+
+</div>
+
 
 ```{r}
 jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/uploadedLogos/177399.jpg", title = "Data Scientist", company = "SSE Enterprise", dates = "", location = ""){
@@ -58,7 +156,7 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
 }
 ```
 
-I have expertise in smart technology and energy, and passionate to use data to drive decarbonisation. I enjoy translating technical data science concepts into digestible information that can assist people to make the right decisions and save energy.
+
 
 -------------------
 
@@ -83,6 +181,9 @@ jobTitle(logo = "/images/SSEEnterprise.png",
          location = "Havant, UK")
 ```
 
+::::  {class="row"}
+::: {class="column"}
+
 **Key Achievements:**
 
 - Led the data science development of a new smart buildings platform.
@@ -91,9 +192,20 @@ jobTitle(logo = "/images/SSEEnterprise.png",
 - Worked closely with data engineers to develop data pipelines for migrating existing datasets into the new smart buildings platform.
 - Responsible for managing GDPR considerations around potential analytics and led the Data Protection Impact Assessment to ensure mitigation was in place.
 
+:::
+
+::: {class="column"}
+
 ```{r heatingOptimiser}
 knitr::include_graphics("/images/SSEHeatingOptimiser.PNG")
 ```
+
+:::
+::::
+
+
+
+
 
 ------------------
 
@@ -105,9 +217,9 @@ jobTitle(logo = "/images/FlowminderLogo.png",
          location = "Southampton, UK")
 ```
 
-```{r}
-knitr::include_graphics("/images/mobility_plots.png")
-```
+
+::::  {class="row"}
+::: {class="column"}
 
 **Key Achievements:**
 
@@ -115,6 +227,20 @@ knitr::include_graphics("/images/mobility_plots.png")
 - Developed web applications for geospatial visualisation and analysis, which were used to engage with non-technical stakeholders.
 - Led the development of training sessions to improve organisational coding procedure, including the use of version control and code documentation.
 - My biggest learning from this role was the importance of considering the needs of different stakeholders when transitioning research concepts into decision-making tools.
+
+:::
+
+::: {class="column"}
+
+```{r}
+knitr::include_graphics("/images/mobility_plots.png")
+```
+
+:::
+::::
+
+
+
 
 ------------------
 
@@ -126,6 +252,9 @@ jobTitle(logo = "/images/UoSLogo.png",
          dates = "Jan 2018 - Sept 2018",
          location = "Southampton")
 ```
+
+
+
 
 - Involved with the Solent Achieving Value from Efficiency (SAVE) project, leading the redesign of the existing code. Developed an R package and documentation for the use of the project, and refactored code to ensure better scalability.
 - Analysed electricity demand profiles for mini-grids in Kenya and Uganda through the Energy for Development (E4D) project.
@@ -144,15 +273,28 @@ jobTitle(logo = "/images/UoSLogo.png",
          location = "Southampton")
 ```
 
-```{r}
-knitr::include_graphics("/images/windMap.jpeg")
-```
+
+::::  {class="row"}
+::: {class="column"}
+
+**Key Achievements:**
 
 - Data-driven PhD research has focussed on renewable energy modelling.
 - R used extensively within project for data mining, processing, geospatial modelling, statistical analysis and presenting results.
 - Developed statistical analysis tools to assess the likelihood of a wind turbine project receiving planning permission.
 - Multi-criteria decision analysis tool developed for locating onshore wind turbine considering economic, social and environmental parameters. Findings demonstrate the social limitations to onshore wind turbine development and highlights the impact of these restrictions on further development potential.
 - Research presented at two academic conferences in 2017 and published in two journals, both are available open access.
+:::
+
+::: {class="column"}
+
+```{r}
+knitr::include_graphics("/images/windMap.jpeg")
+```
+
+:::
+::::
+
 
 ```{r}
 jobTitle(logo = "/images/UoSLogo.png",
