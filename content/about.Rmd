@@ -54,9 +54,9 @@ options(knitr.graphics.error = FALSE)
 }
 
 .customBlock {
-  padding: 1em 1em 1em 4em;
+  padding: 1em 1em 1em 8em;
   margin-bottom: 10px;
-  background: #f5f5f5 5px center/3em no-repeat;
+  background: #f5f5f5 2em center/4em no-repeat;
   border-style: solid;
   border-radius: 10px;
   border-width: thin;
@@ -88,9 +88,13 @@ options(knitr.graphics.error = FALSE)
 ::: {class="column"}
 
 <p style="font-size:25px">
-I am a data scientist working in the energy sector. It's my mission to help shift our energy reliance from fossil fuels to 100% renewable energy. Reaching such a target will require massive shifts in the way that both technology and people interact with the energy system.
+It’s my personal mission to drive decarbonisation of the energy industry
+by using technology and data to both automate decisions and influence
+people’s behaviour.
 
-I love working on data science **innovation projects**. Some times they work, many times they fail, but the experience learned is always useful and helps steer the course to a beter solution.
+I have expertise in smart home technology, heat pumps, thermal modelling and the energy sector. 
+
+I love being in innovation projects, finding new ways to use data, and turning an idea into reality via proof of concepts. I always aim for a Minimal Viable Product, and integrate a test and learn approach into my work.
 
 </p>
 
@@ -102,17 +106,18 @@ I love working on data science **innovation projects**. Some times they work, ma
 <span class="label label-primary">Google Cloud Platform</span>
 <span class="label label-primary">GIS</span>
 <span class="label label-primary">Data Visualisation</span>
+<span class="label label-primary">SQL</span>
+<span class="label label-primary">sklearn</span>
 
 :::
 ::::
-
------------
 
 <div class="customBlock">
 
 **Looking for data science support?**
 
-I do a limited amount of consulting, but if you have a data science project, feel free to drop me a line and we can discuss.
+I do a limited amount of consulting, so if you have a data science project, feel free to drop me a line and we can discuss.
+
 
 </div>
 
