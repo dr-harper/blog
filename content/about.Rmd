@@ -88,9 +88,7 @@ options(knitr.graphics.error = FALSE)
 ::: {class="column"}
 
 <p style="font-size:25px">
-It’s my personal mission to drive decarbonisation of the energy industry
-by using technology and data to both automate decisions and influence
-people’s behaviour.
+It’s my personal mission to drive decarbonisation of the energy industry by using technology and data to both automate decisions and positively influence people’s behaviour.
 
 I have expertise in smart home technology, heat pumps, thermal modelling and the energy sector. 
 
