@@ -2,22 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Energy on Michael Harper</title>
-    <link>/tags/energy/</link>
+    <link>http://localhost:4321/tags/energy/</link>
     <description>Recent content in Energy on Michael Harper</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/energy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:4321/tags/energy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a CO2 Energy Sensor</title>
-      <link>/co2-light/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
-      <guid>/co2-light/</guid>
-      <description>What else better to do over the Christmas holidays than to come up new smart home devices! And this is exactly what I have done, building a light which provides me an update on the current carbon intensity of the electricity supply. I am quite happy with the end result, and this blog explains the motivation behind the idea, along with code for anyone who wants to replicate it.</description>
+      <link>http://localhost:4321/co2-light/</link>
+      <pubDate>Sat, 28 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:4321/co2-light/</guid>
+      <description>&lt;script src=&#34;http://localhost:4321/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&lt;p&gt;What else better to do over the weekend than to come up new smart home devices! And this is exactly what I have done, building a light which provides me an update on the current carbon intensity of the electricity supply. I am quite happy with the end result, and this blog explains the motivation behind the idea, along with code for anyone who wants to replicate it. I hope it helps!&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

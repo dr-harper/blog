@@ -118,8 +118,6 @@ theme = "hugo-bootstrap-premium"
 paginate = 10
 paginatePath = "page"
 
-# Enable Disqus integration
-disqusShortname = "your_disqus_shortname"
 
 [permalinks]
     post = "/:year/:month/:day/:filename/"

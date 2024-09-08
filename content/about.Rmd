@@ -1,7 +1,7 @@
 ---
 date: "2022-01-01"
 title: " "
-author: "Michael Harper"
+author: "Mikey Harper"
 draft: false
 type: "page"
 showsidebar: false
@@ -66,7 +66,7 @@ options(knitr.graphics.error = FALSE)
 
 </style>
 
-<center> <h3> Hi, I'm Michael 👋 </h3></center>
+<center> <h3> Hi, I'm Mikey 👋 </h3></center>
 
 ::::  {class="row"}
 ::: {class="columnThird"}
@@ -99,29 +99,34 @@ I love being in innovation projects, finding new ways to use data, and turning a
 
 **My top skills:**
 
-<span class="label label-primary">R</span>
+
 <span class="label label-primary">Python</span>
 <span class="label label-primary">Google Cloud Platform</span>
-<span class="label label-primary">GIS</span>
+<span class="label label-primary">Renewable Energy</span>
+<span class="label label-primary">Building Physics</span>
+<span class="label label-primary">Heat Pumps</span>
+<span class="label label-primary">R</span>
+<span class="label label-primary">Geospatial Data</span>
 <span class="label label-primary">Data Visualisation</span>
-<span class="label label-primary">SQL</span>
-<span class="label label-primary">sklearn</span>
 
 :::
 ::::
 
-<div class="customBlock">
-
-**Looking for data science support?**
-
-I do a limited amount of consulting, so if you have a data science project, feel free to drop me a line and we can discuss.
-
-
-</div>
-
 
 ```{r}
-jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/uploadedLogos/177399.jpg", title = "Data Scientist", company = "SSE Enterprise", dates = "", location = ""){
+jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/uploadedLogos/177399.jpg", 
+                     title = "Data Scientist", 
+                     company = "SSE Enterprise", 
+                     dates = "", 
+                     location = "", 
+                     company_url = NULL) {
+  
+  # Check if a URL is provided; if so, wrap the company name in an <a> tag
+  company_display <- if (!is.null(company_url) && company_url != "") {
+    glue::glue('<a href="{company_url}" target="_blank" style="color:#616A6B;">{company}</a>')
+  } else {
+    company
+  }
   
   knitr::asis_output(glue::glue('
 <!-- 2. Dotty Cell Borders -->
@@ -147,16 +152,15 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
     <td colspan="5" style="font-size: 22px; font-weight: bold border:hidden;">{{title}}</td>
   </tr>
   <tr>
-    <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-business-time" style="color:#616A6B;"></i>{{company}}</td>
+    <td colspan="5" style="background-color: #f9f9f9; border:hidden;"><i class="fas fa-business-time" style="color:#616A6B;"></i> {{company_display}}</td>
   </tr>
   <tr>
     <td colspan="2" style="background-color: #f9f9f9; border:hidden;"> <i class="fa fa-calendar" style="color:#616A6B;"></i> {{dates}}</td>
   </tr>
-  <tr>
-</table>', , .open = "{{", .close = "}}")
+</table>', .open = "{{", .close = "}}")
   )
-
 }
+
 ```
 
 
@@ -166,13 +170,35 @@ jobTitle <- function(logo = "https://www.businessmagnet.co.uk/manage-account/upl
 ## Professional Experience
 
 ```{r}
+jobTitle(logo = "/images/Heat Geek Logo_Colour_Email.png",
+         title = "Data & Insights Lead",
+         company = "Heat Geek",
+         dates = "December 2022 - Present",
+         location = "London, UK",
+          company_url = "https://heatgeek.com/")
+```
+
+- Part of the Founding Team at Heat Geek
+- Have developed a data-driven approach to heat pump installations, using machine learning to predict the best heat pump for a property
+- Build multiple data APIs to integrate data science across the business platform
+
+------------------
+
+```{r}
 jobTitle(logo = "/images/OVOLogo.png",
          title = "Data Scientist",
          company = "OVO Energy",
          dates = "May 2021 - Present",
-         location = "London, UK")
+         location = "London, UK",
+          company_url = "https://www.ovoenergy.com/")
 ```
 
+**Key Achievements:**
+
+- Worked on energy efficiency insights for customers, providing tips and tricks on how people can reduce their energy consumption
+- Built predictive models to forecast gas consumption at a customer level
+- Engaged with senior stakeholders to steer and influence projects
+- Winner of the "Plan Zero Hero" award, recognising my commitment to decarbonisation
 
 ------------------
 
@@ -217,7 +243,8 @@ jobTitle(logo = "/images/FlowminderLogo.png",
          title = "Implementation Analyst",
          company = "Flowminder",
          dates = "Sept 2018 - Sept 2020",
-         location = "Southampton, UK")
+         location = "Southampton, UK",
+          company_url = "https://www.flowminder.org/")
 ```
 
 

@@ -4,20 +4,17 @@
     <title>DiagrammeR on Michael Harper</title>
     <link>https://mikeyharper.uk/tags/diagrammer/</link>
     <description>Recent content in DiagrammeR on Michael Harper</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Tue, 01 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/tags/diagrammer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 May 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mikeyharper.uk/tags/diagrammer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data-driven flowcharts in R using DiagrammeR</title>
       <link>https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/</link>
       <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/</guid>
-      <description>The old cliché goes that “A picture is worth a thousand words”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail.</description>
+      <description>&lt;script src=&#34;https://mikeyharper.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;https://mikeyharper.uk/rmarkdown-libs/viz/viz.js&#34;&gt;&lt;/script&gt;&#xA;&lt;link href=&#34;https://mikeyharper.uk/rmarkdown-libs/DiagrammeR-styles/styles.css&#34; rel=&#34;stylesheet&#34; /&gt;&#xA;&lt;script src=&#34;https://mikeyharper.uk/rmarkdown-libs/grViz-binding/grViz.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&#xA;&lt;p&gt;The old cliché goes that “&lt;em&gt;A picture is worth a thousand words&lt;/em&gt;”. This may be overused, but I feel this is particularly relevant in data analysis, and we often use diagrams as tools to quickly communicate the results of our complex statistical models. However, whilst we often prioritise on explaining the results of the analysis, we are often less inclined to explain the stages used to reach the results to the same level of detail.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

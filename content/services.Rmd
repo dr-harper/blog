@@ -1,0 +1,77 @@
+---
+date: "2024-01-01"
+title: " "
+author: "Mikey Harper"
+draft: false
+type: "page"
+showsidebar: false
+---
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal columns */
+.column {
+  flex: 2;
+  padding: 20px;
+}
+
+/* Create narrower equal columns */
+.columnThird {
+  flex: 1;
+  padding: 20px;
+}
+
+.row2 {
+  display: flex;
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+.customBlock {
+  padding: 1em 1em 1em 8em;
+  margin-bottom: 10px;
+  background: #f5f5f5 2em center/4em no-repeat;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: thin;
+  background-image: url("/images/light-bulb.png");
+  border-color: #F9BD3C;
+}
+
+</style>
+
+
+
+<center> <h3> Hi, I'm Mikey 👋 </h3></center>
+
+# Services
+
+
+<div class="customBlock">
+
+**Looking for data science support?**
+
+I do a limited amount of consulting, so if you have a data science project, feel free to drop me a line and we can discuss.
+
+
+</div>
+
+## Photography
+
+What started as a hobby has turned into a passion. I love capturing the world around me and sharing it with others. If you're looking for a photographer, I'd love to help you out.
+
+

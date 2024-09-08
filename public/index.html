@@ -42,7 +42,7 @@
 <link rel="canonical" href="https://mikeyharper.uk/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikeyharper.uk/touch-icon-144-precomposed.png">
 <link rel="icon" href="https://mikeyharper.uk/favicon.png">
-<meta name="generator" content="Hugo 0.75.1" />
+<meta name="generator" content="Hugo 0.134.1">
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -103,6 +103,14 @@
               <a href="https://mikeyharper.uk/about/"  title="About">
                 <i class='fa fa-user'></i>&nbsp
                 About
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikeyharper.uk/services/"  title="Services">
+                <i class='fa fa-cogs'></i>&nbsp
+                Services
               </a>
             </li>
             
@@ -837,8 +845,27 @@
     <p>
   
   
-    I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.
-Note: this post does not intend to be a full tutorial on how to set up your blog.
+    <script src="https://mikeyharper.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="https://mikeyharper.uk/rmarkdown-libs/viz/viz.js"></script>
+<link href="https://mikeyharper.uk/rmarkdown-libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+<script src="https://mikeyharper.uk/rmarkdown-libs/grViz-binding/grViz.js"></script>
+<script src="https://mikeyharper.uk/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="https://mikeyharper.uk/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="https://mikeyharper.uk/rmarkdown-libs/leaflet/leaflet.js"></script>
+<link href="https://mikeyharper.uk/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="https://mikeyharper.uk/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="https://mikeyharper.uk/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="https://mikeyharper.uk/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="https://mikeyharper.uk/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
+<script src="https://mikeyharper.uk/rmarkdown-libs/plotly-binding/plotly.js"></script>
+<script src="https://mikeyharper.uk/rmarkdown-libs/typedarray/typedarray.min.js"></script>
+<link href="https://mikeyharper.uk/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="https://mikeyharper.uk/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="https://mikeyharper.uk/rmarkdown-libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="https://mikeyharper.uk/rmarkdown-libs/plotly-main/plotly-latest.min.js"></script>
+
+
+<p>I have been delaying it for a while, but I finally decided to move to blogdown. This post is designed to quickly capture my reasons for me changing, and highlight some of the features that may make you consider doing the same.</p>
   
 
 </p>
@@ -1113,7 +1140,7 @@ Note: this post does not intend to be a full tutorial on how to set up your blog
           <div>
    
    <hr>
-   
+
    <div class="section">
       </br>
       <div class="user one"></div>
@@ -1121,15 +1148,23 @@ Note: this post does not intend to be a full tutorial on how to set up your blog
       <header>
          <div class="title" style="text-align:center; font-size: 110%"><b>About Me</b></div>
       </header>
-        </br>
-      <p style="padding-left: 0px; font-size: 90%"> I'm a data scientist with interests in data visualisation, machine learning, geospatial analysis &#128506, energy &#9889 and international development. My blog contains an assortment of code which I hope are useful (and interesting) to others!<br><a href="https://mikeyharper.uk/about/">Read More...</a></p>
+      </br>
+      <p style="padding-left: 0px; font-size: 90%"> I'm a data scientist with interests in data visualisation, machine
+         learning, geospatial analysis &#128506, energy &#9889 and international development. My blog contains an
+         assortment of code which I hope are useful (and interesting) to others!<br><a href="https://mikeyharper.uk/about/">Read More...</a>
+      </p>
       <div style="margin-left: 1.2em; line-height: 2; font-size: 120%">
-         <a href="https://goo.gl/maps/zhjY3Z8fCxNde1Vt9"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp London, UK</a> <br /> 
-         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow' style="color:orange;"></i>&nbsp Stackoverflow</a> <br /> 
-         <a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br /> 
-         <a href="https://www.linkedin.com/in/dr-harper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp LinkedIn</a> <br /> 
-         <a href="https://twitter.com/@DrMichaelHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp Twitter</a> <br /> 
-         <a href="https://scholar.google.com/citations?user=qTkymQYAAAAJ&hl=en"><i class="fa fa-graduation-cap" style="color:#0084b4;"></i>&nbsp Google Scholar</a> <br /> 
+         <a href="https://goo.gl/maps/zhjY3Z8fCxNde1Vt9"><i class="fa fa-map-marker" style="color:black;"></i>&nbsp
+            London, UK</a> <br />
+         <a href="https://stackoverflow.com/users/7347699/mikey-harper"><i class='fa fa-stack-overflow'
+               style="color:orange;"></i>&nbsp Stackoverflow</a> <br />
+         <a href="https://github.com/dr-harper"><i class='fa fa-github' style="color:black;"></i>&nbsp GitHub</a> <br />
+         <a href="https://www.linkedin.com/in/dr-harper/"><i class="fa fa-linkedin" style="color:#0084b4;"></i>&nbsp
+            LinkedIn</a> <br />
+         <a href="https://twitter.com/@DrMichaelHarper"><i class="fa fa-twitter" style="color:#0084b4;"></i>&nbsp
+            Twitter</a> <br />
+         <a href="https://scholar.google.com/citations?user=qTkymQYAAAAJ&hl=en"><i class="fa fa-graduation-cap"
+               style="color:#0084b4;"></i>&nbsp Google Scholar</a> <br />
       </div>
    </div>
 </div>
@@ -1204,11 +1239,11 @@ Note: this post does not intend to be a full tutorial on how to set up your blog
          
          <li><a href="Tags/presentation">presentation</a></li>
          
-         <li><a href="Tags/covid-19">covid-19</a></li>
+         <li><a href="Tags/covid-19">covid 19</a></li>
          
          <li><a href="Tags/data">data</a></li>
          
-         <li><a href="Tags/data-visualisation">data-visualisation</a></li>
+         <li><a href="Tags/data-visualisation">data visualisation</a></li>
          
          <li><a href="Tags/dataviz">dataviz</a></li>
          

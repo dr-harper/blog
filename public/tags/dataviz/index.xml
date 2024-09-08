@@ -4,30 +4,24 @@
     <title>DataViz on Michael Harper</title>
     <link>https://mikeyharper.uk/tags/dataviz/</link>
     <description>Recent content in DataViz on Michael Harper</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <managingEditor>m.harper@outlook.com (Michael Harper)</managingEditor>
-    <webMaster>m.harper@outlook.com (Michael Harper)</webMaster>
     <copyright>(c) 2020 Copyright Michael Harper</copyright>
-    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mikeyharper.uk/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mikeyharper.uk/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating Twitter Wordclouds in R</title>
       <link>https://mikeyharper.uk/creating-twitter-wordclouds/</link>
       <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>https://mikeyharper.uk/creating-twitter-wordclouds/</guid>
-      <description>I recently finished my PhD, and my supervisor, Patrick James, always described me as a “data monster” in reference to how much I enjoyed playing with data. He was a massive influence throughout my PhD, so I felt it was only appropriate to get him a data-related gift when I finished. To this effect, I made him a wordcloud of all his tweet history!
-This blog post explains how we can interact with Twitter data in R using the rtweet (Kearney 2018) package, and convert this raw data into pretty visualisations using the wordcloud2 (Lang 2018) package.</description>
+      <description>&lt;script src=&#34;https://mikeyharper.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;&#xA;&lt;link href=&#34;https://mikeyharper.uk/rmarkdown-libs/wordcloud2/wordcloud.css&#34; rel=&#34;stylesheet&#34; /&gt;&#xA;&lt;script src=&#34;https://mikeyharper.uk/rmarkdown-libs/wordcloud2/wordcloud2-all.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;https://mikeyharper.uk/rmarkdown-libs/wordcloud2/hover.js&#34;&gt;&lt;/script&gt;&#xA;&lt;script src=&#34;https://mikeyharper.uk/rmarkdown-libs/wordcloud2-binding/wordcloud2.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&#xA;&lt;p&gt;I recently finished my PhD, and my supervisor, Patrick James, always described me as a “&lt;em&gt;data monster&lt;/em&gt;” in reference to how much I enjoyed playing with data. He was a massive influence throughout my PhD, so I felt it was only appropriate to get him a data-related gift when I finished. To this effect, I made him a wordcloud of all his tweet history!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Animated Plots with R</title>
       <link>https://mikeyharper.uk/animated-plots-with-r/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
-      <author>m.harper@outlook.com (Michael Harper)</author>
       <guid>https://mikeyharper.uk/animated-plots-with-r/</guid>
-      <description>Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R ggplot2 (Wickham et al. 2018) has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in the now famous TED talk by Hans Rosling.</description>
+      <description>&lt;p&gt;Data scientists are blessed with a range of software tools which they can use to visualise results, and provide loads of great ways to present data which is equally informative and visually compelling. The increasing popularity of R &lt;strong&gt;ggplot2&lt;/strong&gt; &lt;span class=&#34;citation&#34;&gt;(Wickham et al. 2018)&lt;/span&gt; has made many people familiar with static plots, but animated plots can be an effective way to communicate results, and there are few better examples than the use of them in &lt;a href=&#34;https://www.youtube.com/watch?v=hVimVzgtD6w&#34;&gt;the now famous TED talk by Hans Rosling&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -29,10 +29,6 @@ theme = "hugo-bootstrap-premium"
 paginate = 20
 paginatePath = "page"
 
-# Enable Disqus integration
-disqusShortname = "mikeyharper"
-
-
 [permalinks]
 post = "/:slug/"
 code = "/:filename/"
@@ -41,9 +37,7 @@ code = "/:filename/"
 tag = "Tags"
 topic = "Topics"
 
-[author]
-name = "Michael Harper"
-email = "m.harper@outlook.com"
+
 
 [twitter]
 card = "summary_large_image"
@@ -161,6 +155,14 @@ pre = "<i class='fa fa-user'></i>&nbsp"
 weight = 3
 identifier = ""
 url = "/about/"
+
+[[Languages.en.menu.main]]
+name = "Services"
+pre = "<i class='fa fa-cogs'></i>&nbsp"
+weight = 4
+identifier = ""
+url = "/services/"
+
 
 
 [[Languages.en.menu.footer]] # add  links to the bottom right corner.
