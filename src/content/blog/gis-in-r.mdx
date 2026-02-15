@@ -1,0 +1,59 @@
+---
+title: "Using R for Geospatial Data Analysis"
+description: "Although R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to show people the benefits of using R in their analyses, and provides practical guidance on how to get started on your first project."
+author: "Mikey Harper"
+date: 2017-09-01
+slug: "gis-in-r"
+tags:
+  - GIS
+  - R
+  - Presentation
+  - Technical
+headerImage: "/images/RGIS.png"
+draft: false
+---
+
+import SpeakerDeckEmbed from '../../components/react/SpeakerDeckEmbed.tsx';
+
+# Intro
+
+Although R is widely used for data processing and statistical modelling, it is less frequently known for its powers of handing Geospatial Data. This presentation is aimed to highlgiht why people may want to consider using R for their GIS, and highlight some of the benefits of using R in their analyses.
+
+# Why use R for GIS
+
+There are many benefits of using R for GIS, but to me the top three reasons would be:
+
+- **Integrate GIS and Statistial analysis**: Load raw data, run analysis, and present the results all within a single script.
+- **Repeatability (script)**: Once you design a map layout, you can easily recreate the results. If you ever need to recreate the script you can reuse the script easily.
+- **Speed of development**: it becomes very quick and easy to create map within R. This lets you quickly explore and analyse geospatial data.
+
+It is not always the right decision to use R for GIS, and sometimes you may be better using ArcGIS. In particular, if you want to produce a bespoke, single map, you might be better off using the graphical interface of a GIS software package to design.
+
+# Presentation
+
+You can view the presentation on Slideshare [here](https://speakerdeck.com/mharper/geospatial-data-in-r).
+
+The full code for the presentation is available through GitHub. This provides all the data required to run the code if you would like to repeat the analysis conducted in the presentation: [link to GitHub](https://github.com/mikey-harper/R-geospatial-course)
+
+<SpeakerDeckEmbed client:visible dataId="a4bedcfc110441088df256fe11e2ab46" />
+
+# Additional Resources
+
+Geospatial analysis in R takes a while to get your head around. The following links are very useful for some further meeting:
+
+**Packages**
+
+- Overview of Spatial Packages: [http://cran.r-project.org/web/views/Spatial.html](http://cran.r-project.org/web/views/Spatial.html)
+
+**Tutorials**
+
+- [http://rpubs.com/RobinLovelace/11869](http://rpubs.com/RobinLovelace/11869)
+- [science.nature.nps.gov](http://science.nature.nps.gov/im/datamgmt/statistics/r/advanced/spatial.cfm)
+- [http://spatial.ly/r/](http://spatial.ly/r/)
+- [tutorials-to-handle-spatial-data-in-r](http://gis.stackexchange.com/questions/45327/tutorials-to-handle-spatial-data-in-r)
+- [https://pakillo.github.io/R-GIS-tutorial/]( https://pakillo.github.io/R-GIS-tutorial/)
+
+  **R Spatial Cheatsheet**
+
+- [R GIS cheatsheet](http://www.maths.lancs.ac.uk/~rowlings/Teaching/UseR2012/cheatsheet.html)
+- [AniMove_refcard.pdf](https://github.com/wegmann/RSdocs/releases/download/May2014_spatial/AniMove_refcard.pdf)

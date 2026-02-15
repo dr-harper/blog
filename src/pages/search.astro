@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Search — Mikey Harper" description="Search blog posts and projects">
+  <h1 class="text-3xl font-bold font-mono text-text-primary mb-8">
+    Search
+  </h1>
+  <div id="search" class="max-w-3xl"></div>
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: true,
+      });
+    });
+  </script>
+
+  <style is:global>
+    .pagefind-ui__search-input {
+      border-radius: 0.5rem !important;
+      background-color: var(--color-bg-secondary) !important;
+      border-color: var(--color-border) !important;
+      color: var(--color-text-secondary) !important;
+      font-family: 'Inter', sans-serif !important;
+    }
+    .pagefind-ui__search-input:focus {
+      border-color: var(--color-accent) !important;
+      box-shadow: 0 0 0 2px rgba(24, 188, 156, 0.2) !important;
+    }
+    .pagefind-ui__result-link {
+      color: var(--color-text-primary) !important;
+    }
+    .pagefind-ui__result-link:hover {
+      color: var(--color-accent) !important;
+    }
+    .pagefind-ui__result-excerpt {
+      color: var(--color-text-muted) !important;
+    }
+    .pagefind-ui__result {
+      border-top-color: var(--color-border) !important;
+    }
+    .pagefind-ui__button {
+      background-color: var(--color-bg-elevated) !important;
+      color: var(--color-text-secondary) !important;
+      border-color: var(--color-border) !important;
+    }
+    .pagefind-ui__button:hover {
+      border-color: var(--color-accent) !important;
+    }
+    .pagefind-ui__message {
+      color: var(--color-text-muted) !important;
+    }
+  </style>
+</BaseLayout>

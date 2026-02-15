@@ -1,0 +1,198 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import PostCard from '../components/PostCard.astro';
+import AuthorCard from '../components/AuthorCard.astro';
+import PostNavigation from '../components/PostNavigation.astro';
+import ShareBar from '../components/react/ShareBar.tsx';
+
+import TableOfContents from '../components/react/TableOfContents.tsx';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface RelatedPost {
+  title: string;
+  slug: string;
+  tags: string[];
+  date: Date;
+  description?: string;
+  headerImage?: string;
+}
+
+interface Props {
+  title: string;
+  author?: string;
+  date: Date;
+  description?: string;
+  tags?: string[];
+  headerImage?: string;
+  minutesRead?: string;
+  headings?: Heading[];
+  relatedPosts?: RelatedPost[];
+  prevPost?: { title: string; slug: string };
+  nextPost?: { title: string; slug: string };
+  shareUrl?: string;
+}
+
+const {
+  title,
+  author = 'Mikey Harper',
+  date,
+  description,
+  tags = [],
+  headerImage,
+  minutesRead,
+  headings = [],
+  relatedPosts = [],
+  prevPost,
+  nextPost,
+  shareUrl = '',
+} = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const hasToC = headings.filter((h) => h.depth >= 2 && h.depth <= 3).length >= 3;
+---
+
+<BaseLayout title={`${title} | Mikey Harper`} description={description} ogImage={headerImage}>
+  <!-- Reading progress bar -->
+  <div id="progress-bar" class="fixed top-0 left-0 h-0.5 bg-accent z-50 transition-none" style="width: 0%"></div>
+
+  <!-- Table of Contents (desktop: fixed in left margin) -->
+  {hasToC && (
+    <aside class="hidden xl:block fixed top-24 left-4 2xl:left-8 w-52 z-40">
+      <TableOfContents client:idle headings={headings} />
+    </aside>
+  )}
+
+  <div class="max-w-3xl mx-auto">
+    <article>
+      {headerImage && (
+        <img
+          src={headerImage}
+          alt={title}
+          class="w-full rounded-lg mb-8 border border-border"
+        />
+      )}
+
+      <header class="mb-8">
+        <h1 class="text-3xl sm:text-4xl font-bold font-mono text-text-primary mb-3" transition:name={`post-title-${title.toLowerCase().replace(/\s+/g, '-').slice(0, 40)}`}>{title}</h1>
+        <div class="flex flex-wrap items-center gap-3 text-text-muted text-sm">
+          <span class="inline-flex items-center gap-1">
+            <Icon name="user" size={14} />
+            {author}
+          </span>
+          <span>&middot;</span>
+          <time class="inline-flex items-center gap-1" datetime={date.toISOString()}>
+            <Icon name="calendar" size={14} />
+            {formattedDate}
+          </time>
+          {minutesRead && (
+            <>
+              <span>&middot;</span>
+              <span class="inline-flex items-center gap-1">
+                <Icon name="clock" size={14} />
+                {minutesRead}
+              </span>
+            </>
+          )}
+        </div>
+        {tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-4">
+            {tags.map((tag) => (
+              <a
+                href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}
+                class="inline-block rounded-full border border-border bg-bg-secondary px-3 py-1 text-xs font-mono text-text-muted hover:border-accent hover:text-accent transition-colors"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {shareUrl && (
+          <div class="mt-4">
+            <ShareBar client:idle url={shareUrl} title={title} />
+          </div>
+        )}
+      </header>
+
+      <!-- Mobile Table of Contents -->
+      {hasToC && (
+        <div class="xl:hidden">
+          <TableOfContents client:idle headings={headings} />
+        </div>
+      )}
+
+      <div class="prose prose-lg max-w-none prose-img:rounded-lg prose-img:border prose-img:border-border prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-pre:border prose-pre:border-border">
+        <slot />
+      </div>
+
+      <!-- Article Footer -->
+      <footer class="mt-16 space-y-8 border-t border-border pt-8">
+        <!-- Share bar (repeated at bottom) -->
+        {shareUrl && (
+          <div>
+            <ShareBar client:idle url={shareUrl} title={title} />
+          </div>
+        )}
+
+        <!-- Author Card -->
+        <AuthorCard />
+
+        <!-- Related Posts -->
+        {relatedPosts.length > 0 && (
+          <section>
+            <h2 class="text-lg font-bold font-mono text-text-primary mb-4">
+              Related Posts
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {relatedPosts.map((rp) => (
+                <PostCard
+                  title={rp.title}
+                  date={rp.date}
+                  description={rp.description}
+                  headerImage={rp.headerImage}
+                  slug={rp.slug}
+                  tags={rp.tags}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Prev/Next Navigation -->
+        <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+      </footer>
+    </article>
+  </div>
+
+  <script is:inline>
+    (function() {
+      function updateProgress() {
+        var bar = document.getElementById('progress-bar');
+        if (!bar) return;
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = Math.min(progress, 100) + '%';
+      }
+
+      function setup() {
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+      }
+
+      setup();
+      document.addEventListener('astro:after-swap', setup);
+    })();
+  </script>
+</BaseLayout>

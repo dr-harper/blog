@@ -1,0 +1,95 @@
+---
+/**
+ * Renders Lucide icons as static SVGs in Astro templates.
+ * Uses lucide-react under the hood but renders at build time (no JS shipped).
+ *
+ * Usage: <Icon name="github" size={16} class="text-accent" />
+ */
+import {
+  Github,
+  Linkedin,
+  ExternalLink,
+  ChevronRight,
+  ChevronLeft,
+  ArrowRight,
+  ArrowLeft,
+  Search,
+  Calendar,
+  Clock,
+  User,
+  Tag,
+  BookOpen,
+  FolderGit2,
+  Terminal,
+  GraduationCap,
+  Coffee,
+  Rss,
+  Grid3x3,
+  List,
+  Copy,
+  Check,
+  Share2,
+  Home,
+  FileText,
+  GitBranch,
+  Code2,
+  Link,
+  Sun,
+  Moon,
+  Pause,
+  ChevronDown,
+  Menu,
+  X,
+  type LucideIcon,
+} from 'lucide-react';
+
+const iconMap: Record<string, LucideIcon> = {
+  github: Github,
+  linkedin: Linkedin,
+  'external-link': ExternalLink,
+  'chevron-right': ChevronRight,
+  'chevron-left': ChevronLeft,
+  'arrow-right': ArrowRight,
+  'arrow-left': ArrowLeft,
+  search: Search,
+  calendar: Calendar,
+  clock: Clock,
+  user: User,
+  tag: Tag,
+  'book-open': BookOpen,
+  'folder-git': FolderGit2,
+  terminal: Terminal,
+  'graduation-cap': GraduationCap,
+  coffee: Coffee,
+  rss: Rss,
+  grid: Grid3x3,
+  list: List,
+  copy: Copy,
+  check: Check,
+  share: Share2,
+  home: Home,
+  'file-text': FileText,
+  'git-branch': GitBranch,
+  code: Code2,
+  link: Link,
+  sun: Sun,
+  moon: Moon,
+  pause: Pause,
+  'chevron-down': ChevronDown,
+  menu: Menu,
+  x: X,
+};
+
+interface Props {
+  name: keyof typeof iconMap;
+  size?: number;
+  class?: string;
+  strokeWidth?: number;
+}
+
+const { name, size = 16, class: className = '', strokeWidth = 2 } = Astro.props;
+
+const IconComponent = iconMap[name];
+---
+
+{IconComponent && <IconComponent size={size} strokeWidth={strokeWidth} className={className} />}

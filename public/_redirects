@@ -1,0 +1,26 @@
+# Blog post redirects: old /{slug}/ to new /blog/{slug}/
+/animated-plots-with-r/  /blog/animated-plots-with-r/  301
+/book-launch-of-a-village-inheritance/  /blog/book-launch-of-a-village-inheritance/  301
+/calculating-neighbouring-polygons-in-r/  /blog/calculating-neighbouring-polygons-in-r/  301
+/co2-light/  /blog/co2-light/  301
+/Covid-19-maps/  /blog/Covid-19-maps/  301
+/covid-19-linear-graphs/  /blog/covid-19-linear-graphs/  301
+/covid-19-march-17/  /blog/covid-19-march-17/  301
+/covid-correlation/  /blog/covid-correlation/  301
+/covid-deaths-explainer/  /blog/covid-deaths-explainer/  301
+/covid-east-west-relationship/  /blog/covid-east-west-relationship/  301
+/creating-twitter-wordclouds/  /blog/creating-twitter-wordclouds/  301
+/cycling-lands-end-to-john-o-groats/  /blog/cycling-lands-end-to-john-o-groats/  301
+/flowcharts-in-r-using-diagrammer/  /blog/flowcharts-in-r-using-diagrammer/  301
+/gis-in-r/  /blog/gis-in-r/  301
+/lessons-from-smart-home/  /blog/lessons-from-smart-home/  301
+/mapping-uk-local-political-data/  /blog/mapping-uk-local-political-data/  301
+/migrating-to-blogdown/  /blog/migrating-to-blogdown/  301
+/my-home-assistant/  /blog/my-home-assistant/  301
+/takeaways-from-rstudio-conf/  /blog/takeaways-from-rstudio-conf/  301
+/walking-london-to-basingstoke/  /blog/walking-london-to-basingstoke/  301
+/wind-turbine=success/  /blog/wind-turbine=success/  301
+/writing-reports-in-rstudio-an-introduction-to-rmarkdown/  /blog/writing-reports-in-rstudio-an-introduction-to-rmarkdown/  301
+
+# Tag redirects
+/tags/*  /blog/tags/:splat  301

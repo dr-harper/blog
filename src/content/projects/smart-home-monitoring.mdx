@@ -1,0 +1,21 @@
+---
+title: "Smart Home Monitoring"
+description: "Home Assistant-based environmental monitoring system with custom ESPHome sensors for CO2, temperature, and energy usage."
+date: 2021-09-01
+slug: "smart-home-monitoring"
+status: "active"
+techStack: ["Home Assistant", "ESPHome", "Python", "MQTT"]
+featured: true
+---
+
+## Overview
+
+What started as a curiosity about indoor air quality turned into a comprehensive home monitoring system built around Home Assistant. The project combines off-the-shelf smart home devices with custom-built ESPHome sensors to track everything from room-by-room CO2 levels and temperature to whole-house energy consumption. The goal is to make the invisible aspects of the home environment visible and actionable.
+
+## Custom Sensors
+
+The heart of the system is a set of ESP32-based sensors running ESPHome firmware. Each sensor node measures CO2 concentration (via SCD30 and SCD40 sensors), temperature, humidity, and ambient light. Data is published over MQTT to a local Home Assistant instance, where it is logged to a long-term database and displayed on custom Lovelace dashboards. The ESPHome configuration is version-controlled and can be flashed over-the-air, making it straightforward to iterate on the sensor design.
+
+## Insights and Automation
+
+The real value of the system comes from the automations and insights it enables. Alerts trigger when CO2 levels exceed safe thresholds, prompting ventilation. Energy dashboards reveal consumption patterns that have driven targeted efficiency improvements. Historical data has been used in several blog posts exploring topics like the relationship between CO2 levels and occupancy, and the impact of different heating strategies on energy usage. The project continues to evolve as new sensors and integrations are added.

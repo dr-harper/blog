@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Terminal404 from '../components/react/Terminal404.tsx';
+---
+
+<BaseLayout title="404 — Page not found | Mikey Harper">
+  <div class="py-10">
+    <Terminal404 client:load />
+  </div>
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+import Icon from './Icon.astro';
+---
+
+<button
+  id="theme-toggle"
+  class="p-2 rounded-lg border border-border hover:border-accent text-text-muted hover:text-accent transition-colors"
+  aria-label="Toggle theme"
+>
+  <!-- Sun icon (shown in dark mode) -->
+  <span id="theme-sun" class="hidden">
+    <Icon name="sun" size={16} />
+  </span>
+  <!-- Moon icon (shown in light mode) -->
+  <span id="theme-moon" class="hidden">
+    <Icon name="moon" size={16} />
+  </span>
+</button>
+
+<script is:inline>
+  (function() {
+    function getTheme() {
+      return localStorage.getItem('theme') || 'dark';
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      updateIcons(theme);
+    }
+
+    function updateIcons(theme) {
+      var sun = document.getElementById('theme-sun');
+      var moon = document.getElementById('theme-moon');
+      if (!sun || !moon) return;
+      if (theme === 'dark') {
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+      } else {
+        sun.classList.add('hidden');
+        moon.classList.remove('hidden');
+      }
+    }
+
+    function setupToggle() {
+      var toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      setTheme(getTheme());
+      toggle.addEventListener('click', function() {
+        setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    setupToggle();
+    document.addEventListener('astro:after-swap', setupToggle);
+  })();
+</script>

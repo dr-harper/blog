@@ -1,0 +1,268 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import AnimatedStats from '../components/react/AnimatedStats.tsx';
+import CareerTimeline from '../components/react/CareerTimeline.tsx';
+import SkillBars from '../components/react/SkillBars.tsx';
+import GitHubHeatmap from '../components/react/GitHubHeatmap.tsx';
+
+import { fetchGitHubContributions } from '../utils/github';
+
+const githubData = await fetchGitHubContributions();
+
+const stats = [
+  { label: 'Years in data', value: 12, suffix: '+' },
+  { label: 'Jupyter notebooks', value: 433 },
+  { label: 'Friday deploys', value: 147, suffix: '+' },
+  { label: 'Cups of tea', value: 9216 },
+];
+
+const careerRoles = [
+  {
+    company: 'Heat Geek',
+    title: 'Data Science & Insights Lead',
+    period: 'Dec 2022 – Present',
+    location: 'London',
+    highlights: [
+      'Building the data platform from scratch — pipelines, warehouse, APIs, dashboards',
+      'Google Cloud, BigQuery, Terraform, FastAPI',
+      'Focus on heat pump performance and decarbonisation',
+    ],
+  },
+  {
+    company: 'OVO Energy',
+    title: 'Data Scientist',
+    period: 'Jun 2021 – Nov 2022',
+    location: 'London',
+    highlights: [
+      'Energy efficiency insights and customer-level gas consumption forecasting',
+      'Winner of the "Plan Zero Hero" award for decarbonisation work',
+    ],
+  },
+  {
+    company: 'SSE Energy Solutions',
+    title: 'Data Scientist',
+    period: 'Sep 2020 – May 2021',
+    location: 'Havant',
+    highlights: [
+      'Smart buildings platform — occupancy classification, predictive maintenance, wellbeing monitoring',
+      'CHP plant optimisation using mixed-integer linear programming, saving ~£40k annually at the trial site',
+      'Heating optimisation model in TensorFlow showing 20% potential reduction in energy demand',
+    ],
+  },
+  {
+    company: 'Flowminder',
+    title: 'Implementation Analyst',
+    period: 'Sep 2018 – Sep 2020',
+    location: 'Southampton',
+    highlights: [
+      'Analysed mobile phone call detail records to track COVID-19 mobility changes in Haiti and other countries',
+      'Built geospatial web apps and Shiny dashboards to communicate Bayesian model outputs to decision-makers',
+      'Month-long field research in Kenya for a solar electrification project, coordinating a team of 10',
+    ],
+  },
+  {
+    company: 'University of Southampton',
+    title: 'Research Fellow',
+    period: 'Jan 2018 – Aug 2018',
+    location: 'Southampton',
+    highlights: [
+      'Refactored and packaged R code for the SAVE energy demand project',
+      'Analysed electricity demand profiles for mini-grids in Kenya and Uganda',
+    ],
+  },
+];
+
+const skills = [
+  { name: 'Python', level: 95, category: 'Languages' },
+  { name: 'SQL', level: 90, category: 'Languages' },
+  { name: 'TypeScript', level: 75, category: 'Languages' },
+  { name: 'R', level: 80, category: 'Languages' },
+  { name: 'Google Cloud', level: 90, category: 'Infrastructure' },
+  { name: 'BigQuery', level: 92, category: 'Infrastructure' },
+  { name: 'Serverless', level: 78, category: 'Infrastructure' },
+  { name: 'Docker', level: 78, category: 'Infrastructure' },
+  { name: 'Heat Pumps', level: 88, category: 'Domain' },
+  { name: 'Building Physics', level: 85, category: 'Domain' },
+  { name: 'Renewable Energy', level: 82, category: 'Domain' },
+  { name: 'Geospatial Analysis', level: 80, category: 'Domain' },
+];
+---
+
+<BaseLayout title="About — Mikey Harper" description="Full-stack data scientist working at the intersection of energy and technology.">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row items-start gap-8 mb-16">
+      <img
+        src="/images/profilePic.jpg"
+        alt="Mikey Harper"
+        class="w-32 h-32 rounded-full border-2 border-border object-cover shadow-lg shadow-accent/10 shrink-0"
+      />
+      <div>
+        <h1 class="text-3xl font-bold font-mono text-text-primary mb-2">
+          <span class="text-accent">$</span> about
+        </h1>
+        <p class="text-accent font-mono mb-4">Data scientist | Energy industry</p>
+        <p class="text-text-secondary text-lg leading-relaxed max-w-2xl">
+          Data scientist and engineer based in the UK, working in the energy industry.
+          Most of my time is spent building data platforms, pipelines, and the occasional dashboard.
+        </p>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <section class="mb-16">
+      <AnimatedStats client:visible stats={stats} />
+    </section>
+
+    <!-- Bio -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold font-mono text-text-primary mb-6">
+        About Me
+      </h2>
+      <div class="prose prose-lg max-w-none prose-a:no-underline hover:prose-a:underline">
+        <p>
+          I work in the UK energy industry, building data platforms, operational tools, and analytics dashboards.
+          Day to day that means Python, SQL, and Google Cloud — data pipelines in BigQuery, APIs in FastAPI,
+          dashboards in React and Plotly, and deploying production infrastructure to support it all.
+          The domain side covers heat pumps, building physics, and renewable energy.
+        </p>
+        <p>
+          Before that, I studied Civil Engineering at the University of Southampton (MEng, 2014) and stayed on
+          for a PhD in the <a href="https://www.southampton.ac.uk/research/groups/sustainable-energy" class="text-accent">Sustainable Energy Research Group</a>.
+          The research was on building energy simulation and domestic energy demand — lots of geospatial analysis,
+          statistical modelling, and large-scale simulation. The <a href="https://eprints.soton.ac.uk/427151/" class="text-accent">thesis</a>
+          is online if you're curious. I enjoyed the research but found I preferred building things to writing papers,
+          so I moved into industry.
+        </p>
+      </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold font-mono text-text-primary mb-6">
+        Career
+      </h2>
+      <CareerTimeline client:visible roles={careerRoles} />
+    </section>
+
+    <!-- Education -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold font-mono text-text-primary mb-6">
+        Education
+      </h2>
+      <div class="space-y-6">
+        <div class="rounded-lg border border-border bg-bg-secondary p-5">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+            <h3 class="font-mono font-bold text-text-primary">PhD Sustainable Energy</h3>
+            <span class="text-xs font-mono text-text-muted">2014 – 2017</span>
+          </div>
+          <p class="text-sm text-accent font-mono mb-2">University of Southampton · Sustainable Energy Research Group</p>
+          <p class="text-sm text-text-secondary mb-3">
+            Research focused on building energy simulation and the factors influencing domestic energy demand.
+            Combined geospatial analysis, statistical modelling, and large-scale building physics simulation.
+          </p>
+          <a
+            href="https://eprints.soton.ac.uk/427151/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted hover:text-accent transition-colors"
+          >
+            <Icon name="external-link" size={12} />
+            Read thesis
+          </a>
+        </div>
+
+        <div class="rounded-lg border border-border bg-bg-secondary p-5">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+            <h3 class="font-mono font-bold text-text-primary">MEng Civil Engineering <span class="text-accent">(1st)</span></h3>
+            <span class="text-xs font-mono text-text-muted">2010 – 2014</span>
+          </div>
+          <p class="text-sm text-accent font-mono">University of Southampton</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold font-mono text-text-primary mb-6">
+        Skills
+      </h2>
+      <SkillBars client:visible skills={skills} />
+    </section>
+
+    <!-- Currently -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold font-mono text-text-primary mb-6">
+        Currently
+      </h2>
+      <ul class="space-y-3 text-text-secondary">
+        <li class="flex items-start gap-3">
+          <span class="text-accent mt-1">&#9656;</span>
+          <span>Building data platforms for the energy industry</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-accent mt-1">&#9656;</span>
+          <span>Exploring what AI-assisted development means for data science workflows</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-accent mt-1">&#9656;</span>
+          <span>Tinkering with <a href="/projects/smart-home-monitoring/" class="text-accent hover:underline">smart home sensors</a> and environmental monitoring</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- GitHub Contributions -->
+    {githubData && (
+      <section class="mb-16">
+        <h2 class="text-xl font-bold font-mono text-text-primary mb-6">
+          GitHub Contributions
+        </h2>
+        <div class="relative">
+          <GitHubHeatmap
+            client:visible
+            weeks={githubData.weeks}
+            totalContributions={githubData.totalContributions}
+          />
+        </div>
+      </section>
+    )}
+
+    <!-- Links -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold font-mono text-text-primary mb-6">
+        Links
+      </h2>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="https://github.com/dr-harper"
+          class="inline-flex items-center gap-2 border border-border bg-bg-secondary px-4 py-2 rounded-lg text-text-secondary font-mono text-sm hover:border-accent hover:text-accent transition-colors"
+        >
+          <Icon name="github" size={16} />
+          GitHub
+        </a>
+        <a
+          href="https://www.linkedin.com/in/dr-harper/"
+          class="inline-flex items-center gap-2 border border-border bg-bg-secondary px-4 py-2 rounded-lg text-text-secondary font-mono text-sm hover:border-accent hover:text-accent transition-colors"
+        >
+          <Icon name="linkedin" size={16} />
+          LinkedIn
+        </a>
+        <a
+          href="https://stackoverflow.com/users/7347699/mikey-harper"
+          class="inline-flex items-center gap-2 border border-border bg-bg-secondary px-4 py-2 rounded-lg text-text-secondary font-mono text-sm hover:border-accent hover:text-accent transition-colors"
+        >
+          <Icon name="code" size={16} />
+          Stack Overflow
+        </a>
+        <a
+          href="https://scholar.google.com/citations?user=qTkymQYAAAAJ&hl=en"
+          class="inline-flex items-center gap-2 border border-border bg-bg-secondary px-4 py-2 rounded-lg text-text-secondary font-mono text-sm hover:border-accent hover:text-accent transition-colors"
+        >
+          <Icon name="graduation-cap" size={16} />
+          Google Scholar
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,115 @@
+---
+title: "Migrating from Blogdown to Astro (with a little help from AI)"
+author: "Mikey Harper"
+date: 2026-02-15
+slug: "migrating-from-blogdown-to-astro"
+description: "After 6 years on Hugo and Blogdown, I finally rebuilt my blog from scratch with Astro, React, and Tailwind CSS. Here's why I made the switch, the options I considered, and how Claude helped me migrate 22 posts in an afternoon."
+tags:
+  - web
+  - technical
+headerImage: "/images/astro-migration-header.svg"
+draft: false
+---
+
+import MigrationChart from '../../components/react/MigrationChart.tsx';
+
+It's been a while since I've written anything here. Over five years, in fact. The blog has been sitting quietly on the internet since 2021, still running on Hugo v0.75.1 with a Bootstrap 3 theme that I never quite got around to customising properly. It worked, but between three kids, a demanding job at a startup, and the friction of the old setup, writing new posts never quite made it to the top of the priority list.
+
+So I finally did something about it.
+
+## Why the move?
+
+The honest answer is that the tech stack had aged out. When I [migrated to Blogdown](/blog/migrating-to-blogdown/) back in 2018, the setup felt modern and clever: R Markdown documents rendered through Hugo, deployed to Netlify. It was a nice workflow for someone doing most of their analysis in R.
+
+But a lot has changed since then:
+
+- **I mostly work in Python now**, not R. The whole selling point of Blogdown was the tight R Markdown integration, and I just don't need that anymore.
+- **The theme was built on Bootstrap 3**, which reached end-of-life years ago. It also pulled in Angular.js and jQuery — neither of which I actually used for anything.
+- **Hugo's template language** is powerful but arcane. Every time I wanted to change something in the layout, I'd spend more time reading Hugo docs than actually building.
+- **The interactive elements** (Leaflet maps, htmlwidgets) were pre-rendered R outputs embedded as iframes. They worked, but it felt like a hack rather than a proper component architecture.
+
+I wanted something where I could write in Markdown, drop in React components when I needed interactivity, and style things with a modern CSS framework. Basically, I wanted a blog that felt like the tools I use every day at work.
+
+## What I considered
+
+I looked at three main options before settling on Astro.
+
+### Quarto
+
+This was actually my first instinct. Quarto is the natural successor to R Markdown, and it has excellent Python support via Jupyter kernels. It can render to websites, and it has a growing ecosystem of extensions.
+
+The problem is that Quarto websites are still fundamentally document-rendering tools. You get a nice static site, but the component model is limited. If I wanted to embed a React component — say, an interactive chart or a custom map widget — I'd be fighting against the framework rather than working with it.
+
+For a pure data science blog where every post is a computational notebook, Quarto would be excellent. But I wanted more flexibility than that.
+
+### Next.js
+
+The obvious choice if you're going all-in on React. I use React at work, and Next.js has a brilliant developer experience. But for a content-heavy blog, it felt like overkill. Server-side rendering, API routes, edge functions — I don't need any of that. I just need HTML pages that load fast.
+
+Next.js also ships a lot of JavaScript by default. For a blog that's 95% static content, that felt wrong.
+
+### Astro
+
+Astro sits in a sweet spot that's perfect for this kind of site. It's a static site generator at its core, so blog posts are just Markdown (or MDX) files that compile to plain HTML. Zero JavaScript by default. But when you do need interactivity — an interactive map, a data visualisation, an embedded widget — you can drop in a React component with `client:visible` and Astro will hydrate just that one island of interactivity.
+
+The other thing I liked about Astro is that it feels very "webby". The file-based routing is intuitive, the component model is straightforward, and the build output is just static files. No server required, no edge functions, no vendor lock-in. It deploys anywhere.
+
+## The migration
+
+This is where things got interesting. I had 22 blog posts to migrate, each written in R Markdown with TOML frontmatter, R code chunks, and various interactive elements. Doing this by hand would have taken days.
+
+Instead, I used [Claude Code](https://claude.ai/claude-code) to help me plan and execute the migration. I'm not going to pretend this was a fully automated process — it was very much a collaboration. But having an AI assistant that could read my old posts, understand the content structure, and generate the MDX equivalents saved me an enormous amount of time.
+
+Here's roughly how it went:
+
+### 1. Planning the architecture
+
+I described what I wanted (Astro, React, Tailwind, MDX) and Claude helped me think through the decisions: content collection schemas, routing strategy, how to handle the interactive R widgets, which integrations to use. We landed on a setup with:
+
+- **Astro 5** with React islands for interactive components
+- **Tailwind CSS v4** with a custom dark theme
+- **Expressive Code** for syntax highlighting (much nicer than Highlight.js)
+- **Pagefind** for client-side search
+- **MDX** for blog content, allowing JSX components inline
+
+### 2. Converting the posts
+
+Each R Markdown file needed several transformations:
+
+- **TOML frontmatter → YAML** (Astro uses YAML)
+- **R code chunks → fenced code blocks** (display-only, since we're not executing R)
+- **`knitr::include_graphics()` → standard Markdown images**
+- **R-generated figures** stayed as static images in `/public/post/`
+- **Interactive widgets** (Leaflet maps, wordclouds, datatables) became iframe components pointing to the pre-rendered HTML
+- **Twitter embeds** became static blockquote components (no dependency on Twitter's JavaScript)
+- **SpeakerDeck embeds** became responsive iframe components
+
+The migration agents processed all 22 posts in parallel — 11 simpler posts in one batch, 11 complex posts with interactive elements in another. The whole thing took about 20 minutes.
+
+### 3. Preserving URLs
+
+One thing I was careful about was keeping the existing URL structure. All the old posts were at `/{slug}/`, and there are backlinks scattered around the internet pointing to them. The new site moves posts to `/blog/{slug}/` for a cleaner structure, but Netlify redirects ensure all the old URLs still work with 301 permanent redirects.
+
+## The result
+
+Here's a completely unnecessary but fun interactive comparison of the old and new stacks. Because what's the point of having React islands if you don't use them?
+
+<MigrationChart client:visible />
+
+The new site is noticeably faster. The old Hugo site was loading Bootstrap 3, jQuery, Angular.js, and a bunch of other dependencies on every page. The new site ships zero JavaScript on static pages, and only hydrates React components on pages that actually need them.
+
+The dark terminal-inspired theme is a bit of a departure from the old Bootstrap look, but I think it better reflects what I actually do day-to-day. This is a technical blog for someone who spends most of their time in a terminal and an IDE.
+
+More importantly, the friction is gone. Writing a new post is just creating an MDX file, and if I want to embed something interactive — a Plotly chart, a Leaflet map, a custom React component — I just import it. No R Markdown compilation step, no Hugo template debugging, no jQuery.
+
+## What I learned
+
+A few reflections on the process:
+
+**AI-assisted migration is real.** I was genuinely surprised by how well Claude handled the conversion of R Markdown to MDX. It understood the structure of knitr chunks, knew how to handle frontmatter conversion, and made sensible decisions about interactive elements. It's not magic — I still had to review everything and make corrections — but it turned a multi-day task into an afternoon.
+
+**Don't wait for perfection.** I put this migration off for years because I wanted to get everything right. In the end, I just needed to start. There are still placeholder projects on the site, still TODOs in a couple of the older posts where interactive widgets didn't convert perfectly. That's fine. The important thing is that the site is live and I can iterate.
+
+**The best stack is the one you'll actually use.** Hugo is a perfectly good static site generator. Quarto is excellent for computational documents. But if the tech stack creates friction that stops you from writing, it doesn't matter how good it is on paper. I chose Astro because it matches how I think about building things right now, and that means I'm more likely to actually publish new content.
+
+Now I just need to actually write more posts. No more excuses.

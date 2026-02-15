@@ -1,0 +1,59 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { getRelatedPosts } from '../../utils/relatedPosts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
+const minutesRead = remarkPluginFrontmatter.minutesRead as string;
+
+// Get all posts for related posts + prev/next navigation
+const allPosts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const relatedPosts = getRelatedPosts(
+  post.data.slug,
+  post.data.tags ?? [],
+  allPosts.map((p) => ({
+    title: p.data.title,
+    slug: p.data.slug,
+    tags: p.data.tags ?? [],
+    date: p.data.date,
+    description: p.data.description,
+    headerImage: p.data.headerImage,
+  }))
+);
+
+// Calculate prev/next posts
+const currentIndex = allPosts.findIndex((p) => p.data.slug === post.data.slug);
+const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+const canonicalUrl = new URL(`/blog/${post.data.slug}/`, Astro.site).toString();
+---
+
+<PostLayout
+  title={post.data.title}
+  author={post.data.author}
+  date={post.data.date}
+  description={post.data.description}
+  tags={post.data.tags}
+  headerImage={post.data.headerImage}
+  minutesRead={minutesRead}
+  headings={headings}
+  relatedPosts={relatedPosts}
+  prevPost={prevPost ? { title: prevPost.data.title, slug: prevPost.data.slug } : undefined}
+  nextPost={nextPost ? { title: nextPost.data.title, slug: nextPost.data.slug } : undefined}
+  shareUrl={canonicalUrl}
+>
+  <Content />
+</PostLayout>

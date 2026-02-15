@@ -1,0 +1,34 @@
+---
+interface TechCategory {
+  label: string;
+  items: string[];
+}
+
+interface Props {
+  categories: TechCategory[];
+}
+
+const { categories } = Astro.props;
+---
+
+<section class="py-12">
+  <h2 class="text-2xl font-bold font-mono text-text-primary mb-8">
+    <span class="text-accent">&lt;</span>tech-stack<span class="text-accent">/&gt;</span>
+  </h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {categories.map((category) => (
+      <div>
+        <h3 class="text-sm font-mono text-text-muted uppercase tracking-wider mb-3">
+          {category.label}
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {category.items.map((item) => (
+            <span class="inline-block border border-border bg-bg-secondary px-3 py-1.5 rounded text-sm font-mono text-text-secondary hover:border-accent hover:text-accent transition-colors">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
