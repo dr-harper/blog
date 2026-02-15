@@ -1,8 +1,0 @@
-<div class="pull-left">
-  <a class="toplink" href="javascript:" id="return-to-top">{{ if and (isset .Site.Params "toplink" ) ( ne .Site.Params.toplink "" ) }}{{ .Site.Params.topLink }}{{ else }}{{ i18n "backtotop" }}{{ end }}</a>
-</div>
-<div class="pull-right">
-{{ range .Site.Menus.footer }}
-<a href="{{ .URL | absLangURL }}">{{ .Name }}</a> {{ .Pre }}
-{{ end }}
-</div>

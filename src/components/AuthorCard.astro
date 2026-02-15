@@ -1,0 +1,34 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div class="flex items-start gap-4 rounded-lg border border-border bg-bg-secondary p-5">
+  <img
+    src="/images/profilePic.jpg"
+    alt="Mikey Harper"
+    class="w-14 h-14 rounded-full border border-border object-cover shrink-0"
+    loading="lazy"
+  />
+  <div>
+    <p class="font-mono font-bold text-text-primary text-sm">Mikey Harper</p>
+    <p class="text-text-muted text-sm mt-1">
+      Full-stack data scientist building at the intersection of energy and technology.
+    </p>
+    <div class="flex gap-3 mt-2">
+      <a
+        href="https://github.com/dr-harper"
+        class="inline-flex items-center gap-1 text-xs font-mono text-text-muted hover:text-accent transition-colors"
+      >
+        <Icon name="github" size={12} />
+        GitHub
+      </a>
+      <a
+        href="https://www.linkedin.com/in/dr-harper/"
+        class="inline-flex items-center gap-1 text-xs font-mono text-text-muted hover:text-accent transition-colors"
+      >
+        <Icon name="linkedin" size={12} />
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</div>

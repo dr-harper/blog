@@ -1,0 +1,60 @@
+---
+import TypingText from './react/TypingText.tsx';
+import Icon from './Icon.astro';
+
+interface Props {
+  name: string;
+  taglines: string[];
+  intro: string;
+  imageSrc: string;
+}
+
+const { name, taglines, intro, imageSrc } = Astro.props;
+---
+
+<section class="py-16 sm:py-24">
+  <div class="flex flex-col sm:flex-row items-center gap-10">
+    <div class="shrink-0">
+      <img
+        src={imageSrc}
+        alt={name}
+        class="w-36 h-36 rounded-full border-2 border-border object-cover shadow-lg shadow-accent/10"
+      />
+    </div>
+    <div>
+      <p class="text-text-muted font-mono text-sm mb-2 flex items-center gap-1.5">
+        <Icon name="terminal" size={14} class="text-accent" />
+        $ whoami
+      </p>
+      <h1 class="text-4xl sm:text-5xl font-bold font-mono text-text-primary mb-3">
+        {name}
+      </h1>
+      <p class="text-accent font-mono text-lg mb-4 h-7">
+        <TypingText
+          client:load
+          phrases={taglines}
+        />
+      </p>
+      <p class="text-text-secondary text-lg leading-relaxed max-w-2xl mb-8">
+        {intro}
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/projects/"
+          class="inline-flex items-center gap-2 bg-accent text-bg-primary font-medium px-5 py-2.5 rounded-lg hover:bg-accent-hover transition-colors"
+        >
+          <Icon name="folder-git" size={16} />
+          View Projects
+          <Icon name="arrow-right" size={16} />
+        </a>
+        <a
+          href="/blog/"
+          class="inline-flex items-center gap-2 border border-border text-text-secondary font-medium px-5 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors"
+        >
+          <Icon name="book-open" size={16} />
+          Read Blog
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

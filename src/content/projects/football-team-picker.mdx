@@ -1,0 +1,36 @@
+---
+title: "TeamShuffle"
+description: "A React web app for picking balanced 5-a-side football teams, with player roles, AI-generated summaries, and shareable team cards."
+date: 2025-03-22
+slug: "football-team-picker"
+status: "active"
+techStack: ["TypeScript", "React", "Gemini AI", "SVG"]
+liveUrl: "https://teamshuffle.app/"
+repoUrl: "https://github.com/dr-harper/football-team-picker"
+featured: true
+---
+
+## The Problem
+
+Anyone who plays regular 5-a-side football knows the pain: you've got 10 players confirmed, kickoff is in 20 minutes, and you're still arguing in the group chat about how to split into two fair teams. Someone always ends up on the "stacked" side, and someone always complains.
+
+I built TeamShuffle to solve this in the most over-engineered way possible.
+
+## How It Works
+
+Paste in a list of player names, optionally tag them with roles (`#g` for goalkeeper, `#d` for defender, `#s` for striker), and hit shuffle. The app distributes players across two teams while respecting role balance — so you don't end up with both goalkeepers on the same side.
+
+You can also force specific players onto a team (using `#1` or `#2` tags), which is useful when you need to separate the two people who always argue, or keep a lift-share together.
+
+### Features I'm Particularly Proud Of
+
+- **SVG pitch visualisation** — Players are positioned on a proper football pitch layout based on their role and team size. It looks great and makes the team split feel official.
+- **AI-generated match previews** — Using Gemini, the app generates tongue-in-cheek "match preview" summaries for each team. There's also an optional "Warren Mode" that spices up the commentary with an adjustable aggression slider.
+- **Image export** — One tap to export the team cards as a shareable PNG image, ready for the WhatsApp group.
+- **Smart team names** — Randomly generated local team names based on your location. If you're in London, you'll get London-themed names; Hampshire gets Hampshire ones.
+
+## The Stack
+
+The app is built with TypeScript and React, deliberately kept simple with no heavy framework. The codebase is well-structured with clear separation between components, utilities, and constants. Rate limiting on the AI calls prevents accidental spam, and there's input validation with inline error messages to keep things robust.
+
+It's a fun project that I use every week, and it's genuinely made our pre-match team selection smoother. Though the AI commentary has caused a few arguments of its own.

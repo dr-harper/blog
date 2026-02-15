@@ -1,0 +1,55 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  date: Date;
+  description?: string;
+  headerImage?: string;
+  slug: string;
+  tags?: string[];
+}
+
+const { title, date, description, headerImage, slug, tags = [] } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a href={`/blog/${slug}/`} class="group block rounded-lg overflow-hidden border border-border bg-bg-secondary hover:border-border-hover transition-all duration-300">
+  {headerImage && (
+    <div class="h-48 overflow-hidden">
+      <img
+        src={headerImage}
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90 group-hover:opacity-100"
+        loading="lazy"
+      />
+    </div>
+  )}
+  <div class="p-5">
+    <time class="inline-flex items-center gap-1 text-xs text-text-muted font-mono" datetime={date.toISOString()}>
+      <Icon name="calendar" size={12} />
+      {formattedDate}
+    </time>
+    <h2 class="text-lg font-bold text-text-primary mt-1 group-hover:text-accent transition-colors" transition:name={`post-title-${title.toLowerCase().replace(/\s+/g, '-').slice(0, 40)}`}>
+      {title}
+    </h2>
+    {description && (
+      <p class="text-sm text-text-muted mt-2 line-clamp-2">{description}</p>
+    )}
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-1.5 mt-3">
+        {tags.slice(0, 3).map((tag) => (
+          <span class="inline-flex items-center gap-1 rounded-full border border-border px-2.5 py-0.5 text-xs font-mono text-text-muted">
+            <Icon name="tag" size={10} />
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</a>

@@ -1,0 +1,111 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  status: 'active' | 'completed' | 'archived';
+  techStack: string[];
+  liveUrl?: string;
+  repoUrl?: string;
+  headerImage?: string;
+}
+
+const { title, description, date, status, techStack, liveUrl, repoUrl, headerImage } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const statusConfig = {
+  active: { colour: 'bg-green-500', text: 'text-green-400', label: 'Active' },
+  completed: { colour: 'bg-info', text: 'text-info', label: 'Completed' },
+  archived: { colour: 'bg-text-muted', text: 'text-text-muted', label: 'Archived' },
+};
+
+const statusInfo = statusConfig[status];
+---
+
+<BaseLayout title={`${title} | Mikey Harper`} description={description} ogImage={headerImage}>
+  <article class="max-w-3xl mx-auto">
+    {headerImage && (
+      <img
+        src={headerImage}
+        alt={title}
+        class="w-full h-72 object-cover rounded-lg mb-8 border border-border"
+      />
+    )}
+
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold font-mono text-text-primary mb-4">{title}</h1>
+
+      <div class="flex flex-wrap items-center gap-4 text-sm mb-4">
+        <div class="inline-flex items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 py-1">
+          <span class:list={['inline-block w-2 h-2 rounded-full', statusInfo.colour]} />
+          <span class:list={['font-mono text-xs', statusInfo.text]}>{statusInfo.label}</span>
+        </div>
+        <time class="inline-flex items-center gap-1 text-text-muted font-mono text-xs" datetime={date.toISOString()}>
+          <Icon name="calendar" size={12} />
+          {formattedDate}
+        </time>
+      </div>
+
+      <p class="text-text-secondary text-lg leading-relaxed">{description}</p>
+
+      {techStack.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-5">
+          {techStack.map((tech) => (
+            <span class="inline-block rounded border border-border bg-bg-elevated px-2.5 py-1 text-xs font-mono text-text-muted">
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {(liveUrl || repoUrl) && (
+        <div class="flex flex-wrap gap-3 mt-6">
+          {liveUrl && (
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-mono font-semibold text-bg-primary hover:bg-accent-hover transition-colors"
+            >
+              <Icon name="external-link" size={16} />
+              View Live
+            </a>
+          )}
+          {repoUrl && (
+            <a
+              href={repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-lg border border-border bg-bg-secondary px-4 py-2 text-sm font-mono font-semibold text-text-primary hover:border-accent hover:text-accent transition-colors"
+            >
+              <Icon name="github" size={16} />
+              View Source
+            </a>
+          )}
+        </div>
+      )}
+    </header>
+
+    <div class="prose prose-lg max-w-none prose-img:rounded-lg prose-img:border prose-img:border-border prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-pre:border prose-pre:border-border">
+      <slot />
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-border">
+      <a
+        href="/projects/"
+        class="inline-flex items-center gap-2 text-sm font-mono text-text-muted hover:text-accent transition-colors"
+      >
+        <Icon name="arrow-left" size={16} />
+        Back to projects
+      </a>
+    </div>
+  </article>
+</BaseLayout>

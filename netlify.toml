@@ -1,14 +1,13 @@
-[build] 
-  publish = "public"
-  command = "hugo"
+[build]
+  command = "npm run build"
+  publish = "dist"
 
-[context.production.environment]
-  HUGO_VERSION = "0.75.1" # if older, use format: 0.53 (no trailing zero)
-  HUGO_ENV = "production"
-  HUGO_ENABLEGITINFO = "true"
-  
-[context.branch-deploy.environment]
-  HUGO_VERSION = "0.68.3" # if older, use format: 0.53 (no trailing zero)
+[build.environment]
+  NODE_VERSION = "20"
 
-[context.deploy-preview.environment]
-  HUGO_VERSION = "0.68.3"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

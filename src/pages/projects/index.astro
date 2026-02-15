@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Projects | Mikey Harper" description="A collection of projects spanning data science, energy analytics, and software engineering.">
+  <section class="mb-10">
+    <h1 class="text-3xl font-bold font-mono text-text-primary mb-3">
+      Projects
+    </h1>
+    <p class="text-text-secondary max-w-2xl">
+      A collection of projects spanning data science, energy analytics, and software engineering.
+      From cloud platforms to home automation — here is what I have been building.
+    </p>
+  </section>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {projects.map((project) => (
+      <ProjectCard
+        title={project.data.title}
+        description={project.data.description}
+        status={project.data.status}
+        techStack={project.data.techStack}
+        liveUrl={project.data.liveUrl}
+        repoUrl={project.data.repoUrl}
+        headerImage={project.data.headerImage}
+        slug={project.data.slug}
+      />
+    ))}
+  </div>
+</BaseLayout>

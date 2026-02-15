@@ -1,0 +1,45 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  prevPost?: { title: string; slug: string };
+  nextPost?: { title: string; slug: string };
+}
+
+const { prevPost, nextPost } = Astro.props;
+---
+
+{(prevPost || nextPost) && (
+  <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Post navigation">
+    {prevPost ? (
+      <a
+        href={`/blog/${prevPost.slug}/`}
+        class="group flex items-start gap-3 rounded-lg border border-border bg-bg-secondary p-4 hover:border-accent transition-colors"
+      >
+        <Icon name="chevron-left" size={16} class="text-text-muted group-hover:text-accent mt-0.5 shrink-0" />
+        <div>
+          <span class="text-xs font-mono text-text-muted">Previous</span>
+          <p class="text-sm font-medium text-text-primary group-hover:text-accent transition-colors mt-1 line-clamp-2">
+            {prevPost.title}
+          </p>
+        </div>
+      </a>
+    ) : (
+      <div />
+    )}
+    {nextPost && (
+      <a
+        href={`/blog/${nextPost.slug}/`}
+        class="group flex items-start gap-3 rounded-lg border border-border bg-bg-secondary p-4 hover:border-accent transition-colors text-right flex-row-reverse"
+      >
+        <Icon name="chevron-right" size={16} class="text-text-muted group-hover:text-accent mt-0.5 shrink-0" />
+        <div>
+          <span class="text-xs font-mono text-text-muted">Next</span>
+          <p class="text-sm font-medium text-text-primary group-hover:text-accent transition-colors mt-1 line-clamp-2">
+            {nextPost.title}
+          </p>
+        </div>
+      </a>
+    )}
+  </nav>
+)}

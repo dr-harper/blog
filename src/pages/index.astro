@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TechStack from '../components/TechStack.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PostCard from '../components/PostCard.astro';
+import BlogLogFeed from '../components/react/BlogLogFeed.tsx';
+import Icon from '../components/Icon.astro';
+import TrainAnimation from '../components/react/TrainAnimation.tsx';
+import { getCollection } from 'astro:content';
+
+const featuredProjects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allPosts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const recentPosts = allPosts.slice(0, 4);
+
+const logPosts = allPosts.map((post) => ({
+  title: post.data.title,
+  slug: post.data.slug,
+  date: post.data.date.toISOString(),
+  tags: post.data.tags ?? [],
+  description: post.data.description,
+}));
+
+const techCategories = [
+  {
+    label: 'Languages',
+    items: ['Python', 'TypeScript', 'R', 'SQL'],
+  },
+  {
+    label: 'Cloud & Infrastructure',
+    items: ['Google Cloud', 'BigQuery', 'Serverless', 'Docker'],
+  },
+  {
+    label: 'Frameworks & Tools',
+    items: ['React', 'FastAPI', 'Pandas', 'dbt'],
+  },
+  {
+    label: 'Data & Visualisation',
+    items: ['Plotly', 'Leaflet', 'Jupyter', 'Streamlit'],
+  },
+  {
+    label: 'Domain Expertise',
+    items: ['Renewable Energy', 'Heat Pumps', 'Building Physics'],
+  },
+  {
+    label: 'Geospatial',
+    items: ['GeoPandas', 'Leaflet', 'QGIS', 'Fiona'],
+  },
+];
+---
+
+<BaseLayout>
+  <Hero
+    name="Mikey Harper"
+    taglines={[
+      "Full-stack data scientist",
+      "Energy industry engineer",
+      "Python & cloud infrastructure",
+      "Building tools that decarbonise",
+    ]}
+    intro="I build data platforms and analytics tools that help the energy industry make better decisions. From cloud infrastructure to interactive visualisations, I work across the full stack to turn complex data into actionable insights."
+    imageSrc="/images/profilePic.jpg"
+  />
+
+  <!-- 🚄 -->
+  <TrainAnimation client:visible />
+
+  <!-- Recent Posts -->
+  <section class="py-12">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold font-mono text-text-primary">
+        Recent Posts
+      </h2>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-1 border border-border rounded-lg overflow-hidden">
+          <button
+            id="view-grid"
+            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-mono text-accent bg-bg-elevated transition-colors"
+            title="Grid view"
+          >
+            <Icon name="grid" size={12} />
+            grid
+          </button>
+          <button
+            id="view-log"
+            class="inline-flex items-center gap-1 px-3 py-1 text-xs font-mono text-text-muted hover:text-accent transition-colors"
+            title="Log view"
+          >
+            <Icon name="terminal" size={12} />
+            log
+          </button>
+        </div>
+        <a href="/blog/" class="text-sm font-mono text-text-muted hover:text-accent transition-colors">
+          View all &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Grid view (default) -->
+    <div id="posts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {recentPosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          date={post.data.date}
+          description={post.data.description}
+          headerImage={post.data.headerImage}
+          slug={post.data.slug}
+          tags={post.data.tags}
+        />
+      ))}
+    </div>
+
+    <!-- Log view (hidden by default) -->
+    <div id="posts-log" class="hidden">
+      <BlogLogFeed client:visible posts={logPosts} />
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-12 border-t border-border">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold font-mono text-text-primary">
+        Projects
+      </h2>
+      <a href="/projects/" class="text-sm font-mono text-text-muted hover:text-accent transition-colors">
+        View all &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {featuredProjects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          status={project.data.status}
+          techStack={project.data.techStack}
+          liveUrl={project.data.liveUrl}
+          repoUrl={project.data.repoUrl}
+          headerImage={project.data.headerImage}
+          slug={project.data.slug}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <div class="border-t border-border">
+    <TechStack categories={techCategories} />
+  </div>
+
+  <script is:inline>
+    (function() {
+      function setupViewToggle() {
+        var gridBtn = document.getElementById('view-grid');
+        var logBtn = document.getElementById('view-log');
+        var gridView = document.getElementById('posts-grid');
+        var logView = document.getElementById('posts-log');
+
+        if (!gridBtn || !logBtn || !gridView || !logView) return;
+
+        var saved = localStorage.getItem('blog-view') || 'grid';
+        applyView(saved);
+
+        gridBtn.addEventListener('click', function() {
+          applyView('grid');
+          localStorage.setItem('blog-view', 'grid');
+        });
+
+        logBtn.addEventListener('click', function() {
+          applyView('log');
+          localStorage.setItem('blog-view', 'log');
+        });
+
+        function applyView(view) {
+          if (view === 'log') {
+            gridView.classList.add('hidden');
+            logView.classList.remove('hidden');
+            logBtn.classList.add('text-accent', 'bg-bg-elevated');
+            logBtn.classList.remove('text-text-muted');
+            gridBtn.classList.remove('text-accent', 'bg-bg-elevated');
+            gridBtn.classList.add('text-text-muted');
+          } else {
+            logView.classList.add('hidden');
+            gridView.classList.remove('hidden');
+            gridBtn.classList.add('text-accent', 'bg-bg-elevated');
+            gridBtn.classList.remove('text-text-muted');
+            logBtn.classList.remove('text-accent', 'bg-bg-elevated');
+            logBtn.classList.add('text-text-muted');
+          }
+        }
+      }
+
+      setupViewToggle();
+      document.addEventListener('astro:after-swap', setupViewToggle);
+    })();
+  </script>
+</BaseLayout>

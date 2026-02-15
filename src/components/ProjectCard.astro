@@ -1,0 +1,94 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  status: 'active' | 'completed' | 'archived';
+  techStack: string[];
+  liveUrl?: string;
+  repoUrl?: string;
+  headerImage?: string;
+  slug: string;
+}
+
+const { title, description, status, techStack, liveUrl, repoUrl, headerImage, slug } = Astro.props;
+
+const statusConfig = {
+  active: { colour: 'bg-green-500', label: 'Active' },
+  completed: { colour: 'bg-info', label: 'Completed' },
+  archived: { colour: 'bg-text-muted', label: 'Archived' },
+};
+
+const { colour, label } = statusConfig[status];
+---
+
+<div class="group rounded-lg border border-border bg-bg-secondary hover:border-accent/40 hover:shadow-[0_0_15px_rgba(24,188,156,0.06)] transition-all duration-300">
+  {headerImage && (
+    <a href={`/projects/${slug}/`} class="block h-44 overflow-hidden rounded-t-lg">
+      <img
+        src={headerImage}
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-85 group-hover:opacity-100"
+        loading="lazy"
+      />
+    </a>
+  )}
+
+  <div class="p-5">
+    <div class="flex items-center gap-2 mb-3">
+      <span class:list={['inline-block w-2 h-2 rounded-full', colour]} />
+      <span class="text-xs font-mono text-text-muted">{label}</span>
+    </div>
+
+    <a href={`/projects/${slug}/`} class="block">
+      <h2 class="text-lg font-bold font-mono text-text-primary group-hover:text-accent transition-colors">
+        {title}
+      </h2>
+    </a>
+
+    <p class="text-sm text-text-muted mt-2 line-clamp-2">{description}</p>
+
+    {techStack.length > 0 && (
+      <div class="flex flex-wrap gap-1.5 mt-4">
+        {techStack.map((tech) => (
+          <span class="inline-block rounded border border-border bg-bg-elevated px-2 py-0.5 text-xs font-mono text-text-muted">
+            {tech}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <div class="flex items-center gap-4 mt-4 pt-4 border-t border-border">
+      {liveUrl && (
+        <a
+          href={liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted hover:text-accent transition-colors"
+        >
+          <Icon name="external-link" size={14} />
+          Live
+        </a>
+      )}
+      {repoUrl && (
+        <a
+          href={repoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs font-mono text-text-muted hover:text-accent transition-colors"
+        >
+          <Icon name="github" size={14} />
+          Source
+        </a>
+      )}
+      <a
+        href={`/projects/${slug}/`}
+        class="ml-auto inline-flex items-center gap-1 text-xs font-mono text-accent hover:text-accent-hover transition-colors"
+      >
+        Details
+        <Icon name="chevron-right" size={14} />
+      </a>
+    </div>
+  </div>
+</div>

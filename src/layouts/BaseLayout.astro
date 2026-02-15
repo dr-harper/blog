@@ -1,0 +1,261 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import Icon from '../components/Icon.astro';
+import CommandPalette from '../components/react/CommandPalette.tsx';
+import MatrixRain from '../components/react/MatrixRain.tsx';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Mikey Harper',
+  description = 'Full-stack data scientist building at the intersection of energy and technology.',
+  ogImage,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/about/', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+
+// Build command palette data
+const allPosts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allProjects = await getCollection('projects');
+
+const commandPages = [
+  // Static pages
+  ...navLinks.map((link) => ({
+    title: link.label,
+    href: link.href,
+    category: 'page' as const,
+  })),
+  // Blog posts
+  ...allPosts.map((post) => ({
+    title: post.data.title,
+    href: `/blog/${post.data.slug}/`,
+    category: 'post' as const,
+    description: post.data.description,
+    date: post.data.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' }),
+  })),
+  // Projects
+  ...allProjects.map((project) => ({
+    title: project.data.title,
+    href: `/projects/${project.data.slug}/`,
+    category: 'project' as const,
+    description: project.data.description,
+  })),
+  // Tags (unique)
+  ...[...new Set(allPosts.flatMap((p) => p.data.tags ?? []))].map((tag) => ({
+    title: tag,
+    href: `/blog/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`,
+    category: 'tag' as const,
+  })),
+];
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      (function() {
+        var theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@DrMichaelHarper" />
+    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen flex flex-col font-sans text-text-secondary bg-bg-primary transition-colors duration-200">
+    <!-- Command Palette -->
+    <CommandPalette client:idle pages={commandPages} />
+
+    <!-- Matrix Rain Easter Egg -->
+    <MatrixRain client:idle />
+
+    <header class="border-b border-border" transition:persist>
+      <nav class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="font-mono text-lg font-bold text-text-primary hover:text-accent transition-colors">
+          <span class="text-accent">~/</span>mikey-harper
+        </a>
+        <div class="flex items-center gap-4 sm:gap-6">
+          <!-- Desktop nav -->
+          <ul class="hidden sm:flex gap-6 text-sm font-medium">
+            {navLinks.map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  class:list={[
+                    'transition-colors',
+                    currentPath === href || (href !== '/' && currentPath.startsWith(href))
+                      ? 'text-accent'
+                      : 'text-text-muted hover:text-text-primary',
+                  ]}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <button
+            id="search-btn"
+            class="flex items-center justify-center p-2 rounded-lg border border-border text-text-muted hover:border-accent hover:text-accent transition-colors"
+            title="Search"
+            aria-label="Search"
+          >
+            <Icon name="search" size={16} />
+          </button>
+          <ThemeToggle />
+          <!-- Mobile hamburger -->
+          <button
+            id="mobile-menu-btn"
+            class="sm:hidden p-2 rounded-lg border border-border text-text-muted hover:border-accent hover:text-accent transition-colors"
+            aria-label="Open menu"
+          >
+            <Icon name="menu" size={18} />
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile menu (hidden by default) -->
+      <div id="mobile-menu" class="hidden sm:hidden border-t border-border bg-bg-primary">
+        <ul class="max-w-5xl mx-auto px-4 py-3 space-y-1">
+          {navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  'block py-2.5 px-3 rounded-lg text-sm font-medium font-mono transition-colors',
+                  currentPath === href || (href !== '/' && currentPath.startsWith(href))
+                    ? 'text-accent bg-bg-secondary'
+                    : 'text-text-muted hover:text-text-primary hover:bg-bg-secondary',
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <button
+              id="mobile-search-btn"
+              class="w-full text-left block py-2.5 px-3 rounded-lg text-sm font-medium font-mono text-text-muted hover:text-text-primary hover:bg-bg-secondary transition-colors"
+            >
+              Search
+            </button>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="flex-1 max-w-5xl mx-auto px-4 py-10 w-full" data-pagefind-body transition:animate="fade">
+      <slot />
+    </main>
+
+    <footer class="border-t border-border text-text-muted text-sm py-6" transition:persist>
+      <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <p>&copy; {new Date().getFullYear()} Mikey Harper</p>
+        <div class="flex gap-4">
+          <a href="https://github.com/dr-harper" class="inline-flex items-center gap-1.5 hover:text-accent transition-colors" aria-label="GitHub">
+            <Icon name="github" size={14} />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/dr-harper/" class="inline-flex items-center gap-1.5 hover:text-accent transition-colors" aria-label="LinkedIn">
+            <Icon name="linkedin" size={14} />
+            LinkedIn
+          </a>
+          <a href="https://stackoverflow.com/users/7347699/mikey-harper" class="inline-flex items-center gap-1.5 hover:text-accent transition-colors" aria-label="Stack Overflow">
+            <Icon name="code" size={14} />
+            Stack Overflow
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function() {
+        function openSearch() {
+          window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true }));
+        }
+
+        function setupSearch() {
+          var btn = document.getElementById('search-btn');
+          if (btn) btn.addEventListener('click', openSearch);
+          var mobileBtn = document.getElementById('mobile-search-btn');
+          if (mobileBtn) {
+            mobileBtn.addEventListener('click', function() {
+              var menu = document.getElementById('mobile-menu');
+              if (menu) menu.classList.add('hidden');
+              openSearch();
+            });
+          }
+        }
+
+        function setupMobileMenu() {
+          var btn = document.getElementById('mobile-menu-btn');
+          var menu = document.getElementById('mobile-menu');
+          if (!btn || !menu) return;
+
+          btn.addEventListener('click', function() {
+            var isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            btn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+          });
+        }
+
+        setupSearch();
+        setupMobileMenu();
+        document.addEventListener('astro:after-swap', function() {
+          setupSearch();
+          setupMobileMenu();
+          // Close mobile menu on navigation
+          var menu = document.getElementById('mobile-menu');
+          if (menu) menu.classList.add('hidden');
+        });
+      })();
+    </script>
+  </body>
+</html>

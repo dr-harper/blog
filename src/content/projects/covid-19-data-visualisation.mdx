@@ -1,0 +1,21 @@
+---
+title: "COVID-19 Data Visualisation"
+description: "Interactive maps and dashboards tracking COVID-19 spread across the UK, used by local authorities and media."
+date: 2020-03-15
+slug: "covid-19-data-visualisation"
+status: "completed"
+techStack: ["R", "Leaflet", "ggplot2", "Shiny"]
+featured: true
+---
+
+## Overview
+
+When the COVID-19 pandemic began spreading across the UK in early 2020, there was an urgent need for accessible, up-to-date visualisations of case data at the local authority level. This project started as a personal effort to map the spread and quickly grew into a resource used by local councils, journalists, and researchers to understand how the virus was affecting their communities.
+
+## Technical Approach
+
+The visualisations were built primarily in R, leveraging Leaflet for interactive choropleth maps and ggplot2 for static charts and time series. A Shiny application provided the interactive front-end, allowing users to filter by region, time period, and key metrics such as case rates, hospital admissions, and vaccination coverage. Data was pulled daily from the UK Government's COVID-19 API and processed through automated R scripts.
+
+## Reach and Legacy
+
+At its peak, the dashboards were receiving thousands of visits per day. Several local authorities embedded the maps directly into their own public health communications. The project reinforced the importance of clear data visualisation in public health communication and led to several blog posts exploring the data in depth. Though the project is now archived following the wind-down of official reporting, the codebase remains available as a reference for similar rapid-response data visualisation efforts.
