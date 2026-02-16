@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -48,23 +48,19 @@ const timelineData = [
 
 type Tab = 'bundle' | 'radar' | 'timeline';
 
-/** Read a CSS variable's resolved value at render time for Recharts props */
-function useCssVar(name: string, fallback: string): string {
-  const [value, setValue] = useState(fallback);
-  useEffect(() => {
-    const resolved = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-    if (resolved) setValue(resolved);
+/*
+ * Recharts needs resolved colour values for SVG attributes (not CSS variables).
+ * These neutral greys work well in both dark and light themes.
+ */
+const GRID = '#6e7681';
+const MUTED = '#8b949e';
+const ACCENT = '#18BC9C';
 
-    // Re-read on theme change
-    const observer = new MutationObserver(() => {
-      const updated = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-      if (updated) setValue(updated);
-    });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    return () => observer.disconnect();
-  }, [name]);
-  return value;
-}
+const axisProps = {
+  tick: { fill: MUTED, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 },
+  axisLine: { stroke: GRID },
+  tickLine: { stroke: GRID },
+};
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
@@ -90,21 +86,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 export default function MigrationChart() {
   const [activeTab, setActiveTab] = useState<Tab>('radar');
 
-  const borderColor = useCssVar('--color-border', '#30363d');
-  const mutedColor = useCssVar('--color-text-muted', '#8b949e');
-  const accentColor = useCssVar('--color-accent', '#18BC9C');
-
   const tabs: { key: Tab; label: string }[] = [
     { key: 'radar', label: 'Stack Comparison' },
     { key: 'bundle', label: 'JS Bundle (KB)' },
     { key: 'timeline', label: 'Post Timeline' },
   ];
-
-  const axisProps = {
-    tick: { fill: mutedColor, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 },
-    axisLine: { stroke: borderColor },
-    tickLine: { stroke: borderColor },
-  };
 
   return (
     <div style={{
@@ -145,39 +131,39 @@ export default function MigrationChart() {
       <ResponsiveContainer width="100%" height={350}>
         {activeTab === 'bundle' ? (
           <BarChart data={bundleData}>
-            <CartesianGrid strokeDasharray="3 3" stroke={borderColor} />
+            <CartesianGrid strokeDasharray="3 3" stroke={GRID} />
             <XAxis dataKey="name" {...axisProps} />
-            <YAxis {...axisProps} label={{ value: 'KB', position: 'insideLeft', fill: mutedColor, fontSize: 11 }} />
+            <YAxis {...axisProps} label={{ value: 'KB', position: 'insideLeft', fill: MUTED, fontSize: 11 }} />
             <Tooltip content={<CustomTooltip />} />
             <Legend wrapperStyle={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }} />
             <Bar dataKey="old" name="Hugo (2020)" fill="#f85149" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="new" name="Astro (2026)" fill={accentColor} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="new" name="Astro (2026)" fill={ACCENT} radius={[4, 4, 0, 0]} />
           </BarChart>
         ) : activeTab === 'radar' ? (
           <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="70%">
-            <PolarGrid stroke={borderColor} />
+            <PolarGrid stroke={GRID} />
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fill: mutedColor, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
+              tick={{ fill: MUTED, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
             />
             <PolarRadiusAxis
               angle={30}
               domain={[0, 100]}
-              tick={{ fill: mutedColor, fontSize: 10 }}
-              axisLine={{ stroke: borderColor }}
+              tick={{ fill: MUTED, fontSize: 10 }}
+              axisLine={{ stroke: GRID }}
             />
             <Radar name="Hugo (2020)" dataKey="old" stroke="#f85149" fill="#f85149" fillOpacity={0.2} />
-            <Radar name="Astro (2026)" dataKey="new" stroke={accentColor} fill={accentColor} fillOpacity={0.3} />
+            <Radar name="Astro (2026)" dataKey="new" stroke={ACCENT} fill={ACCENT} fillOpacity={0.3} />
             <Legend wrapperStyle={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }} />
             <Tooltip content={<CustomTooltip />} />
           </RadarChart>
         ) : (
           <BarChart data={timelineData}>
-            <CartesianGrid strokeDasharray="3 3" stroke={borderColor} />
+            <CartesianGrid strokeDasharray="3 3" stroke={GRID} />
             <XAxis dataKey="year" {...axisProps} />
-            <YAxis {...axisProps} label={{ value: 'Posts', position: 'insideLeft', fill: mutedColor, fontSize: 11 }} />
+            <YAxis {...axisProps} label={{ value: 'Posts', position: 'insideLeft', fill: MUTED, fontSize: 11 }} />
             <Tooltip content={<CustomTooltip />} />
-            <Bar dataKey="posts" name="Posts published" radius={[4, 4, 0, 0]} fill={accentColor} />
+            <Bar dataKey="posts" name="Posts published" radius={[4, 4, 0, 0]} fill={ACCENT} />
           </BarChart>
         )}
       </ResponsiveContainer>
