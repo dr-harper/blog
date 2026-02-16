@@ -20,7 +20,7 @@ I recently finished my PhD, and my supervisor, Patrick James, always described m
 
 This blog post explains how we can interact with Twitter data in R using the **rtweet** package, and convert this raw data into pretty visualisations using the **wordcloud2** package. Hopefully it of use to others who may want to replicate the analysis themselves.
 
-# Overview
+## Overview
 
 There are three key stages to the process of making the wordcloud:
 
@@ -38,7 +38,7 @@ library(qdapRegex)     # Removing URLs
 library(wordcloud2)    # Creating the wordcloud
 ```
 
-## Extracting Tweets
+### Extracting Tweets
 
 The [Twitter API](https://developer.twitter.com/content/developer-twitter/en.html) makes it very easy to download tweet history for a user, a the **rtweet** package has been developed to provide an interface with this to R. You will need to sign up for a developer account to be able to access the API. From my experience, the process was not overly difficult, but there was almost a three week wait in my application being approved.  Once you have an account, you will need to authenticate it with R as [explained here](https://github.com/mkearney/rtweet).
 
@@ -49,7 +49,7 @@ Having setup the package, the tweet history for a user can be extracted using th
 tweets_pab <- get_timelines(c("pab_james"), n = 3200)
 ```
 
-## Cleaning the Data
+### Cleaning the Data
 
 Once the tweet history has been extracted, it must be formatted and cleaned for the plot. Firstly, the column `text` is collapsed into a single character vector:
 
@@ -88,7 +88,7 @@ textCorpus <- sort(rowSums(textCorpus), decreasing=TRUE)
 textCorpus <- data.frame(word = names(textCorpus), freq=textCorpus, row.names = NULL)
 ```
 
-## Building the Wordcloud
+### Building the Wordcloud
 
 Finally, we can build the wordcloud. There are two main options which can be used this: either **wordcloud** or **wordcloud2**. For the example, I have used the **wordcloud2** package, as it offered a few more functions for customising the output. Below, we use the frequency table developed above to create the wordlcloud, as shown below.
 
@@ -102,7 +102,7 @@ wordcloud
 
 We can play around with this basic setup, and I would recommend checking out the [package documentation](https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html) to see some of the things that can be done. For example, we can provide our own image as a mask to customise the shape of the wordcloud.
 
-# Wrapping It all up
+## Wrapping It all up
 
 If we want to create Wordclouds for multiple users, we can wrap the above code up into a function. Below is the `TweetsToWordcloud` function:
 
@@ -145,6 +145,6 @@ TweetsToWordcloud(username = "dataknut")
 
 <HtmlWidgetFrame client:visible src="/post/2018-09-11-twitter-wordcloud/2018-09-12-creating-twitter-wordclouds_files/figure-html/widgets/widget_wordCloud2.html" height="500px" title="Twitter Wordcloud for dataknut" />
 
-# Conclusion
+## Conclusion
 
 This post highlights how we can extract Tweets from Twitter and use this to build data visualisations like wordclouds. I certainly feel like there is a lot more that can be done with this data, so keep an eye out for more posts in the future on this!

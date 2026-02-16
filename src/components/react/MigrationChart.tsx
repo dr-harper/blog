@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   BarChart,
   Bar,
@@ -48,18 +48,36 @@ const timelineData = [
 
 type Tab = 'bundle' | 'radar' | 'timeline';
 
+/** Read a CSS variable's resolved value at render time for Recharts props */
+function useCssVar(name: string, fallback: string): string {
+  const [value, setValue] = useState(fallback);
+  useEffect(() => {
+    const resolved = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    if (resolved) setValue(resolved);
+
+    // Re-read on theme change
+    const observer = new MutationObserver(() => {
+      const updated = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      if (updated) setValue(updated);
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, [name]);
+  return value;
+}
+
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
     <div style={{
-      background: '#151920',
-      border: '1px solid #30363d',
+      background: 'var(--color-bg-secondary)',
+      border: '1px solid var(--color-border)',
       borderRadius: '8px',
       padding: '10px 14px',
       fontFamily: "'JetBrains Mono', monospace",
       fontSize: '12px',
     }}>
-      <p style={{ color: '#e6edf3', marginBottom: 4 }}>{label}</p>
+      <p style={{ color: 'var(--color-text-primary)', marginBottom: 4 }}>{label}</p>
       {payload.map((entry: any, i: number) => (
         <p key={i} style={{ color: entry.color, margin: 0 }}>
           {entry.name}: {entry.value}{entry.name.includes('KB') || label === 'Bundle Size' ? ' KB' : ''}
@@ -72,16 +90,26 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 export default function MigrationChart() {
   const [activeTab, setActiveTab] = useState<Tab>('radar');
 
+  const borderColor = useCssVar('--color-border', '#30363d');
+  const mutedColor = useCssVar('--color-text-muted', '#8b949e');
+  const accentColor = useCssVar('--color-accent', '#18BC9C');
+
   const tabs: { key: Tab; label: string }[] = [
     { key: 'radar', label: 'Stack Comparison' },
     { key: 'bundle', label: 'JS Bundle (KB)' },
     { key: 'timeline', label: 'Post Timeline' },
   ];
 
+  const axisProps = {
+    tick: { fill: mutedColor, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 },
+    axisLine: { stroke: borderColor },
+    tickLine: { stroke: borderColor },
+  };
+
   return (
     <div style={{
-      background: '#151920',
-      border: '1px solid #30363d',
+      background: 'var(--color-bg-secondary)',
+      border: '1px solid var(--color-border)',
       borderRadius: '12px',
       padding: '24px',
       marginTop: '24px',
@@ -98,9 +126,9 @@ export default function MigrationChart() {
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
             style={{
-              background: activeTab === tab.key ? '#18BC9C' : '#1f2430',
-              color: activeTab === tab.key ? '#0a0e14' : '#8b949e',
-              border: `1px solid ${activeTab === tab.key ? '#18BC9C' : '#30363d'}`,
+              background: activeTab === tab.key ? 'var(--color-accent)' : 'var(--color-bg-elevated)',
+              color: activeTab === tab.key ? 'var(--color-bg-primary)' : 'var(--color-text-muted)',
+              border: `1px solid ${activeTab === tab.key ? 'var(--color-accent)' : 'var(--color-border)'}`,
               borderRadius: '6px',
               padding: '6px 14px',
               fontSize: '13px',
@@ -117,80 +145,51 @@ export default function MigrationChart() {
       <ResponsiveContainer width="100%" height={350}>
         {activeTab === 'bundle' ? (
           <BarChart data={bundleData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#30363d" />
-            <XAxis
-              dataKey="name"
-              tick={{ fill: '#8b949e', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
-              axisLine={{ stroke: '#30363d' }}
-              tickLine={{ stroke: '#30363d' }}
-            />
-            <YAxis
-              tick={{ fill: '#8b949e', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
-              axisLine={{ stroke: '#30363d' }}
-              tickLine={{ stroke: '#30363d' }}
-              label={{ value: 'KB', position: 'insideLeft', fill: '#8b949e', fontSize: 11 }}
-            />
+            <CartesianGrid strokeDasharray="3 3" stroke={borderColor} />
+            <XAxis dataKey="name" {...axisProps} />
+            <YAxis {...axisProps} label={{ value: 'KB', position: 'insideLeft', fill: mutedColor, fontSize: 11 }} />
             <Tooltip content={<CustomTooltip />} />
-            <Legend
-              wrapperStyle={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}
-            />
+            <Legend wrapperStyle={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }} />
             <Bar dataKey="old" name="Hugo (2020)" fill="#f85149" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="new" name="Astro (2026)" fill="#18BC9C" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="new" name="Astro (2026)" fill={accentColor} radius={[4, 4, 0, 0]} />
           </BarChart>
         ) : activeTab === 'radar' ? (
           <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="70%">
-            <PolarGrid stroke="#30363d" />
+            <PolarGrid stroke={borderColor} />
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fill: '#8b949e', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
+              tick={{ fill: mutedColor, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
             />
             <PolarRadiusAxis
               angle={30}
               domain={[0, 100]}
-              tick={{ fill: '#8b949e', fontSize: 10 }}
-              axisLine={{ stroke: '#30363d' }}
+              tick={{ fill: mutedColor, fontSize: 10 }}
+              axisLine={{ stroke: borderColor }}
             />
             <Radar name="Hugo (2020)" dataKey="old" stroke="#f85149" fill="#f85149" fillOpacity={0.2} />
-            <Radar name="Astro (2026)" dataKey="new" stroke="#18BC9C" fill="#18BC9C" fillOpacity={0.3} />
-            <Legend
-              wrapperStyle={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}
-            />
+            <Radar name="Astro (2026)" dataKey="new" stroke={accentColor} fill={accentColor} fillOpacity={0.3} />
+            <Legend wrapperStyle={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }} />
             <Tooltip content={<CustomTooltip />} />
           </RadarChart>
         ) : (
           <BarChart data={timelineData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#30363d" />
-            <XAxis
-              dataKey="year"
-              tick={{ fill: '#8b949e', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
-              axisLine={{ stroke: '#30363d' }}
-              tickLine={{ stroke: '#30363d' }}
-            />
-            <YAxis
-              tick={{ fill: '#8b949e', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}
-              axisLine={{ stroke: '#30363d' }}
-              tickLine={{ stroke: '#30363d' }}
-              label={{ value: 'Posts', position: 'insideLeft', fill: '#8b949e', fontSize: 11 }}
-            />
+            <CartesianGrid strokeDasharray="3 3" stroke={borderColor} />
+            <XAxis dataKey="year" {...axisProps} />
+            <YAxis {...axisProps} label={{ value: 'Posts', position: 'insideLeft', fill: mutedColor, fontSize: 11 }} />
             <Tooltip content={<CustomTooltip />} />
-            <Bar
-              dataKey="posts"
-              name="Posts published"
-              radius={[4, 4, 0, 0]}
-              fill="#18BC9C"
-            />
+            <Bar dataKey="posts" name="Posts published" radius={[4, 4, 0, 0]} fill={accentColor} />
           </BarChart>
         )}
       </ResponsiveContainer>
 
       <p style={{
-        color: '#8b949e',
+        color: 'var(--color-text-muted)',
         fontFamily: "'JetBrains Mono', monospace",
         fontSize: '11px',
         textAlign: 'center',
         marginTop: '12px',
       }}>
-        Interactive chart built with React + Recharts — rendered as an Astro island
+        Interactive chart built with React + Recharts, rendered as an Astro island
       </p>
     </div>
   );

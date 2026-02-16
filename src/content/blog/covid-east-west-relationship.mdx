@@ -16,7 +16,7 @@ If this article looks long and overly detailed, **that is the very point**. I wa
 
 As a final reminder, **I am not here to knock Joel**! Kudos to him for questioning and exploring data. I admire that people want to explore evidence and understand Covid, and as people flag, science is about asking questions. But science is also about peer review, and this article is designed to provide some important feedback and consideration for the conclusions reached in the original work. I raise genuine concerns around the interpretations reached by Joel, and hope that amendments can be made to his original conclusions.
 
-# Summary of findings
+## Summary of findings
 
 - The pattern of Covid-related deaths for Europe **do show a general separation** from East to West, although with notable outliers (Portugal). This is backed up with some additional statistical analysis.
 - Although the work by Joel provides empirical examples of his relationship, no statistical analysis is conducted beyond the visual clustering, and therefore claims of correlation between geography and Covid-19 deaths cannot be substantiated.
@@ -25,7 +25,7 @@ As a final reminder, **I am not here to knock Joel**! Kudos to him for questioni
 
 ---------
 
-# What does the original study claims
+## What does the original study claims
 
 So, let's start with the original claims from this Tweet:
 
@@ -48,18 +48,18 @@ Several questions are raised by this analysis:
 
 ---------
 
-# Recreating the analysis
+## Recreating the analysis
 
 To ensure a fair comparison, it is important we first recreate the analysis. As no methodology was published, we are going to try and get as much information out of the tweets as possible. I provide all my processing within [GitHub](https://github.com/dr-harper/blog/tree/master/content/post/2021-01-covidEastWest) for others to review, so please feel free to look if you want to understand more. If the assumptions are wrong, they can be tweaked.
 
-## Data Sources
+### Data Sources
 
 Two data sources were provided:
 
 - The stringency index scores the level of interventions provides a measure of the how much restriction is in place to control Covid. Essentially under normal conditions this would be equal to 0, and as measure such as lockdowns get introduced, this can be increased up to a value of 100. More is explained [here](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
 - Weekly Covid deaths per country, as provided by the [EU Open Data Portal](https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data-weekly-from-17-december-2020)/ Note the dataset used here is slightly behind, only going up until December. As with all death related datasets, there can be a delay in these fully representing the data.
 
-## Summary Map
+### Summary Map
 
 Okay, the article starts with a summary of the deaths in Winter and Spring. I've include the whole of Europe for arguments sake.
 
@@ -67,7 +67,7 @@ Okay, the article starts with a summary of the deaths in Winter and Spring. I've
 
 I am not entirely sure what point this map is trying to prove, but it does demonstrate there are countries in Eastern Europe which were relatively minimal impact in Spring while are more so in Winter. Many countries in Western Europe seem to have had two spikes (i.e. United Kingdom, Italy, France).
 
-## Time Plots
+### Time Plots
 
 Again, we can recreate the plots. Before we jump into the grouping, I am going to present them as a single list with no categories. It is useful to make a quick comparison yourself to see whether you notice there are any potential similarities in the dataset. **If you are extra keen, try separating these into your own groups of similar style lines.** To prevent you having any bias, I have removed any labels for the country names so all you can use is the data.
 
@@ -90,7 +90,7 @@ While this provides interesting empirical evidence, in the format presented, it 
 
 ---------
 
-# Exploring East/West Correlation
+## Exploring East/West Correlation
 
 Okay, so hopefully all of the work so far has made sense! As mentioned above, the above work from Joel provided a useful framing of the problem, but did not statistically prove a relationship from East to West. This section will explore this and try and understand if there is correlation.
 
@@ -127,7 +127,7 @@ Note, there are more ways we could explore the correlation, and the above result
 
 ------
 
-# So what causes this relationship?
+## So what causes this relationship?
 
 Having established there do appear to be some patterns in the data, we can now explore a bit what might be causing this. This can be particularly tricky to do when dealing with spatial representations of data like this, as you need to think about whether the pattern is a result of another geospatial characteristic (i.e. climate), or whether there is a non-spatial issue influencing it.
 
@@ -149,7 +149,7 @@ I would say this analysis is not perfect: there is definitely more to consider t
 
 Note, this data only provides a weekly summary, which makes it less ideal than the daily updating datasets, but it should be good enough to demonstrate the point. Ideally more detailed analysis should be conducted here whereby the actual day of lockdown was used. Within the exponential growth of the virus, the difference of a few days can have a large impact on the deaths, especially back in March 2020.
 
-# Are there other factors at play?
+## Are there other factors at play?
 
 A lot of the discussion in the comments were discsussing the importance of climate of Covid. The analysis presented here provides no evidence to directly support or refute this: this would not be possible to do without referring to weather datasets and including these within the analysis. Using the same argument though, the evidence presented in the original analysis provides no evidence to directly support this claim. However, we can refer to existing literature. which suggests that while climate does influence Covid, it cannot explain the majority of the variation as claimed by Joel. For example: [review paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0238339):
 
@@ -157,7 +157,7 @@ A lot of the discussion in the comments were discsussing the importance of clima
 
 I would therefore disagree with the evidence presented in the original analysis that climate can be derived as a clear cause of this. However, it would be a topic which could be explored further by Joel.
 
-# Conclusion
+## Conclusion
 
 Have you made it this far through the article? Well done if you have! I appreciate it is long, but that's science for you, and if you want to get the full picture, you sometimes need to dig below the Twitter post! In answer to the three questions I rased at the start of this analysis:
 

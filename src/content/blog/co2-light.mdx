@@ -15,7 +15,7 @@ draft: true
 
 What else better to do over the weekend than to come up new smart home devices! And this is exactly what I have done, building a light which provides me an update on the current carbon intensity of the electricity supply. I am quite happy with the end result, and this blog explains the motivation behind the idea, along with code for anyone who wants to replicate it. I hope it helps!
 
-# The Challenge: Varying CO2 Emmissions
+## The Challenge: Varying CO2 Emmissions
 
 As we shift increasingly to using renewable energy resources, there becomes an increasing issue of not only **how much** electricity needs to be produced, but importantly **when**.
 
@@ -29,7 +29,7 @@ The figure below shows the Carbon intensity of the national grid over the past m
 
 ![Carbon Trends for November December](/post/2020-12-co2-light/co2-light_files/figure-html/CarbonTrends-1.png)
 
-# The Idea
+## The Idea
 
 There are a few resources out there which inform users of potential carbon emissions from their consumption. For example:
 
@@ -40,7 +40,7 @@ However, part of the problem with these approaches is they mostly rely on you op
 
 So I came up with a basic side lamp idea, which could provide a visual cue to people. This can sit relatively unobtrusively, but equally is relatively easy to get an understanding of the current CO2 outputs. If you see red or yellow, it should hopefully make you think twice of whether you need to use the electricity now, or whether it could be deferred to another time!
 
-# The Setup
+## The Setup
 
 There are three main components to this project:
 
@@ -50,7 +50,7 @@ There are three main components to this project:
 
 Note, this tutorial is very Home Assistant focussed. It would probably be achievable coding this all in native Arduino code, so the solution might look a bit messy. But if like me you are competent in the tools above and don't want to learn extra code innecessarily, this should help!
 
-## The data stream
+### The data stream
 
 Firstly, we need a reliable and up-to-date dataset which provides us with the carbon emissions for the UK. For where I am based in the United Kingdom, two options for this:
 
@@ -80,7 +80,7 @@ I came up with the following code for querying the API and bringing the data int
         value_template: '{{ state_attr("sensor.carbon_intensity_full", "data")[0].intensity.index}}'
 ```
 
-## The Hardware
+### The Hardware
 
 For my light, I used [ESPHome](https://esphome.io/), which is one of the best Home Assistant integrations available for building Arduino based sensors. Instead of having to write the Arduino code yourself, you can instead focus on writing relatively simple YAML files which enable us to build some basic logic around.
 
@@ -169,11 +169,11 @@ display:
 
 You'll note several things from the above: firstly, the device extracts the data from Home Assistant, and secondly, there is no logic controlling the colour of the light with ESPHome. It would probably be possible for the Wemo D1 to manage both of these, but the design ethos for ESPHome is that the majority of the thinking is done by the Home Assistant device itself.
 
-# Automating the Light changes
+## Automating the Light changes
 
 We have two options for making the light change colour.
 
-## Changing Colour based on value
+### Changing Colour based on value
 
 ```yaml
 alias: Carbon Intensity Bulb Update
@@ -194,7 +194,7 @@ action:
 mode: single
 ```
 
-## Change Colour Based on Category
+### Change Colour Based on Category
 
 As mentioned earlier, the Carbon Intensity API provides us with an index which scores the colour. We can instead use this to assign the colour. A benefit of this is that it makes it easier to set unique colours which stand out for the categories, but we will lose the smooth colour gradients across the groups. **Ultimately this was my preferred route so it is what I used**.
 
@@ -213,6 +213,6 @@ data_template:
     {%else%}[300,100] {% endif %}
 ```
 
-# Potential Improvements
+## Potential Improvements
 
 As shown in the apps,

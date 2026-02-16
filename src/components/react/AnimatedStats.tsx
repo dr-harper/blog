@@ -73,8 +73,8 @@ export default function AnimatedStats({ stats }: Props) {
         <div
           key={i}
           style={{
-            background: '#151920',
-            border: '1px solid #30363d',
+            background: 'var(--color-bg-secondary)',
+            border: '1px solid var(--color-border)',
             borderRadius: '12px',
             padding: '24px',
             textAlign: 'center',
@@ -84,7 +84,7 @@ export default function AnimatedStats({ stats }: Props) {
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: '36px',
             fontWeight: 700,
-            color: '#18BC9C',
+            color: 'var(--color-accent)',
             marginBottom: '8px',
           }}>
             <Counter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
@@ -92,7 +92,7 @@ export default function AnimatedStats({ stats }: Props) {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: '12px',
-            color: '#8b949e',
+            color: 'var(--color-text-muted)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
           }}>

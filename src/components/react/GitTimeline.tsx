@@ -17,8 +17,8 @@ export default function GitTimeline({ commits }: Props) {
 
   return (
     <div style={{
-      background: '#0a0e14',
-      border: '1px solid #30363d',
+      background: 'var(--color-bg-primary)',
+      border: '1px solid var(--color-border)',
       borderRadius: '12px',
       overflow: 'hidden',
       fontFamily: "'JetBrains Mono', monospace",
@@ -26,8 +26,8 @@ export default function GitTimeline({ commits }: Props) {
     }}>
       {/* Title bar */}
       <div style={{
-        background: '#151920',
-        borderBottom: '1px solid #30363d',
+        background: 'var(--color-bg-secondary)',
+        borderBottom: '1px solid var(--color-border)',
         padding: '10px 16px',
         display: 'flex',
         alignItems: 'center',
@@ -36,7 +36,7 @@ export default function GitTimeline({ commits }: Props) {
         <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#f85149' }} />
         <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#d29922' }} />
         <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#3fb950' }} />
-        <span style={{ color: '#8b949e', fontSize: '12px', marginLeft: '8px' }}>
+        <span style={{ color: 'var(--color-text-muted)', fontSize: '12px', marginLeft: '8px' }}>
           git log --oneline --graph career.md
         </span>
       </div>
@@ -56,7 +56,7 @@ export default function GitTimeline({ commits }: Props) {
                   top: '8px',
                   bottom: 0,
                   width: '2px',
-                  background: '#30363d',
+                  background: 'var(--color-border)',
                 }} />
               )}
 
@@ -68,8 +68,8 @@ export default function GitTimeline({ commits }: Props) {
                 width: '12px',
                 height: '12px',
                 borderRadius: '50%',
-                background: commit.branch === 'HEAD' ? '#18BC9C' : '#30363d',
-                border: `2px solid ${commit.branch === 'HEAD' ? '#18BC9C' : '#484f58'}`,
+                background: commit.branch === 'HEAD' ? 'var(--color-accent)' : 'var(--color-border)',
+                border: `2px solid ${commit.branch === 'HEAD' ? 'var(--color-accent)' : 'var(--color-border-hover)'}`,
               }} />
 
               {/* Commit line */}
@@ -91,20 +91,20 @@ export default function GitTimeline({ commits }: Props) {
                 <span style={{ color: '#d29922' }}>{commit.hash}</span>
                 {commit.branch && (
                   <span style={{
-                    color: commit.branch === 'HEAD' ? '#18BC9C' : '#58a6ff',
+                    color: commit.branch === 'HEAD' ? 'var(--color-accent)' : '#58a6ff',
                     marginLeft: '8px',
                     fontSize: '11px',
-                    border: `1px solid ${commit.branch === 'HEAD' ? '#18BC9C' : '#58a6ff'}`,
+                    border: `1px solid ${commit.branch === 'HEAD' ? 'var(--color-accent)' : '#58a6ff'}`,
                     borderRadius: '4px',
                     padding: '1px 6px',
                   }}>
                     {commit.branch}
                   </span>
                 )}
-                <span style={{ color: '#c9d1d9', marginLeft: '8px' }}>{commit.message}</span>
-                <span style={{ color: '#8b949e', marginLeft: '8px', fontSize: '11px' }}>{commit.date}</span>
+                <span style={{ color: 'var(--color-text-primary)', marginLeft: '8px' }}>{commit.message}</span>
+                <span style={{ color: 'var(--color-text-muted)', marginLeft: '8px', fontSize: '11px' }}>{commit.date}</span>
                 {commit.diff && (
-                  <span style={{ color: '#8b949e', marginLeft: '4px', fontSize: '11px' }}>
+                  <span style={{ color: 'var(--color-text-muted)', marginLeft: '4px', fontSize: '11px' }}>
                     {isExpanded ? '▾' : '▸'}
                   </span>
                 )}
@@ -113,8 +113,8 @@ export default function GitTimeline({ commits }: Props) {
               {/* Expanded diff */}
               {isExpanded && commit.diff && (
                 <div style={{
-                  background: '#151920',
-                  border: '1px solid #30363d',
+                  background: 'var(--color-bg-secondary)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '6px',
                   padding: '12px',
                   margin: '6px 0 10px',
@@ -122,7 +122,7 @@ export default function GitTimeline({ commits }: Props) {
                   lineHeight: '1.8',
                 }}>
                   {commit.diff.map((line, j) => {
-                    let colour = '#c9d1d9';
+                    let colour = 'var(--color-text-primary)';
                     if (line.startsWith('+')) colour = '#3fb950';
                     else if (line.startsWith('-')) colour = '#f85149';
                     else if (line.startsWith('@')) colour = '#58a6ff';

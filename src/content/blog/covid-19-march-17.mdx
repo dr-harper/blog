@@ -13,7 +13,7 @@ As a data analyst, I always get happy when I discover there are great datasets a
 
 This blog post provides a combination of the code and interpretation on some analysis of global COVID-19 rates. I appreciate this might limit the appeal to both programmers (who probably only want to the code) and the general public (who definitely don't care about the code and only want the graphs), however the whole idea of having a blog is that I can share rough-and-ready content. If I aim for perfection, it could likely be another year before I actually post anything.
 
-# Data
+## Data
 
 For the analysis, I am using the COVID-19 dataset produced by John Hopkins University. They provide a daily updating dataset at a national level, highlighting the cases, recoveries and deaths associated with the virus. The data can be accessed through the GitHub [repository here](https://github.com/CSSEGISandData/COVID-19), and they also offer a great dashboard for visualising the data [here](https://coronavirus.jhu.edu/map.html).
 
@@ -126,7 +126,7 @@ df_all_spatial <-
   arrange(region, date)
 ```
 
-# Exploring contagion rates
+## Exploring contagion rates
 
 Media attention has been focussing on several countries, primarly, China, Italy, Iran, Spain. As I live in the UK, this will be compared.
 
@@ -136,7 +136,7 @@ Now, the intention of this blog is not to provide an extensive analysis, but I w
 
 The UK seems to have taken really big steps today, but I hope the public don't overlook the virus based on how low the rates currently are. The whole idea of containing something like this is that it is much easier to keep under control if only a small percentage of people have it. Once rates increase even the most severe measures won't be able to help us protect the most vulnerable in society.
 
-# Ranking countries
+## Ranking countries
 
 A large part of why countries have been considered hotspots is just down to how early the infection got to them. It's interesting to compare countries from the same starting point, so this looks at how quickly things escalate after there are 200 reported cases.
 
@@ -146,7 +146,7 @@ It's not too surprising that China being the first country to experience the out
 
 It is also interesting to see how China have been able to really control the outbreak. New cases have levelled off, although they have been using ethically questionable methods to achieve these levels ([such as tracking the locations of every citizen](https://www.theguardian.com/world/2020/mar/09/the-new-normal-chinas-excessive-coronavirus-public-monitoring-could-be-here-to-stay))
 
-# Outbreaks vs rates of infection
+## Outbreaks vs rates of infection
 
 The final plot explores the rate of infection compared to the proportion of the popualation infected. I think the media tend to report headline figures which count in people more than rates. "20000 people infected" definitely is more intimidating than "400 people in a million are potentially infected".
 
@@ -156,7 +156,7 @@ Europe has some surprisingly high levels of the virus. Some of the media have be
 
 It is interesting seeing some of the smaller European countries high up the list. At this stage of the outbreak, where there are still relatively controlled cases, these small cases are more likely to represent outliers. Time will tell how these change.
 
-# Conclusion
+## Conclusion
 
 I hope that if you came here looking for code, that you feel satisfied, and if you wanted some half-baked discussion of the results, you are equally happy! This is definitely the start of several graphs, and I really want to look into some of the spatial aspects of the data.
 

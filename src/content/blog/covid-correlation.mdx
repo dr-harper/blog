@@ -12,7 +12,7 @@ draft: false
 
 In the tweet thread [here](https://twitter.com/RealJoelSmalley/status/1347219499020386306), Joel raises concerns around the Covid Positivity rates and the strange relationship these have with Covid deaths. Kudos to him, he put the question out for peer review, so it seemed like a great opportunity to get some analysis out!
 
-# The tweets
+## The tweets
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I wasn&#39;t going to tweet this because I cannot make sense of it. Nor can my colleagues. So, I&#39;m going to open source it and see if the wider community can verify or refute this.</p>&mdash; Joel Smalley (@RealJoelSmalley) <a href="https://twitter.com/RealJoelSmalley/status/1347219499020386306?ref_src=twsrc%5Etfw">January 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -24,7 +24,7 @@ At first sight, the idea that linear regression is a suitable tool for this seem
 
 For transparency, this entire analysis is based off the publicly available datasets, and completed with the code available (written in R). Sorry if the code is messy, or not even wanted: mostly written fuelled by late night coffee.
 
-# Average Time to Death hides part of the picture
+## Average Time to Death hides part of the picture
 
 A lot of emphasis falls on the average time to death, however the reality of it can vary massively with a broad length of time from infection to death. Several pieces of research have explored this relationship, including a [report here which focusses on the UK](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf). The above graph goes into more detail than potentially needed for the point, but it does show usefully how the timespan varies.
 
@@ -32,7 +32,7 @@ A lot of emphasis falls on the average time to death, however the reality of it 
 
 So why does this matter? Well, it means that each day is not a truly independent observation, and therefore introduces collinearity between the points [more information here](https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/). The deaths on a particular day are a function of the deaths on the previous 30, even 60 days. It is therefore not possible to say that all the deaths on a single day can be attributed to infections from another, and therefore we must consider more than just a one-to-one relationship.
 
-# Demonstrating the concept
+## Demonstrating the concept
 
 Well I can't just say it is an issue and then do nothing about! To highlight the issue, I thought I would simulate some data to show that we should not expect there to be a linear relationship between infections and death rate. To do this requires several steps:
 
@@ -42,7 +42,7 @@ Well I can't just say it is an issue and then do nothing about! To highlight the
 
 My aim here was to try and demonstrate that the non-linearity of the data here is something which is to be expected.
 
-## Calculating a symptom-to-death curve
+### Calculating a symptom-to-death curve
 
 Rather than using an average time to death, we can more reliably understand the death rate if we look at the probability of death with time. To do this, we can select a probability function which provides a good estimate of the likely death rate. For this I have derived from [Iwona et al. 2020](https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0596), who suggest that a Gamma distribution is suitable. I will instantly flag that this study was done in August, and since then the survivability of Covid-19 has improved due to improved medical knowledge, but the point here is not to give an accurate projection of the death rate.
 
@@ -50,13 +50,13 @@ Note, this is the symptoms-to-death. We also need to include the average incubat
 
 ![Symptom-onset-to-death probability distribution](/post/2021-01-covid-linearity/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-2-1.png)
 
-## Infection Rates
+### Infection Rates
 
 The second important piece of information is the infection rate. This is provided by the ONS survey, with the data available [here](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronaviruscovid19infectionsurveypilot/24december2020). Note the data is slightly out of date, and therefore will not provide me with loads of data for December.
 
 ![ONS COVID-19 positivity rates](/post/2021-01-covid-linearity/covidpositivityRatesDontCorrelate_files/figure-html/unnamed-chunk-3-1.png)
 
-## Simulate a death dataset
+### Simulate a death dataset
 
 Based on the two values, we can now simulate how death may vary with infection levels. To do this, I will take the daily infection rate, and project the expected level of death for the following time period.  To help make a direct comparison, I will only look at deaths within 28 days of a positive test. I will make the assumption here that tests were only taken after concerns of symptoms (5 days).
 
@@ -64,7 +64,7 @@ Note, for the purpose of this comparison, I don't actually need the absolute num
 
 As the average positive infection lasts 4 week [reference](https://www.bmj.com/company/newsroom/retest-for-covid-19-4-weeks-after-symptoms-first-appear-to-curb-infection-risk-say-researchers/), I will divide my infection rates by 28 to avoid overly boosting the figures as I am calculating this daily. For each day, we will forecast forwards. If the code below looks like it was written in a hurry late at night, then you are correct!
 
-# Results of Simulation
+## Results of Simulation
 
 After this processing, we have a data frame which gives us three columns: `Date`, `Percentage`  which refers to the ONS Covid Survey Infection Rate and `deathIndex` a value which indicates the level of death we would expect on that day given the infection rate from the previous 33 days. Finally, `period` indicates the time period to help compare the work with Joel's analysis.
 
@@ -74,13 +74,13 @@ We can also look further forward and compare the number of deaths X days ahead o
 
 It appears the graphs made by Joel include some more data which I have not been able to source?
 
-# What is happening?
+## What is happening?
 
 In times when there are slow and gradual changes in the infection rate, there may be the illusion that the infection rates and deaths  are directly correlated. However, when there are rapid shifts in the level of infection rate, either upwards or downwards, we are likely to see that the linearity begins to break down.
 
 To reflect specifically on what has happened on the UK, we have undergone a fairly inconsistent few months. The combination of the lockdown in early November, the new strain, Christmas mixing and now the next lockdown have led to quite rapid shifts in the infection rates. To further complicate things, many of these events have happened within the 28 days of each, and therefore the death statistics will be difficult to separate entirely for each event.
 
-# Conclusion
+## Conclusion
 
 I hope this provides a useful overview of how statistics don't always behave as you might always believe! We can expect there to be intuitative relationships between datasets, but it is only when you dig deeper into the mechanisms of how things behave that you appreciate the factors.
 

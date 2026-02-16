@@ -46,28 +46,28 @@ function SkillBar({ name, level }: { name: string; level: number }) {
         <span style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: '13px',
-          color: '#c9d1d9',
+          color: 'var(--color-text-primary)',
         }}>
           {name}
         </span>
         <span style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: '11px',
-          color: '#8b949e',
+          color: 'var(--color-text-muted)',
         }}>
           {visible ? `${level}%` : '0%'}
         </span>
       </div>
       <div style={{
         height: '6px',
-        background: '#1f2430',
+        background: 'var(--color-bg-elevated)',
         borderRadius: '3px',
         overflow: 'hidden',
       }}>
         <div style={{
           height: '100%',
           width: `${width}%`,
-          background: `linear-gradient(90deg, #18BC9C, #58a6ff)`,
+          background: `linear-gradient(90deg, var(--color-accent), #58a6ff)`,
           borderRadius: '3px',
           transition: 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
         }} />
@@ -90,7 +90,7 @@ export default function SkillBars({ skills }: Props) {
           <h4 style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: '12px',
-            color: '#8b949e',
+            color: 'var(--color-text-muted)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
             marginBottom: '16px',

@@ -12,13 +12,13 @@ headerImage: "/images/CovidMap.png"
 draft: false
 ---
 
-# About
+## About
 
 I have reflecting on the unprecedented week in the UK. Even this time last week, the country seemed fairly laid back as government advice was largely to continue with business as usual.  It is all very different to now, with schools set to close on Monday and most people either working from home or not working at all.
 
 This blog post provides details of anaylsis and data viusalisation to assess the spread of virus, giving three example maps which I have produced. Like usual, it is aimed at a technical audience of data visualisation people who want to understand how to make R graphs! Hopefully it provides an example of how you may be able to use the **gganimate** package to produce data visualisations.
 
-# Setup
+## Setup
 
 The following packages are used. Note, we are using the **ggthemr** which is not avaialable on CRAN, so you will need to install that if you haven't already got it.
 
@@ -37,7 +37,7 @@ library(patchwork)
 ggthemr("light")
 ```
 
-# Data Loading and Preparation
+## Data Loading and Preparation
 
 As in my [previous analysis](https://mikeyharper.uk/Covid-19-march-17/), I'll be using the John hopkins dataset. As a reminder, the data can be accessed through the GitHub [repository here](https://github.com/CSSEGISandData/Covid-19), and they also offer a great dashboard for visualising the data [here](https://coronavirus.jhu.edu/map.html).
 
@@ -134,7 +134,7 @@ df_all_spatial <-
   arrange(region, date)
 ```
 
-# Producing the plots
+## Producing the plots
 
 There are two components to the plot:
 
@@ -192,7 +192,7 @@ We can visualise the final gif below!
 
 ![Finalised plot showing the change in infection rates](/post/2020-03-20-covid-maps/2020-03-19-covid_files/figure-html/unnamed-chunk-11-1.gif)
 
-# Today Cases
+## Today Cases
 
 As a second data exploration, I just wanted to produce a static map of the current death totals per country, and then to highlight the top 10 countries. The following code creates the summary figure. In these plots, I am using the **patchwork** package to combine the two ggplot objects into a single plot:
 
@@ -254,7 +254,7 @@ p1 + p2 + plot_layout(widths = c(3.5, 1)) +
 
 ![A summary of deaths per country](/post/2020-03-20-covid-maps/2020-03-19-covid_files/figure-html/deathsToday-1.png)
 
-# Interactive Maps
+## Interactive Maps
 
 Using **leaflet** we can produce an interactive map showing the number of cases per country. If you haven't used the leaflet R package before, it offers an interface to the Javascript library and you can quite easily build complex visualisations with it. It is definitely my preffered interactive map package for R, even if it takes a little bit more time to master than alternatives like [tmap](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html).
 
@@ -306,6 +306,6 @@ leaflet(deathsToday) %>%
 
 {/* TODO: Leaflet interactive map showing Covid-19 deaths per country */}
 
-# Conclusion
+## Conclusion
 
 As always, I hope this blog is informative and gives some ideas on how you may want to use R. If you have any questions, please feel free to ask in the comments and I will try and get back to you!

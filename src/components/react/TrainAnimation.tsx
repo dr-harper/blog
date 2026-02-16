@@ -241,7 +241,7 @@ function Landscape() {
 
 function LeadCar() {
   return (
-    <svg viewBox="0 0 400 58" fill="none" xmlns="http://www.w3.org/2000/svg" className="train-car train-lead">
+    <svg viewBox="0 0 378 58" fill="none" xmlns="http://www.w3.org/2000/svg" className="train-car train-lead">
       <path
         d="M4 8 L310 8 Q315 8 322 12 L368 30 Q376 34 376 38 L376 44 Q376 48 372 48 L4 48 Q0 48 0 44 L0 12 Q0 8 4 8 Z"
         fill="var(--color-bg-elevated)" stroke="var(--color-border-hover)" strokeWidth="1.2"
@@ -309,7 +309,7 @@ function Carriage() {
 function RearCar() {
   return (
     <svg
-      viewBox="0 0 400 58"
+      viewBox="0 0 378 58"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="train-car train-lead"
@@ -349,36 +349,6 @@ function RearCar() {
   );
 }
 
-function SpeedLines() {
-  const lines = [
-    { top: '20%', width: '70px', delay: '0s', opacity: 0.35 },
-    { top: '35%', width: '100px', delay: '0.12s', opacity: 0.5 },
-    { top: '50%', width: '50px', delay: '0.25s', opacity: 0.25 },
-    { top: '65%', width: '85px', delay: '0.08s', opacity: 0.4 },
-    { top: '78%', width: '60px', delay: '0.2s', opacity: 0.3 },
-  ];
-
-  return (
-    <>
-      {lines.map((line, i) => (
-        <div
-          key={i}
-          className="speed-line"
-          style={{
-            position: 'absolute',
-            top: line.top,
-            left: `${-parseInt(line.width) - 2 - i * 6}px`,
-            width: line.width,
-            height: '1.5px',
-            background: `linear-gradient(to right, transparent, var(--color-accent))`,
-            opacity: line.opacity,
-            animationDelay: line.delay,
-          }}
-        />
-      ))}
-    </>
-  );
-}
 
 /*
  * TRACK_SVG_Y: y-coordinate of the rail in SVG viewBox units.
@@ -411,9 +381,6 @@ function Train({ direction, bottom, onComplete }: { direction: Direction; bottom
         transformOrigin: '50vw center',
       }}
     >
-      <div style={{ position: 'relative', width: 0, height: '24px' }}>
-        <SpeedLines />
-      </div>
       <RearCar />
       <Carriage />
       <Carriage />
@@ -512,7 +479,9 @@ export default function TrainAnimation() {
           height: 24px;
         }
         .train-lead {
-          width: 168px;
+          width: 160px;
+          margin-left: -1px;
+          margin-right: -1px;
         }
         .train-carriage {
           width: 134px;

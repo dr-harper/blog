@@ -13,7 +13,7 @@ draft: false
 
 A while back on StackOverflow, I [answered a question](https://stackoverflow.com/questions/45682226/r-counting-how-many-polygons-between-two/47007246#47007246) on how to produce a map which showed how many polygons away a location was from another. This blog provides an update on how this can be used, with some slight tweaks to the answer to expand on the original. A lot of this content is based around the original from [Roger Bivand](https://cran.r-project.org/web/packages/spdep/vignettes/nb_igraph.html) here.
 
-# Setup
+## Setup
 
 In order to calculate neighbouring polygons, we need to form a network of nodes for the data. This is done using the **igraph**, **spdep** and **spatialreg** packages. We also use the **raster** package to download some example data, and **ggplot2** for the final visualisation.
 
@@ -45,7 +45,7 @@ tm_shape(boundaries) +
 
 ![Loaded data for the raster package](/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/loadData-1.png)
 
-## Extracting neigbours
+### Extracting neigbours
 
 Firstly the `poly2nb` function is used to calculate neighbouring regions, based on contiguous boundaries, that is sharing one or more boundary point. The resulting mesh and coordinates is shown below.
 
@@ -100,7 +100,7 @@ tm_shape(boundaries) +
 
 ![Basic tmap visualisation](/post/2018-03-02-calculating-neighbouring-polygons-in-r/2018-03-02-calculating-neighbouring-polygons-in-r_files/figure-html/unnamed-chunk-5-1.png)
 
-# Plotting in ggplot2
+## Plotting in ggplot2
 
 I prefer ggplot for plotting more complex graphs as you can control the styling easier. Fortunately, **ggplot2** now directly supports spatial data through `geom_sf` format. I have customised it a bit by removing elements which aren't required and added a background. The final map is shown below.
 
