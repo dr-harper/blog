@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeatPumpLive from '../components/react/heatpump/HeatPumpLive.tsx';
+
+const spec = [
+  ['Heat pump', 'Viessmann Vitocal 200-A, 8 kW, R290, fitted 1 November 2026'],
+  ['Replaced', 'Samsung 12 kW, vastly oversized for the house'],
+  ['House', '1960s semi-detached, 89 m², filled cavity walls, 270 mm loft'],
+  ['Design', '5 kW heat loss at −2 °C, 45 °C flow, new radiators'],
+  ['Hydraulics', 'Straight through: no buffer, no low-loss header'],
+  ['Hot water', '300 L cylinder, 50 °C, weekly legionella cycle'],
+  ['Controls', 'Viessmann ViCare'],
+  ['Installer', 'Heat Geek'],
+  ['Monitoring', 'OpenEnergyMonitor emonHP: SDM120 electricity meter and Axioma Qalcosonic heat meter, both MID class'],
+];
+---
+
+<BaseLayout
+  title="My heat pump, live · Mikey Harper"
+  description="Live performance of my air source heat pump in Romsey: heat out, electricity in, efficiency and temperatures, straight from the meters."
+>
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <header class="mb-10">
+      <h1 class="text-3xl font-bold font-mono text-text-primary mb-2">
+        <span class="text-accent">$</span> heat-pump --live
+      </h1>
+      <p class="text-accent font-mono mb-4">Romsey · Vitocal 200-A 8 kW</p>
+      <p class="text-text-secondary text-lg leading-relaxed max-w-3xl">
+        I spend my working days looking at other people's heat pump data, so it seemed only fair to publish
+        my own. Everything here comes straight from MID-certified heat and electricity meters on the
+        system, read every 10 seconds by an OpenEnergyMonitor emonHP.
+      </p>
+    </header>
+
+    <HeatPumpLive client:load />
+
+    <section class="mt-12 grid gap-6 md:grid-cols-[2fr_1fr]">
+      <div class="rounded-lg border border-border bg-bg-secondary p-5">
+        <h2 class="font-mono font-bold text-text-primary mb-4">The system</h2>
+        <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
+          {spec.map(([k, v]) => (
+            <>
+              <dt class="font-mono text-text-muted">{k}</dt>
+              <dd class="text-text-secondary">{v}</dd>
+            </>
+          ))}
+        </dl>
+      </div>
+      <div class="rounded-lg border border-border bg-bg-secondary p-5 text-sm text-text-secondary space-y-3">
+        <h2 class="font-mono font-bold text-text-primary">Reading the numbers</h2>
+        <p>
+          <span class="font-mono text-text-primary">COP</span> is heat out divided by electricity in: 4 means
+          four units of heat for every unit of electricity.
+        </p>
+        <p>
+          Totals start at 09:43 on 6 November 2026, when the electricity meter first reported. Shaded bands
+          are hot water runs.
+        </p>
+        <p class="font-mono text-xs space-y-1">
+          <a href="https://heatpumpmonitor.org/system/view?id=1447" class="block text-accent hover:underline">→ heatpumpmonitor.org</a>
+          <a href="https://emoncms.org/drharper/app/view?name=MyHeatpump" class="block text-accent hover:underline">→ raw data on emoncms.org</a>
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

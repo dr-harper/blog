@@ -1,0 +1,100 @@
+---
+title: "Putting my heat pump's data on the internet"
+author: "Mikey Harper"
+date: 2026-11-06
+slug: "heat-pump-live"
+description: "I spend my days looking at other people's heat pump data. Now mine is public too: MID meters, an OpenEnergyMonitor emonHP, and a live page on this blog."
+tags:
+  - heat pumps
+  - energy
+  - technical
+draft: false
+---
+
+import HeatPumpLive from '../../components/react/heatpump/HeatPumpLive.tsx';
+
+My day job is heat pump data. At Heat Geek I spend most of my time building the pipelines and dashboards that tell us how well other people's heat pumps are running. So it has always felt slightly awkward that I couldn't tell you how well my own one was doing.
+
+That changed this week.
+
+<HeatPumpLive client:visible />
+
+*That's live, by the way. Refresh in 30 seconds and it'll have moved. There's a [full-page version](/heat-pump/) too.*
+
+## The system
+
+Our house is a 1960s three-bed semi in Romsey: about 89 m², filled cavity walls, decent loft insulation, and an uninsulated solid floor. The heat pump is a **Viessmann Vitocal 200-A 8 kW**, fitted by Heat Geek on 1 November and designed around a 5 kW heat loss at −2 °C.
+
+It replaced a **Samsung 12 kW**, which was vastly oversized for a house that needs 5 kW on the coldest day. The 8 kW is a much better match: it's ticking along nicely and easily handling 30 °C flow temperatures.
+
+A few design choices I'm quite pleased with:
+
+- **45 °C design flow temperature**, with new radiators sized for it
+- **Straight through:** no buffer tank and no low-loss header, so the heat pump sees the radiators directly
+- **300 L cylinder**, heated to 50 °C, with the target nudged up and down to suit the tariff and a weekly legionella cycle
+
+Controls are Viessmann's ViCare app. Which is fine, but it only tells you what the heat pump *thinks* it's doing.
+
+## Measuring it properly
+
+If you want numbers you can compare with anyone else's, you need **MID-certified meters**: one on the electricity in and one on the heat out. Anything else is an estimate. The kit:
+
+- **[OpenEnergyMonitor emonHP](https://openenergymonitor.org/)**: a small Raspberry Pi-based box that reads everything and runs emoncms locally
+- **SDM120 electricity meter**, read over Modbus
+- **Axioma Qalcosonic heat meter**, read over M-Bus: flow and return temperatures, flow rate and heat output
+- **A temperature probe on the cylinder**
+- **An emonTH** for room temperature and humidity
+- **A hot water signal** wired from the heat pump to one of the emonHP's inputs, so I can tell space heating apart from hot water
+
+Everything is read every 10 seconds, logged locally, and pushed up to emoncms.org.
+
+## Setting it up (with a little help)
+
+As with the [blog migration](/blog/migrating-from-blogdown-to-astro/), I did most of this with Claude, this time driving a browser on my home network. I'd say what was plugged in, and it would go and find each sensor, create the feeds, wire them into the My Heat Pump app, and check the numbers made sense.
+
+The "checking the numbers" part turned out to be the useful bit. A few things it caught:
+
+- **The room sensor had been silent for a month.** Claude dug through the radio logs, worked out the emonHP's receiver was hearing nothing at all, and wrote me a careful plan for working out whether the sensor or the receiver was at fault. I hadn't put batteries in it.
+- **The hot water signal read zero for 31 days**, despite the cylinder clearly reheating every night. Claude was fairly confident this was a wiring fault. It wasn't. I'd only plugged it in that morning. A manual boost flipped it to 1 straight away.
+- **The heat meter had a month of data that the electricity meter didn't**, most of it from the old Samsung. Left alone, that would have given me a heroic, and entirely fictional, efficiency figure. So everything now counts from 09:43 on 6 November, when the electricity meter first reported.
+
+Lesson re-learned: **most monitoring problems are physical**. Batteries, cables, things not plugged in.
+
+## Publishing it
+
+There are two places this kind of data naturally goes:
+
+1. **[emoncms.org](https://emoncms.org/drharper/app/view?name=MyHeatpump)**: the public version of the My Heat Pump app, with everything from daily efficiency to the split between heating and hot water.
+2. **[heatpumpmonitor.org](https://heatpumpmonitor.org)**: the community database of nearly 700 metered heat pumps. If you're thinking about a heat pump, it's the best evidence there is of what they really achieve. Mine is submitted and waiting for review.
+
+The emoncms dashboards do the job, but honestly they look like 2013. I wanted something that matched this site.
+
+## Building the page
+
+The page above is a React island on this Astro site. It reads the same public emoncms.org feeds every 30 seconds and draws them with [Recharts](https://recharts.org/).
+
+The only snag: **emoncms.org doesn't allow other websites to read its data from the browser**. You get blocked straight away. Rather than run a server, I added two rules to `netlify.toml` that relay requests through this site's own domain:
+
+```toml
+[[redirects]]
+  from = "/api/emoncms/feed/data.json"
+  to = "https://emoncms.org/feed/data.json"
+  status = 200
+  force = true
+```
+
+Only the two read-only calls the page needs are relayed, so nobody can use my domain to write to anyone's emoncms account.
+
+## Early numbers
+
+It's day one of monitoring and day six of the new heat pump, so I'm not going to pretend this is a verdict. On a mild November day (about 8–10 °C outside) it kept the house warm with flow temperatures around 30 °C, well below the 45 °C design, which is exactly where you want it. The first few hours came out at an efficiency of about **4.5**.
+
+Ask me again in February.
+
+## What's next
+
+- **A full winter of data**, and a proper comparison against the design assumptions
+- **Tuning the weather compensation curve**, now that I can see what it does
+- **Hot water against the tariff:** how much it really costs to heat the cylinder at 50 °C overnight versus topping up in the afternoon
+
+If you've got a heat pump and some meters, put your data on heatpumpmonitor.org. The more real systems there are, the better the evidence gets for everyone.
