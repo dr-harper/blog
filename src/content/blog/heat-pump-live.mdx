@@ -11,15 +11,11 @@ tags:
 draft: false
 ---
 
-import HeatPumpLive from '../../components/react/heatpump/HeatPumpLive.tsx';
-
 My day job is heat pump data. At Heat Geek I spend most of my time building the pipelines and dashboards that tell us how well other people's heat pumps are running. So it has always felt slightly awkward that I couldn't tell you how well my own one was doing.
 
 That changed this week.
 
-<HeatPumpLive client:visible />
-
-*That's live, by the way. Refresh in 30 seconds and it'll have moved. There's a [full-page version](/heat-pump/) too.*
+**[See it live →](/heat-pump/)** The heat pump now has its own page on this site, with heat out, electricity in, efficiency and temperatures straight from the meters, refreshed every 30 seconds. This post is the story of how it got there.
 
 ## The system
 
@@ -71,7 +67,7 @@ The emoncms dashboards do the job, but honestly they look like 2013. I wanted so
 
 ## Building the page
 
-The page above is a React island on this Astro site. It reads the same public emoncms.org feeds every 30 seconds and draws them with [Recharts](https://recharts.org/).
+The [live page](/heat-pump/) is a React island on this Astro site. It reads the same public emoncms.org feeds every 30 seconds and draws them with [Recharts](https://recharts.org/).
 
 The only snag: **emoncms.org doesn't allow other websites to read its data from the browser**. You get blocked straight away. Rather than run a server, I added two rules to `netlify.toml` that relay requests through this site's own domain:
 
