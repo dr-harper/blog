@@ -32,11 +32,13 @@ export function onSpans(points: [number, number | null][] = [], step: number): [
     (acc, [t, v], i) => {
       const on = v !== null && v >= 0.5;
       const last = i === points.length - 1;
-      if (on && acc.open === null) return { ...acc, open: t };
-      if ((!on || last) && acc.open !== null) {
-        return { spans: [...acc.spans, [acc.open, on ? t + step : t]], open: null };
+      const open = on && acc.open === null ? t : acc.open;
+      // A run still going at the last point closes there, including one that
+      // only started at the last point.
+      if (open !== null && (!on || last)) {
+        return { spans: [...acc.spans, [open, on ? t + step : t]], open: null };
       }
-      return acc;
+      return { ...acc, open };
     },
     { spans: [], open: null },
   ).spans;

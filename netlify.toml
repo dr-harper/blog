@@ -13,8 +13,9 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 # The heat pump page reads public emoncms.org feeds through the site, because
-# emoncms.org sends no CORS headers. Only the two read-only feed calls it uses
-# are relayed, so this can't be used to write to an emoncms account.
+# emoncms.org sends no CORS headers. Only the read-only feed calls it uses are
+# relayed, so this can't be used to write to an emoncms account. Keep these in
+# step with src/components/react/heatpump/relayed.mjs, which astro dev reads.
 [[redirects]]
   from = "/api/emoncms/feed/fetch.json"
   to = "https://emoncms.org/feed/fetch.json"
@@ -24,5 +25,11 @@
 [[redirects]]
   from = "/api/emoncms/feed/data.json"
   to = "https://emoncms.org/feed/data.json"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/emoncms/feed/list.json"
+  to = "https://emoncms.org/feed/list.json"
   status = 200
   force = true
