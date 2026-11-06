@@ -11,3 +11,18 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# The heat pump page reads public emoncms.org feeds through the site, because
+# emoncms.org sends no CORS headers. Only the two read-only feed calls it uses
+# are relayed, so this can't be used to write to an emoncms account.
+[[redirects]]
+  from = "/api/emoncms/feed/fetch.json"
+  to = "https://emoncms.org/feed/fetch.json"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/emoncms/feed/data.json"
+  to = "https://emoncms.org/feed/data.json"
+  status = 200
+  force = true

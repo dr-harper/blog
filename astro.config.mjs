@@ -29,5 +29,16 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    // In development, relay the heat pump page's emoncms.org calls the way
+    // netlify.toml does in production.
+    server: {
+      proxy: {
+        '/api/emoncms': {
+          target: 'https://emoncms.org',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/emoncms/, ''),
+        },
+      },
+    },
   },
 });
