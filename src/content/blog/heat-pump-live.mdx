@@ -8,18 +8,25 @@ tags:
   - heat pumps
   - energy
   - technical
+headerImage: "/images/heatPumpLive.png"
 draft: false
 ---
-
-import HeatPumpLive from '../../components/react/heatpump/HeatPumpLive.tsx';
 
 My day job is heat pump data. At Heat Geek I spend most of my time building the pipelines and dashboards that tell us how well other people's heat pumps are running. So it has always felt slightly awkward that I couldn't tell you how well my own one was doing.
 
 That changed this week.
 
-<HeatPumpLive client:visible />
-
-*That's live, by the way. Refresh in 30 seconds and it'll have moved. There's a [full-page version](/heat-pump/) too.*
+<a href="/heat-pump/" class="not-prose group my-8 flex items-center justify-between gap-4 rounded-lg border border-accent/40 bg-bg-secondary px-5 py-4 transition-colors hover:border-accent">
+  <span>
+    <span class="flex items-center gap-2 font-mono text-sm text-accent">
+      <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-accent"></span>
+      live dashboard
+    </span>
+    <span class="mt-1 block font-semibold text-text-primary">See my heat pump running right now</span>
+    <span class="mt-1 block text-sm text-text-secondary">Heat out, electricity in, efficiency and temperatures, straight from the meters every 30 seconds.</span>
+  </span>
+  <span class="font-mono text-2xl text-accent transition-transform group-hover:translate-x-1">→</span>
+</a>
 
 ## The system
 
@@ -71,7 +78,7 @@ The emoncms dashboards do the job, but honestly they look like 2013. I wanted so
 
 ## Building the page
 
-The page above is a React island on this Astro site. It reads the same public emoncms.org feeds every 30 seconds and draws them with [Recharts](https://recharts.org/).
+The [live page](/heat-pump/) is a React island on this Astro site. It reads the same public emoncms.org feeds every 30 seconds and draws them with [Recharts](https://recharts.org/).
 
 The only snag: **emoncms.org doesn't allow other websites to read its data from the browser**. You get blocked straight away. Rather than run a server, I added two rules to `netlify.toml` that relay requests through this site's own domain:
 
@@ -98,3 +105,5 @@ Ask me again in February.
 - **Hot water against the tariff:** how much it really costs to heat the cylinder at 50 °C overnight versus topping up in the afternoon
 
 If you've got a heat pump and some meters, put your data on heatpumpmonitor.org. The more real systems there are, the better the evidence gets for everyone.
+
+**[See it live →](/heat-pump/)** The heat pump has its own page on this site, with heat out, electricity in, efficiency and temperatures straight from the meters, refreshed every 30 seconds.
