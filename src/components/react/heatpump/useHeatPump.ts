@@ -10,6 +10,7 @@ import {
   type Snapshot,
 } from './feeds';
 import type { Day } from './DailyChart';
+import { fetchHours, type Hour } from './hours';
 
 const DAY = 86_400_000;
 
@@ -89,6 +90,10 @@ async function loadHistory(): Promise<History> {
 }
 
 export const useHistory = () => usePoll<History>(loadHistory, 600_000);
+
+// Every hour of space heating since DATA_START. A new hour lands once an hour,
+// so this refreshes slowly.
+export const useHours = () => usePoll<Hour[]>(fetchHours, 1_800_000);
 
 // Heat and electricity since DATA_START: today's meter readings, from the
 // live snapshot, less the readings at the start. Null when either end is
