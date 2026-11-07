@@ -1,6 +1,6 @@
 import { CHART_STEP_SECONDS, RUNNING_WATTS, STALE_AFTER, type Snapshot } from './feeds';
 import { fitLine, type Hour } from './hours';
-import { onSpans, toRows } from './series';
+import { fillForward, onSpans, toRows } from './series';
 import { COLOURS } from './theme';
 import { totalsSince, useHistory, useHours, useLastDay, useSnapshot } from './useHeatPump';
 import DailyChart from './DailyChart';
@@ -81,7 +81,7 @@ export default function HeatPumpLive() {
   const running = live && (v?.elec ?? 0) >= RUNNING_WATTS;
   const cop = running && v?.elec ? (v.heat ?? 0) / v.elec : null;
 
-  const rows = day.data ? toRows(day.data, { heat: 0.001, elec: 0.001 }) : [];
+  const rows = day.data ? fillForward(toRows(day.data, { heat: 0.001, elec: 0.001 }), ['outsideT']) : [];
   const dhw = day.data ? onSpans(day.data.dhwOn, CHART_STEP_SECONDS * 1000) : [];
   const totals = totalsSince(s, history.data);
   const scop = totals && totals.elec > 0.5 ? totals.heat / totals.elec : null;
