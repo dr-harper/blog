@@ -17,6 +17,21 @@ export function toRows(series: Series, scale: Partial<Record<FeedKey, number>> =
   return [...byTime.values()].sort((a, b) => a.t - b.t);
 }
 
+// Carries the last reading of a slow-moving feed (the Met Office's outside
+// temperature, hourly) forward onto every row, so hovering anywhere on a
+// faster chart finds a value to show rather than only the hour mark itself.
+export function fillForward(rows: Row[], keys: FeedKey[]): Row[] {
+  const last: Partial<Record<FeedKey, number | null>> = {};
+  return rows.map((row) => {
+    const filled = { ...row };
+    keys.forEach((k) => {
+      if (filled[k] !== undefined) last[k] = filled[k];
+      else if (k in last) filled[k] = last[k];
+    });
+    return filled;
+  });
+}
+
 // Tick marks on round hours, every `hours`, across the rows' span.
 export function hourTicks(rows: Row[], hours: number): number[] {
   if (!rows.length) return [];

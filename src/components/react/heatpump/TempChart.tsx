@@ -4,11 +4,13 @@ import { hourTicks, type Row } from './series';
 import { COLOURS, axisProps, timeTick } from './theme';
 
 const LINES = [
-  { key: 'flowT', name: 'Flow', colour: COLOURS.flow, width: 2 },
-  { key: 'returnT', name: 'Return', colour: COLOURS.ret, width: 1.5 },
-  { key: 'dhwT', name: 'Cylinder', colour: COLOURS.cylinder, width: 2 },
-  { key: 'roomT', name: 'Room', colour: COLOURS.room, width: 2 },
-  { key: 'outsideT', name: 'Outside', colour: COLOURS.outside, width: 1.5 },
+  { key: 'flowT', name: 'Flow', colour: COLOURS.flow, width: 2, type: 'monotone' },
+  { key: 'returnT', name: 'Return', colour: COLOURS.ret, width: 1.5, type: 'monotone' },
+  { key: 'dhwT', name: 'Cylinder', colour: COLOURS.cylinder, width: 2, type: 'monotone' },
+  { key: 'roomT', name: 'Room', colour: COLOURS.room, width: 2, type: 'monotone' },
+  // Carried forward from an hourly reading (rows.ts fillForward), so a step
+  // reads truer than a curve smoothed through repeated values.
+  { key: 'outsideT', name: 'Outside', colour: COLOURS.outside, width: 1.5, type: 'stepAfter' },
 ] as const;
 
 export default function TempChart({ rows, dhw }: { rows: Row[]; dhw: [number, number][] }) {
@@ -23,7 +25,7 @@ export default function TempChart({ rows, dhw }: { rows: Row[]; dhw: [number, nu
         <YAxis unit="°C" width={56} domain={['auto', 'auto']} {...axisProps} />
         <Tooltip content={<ChartTooltip labelFormat={timeTick} />} />
         {LINES.map((l) => (
-          <Line key={l.key} type="monotone" dataKey={l.key} name={l.name} unit="°C" stroke={l.colour} strokeWidth={l.width} dot={false} connectNulls isAnimationActive={false} />
+          <Line key={l.key} type={l.type} dataKey={l.key} name={l.name} unit="°C" stroke={l.colour} strokeWidth={l.width} dot={false} connectNulls isAnimationActive={false} />
         ))}
       </LineChart>
     </ResponsiveContainer>
