@@ -100,6 +100,17 @@ const commandPages = [
     <meta name="twitter:site" content="@DrMichaelHarper" />
     {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />}
 
+    <!-- Google Analytics (GA4). Lives in <head>, so ClientRouter keeps it across
+         navigations; GA4's enhanced measurement records those as page views from
+         history changes. -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-DJ73KGPKRC"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-DJ73KGPKRC');
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
